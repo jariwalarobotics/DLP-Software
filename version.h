@@ -2,7 +2,7 @@
 #define VERSION_H
 
 
-#define GUI_VERSION_MAJOR 3
+#define GUI_VERSION_MAJOR 1
 #define GUI_VERSION_MINOR 0
 #define GUI_VERSION_BUILD 0
 
