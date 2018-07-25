@@ -104,8 +104,6 @@ typedef enum
     BL_MASTER_SLAVE,
     BL_SET_SECTADDR_4BYTE,
     BL_SET_DNLDSIZE_4BYTE,
-    LED_STATUS_HW,
-    DMD_Temp_Max,
 }LCR_CMD;
 
 static unsigned char OutputBuffer[USB_MAX_PACKET_SIZE + 1];
@@ -188,8 +186,6 @@ static CmdFormat CmdList[] =
 	{ "BL_MASTER_SLAVE"         , 0x31, 0x0031, 0x01, 0 },
 	{ "BL_SET_SECTADDR_4BYTE"   , 0x32, 0x0032, 0x04, 0 },
     { "BL_SET_DNLDSIZE_4BYTE"   , 0x33, 0x0033, 0x04, 0 },
-    { "LED_STATUS_HW"           , 0x00, 0x1001, 0x04, 0 },
-    { "DMD_Temp_Max"            , 0x00, 0x1005, 0x02, 0 },
 };
 
 static unsigned char seqNum=0;
@@ -1258,38 +1254,6 @@ int LCR_GetStatus(unsigned char *pHWStatus, unsigned char *pSysStatus, unsigned 
     }
     else
         return -1;
-
-    return 0;
-}
-
-int LCR_GetDMDTempMax(unsigned int *value)
-{
-    hidMessageStruct msg;
-
-    LCR_PrepReadCmd(DMD_Temp_Max);
-    if(LCR_Read() > 0)
-    {
-        memcpy(&msg, InputBuffer, 65);
-
-        *value = (double)((msg.text.data[6] << 8 | msg.text.data[7]));
-    }
-    else
-        return -1;
-
-    return *value;
-}
-
-int LCR_GetLEDStatus(unsigned char *pHWStatus)
-{
-    hidMessageStruct msg;
-
-    LCR_PrepReadCmd(LED_STATUS_HW);
-    if(LCR_Read() > 0)
-    {
-        memcpy(&msg, InputBuffer, 65);
-
-        *pHWStatus = msg.text.data[0];
-    }
 
     return 0;
 }

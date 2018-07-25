@@ -56,7 +56,6 @@ int LCR_SoftwareReset(void);
 /* System status commands */
 int LCR_GetStatus(unsigned char *pHWStatus, unsigned char *pSysStatus,
                                                     unsigned char *pMainStatus);
-int LCR_GetLEDStatus(unsigned char *pHWStatus);
 int LCR_GetVersion(unsigned int *pApp_ver, unsigned int *pAPI_ver,
                     unsigned int *pSWConfig_ver, unsigned int *pSeqConfig_ver);
 int LCR_GetFrmwVersion(unsigned int *pFrmwType, char *pFrmwTag);
@@ -117,7 +116,6 @@ BOOL LCR_GetLongAxisImageFlip();
 int LCR_SetShortAxisImageFlip(BOOL);
 BOOL LCR_GetShortAxisImageFlip();
 
-int LCR_GetDMDTempMax(unsigned int *value);
 
 int LCR_SetLedEnables(BOOL SeqCtrl, BOOL Red, BOOL Green, BOOL Blue);
 int LCR_GetLedEnables(BOOL *pSeqCtrl, BOOL *pRed, BOOL *pGreen, BOOL *pBlue);
