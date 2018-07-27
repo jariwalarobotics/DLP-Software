@@ -769,7 +769,7 @@ color:rgb(0,120,120);
            <string notr="true">QStackedWidget{background-image : url(:/images/img.jpg);}</string>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>3</number>
           </property>
           <widget class="QWidget" name="mainPage">
            <layout class="QGridLayout" name="gridLayout_7">
@@ -3748,7 +3748,7 @@ color:rgb(0,120,120);
                      <string notr="true">QStackedWidget{border:0px}</string>
                     </property>
                     <property name="currentIndex">
-                     <number>1</number>
+                     <number>0</number>
                     </property>
                     <widget class="QWidget" name="patternDesignPage">
                      <layout class="QGridLayout" name="gridLayout_31">
@@ -4614,8 +4614,8 @@ color:rgb(0,120,120);
                                   <rect>
                                    <x>0</x>
                                    <y>0</y>
-                                   <width>502</width>
-                                   <height>429</height>
+                                   <width>659</width>
+                                   <height>484</height>
                                   </rect>
                                  </property>
                                 </widget>
@@ -4726,6 +4726,9 @@ color:rgb(0,120,120);
                                 <property name="text">
                                  <string>Play Once</string>
                                 </property>
+                                <property name="checked">
+                                 <bool>true</bool>
+                                </property>
                                </widget>
                               </item>
                               <item>
@@ -4734,7 +4737,7 @@ color:rgb(0,120,120);
                                  <string>Repeat</string>
                                 </property>
                                 <property name="checked">
-                                 <bool>true</bool>
+                                 <bool>false</bool>
                                 </property>
                                </widget>
                               </item>
@@ -4826,6 +4829,31 @@ color:rgb(0,120,120);
                                 <property name="icon">
                                  <iconset resource="hires.qrc">
                                   <normaloff>:/new/prefix1/Icons/my_stop.png</normaloff>:/new/prefix1/Icons/my_stop.png</iconset>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QPushButton" name="AutoPlayPatSeq">
+                                <property name="minimumSize">
+                                 <size>
+                                  <width>80</width>
+                                  <height>60</height>
+                                 </size>
+                                </property>
+                                <property name="font">
+                                 <font>
+                                  <family>Arial</family>
+                                  <pointsize>9</pointsize>
+                                  <weight>75</weight>
+                                  <bold>true</bold>
+                                 </font>
+                                </property>
+                                <property name="text">
+                                 <string>AutoPlay</string>
+                                </property>
+                                <property name="icon">
+                                 <iconset resource="hires.qrc">
+                                  <normaloff>:/new/prefix1/Icons/my_play.png</normaloff>:/new/prefix1/Icons/my_play.png</iconset>
                                 </property>
                                </widget>
                               </item>

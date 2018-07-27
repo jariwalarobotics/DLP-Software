@@ -25,7 +25,7 @@
 int MainWindow::updatePatternMemory(int totalSplashImages, BOOL firmware)
 {
     //Stop timer
-    //usbPollTimer->stop();
+    usbPollTimer2->stop();
     for(int image = 0; image < totalSplashImages; image++)
     {
         int spalshImageCount;
@@ -66,68 +66,110 @@ int MainWindow::updatePatternMemory(int totalSplashImages, BOOL firmware)
             merge_image_master.crop(0, 0, m_ptnWidth/2, m_ptnHeight);
             merge_image_slave.crop(m_ptnWidth/2, 0, m_ptnWidth/2, m_ptnHeight);
 
-            if(firmware == true)
-            {
-              /*  if(m_firmware->addSplash(&merge_image_master) < 0)
-                {
-                    showError(GET_ERR_STR());
-                    return -1;
-                }
-                if(m_firmwareSlave != NULL)
-                {
-                    if(m_firmwareSlave->addSplash(&merge_image_slave) < 0)
-                    {
-                        showError(GET_ERR_STR());
-                        return -1;
-                    }
-                } */
-            }
+            uint08* splash_block_master = NULL;
+            uint08* splash_block_slave = NULL;
 
-            else
-            {
-                uint08* splash_block_master = NULL;
-                uint08* splash_block_slave = NULL;
+            int splashSizeMaster  = merge_image_master.toSplash(&splash_block_master);
+            int splashSizeSlave = merge_image_slave.toSplash(&splash_block_slave);
 
-                int splashSizeMaster  = merge_image_master.toSplash(&splash_block_master);
-                int splashSizeSlave = merge_image_slave.toSplash(&splash_block_slave);
+            if(splashSizeMaster <= 0 || splashSizeSlave <= 0)
+                 return -1;
 
-                if(splashSizeMaster <= 0 || splashSizeSlave <= 0)
-                    return -1;
+            if(uploadPatternToEVM(true, spalshImageCount, splashSizeMaster, splash_block_master) == -1)
+                 return -1;
 
-                if(uploadPatternToEVM(true, spalshImageCount, splashSizeMaster, splash_block_master) == -1)
-                    return -1;
-
-                if(uploadPatternToEVM(false, spalshImageCount, splashSizeSlave, splash_block_slave) == -1)
-                    return -1;
-
-            }
+            if(uploadPatternToEVM(false, spalshImageCount, splashSizeSlave, splash_block_slave) == -1)
+                 return -1;
         }
         else
         {
-            if(firmware == true)
-            {
-               /* if( m_firmware->addSplash(&merge_image) < 0)
-                {
-                    showError(GET_ERR_STR());
-                    return -1;
-                } */
-            }
-            else
-
-            {
-                int splashSize = merge_image.toSplash(&splash_block);
-                if(splashSize <= 0)
-                    return -1;
-                if(uploadPatternToEVM(true, spalshImageCount, splashSize, splash_block) < 0)
-                    return -1;
-            }
+            int splashSize = merge_image.toSplash(&splash_block);
+            if(splashSize <= 0)
+                return -1;
+            if(uploadPatternToEVM(true, spalshImageCount, splashSize, splash_block) < 0)
+                return -1;
         }
     }
 
-    //usbPollTimer->start();
+    usbPollTimer2->start();
+    return 0;
+}
+
+
+int MainWindow::updateSinglePatternMemory(int totalSplashImages, BOOL firmware)
+{
+    //Stop timer
+    usbPollTimer2->stop();
+    for(int image = 0; image < totalSplashImages; image++)
+    {
+        int spalshImageCount;
+
+        if(firmware)
+        {
+            spalshImageCount = image;
+        }
+        else
+        {
+            spalshImageCount = totalSplashImages - 1 - image;
+        }
+
+        PtnImage merge_image(m_ptnWidth, m_ptnHeight, 24);
+
+        merge_image.fill(0);
+
+        for(int i = 0; i < Auto_m_elements.size(); i++)
+        {
+            if(Auto_m_elements[i].splashImageIndex != spalshImageCount)
+                continue;
+            int bitpos = Auto_m_elements[i].splashImageBitPos;
+            int bitdepth = Auto_m_elements[i].bits;
+            PtnImage image(Auto_m_elements[i].name);
+            merge_image.merge(image,bitpos,bitdepth);
+        }
+
+        merge_image.swapColors(PTN_COLOR_RED, PTN_COLOR_BLUE, PTN_COLOR_GREEN);
+        uint08* splash_block = NULL;
+
+        PtnImage merge_image_master(m_ptnWidth, m_ptnHeight, 24);
+        PtnImage merge_image_slave(m_ptnWidth, m_ptnHeight, 24);
+        merge_image_master = merge_image;
+        merge_image_slave = merge_image;
+        if (m_dualAsic)
+        {
+
+            merge_image_master.crop(0, 0, m_ptnWidth/2, m_ptnHeight);
+            merge_image_slave.crop(m_ptnWidth/2, 0, m_ptnWidth/2, m_ptnHeight);
+
+            uint08* splash_block_master = NULL;
+            uint08* splash_block_slave = NULL;
+
+            int splashSizeMaster  = merge_image_master.toSplash(&splash_block_master);
+            int splashSizeSlave = merge_image_slave.toSplash(&splash_block_slave);
+
+            if(splashSizeMaster <= 0 || splashSizeSlave <= 0)
+                return -1;
+
+            if(uploadPatternToEVM(true, spalshImageCount, splashSizeMaster, splash_block_master) == -1)
+                return -1;
+
+            if(uploadPatternToEVM(false, spalshImageCount, splashSizeSlave, splash_block_slave) == -1)
+                return -1;
+        }
+        else
+        {
+           int splashSize = merge_image.toSplash(&splash_block);
+           if(splashSize <= 0)
+               return -1;
+           if(uploadPatternToEVM(true, spalshImageCount, splashSize, splash_block) < 0)
+               return -1;
+        }
+    }
+
+    usbPollTimer2->start();
 
     return 0;
 }
+
 
 /**
  * @brief MainWindow::UpdateLUTOnTheFly
@@ -160,7 +202,7 @@ int MainWindow::uploadPatternToEVM(bool master, int splashImageCount, int splash
         {
             // free(imageBuffer);
             showCriticalError("Downloading failed");
-            //usbPollTimer->start();
+            usbPollTimer2->start();
             imgDataDownload.close();
             return -1;
         }
@@ -493,7 +535,7 @@ void MainWindow::on_addPatternsButton_clicked()
             pattern.splashImageIndex = 0;
         }
 
-        pattern.selected = true;
+        pattern.selected = false;
         m_elements.append(pattern);
         m_elements[0].trigIn = true;    // First pattern always on a Frame Change
         numPatAdded = 1;
@@ -543,8 +585,8 @@ void MainWindow::on_addPatternsButton_clicked()
             {
                 pattern.bits = 1;
                 pattern.color = PatternElement::RED;
-                pattern.exposure = GetMinExposure(1);
-                pattern.darkPeriod = 0;
+                pattern.exposure = 1500000;
+                pattern.darkPeriod = 1000000;
                 pattern.trigIn = false;
                 pattern.trigOut2 = true;
             }
@@ -559,7 +601,7 @@ void MainWindow::on_addPatternsButton_clicked()
             }
 
             pattern.name = fileNames.at(i);
-            pattern.selected = true;
+            pattern.selected = false;
 
             m_elements.append(pattern);
             numPatAdded++;
@@ -696,6 +738,7 @@ void MainWindow::on_startPatSequence_Button_clicked()
  */
 void MainWindow::on_pausePatSequence_Button_clicked()
 {
+    AutoSendPatSeq->stop();
     if (LCR_PatternDisplay(0x1) < 0)
         showError("Unable to pause pattern display");
 }
@@ -705,6 +748,7 @@ void MainWindow::on_pausePatSequence_Button_clicked()
  */
 void MainWindow::on_stopPatSequence_Button_clicked()
 {
+    AutoSendPatSeq->stop();
     if (LCR_PatternDisplay(0x0) < 0)
         showError("Unable to stop pattern display");
 }
@@ -1320,4 +1364,120 @@ void MainWindow::updateMinExposure(void)
                 minPatExposure[i] = bitDepthExposure[m_dualAsic][i];
         }
     }
+}
+
+
+void MainWindow::SendPatSequence()
+{
+    if (PatCount < m_elements.size())
+    {
+          waveWindow->updatePatternList(m_elements);
+          waveWindow->select(WaveFormWindow::SELECT_SINGLE, 0);
+          waveWindow->draw();
+          Auto_m_elements.clear();
+          LCR_ClearPatLut();
+
+          uploadSingleImageSeq();
+          StartSigleImageSeq();
+    }
+    else
+    {
+        waveWindow->updatePatternList(m_elements);
+        waveWindow->select(WaveFormWindow::SELECT_NONE, -1);
+        waveWindow->draw();
+        AutoSendPatSeq->stop();
+        showStatus("Pattern sequence completed!!");
+        return;
+    }
+
+    on_removePatternsButton_clicked();
+    AutoSendPatSeq->setInterval(3000);
+}
+
+void MainWindow::uploadSingleImageSeq()
+{
+    int totalSplashImages = 0;
+    int ret;
+    char errStr[255];
+    //QTime waitEndTime;
+
+    if(m_elements.size() <= 0)
+    {
+        showStatus("Error:No pattern sequence to send");
+        return;
+    }
+
+    LCR_ClearPatLut();
+
+    PatternElement AutoPatSeq;
+    AutoPatSeq.bits = m_elements[0].bits;
+    AutoPatSeq.color = m_elements[0].color;
+    AutoPatSeq.exposure = m_elements[0].exposure;
+    AutoPatSeq.darkPeriod = m_elements[0].darkPeriod;
+    AutoPatSeq.trigIn = m_elements[0].trigIn;
+    AutoPatSeq.trigOut2 = m_elements[0].trigOut2;
+
+    AutoPatSeq.name = m_elements[0].name;
+    AutoPatSeq.selected = true;
+    m_elements[0].selected = true;
+
+    m_patternImageChange = true;
+    Auto_m_elements.append(AutoPatSeq);
+
+
+    if (!m_videoPatternMode)
+    {
+       if (calculateSplashImageDetails(&totalSplashImages))
+          return;
+    }
+
+    Auto_m_elements[0].splashImageBitPos = m_elements[0].splashImageBitPos;
+    Auto_m_elements[0].splashImageIndex = m_elements[0].splashImageIndex;
+
+    for (int i = 0; i < Auto_m_elements.size(); i++)
+    {
+        if(LCR_AddToPatLut(i, Auto_m_elements[i].exposure, true, Auto_m_elements[i].bits, Auto_m_elements[i].color, Auto_m_elements[i].trigIn, Auto_m_elements[i].darkPeriod, Auto_m_elements[i].trigOut2, Auto_m_elements[i].splashImageIndex, Auto_m_elements[i].splashImageBitPos)<0)
+        {
+            sprintf(errStr,"Unable to add pattern number %d to the LUT",i);
+            showError(QString::fromLocal8Bit(errStr));
+            break;
+        }
+    }
+    if (LCR_SendPatLut() < 0)
+    {
+        showError("Sending pattern LUT failed!");
+        return;
+    }
+
+    ret = LCR_SetPatternConfig(Auto_m_elements.size(), Auto_m_elements.size());
+
+    if(ret < 0)
+    {
+        showError("Sending pattern LUT size failed!!");
+        return;
+    }
+
+    if (ui->patternMemory_radioButton->isChecked() && m_patternImageChange)
+    {
+        if(updateSinglePatternMemory(1, false) == 0)
+        {
+           m_patternImageChange = false;
+        }
+    }
+}
+
+void MainWindow::StartSigleImageSeq()
+{
+    if (LCR_SetPatternConfig(Auto_m_elements.size(), Auto_m_elements.size()) < 0)
+    {
+        showError("Error in setting LUT Configuration!");
+        return;
+    }
+    if (LCR_PatternDisplay(0x2) < 0)
+        showError("Unable to start pattern display");
+}
+
+void MainWindow::on_AutoPlayPatSeq_clicked()
+{
+     AutoSendPatSeq->start();
 }

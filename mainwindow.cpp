@@ -103,11 +103,17 @@ MainWindow::MainWindow(QWidget *parent) :
     usbPollTimer = new QTimer(this);
     usbPollTimer->setInterval(1000);
     connect(usbPollTimer, SIGNAL(timeout()), this, SLOT(timer_read_led_driver_Status(void)));
-    //usbPollTimer->start();
-    //ui->colorFrame->hide();
+
+    usbPollTimer2 = new QTimer(this);
+    usbPollTimer2->setInterval(2000);
+    connect(usbPollTimer2, SIGNAL(timeout()), this, SLOT(timerTimeout()(void)));
+    usbPollTimer2->start();
+
+    AutoSendPatSeq = new QTimer(this);
+    connect(AutoSendPatSeq, SIGNAL(timeout()), this, SLOT(SendPatSequence(void)));
+
     ui->EVM_Picture_stackedWidget->setCurrentIndex(0);
     ui->onlineResources_stackedWidget->setCurrentIndex(0);
-    //ui->setAsDefaultBatch->setEnabled(false);
 
     char versionStr[255];
     // Display GUI Version #
@@ -115,19 +121,8 @@ MainWindow::MainWindow(QWidget *parent) :
     setWindowTitle(versionStr);
 
     updatePtnCheckbox();
-
-    //m_firmware = NULL;
-    //m_firmwareSlave = NULL;
-
     updateMinExposure();
-   // emit on_connectButton_clicked();
-
-    //Hide these controls until API is fixed for not enough sequnece cache memory and EVM locks up
-    //The cache size in the Composer projects are set to 0 which is max cache memory of 1MB.
-   // ui->KB_label->hide();
-   // ui->seqCacheSize_checkBox->hide();
-   // ui->seqCacheSize_spinBox->hide();
-
+    emit on_connectButton_clicked();
 }
 
 MainWindow::~MainWindow()
@@ -144,14 +139,6 @@ MainWindow::~MainWindow()
 
     delete ui;
 
-    /*
-     if(m_firmware)
-        delete m_firmware;
-    if(m_firmwareSlave)
-        delete m_firmwareSlave;
-    if(m_batchFile)
-        BAT_Free(m_batchFile);
-    */
 }
 
 bool MainWindow::loadDll()
@@ -253,7 +240,7 @@ int MainWindow::calculateSplashImageDetails(int *totalSplashImages)
 
         totalBits = totalBits + m_elements[elemCount].bits;
 
-        if(totalBits > 400)
+        if(totalBits > 12000)
         {
             char dispStr[255];
             sprintf(dispStr, "Error:Total Bit Depth cannot exceed 400");
@@ -311,9 +298,6 @@ void MainWindow::hideFrames()
     ui->pushButton_systemControls->setChecked(false);
     ui->pushButton_LEDDriver->setChecked(false);
     ui->pushButton_patternMode->setChecked(false);
-    //ui->pushButton_batchFiles->setChecked(false);
-   // ui->pushButton_firmware->setChecked(false);
-   // ui->pushButton_peripherals->setChecked(false);
 }
 
 /**
@@ -355,13 +339,10 @@ void MainWindow::getFrmwVersion()
             if(firmwareType == 2) //WQXGA firmware
             {
                 ui->pDMD_radioButton->setChecked(false);
-                //ui->wqxgaDMD_radioButton->setChecked(true);
-                //on_wqxgaDMD_radioButton_clicked();
             }
             else if(firmwareType == 1) //1080p firmware
             {
                 ui->pDMD_radioButton->setChecked(true);
-                //ui->wqxgaDMD_radioButton->setChecked(false);
                 on_pDMD_radioButton_clicked();
             }
             else if(firmwareType == 0) //Unknown
@@ -463,7 +444,7 @@ void MainWindow::getStatus()
 void MainWindow::on_connectButton_clicked()
 {
     static int SLModePrev = -1;
-    int SLmode = 0;
+    int SLmode = 3;
     int standBy = 0;
 
     if(USB_IsConnected() == false)
@@ -475,6 +456,7 @@ void MainWindow::on_connectButton_clicked()
     {
 
         getStatus();
+        LCR_SetMode(SLmode);
 
         QIcon icon(":/new/prefix1/Icons/Led_G.png");
         ui->connectButton->setIcon(icon);
@@ -501,8 +483,6 @@ void MainWindow::on_connectButton_clicked()
             {
                 ui->patternMode_radioButton->setChecked(false);
                 ui->patternMemory_radioButton->setChecked(false);
-                if(SLModePrev != SLmode)
-                    on_videoMode_radioButton_clicked();
             }
             else if (SLmode == 1)
             {
@@ -515,8 +495,6 @@ void MainWindow::on_connectButton_clicked()
             {
                 ui->patternMode_radioButton->setChecked(false);
                 ui->patternMemory_radioButton->setChecked(false);
-                if(SLModePrev != SLmode)
-                  on_videoPatternMode_radioButton_clicked();
             }
             else if (SLmode == 3)
             {
@@ -529,7 +507,6 @@ void MainWindow::on_connectButton_clicked()
         }
         if (!m_firstConnect)
         {
-
             int i = 0;
             getVersion();
             getFrmwVersion();
@@ -572,7 +549,6 @@ void MainWindow::on_connectButton_clicked()
         ui->firmwareTag_label->setText("xxxx");
         ui->apiVersionLabel->setText("xx.xx.xx");
 
-
         m_dmdDetected = false;
     }
 }
@@ -609,22 +585,6 @@ void MainWindow::on_standBy_radioButton_clicked()
 }
 
 /**
- * @brief MainWindow::on_videoMode_radioButton_clicked
- * Send the API command to go into Video mode
- * Displays the Video Mode page of the MainWindow
- */
-void MainWindow::on_videoMode_radioButton_clicked()
-{
-    if (LCR_SetMode(0x0) < 0)
-    {
-        showError("Unable to switch to video mode");
-        return;
-    }
-
-    //emit on_pushButton_videoMode_clicked();
-}
-
-/**
  * @brief MainWindow::on_patternMode_radioButton_clicked
  *  Send the API command to go into Pattern mode
  *  Displays the Pattern Mode page of the MainWindow
@@ -654,37 +614,6 @@ void MainWindow::on_patternMode_radioButton_clicked()
     updatePtnCheckbox();
 }
 
-/**
- * @brief MainWindow::on_videoPatternMode_radioButton_clicked
- *  Send the API command to go into Video Pattern mode
- *  Displays the Pattern Mode page of the MainWindow
- */
-void MainWindow::on_videoPatternMode_radioButton_clicked()
-{
-    if (LCR_SetMode(0x2) < 0)
-    {
-        showError("Unable to switch to video pattern mode");
-        return;
-    }
-
-    emit on_pushButton_patternMode_clicked();
-
-
-    if (m_videoPatternMode)
-        return;
-
-    m_videoPatternMode = true;
-    m_elements.clear();
-    waveWindow->updatePatternList(m_elements);
-    waveWindow->draw();
-    waveWindow->updateVideoPatternMode(true);
-    ui->bitDepth_ComboBox->setCurrentText("1");
-    ui->startPos_label->show();
-    ui->startPos_ComboBox->show();
-    ui->triggerIn_checkBox->setText("Frame Change");
-    ui->bitDepth_ComboBox->removeItem(8);
-    updatePtnCheckbox();
-}
 /**
  * @brief MainWindow::on_patternMemory_radioButton_clicked
  *  Send the API command to go into Memory mode
@@ -893,4 +822,3 @@ void MainWindow::on_ledPulseWidthSet_clicked()
    }
    updateMinExposure();
 }
-

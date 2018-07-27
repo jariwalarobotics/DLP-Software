@@ -38,6 +38,7 @@ public:
     int _register1;
     int _register2;
     int _write1;
+    int PatCount = 0;
 
 
     bool loadDll();
@@ -197,7 +198,8 @@ private slots:
 
     void on_standBy_radioButton_clicked();
     int calculateSplashImageDetails(int *totalSplashImages);
-
+    void uploadSingleImageSeq();
+    void StartSigleImageSeq();
 
     void getStatus();
 
@@ -208,6 +210,7 @@ private slots:
 
     void updateControls();
     void timer_read_led_driver_Status(void);
+    void SendPatSequence(void);
     void on_pushButton_ConnectLED_clicked();
     void On_DataReceived();
 
@@ -225,16 +228,21 @@ private slots:
 
     void on_pushButton_ExTrigger_clicked();
 
+    void on_AutoPlayPatSeq_clicked();
+
 private:
 
     Ui::MainWindow *ui;
     QLibrary ahid;
     WaveFormWindow *waveWindow;
     QTimer *usbPollTimer;
+    QTimer *usbPollTimer2;
+    QTimer *AutoSendPatSeq;
     QSettings settings;
 
 
     QList<PatternElement> m_elements;
+    QList<PatternElement> Auto_m_elements;
     QString m_firmwarePath;
     QString m_ptnImagePath;
     QString m_ptnSettingPath;
@@ -258,6 +266,7 @@ private:
     void processChosenFirmwareImage();
     void hideFrames();
     int updatePatternMemory(int totalSplashImages, BOOL firmware);
+    int updateSinglePatternMemory(int totalSplashImages, BOOL firmware);
     void changePtnBitDepth(int ptnNum, int bitDepth);
     void updatePtnCheckbox(void);
     void updateBlocks(bool full);

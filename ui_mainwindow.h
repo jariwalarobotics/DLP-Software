@@ -316,6 +316,7 @@ public:
     QPushButton *startPatSequence_Button;
     QPushButton *pausePatSequence_Button;
     QPushButton *stopPatSequence_Button;
+    QPushButton *AutoPlayPatSeq;
     QSpacerItem *verticalSpacer_31;
     QWidget *patternSettingsPage;
     QGridLayout *gridLayout_32;
@@ -2231,7 +2232,7 @@ public:
         waveFormArea->setWidgetResizable(true);
         scrollAreaWidgetContents_4 = new QWidget();
         scrollAreaWidgetContents_4->setObjectName(QStringLiteral("scrollAreaWidgetContents_4"));
-        scrollAreaWidgetContents_4->setGeometry(QRect(0, 0, 502, 429));
+        scrollAreaWidgetContents_4->setGeometry(QRect(0, 0, 659, 484));
         waveFormArea->setWidget(scrollAreaWidgetContents_4);
 
         horizontalLayout_46->addWidget(waveFormArea);
@@ -2290,12 +2291,13 @@ public:
         verticalLayout_35->setObjectName(QStringLiteral("verticalLayout_35"));
         playOnce_radioButton = new QRadioButton(groupBox_PlayRepeat);
         playOnce_radioButton->setObjectName(QStringLiteral("playOnce_radioButton"));
+        playOnce_radioButton->setChecked(true);
 
         verticalLayout_35->addWidget(playOnce_radioButton);
 
         repeat_radioButton = new QRadioButton(groupBox_PlayRepeat);
         repeat_radioButton->setObjectName(QStringLiteral("repeat_radioButton"));
-        repeat_radioButton->setChecked(true);
+        repeat_radioButton->setChecked(false);
 
         verticalLayout_35->addWidget(repeat_radioButton);
 
@@ -2346,6 +2348,14 @@ public:
         stopPatSequence_Button->setIcon(icon14);
 
         verticalLayout_6->addWidget(stopPatSequence_Button);
+
+        AutoPlayPatSeq = new QPushButton(groupBox_StartPauseStop);
+        AutoPlayPatSeq->setObjectName(QStringLiteral("AutoPlayPatSeq"));
+        AutoPlayPatSeq->setMinimumSize(QSize(80, 60));
+        AutoPlayPatSeq->setFont(font11);
+        AutoPlayPatSeq->setIcon(icon12);
+
+        verticalLayout_6->addWidget(AutoPlayPatSeq);
 
 
         verticalLayout_36->addWidget(groupBox_StartPauseStop);
@@ -3116,10 +3126,10 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(2);
+        stackedWidget->setCurrentIndex(3);
         EVM_Picture_stackedWidget->setCurrentIndex(0);
         onlineResources_stackedWidget->setCurrentIndex(1);
-        patternMode_stackedWidget->setCurrentIndex(1);
+        patternMode_stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -3351,6 +3361,7 @@ public:
         startPatSequence_Button->setText(QApplication::translate("MainWindow", "Start  ", nullptr));
         pausePatSequence_Button->setText(QApplication::translate("MainWindow", "Pause", nullptr));
         stopPatSequence_Button->setText(QApplication::translate("MainWindow", "Stop  ", nullptr));
+        AutoPlayPatSeq->setText(QApplication::translate("MainWindow", "AutoPlay", nullptr));
         groupBox_TriggerControl->setTitle(QApplication::translate("MainWindow", "Trigger Control", nullptr));
         groupBox_TriggerOut1->setTitle(QApplication::translate("MainWindow", "Trigger Out 1 (us)", nullptr));
         label_TrigOut1_FallingEdge->setText(QApplication::translate("MainWindow", "Falling Edge Delay", nullptr));
