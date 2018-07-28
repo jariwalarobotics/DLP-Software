@@ -1396,7 +1396,7 @@ void MainWindow::SendPatSequence()
 
 void MainWindow::uploadSingleImageSeq()
 {
-    int totalSplashImages = 0;
+    int SingleSplashImage = 0;
     int ret;
     char errStr[255];
     //QTime waitEndTime;
@@ -1427,7 +1427,7 @@ void MainWindow::uploadSingleImageSeq()
 
     if (!m_videoPatternMode)
     {
-       if (calculateSplashImageDetails(&totalSplashImages))
+       if (calculateSingleSplashImageDetails(&SingleSplashImage))
           return;
     }
 

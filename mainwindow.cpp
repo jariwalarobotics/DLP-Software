@@ -287,6 +287,60 @@ int MainWindow::calculateSplashImageDetails(int *totalSplashImages)
     return 0;
 }
 
+
+int MainWindow::calculateSingleSplashImageDetails(int *SingleSplashImage)
+{
+    int imgCount = 0;
+    int bits = 0;
+    int totalBits = 0;
+    int elemCount = 0;
+
+    if (m_elements[elemCount].bits > 8)
+    {
+       char dispStr[255];
+       sprintf(dispStr, "Error:Bit depth not selected for pattern=%d\n", elemCount);
+       showStatus(dispStr);
+       return -1;
+    }
+
+    totalBits = totalBits + m_elements[elemCount].bits;
+
+    if(totalBits > 12000)
+    {
+       char dispStr[255];
+       sprintf(dispStr, "Error:Total Bit Depth cannot exceed 400");
+       showError(dispStr);
+       return -1;
+    }
+
+    /* Check if the same pattern is used already */
+    int i;
+    for(i = 0; i < elemCount; i++)
+       {
+         /* Only if file name and bit depth matches */
+         if(m_elements[i].bits == m_elements[elemCount].bits &&
+              m_elements[i].name == m_elements[elemCount].name)
+         {
+              break;
+          }
+       }
+    /* Match found. use the same splash image */
+    if(i < elemCount)
+      {
+         m_elements[elemCount].splashImageIndex = m_elements[i].splashImageIndex;
+         m_elements[elemCount].splashImageBitPos = m_elements[i].splashImageBitPos;
+      }
+
+    m_elements[elemCount].splashImageIndex = imgCount;
+    m_elements[elemCount].splashImageBitPos = bits;
+    bits += m_elements[elemCount].bits;
+
+
+    *SingleSplashImage = imgCount + 1;
+
+    return 0;
+}
+
 /**
  * @brief MainWindow::Hide_Frames
  * function to hide all the Frames

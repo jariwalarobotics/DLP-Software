@@ -198,6 +198,7 @@ private slots:
 
     void on_standBy_radioButton_clicked();
     int calculateSplashImageDetails(int *totalSplashImages);
+    int calculateSingleSplashImageDetails(int *SingleSplashImage);
     void uploadSingleImageSeq();
     void StartSigleImageSeq();
 
