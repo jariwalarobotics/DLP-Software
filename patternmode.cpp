@@ -193,7 +193,7 @@ int MainWindow::uploadPatternToEVM(bool master, int splashImageCount, int splash
     imgDataDownload.setValue(0);
     int imgDataDwld = 0;
     imgDataDownload.setMaximum(origSize);
-    imgDataDownload.show();
+    //imgDataDownload.show();
     QApplication::processEvents();
     while(splash_size > 0)
     {
@@ -551,7 +551,7 @@ void MainWindow::on_addPatternsButton_clicked()
         if(fileNames.isEmpty())
             return;
 
-        fileNames.sort();
+        //fileNames.sort();
 
         QDir dir = QFileInfo(QFile(fileNames.at(0))).absoluteDir();
         m_ptnImagePath = dir.absolutePath();
@@ -1377,6 +1377,15 @@ void MainWindow::SendPatSequence()
           Auto_m_elements.clear();
           LCR_ClearPatLut();
 
+          QString ImagePath = m_elements[0].name;
+          scene->addPixmap(QPixmap(ImagePath));
+
+          view->setBackgroundBrush(QBrush(Qt::black));
+          view->setScene(scene);
+          //view->updateGeometry();
+          view->showMaximized();
+          //view->showFullScreen();
+
           uploadSingleImageSeq();
           StartSigleImageSeq();
     }
@@ -1387,6 +1396,7 @@ void MainWindow::SendPatSequence()
         waveWindow->draw();
         AutoSendPatSeq->stop();
         showStatus("Pattern sequence completed!!");
+        view->close();
         return;
     }
 
@@ -1480,4 +1490,6 @@ void MainWindow::StartSigleImageSeq()
 void MainWindow::on_AutoPlayPatSeq_clicked()
 {
      AutoSendPatSeq->start();
+     scene = new QGraphicsScene();
+     view = new QGraphicsView();
 }
