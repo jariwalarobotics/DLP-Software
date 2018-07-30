@@ -123,10 +123,8 @@ private slots:
     void on_connectButton_clicked();
     void timerTimeout(void);
 
-    void on_videoMode_radioButton_clicked();
     void on_removePatternsButton_clicked();
     void on_patternMode_radioButton_clicked();
-    void on_videoPatternMode_radioButton_clicked();
     void on_patternMemory_radioButton_clicked();
     void on_pushButton_patternMode_clicked();
     void on_pushButton_info_clicked();
