@@ -46,7 +46,6 @@ public:
     QGridLayout *gridLayout;
     QHBoxLayout *horizontalLayout_24;
     QPushButton *pushButton_info;
-    QPushButton *pushButton_systemControls;
     QPushButton *pushButton_patternMode;
     QPushButton *pushButton_LEDDriver;
     QLabel *label_TILogo;
@@ -145,39 +144,6 @@ public:
     QVBoxLayout *verticalLayout_17;
     QLabel *label_DLPText2;
     QLabel *label_DLPText1;
-    QWidget *systemSettingsPage;
-    QGridLayout *gridLayout_8;
-    QFrame *frame_systemControls;
-    QGridLayout *gridLayout_16;
-    QGroupBox *groupBox_SystemSettings;
-    QGroupBox *groupBox_ImageOrientation;
-    QPushButton *setFlipPushButton;
-    QCheckBox *ShortAxisFlipCheckBox;
-    QCheckBox *LongAxisFlipCheckBox;
-    QPushButton *getFlipPushButton;
-    QGroupBox *groupBox_LEDControl;
-    QPushButton *GetLEDpushButton;
-    QPushButton *SetLEDpushButton;
-    QGroupBox *groupBox_LEDSelection;
-    QRadioButton *radioButton_ColorDisplayAuto;
-    QRadioButton *radioButton_ColorDisplayManual;
-    QCheckBox *RedCheckBox;
-    QCheckBox *GreenCheckBox;
-    QCheckBox *BlueCheckBox;
-    QGroupBox *groupBox_LEDCurrent;
-    QLineEdit *RedLEDCurrent;
-    QLineEdit *BlueLEDCurrent;
-    QLineEdit *GreenLEDCurrent;
-    QCheckBox *LedPwmInvert_checkBox;
-    QLabel *label_Red;
-    QLabel *label_Blue;
-    QLabel *label_Green;
-    QGroupBox *groupBox_OpticalInvert;
-    QCheckBox *patternDisplayInvertData_checkBox;
-    QWidget *layoutWidget_3;
-    QHBoxLayout *horizontalLayout_8;
-    QPushButton *getPatternDisplayInvertData_button;
-    QPushButton *setPatternDisplayInvertData_button;
     QWidget *LEDDriverPage;
     QGridLayout *gridLayout_9;
     QFrame *frame_LedDriver;
@@ -436,12 +402,6 @@ public:
     QHBoxLayout *horizontalLayout_32;
     QPushButton *ledPulseWidthGet;
     QPushButton *ledPulseWidthSet;
-    QWidget *batchFilePage;
-    QGridLayout *gridLayout_4;
-    QWidget *peripheralsPage;
-    QGridLayout *gridLayout_5;
-    QWidget *firmwarePage;
-    QGridLayout *gridLayout_6;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -454,7 +414,7 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         scrollArea = new QScrollArea(centralWidget);
         scrollArea->setObjectName(QStringLiteral("scrollArea"));
-        scrollArea->setGeometry(QRect(0, 0, 1355, 715));
+        scrollArea->setGeometry(QRect(0, 0, 1351, 711));
         scrollArea->setAutoFillBackground(true);
         scrollArea->setStyleSheet(QStringLiteral("QScrollArea{background-image : url(:/images/img.jpg);}"));
         scrollArea->setFrameShape(QFrame::StyledPanel);
@@ -465,7 +425,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1353, 713));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1349, 709));
         gridLayout = new QGridLayout(scrollAreaWidgetContents);
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
@@ -473,6 +433,7 @@ public:
         horizontalLayout_24 = new QHBoxLayout();
         horizontalLayout_24->setSpacing(6);
         horizontalLayout_24->setObjectName(QStringLiteral("horizontalLayout_24"));
+        horizontalLayout_24->setSizeConstraint(QLayout::SetNoConstraint);
         pushButton_info = new QPushButton(scrollAreaWidgetContents);
         pushButton_info->setObjectName(QStringLiteral("pushButton_info"));
         QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
@@ -499,24 +460,6 @@ public:
 
         horizontalLayout_24->addWidget(pushButton_info);
 
-        pushButton_systemControls = new QPushButton(scrollAreaWidgetContents);
-        pushButton_systemControls->setObjectName(QStringLiteral("pushButton_systemControls"));
-        sizePolicy.setHeightForWidth(pushButton_systemControls->sizePolicy().hasHeightForWidth());
-        pushButton_systemControls->setSizePolicy(sizePolicy);
-        pushButton_systemControls->setMinimumSize(QSize(0, 48));
-        pushButton_systemControls->setMaximumSize(QSize(16777215, 16777215));
-        pushButton_systemControls->setFont(font);
-        pushButton_systemControls->setStyleSheet(QLatin1String("QPushButton{\n"
-"	color:rgb(0,150,150);\n"
-"   }"));
-        QIcon icon1;
-        icon1.addFile(QStringLiteral(":/Images/images/settings.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton_systemControls->setIcon(icon1);
-        pushButton_systemControls->setIconSize(QSize(30, 30));
-        pushButton_systemControls->setCheckable(true);
-
-        horizontalLayout_24->addWidget(pushButton_systemControls);
-
         pushButton_patternMode = new QPushButton(scrollAreaWidgetContents);
         pushButton_patternMode->setObjectName(QStringLiteral("pushButton_patternMode"));
         pushButton_patternMode->setEnabled(true);
@@ -527,9 +470,9 @@ public:
         pushButton_patternMode->setStyleSheet(QLatin1String("QPushButton{\n"
 "	color:rgb(0,150,150);\n"
 "   }"));
-        QIcon icon2;
-        icon2.addFile(QStringLiteral(":/Images/images/pattern.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton_patternMode->setIcon(icon2);
+        QIcon icon1;
+        icon1.addFile(QStringLiteral(":/Images/images/pattern.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_patternMode->setIcon(icon1);
         pushButton_patternMode->setIconSize(QSize(40, 40));
         pushButton_patternMode->setCheckable(true);
 
@@ -544,9 +487,9 @@ public:
         pushButton_LEDDriver->setStyleSheet(QLatin1String("QPushButton{\n"
 "	color:rgb(0,150,150);\n"
 "   }"));
-        QIcon icon3;
-        icon3.addFile(QStringLiteral(":/Images/images/LEDDriver_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton_LEDDriver->setIcon(icon3);
+        QIcon icon2;
+        icon2.addFile(QStringLiteral(":/Images/images/LEDDriver_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_LEDDriver->setIcon(icon2);
         pushButton_LEDDriver->setIconSize(QSize(40, 40));
         pushButton_LEDDriver->setCheckable(true);
 
@@ -613,9 +556,9 @@ public:
         connectButton->setAutoFillBackground(false);
         connectButton->setStyleSheet(QStringLiteral("QPushButton{border:0px}"));
         connectButton->setText(QStringLiteral("Disconnected"));
-        QIcon icon4;
-        icon4.addFile(QStringLiteral(":/new/prefix1/Icons/Led_R.png"), QSize(), QIcon::Normal, QIcon::Off);
-        connectButton->setIcon(icon4);
+        QIcon icon3;
+        icon3.addFile(QStringLiteral(":/new/prefix1/Icons/Led_R.png"), QSize(), QIcon::Normal, QIcon::Off);
+        connectButton->setIcon(icon3);
 
         horizontalLayout_7->addWidget(connectButton, 0, Qt::AlignLeft);
 
@@ -1064,9 +1007,9 @@ public:
         ti_e2e_pushButton->setMaximumSize(QSize(289, 50));
         ti_e2e_pushButton->setCursor(QCursor(Qt::PointingHandCursor));
         ti_e2e_pushButton->setMouseTracking(true);
-        QIcon icon5;
-        icon5.addFile(QStringLiteral(":/images/TI_E2E_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
-        ti_e2e_pushButton->setIcon(icon5);
+        QIcon icon4;
+        icon4.addFile(QStringLiteral(":/images/TI_E2E_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        ti_e2e_pushButton->setIcon(icon4);
         ti_e2e_pushButton->setIconSize(QSize(400, 100));
         ti_e2e_pushButton->setFlat(true);
 
@@ -1161,7 +1104,7 @@ public:
         ti_e2e_pushButton_2->setCursor(QCursor(Qt::PointingHandCursor));
         ti_e2e_pushButton_2->setMouseTracking(true);
         ti_e2e_pushButton_2->setFocusPolicy(Qt::NoFocus);
-        ti_e2e_pushButton_2->setIcon(icon5);
+        ti_e2e_pushButton_2->setIcon(icon4);
         ti_e2e_pushButton_2->setIconSize(QSize(400, 100));
         ti_e2e_pushButton_2->setFlat(true);
 
@@ -1252,9 +1195,9 @@ public:
         dlp_pushButton->setMouseTracking(true);
         dlp_pushButton->setFocusPolicy(Qt::NoFocus);
         dlp_pushButton->setLayoutDirection(Qt::RightToLeft);
-        QIcon icon6;
-        icon6.addFile(QStringLiteral(":/new/prefix1/Icons/dlp_logo.png"), QSize(), QIcon::Normal, QIcon::Off);
-        dlp_pushButton->setIcon(icon6);
+        QIcon icon5;
+        icon5.addFile(QStringLiteral(":/new/prefix1/Icons/dlp_logo.png"), QSize(), QIcon::Normal, QIcon::Off);
+        dlp_pushButton->setIcon(icon5);
         dlp_pushButton->setIconSize(QSize(200, 75));
         dlp_pushButton->setFlat(true);
 
@@ -1307,157 +1250,6 @@ public:
         gridLayout_7->addWidget(frame_mainPage, 0, 0, 1, 1);
 
         stackedWidget->addWidget(mainPage);
-        systemSettingsPage = new QWidget();
-        systemSettingsPage->setObjectName(QStringLiteral("systemSettingsPage"));
-        gridLayout_8 = new QGridLayout(systemSettingsPage);
-        gridLayout_8->setSpacing(6);
-        gridLayout_8->setContentsMargins(11, 11, 11, 11);
-        gridLayout_8->setObjectName(QStringLiteral("gridLayout_8"));
-        gridLayout_8->setContentsMargins(0, 0, 0, 0);
-        frame_systemControls = new QFrame(systemSettingsPage);
-        frame_systemControls->setObjectName(QStringLiteral("frame_systemControls"));
-        sizePolicy6.setHeightForWidth(frame_systemControls->sizePolicy().hasHeightForWidth());
-        frame_systemControls->setSizePolicy(sizePolicy6);
-        frame_systemControls->setStyleSheet(QLatin1String("QFrame{background-image : url(:/images/img.jpg);\n"
-"border:1px solid black}\n"
-"QLabel{border:0px}"));
-        frame_systemControls->setFrameShape(QFrame::StyledPanel);
-        frame_systemControls->setFrameShadow(QFrame::Raised);
-        gridLayout_16 = new QGridLayout(frame_systemControls);
-        gridLayout_16->setSpacing(6);
-        gridLayout_16->setContentsMargins(11, 11, 11, 11);
-        gridLayout_16->setObjectName(QStringLiteral("gridLayout_16"));
-        groupBox_SystemSettings = new QGroupBox(frame_systemControls);
-        groupBox_SystemSettings->setObjectName(QStringLiteral("groupBox_SystemSettings"));
-        sizePolicy6.setHeightForWidth(groupBox_SystemSettings->sizePolicy().hasHeightForWidth());
-        groupBox_SystemSettings->setSizePolicy(sizePolicy6);
-        groupBox_SystemSettings->setFont(font2);
-        groupBox_SystemSettings->setAutoFillBackground(false);
-        groupBox_SystemSettings->setStyleSheet(QLatin1String("QGroupBox{ border: 1.5px solid ;\n"
-"background-color: transparent;\n"
-"border-color: rgb(0,150,150);\n"
-"color:rgb(0,120,120);\n"
-";}"));
-        groupBox_ImageOrientation = new QGroupBox(groupBox_SystemSettings);
-        groupBox_ImageOrientation->setObjectName(QStringLiteral("groupBox_ImageOrientation"));
-        groupBox_ImageOrientation->setGeometry(QRect(60, 50, 471, 131));
-        groupBox_ImageOrientation->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
-"background-color: transparent;\n"
-"border-color: rgb(0,150,150);\n"
-"color:rgb(0,120,120);\n"
-";}"));
-        setFlipPushButton = new QPushButton(groupBox_ImageOrientation);
-        setFlipPushButton->setObjectName(QStringLiteral("setFlipPushButton"));
-        setFlipPushButton->setGeometry(QRect(250, 80, 121, 23));
-        ShortAxisFlipCheckBox = new QCheckBox(groupBox_ImageOrientation);
-        ShortAxisFlipCheckBox->setObjectName(QStringLiteral("ShortAxisFlipCheckBox"));
-        ShortAxisFlipCheckBox->setGeometry(QRect(300, 40, 101, 17));
-        LongAxisFlipCheckBox = new QCheckBox(groupBox_ImageOrientation);
-        LongAxisFlipCheckBox->setObjectName(QStringLiteral("LongAxisFlipCheckBox"));
-        LongAxisFlipCheckBox->setGeometry(QRect(90, 40, 111, 17));
-        getFlipPushButton = new QPushButton(groupBox_ImageOrientation);
-        getFlipPushButton->setObjectName(QStringLiteral("getFlipPushButton"));
-        getFlipPushButton->setGeometry(QRect(106, 80, 121, 23));
-        groupBox_LEDControl = new QGroupBox(groupBox_SystemSettings);
-        groupBox_LEDControl->setObjectName(QStringLiteral("groupBox_LEDControl"));
-        groupBox_LEDControl->setGeometry(QRect(60, 210, 471, 271));
-        groupBox_LEDControl->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
-"background-color: transparent;\n"
-"border-color: rgb(0,150,150);\n"
-"color:rgb(0,120,120);\n"
-";}"));
-        GetLEDpushButton = new QPushButton(groupBox_LEDControl);
-        GetLEDpushButton->setObjectName(QStringLiteral("GetLEDpushButton"));
-        GetLEDpushButton->setGeometry(QRect(111, 219, 121, 23));
-        SetLEDpushButton = new QPushButton(groupBox_LEDControl);
-        SetLEDpushButton->setObjectName(QStringLiteral("SetLEDpushButton"));
-        SetLEDpushButton->setGeometry(QRect(255, 219, 121, 23));
-        groupBox_LEDSelection = new QGroupBox(groupBox_LEDControl);
-        groupBox_LEDSelection->setObjectName(QStringLiteral("groupBox_LEDSelection"));
-        groupBox_LEDSelection->setGeometry(QRect(30, 41, 231, 151));
-        radioButton_ColorDisplayAuto = new QRadioButton(groupBox_LEDSelection);
-        radioButton_ColorDisplayAuto->setObjectName(QStringLiteral("radioButton_ColorDisplayAuto"));
-        radioButton_ColorDisplayAuto->setGeometry(QRect(30, 50, 82, 17));
-        radioButton_ColorDisplayManual = new QRadioButton(groupBox_LEDSelection);
-        radioButton_ColorDisplayManual->setObjectName(QStringLiteral("radioButton_ColorDisplayManual"));
-        radioButton_ColorDisplayManual->setGeometry(QRect(145, 50, 82, 17));
-        RedCheckBox = new QCheckBox(groupBox_LEDSelection);
-        RedCheckBox->setObjectName(QStringLiteral("RedCheckBox"));
-        RedCheckBox->setGeometry(QRect(30, 95, 41, 17));
-        GreenCheckBox = new QCheckBox(groupBox_LEDSelection);
-        GreenCheckBox->setObjectName(QStringLiteral("GreenCheckBox"));
-        GreenCheckBox->setGeometry(QRect(90, 95, 51, 17));
-        BlueCheckBox = new QCheckBox(groupBox_LEDSelection);
-        BlueCheckBox->setObjectName(QStringLiteral("BlueCheckBox"));
-        BlueCheckBox->setGeometry(QRect(160, 95, 51, 17));
-        groupBox_LEDCurrent = new QGroupBox(groupBox_LEDControl);
-        groupBox_LEDCurrent->setObjectName(QStringLiteral("groupBox_LEDCurrent"));
-        groupBox_LEDCurrent->setGeometry(QRect(290, 40, 150, 151));
-        groupBox_LEDCurrent->setMaximumSize(QSize(150, 16777215));
-        RedLEDCurrent = new QLineEdit(groupBox_LEDCurrent);
-        RedLEDCurrent->setObjectName(QStringLiteral("RedLEDCurrent"));
-        RedLEDCurrent->setGeometry(QRect(70, 20, 61, 20));
-        BlueLEDCurrent = new QLineEdit(groupBox_LEDCurrent);
-        BlueLEDCurrent->setObjectName(QStringLiteral("BlueLEDCurrent"));
-        BlueLEDCurrent->setGeometry(QRect(70, 50, 61, 20));
-        GreenLEDCurrent = new QLineEdit(groupBox_LEDCurrent);
-        GreenLEDCurrent->setObjectName(QStringLiteral("GreenLEDCurrent"));
-        GreenLEDCurrent->setGeometry(QRect(70, 80, 61, 20));
-        LedPwmInvert_checkBox = new QCheckBox(groupBox_LEDCurrent);
-        LedPwmInvert_checkBox->setObjectName(QStringLiteral("LedPwmInvert_checkBox"));
-        LedPwmInvert_checkBox->setGeometry(QRect(30, 120, 81, 17));
-        label_Red = new QLabel(groupBox_LEDCurrent);
-        label_Red->setObjectName(QStringLiteral("label_Red"));
-        label_Red->setGeometry(QRect(19, 23, 31, 16));
-        label_Red->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
-        label_Blue = new QLabel(groupBox_LEDCurrent);
-        label_Blue->setObjectName(QStringLiteral("label_Blue"));
-        label_Blue->setGeometry(QRect(19, 53, 31, 16));
-        label_Blue->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
-        label_Green = new QLabel(groupBox_LEDCurrent);
-        label_Green->setObjectName(QStringLiteral("label_Green"));
-        label_Green->setGeometry(QRect(19, 83, 41, 16));
-        label_Green->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
-        groupBox_LEDSelection->raise();
-        groupBox_LEDCurrent->raise();
-        GetLEDpushButton->raise();
-        SetLEDpushButton->raise();
-        groupBox_OpticalInvert = new QGroupBox(groupBox_SystemSettings);
-        groupBox_OpticalInvert->setObjectName(QStringLiteral("groupBox_OpticalInvert"));
-        groupBox_OpticalInvert->setGeometry(QRect(560, 50, 291, 131));
-        groupBox_OpticalInvert->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
-"background-color: transparent;\n"
-"border-color: rgb(0,150,150);\n"
-"color:rgb(0,120,120);\n"
-";}"));
-        patternDisplayInvertData_checkBox = new QCheckBox(groupBox_OpticalInvert);
-        patternDisplayInvertData_checkBox->setObjectName(QStringLiteral("patternDisplayInvertData_checkBox"));
-        patternDisplayInvertData_checkBox->setGeometry(QRect(51, 28, 161, 41));
-        layoutWidget_3 = new QWidget(groupBox_OpticalInvert);
-        layoutWidget_3->setObjectName(QStringLiteral("layoutWidget_3"));
-        layoutWidget_3->setGeometry(QRect(50, 79, 201, 30));
-        horizontalLayout_8 = new QHBoxLayout(layoutWidget_3);
-        horizontalLayout_8->setSpacing(6);
-        horizontalLayout_8->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
-        horizontalLayout_8->setContentsMargins(0, 0, 0, 0);
-        getPatternDisplayInvertData_button = new QPushButton(layoutWidget_3);
-        getPatternDisplayInvertData_button->setObjectName(QStringLiteral("getPatternDisplayInvertData_button"));
-
-        horizontalLayout_8->addWidget(getPatternDisplayInvertData_button);
-
-        setPatternDisplayInvertData_button = new QPushButton(layoutWidget_3);
-        setPatternDisplayInvertData_button->setObjectName(QStringLiteral("setPatternDisplayInvertData_button"));
-
-        horizontalLayout_8->addWidget(setPatternDisplayInvertData_button);
-
-
-        gridLayout_16->addWidget(groupBox_SystemSettings, 0, 0, 1, 1);
-
-
-        gridLayout_8->addWidget(frame_systemControls, 0, 0, 1, 1);
-
-        stackedWidget->addWidget(systemSettingsPage);
         LEDDriverPage = new QWidget();
         LEDDriverPage->setObjectName(QStringLiteral("LEDDriverPage"));
         gridLayout_9 = new QGridLayout(LEDDriverPage);
@@ -1960,9 +1752,9 @@ public:
         saveButton_patternSettings->setStyleSheet(QLatin1String("QPushButton{\n"
 "	color:rgb(0,150,150);\n"
 "}"));
-        QIcon icon7;
-        icon7.addFile(QStringLiteral(":/new/prefix1/Icons/save.png"), QSize(), QIcon::Normal, QIcon::Off);
-        saveButton_patternSettings->setIcon(icon7);
+        QIcon icon6;
+        icon6.addFile(QStringLiteral(":/new/prefix1/Icons/save.png"), QSize(), QIcon::Normal, QIcon::Off);
+        saveButton_patternSettings->setIcon(icon6);
 
         horizontalLayout_44->addWidget(saveButton_patternSettings);
 
@@ -1972,9 +1764,9 @@ public:
         loadButton_patternSettings->setStyleSheet(QLatin1String("QPushButton{\n"
 "	color:rgb(0,150,150);\n"
 "}"));
-        QIcon icon8;
-        icon8.addFile(QStringLiteral(":/new/prefix1/Icons/load.png"), QSize(), QIcon::Normal, QIcon::Off);
-        loadButton_patternSettings->setIcon(icon8);
+        QIcon icon7;
+        icon7.addFile(QStringLiteral(":/new/prefix1/Icons/load.png"), QSize(), QIcon::Normal, QIcon::Off);
+        loadButton_patternSettings->setIcon(icon7);
 
         horizontalLayout_44->addWidget(loadButton_patternSettings);
 
@@ -1987,9 +1779,9 @@ public:
         sizePolicy3.setHeightForWidth(addPatternsButton->sizePolicy().hasHeightForWidth());
         addPatternsButton->setSizePolicy(sizePolicy3);
         addPatternsButton->setMinimumSize(QSize(40, 35));
-        QIcon icon9;
-        icon9.addFile(QStringLiteral(":/new/prefix1/Icons/add.png"), QSize(), QIcon::Normal, QIcon::Off);
-        addPatternsButton->setIcon(icon9);
+        QIcon icon8;
+        icon8.addFile(QStringLiteral(":/new/prefix1/Icons/add.png"), QSize(), QIcon::Normal, QIcon::Off);
+        addPatternsButton->setIcon(icon8);
 
         horizontalLayout_44->addWidget(addPatternsButton);
 
@@ -1999,9 +1791,9 @@ public:
         sizePolicy3.setHeightForWidth(removePatternsButton->sizePolicy().hasHeightForWidth());
         removePatternsButton->setSizePolicy(sizePolicy3);
         removePatternsButton->setMinimumSize(QSize(40, 35));
-        QIcon icon10;
-        icon10.addFile(QStringLiteral(":/new/prefix1/Icons/delete.png"), QSize(), QIcon::Normal, QIcon::Off);
-        removePatternsButton->setIcon(icon10);
+        QIcon icon9;
+        icon9.addFile(QStringLiteral(":/new/prefix1/Icons/delete.png"), QSize(), QIcon::Normal, QIcon::Off);
+        removePatternsButton->setIcon(icon9);
 
         horizontalLayout_44->addWidget(removePatternsButton);
 
@@ -2011,9 +1803,9 @@ public:
         sizePolicy3.setHeightForWidth(selectAllButton->sizePolicy().hasHeightForWidth());
         selectAllButton->setSizePolicy(sizePolicy3);
         selectAllButton->setMinimumSize(QSize(40, 35));
-        QIcon icon11;
-        icon11.addFile(QStringLiteral(":/new/prefix1/Icons/select.png"), QSize(), QIcon::Normal, QIcon::Off);
-        selectAllButton->setIcon(icon11);
+        QIcon icon10;
+        icon10.addFile(QStringLiteral(":/new/prefix1/Icons/select.png"), QSize(), QIcon::Normal, QIcon::Off);
+        selectAllButton->setIcon(icon10);
 
         horizontalLayout_44->addWidget(selectAllButton);
 
@@ -2232,7 +2024,7 @@ public:
         waveFormArea->setWidgetResizable(true);
         scrollAreaWidgetContents_4 = new QWidget();
         scrollAreaWidgetContents_4->setObjectName(QStringLiteral("scrollAreaWidgetContents_4"));
-        scrollAreaWidgetContents_4->setGeometry(QRect(0, 0, 659, 484));
+        scrollAreaWidgetContents_4->setGeometry(QRect(0, 0, 655, 480));
         waveFormArea->setWidget(scrollAreaWidgetContents_4);
 
         horizontalLayout_46->addWidget(waveFormArea);
@@ -2321,9 +2113,9 @@ public:
         sizePolicy3.setHeightForWidth(startPatSequence_Button->sizePolicy().hasHeightForWidth());
         startPatSequence_Button->setSizePolicy(sizePolicy3);
         startPatSequence_Button->setMinimumSize(QSize(81, 50));
-        QIcon icon12;
-        icon12.addFile(QStringLiteral(":/new/prefix1/Icons/my_play.png"), QSize(), QIcon::Normal, QIcon::Off);
-        startPatSequence_Button->setIcon(icon12);
+        QIcon icon11;
+        icon11.addFile(QStringLiteral(":/new/prefix1/Icons/my_play.png"), QSize(), QIcon::Normal, QIcon::Off);
+        startPatSequence_Button->setIcon(icon11);
 
         verticalLayout_6->addWidget(startPatSequence_Button);
 
@@ -2332,9 +2124,9 @@ public:
         sizePolicy3.setHeightForWidth(pausePatSequence_Button->sizePolicy().hasHeightForWidth());
         pausePatSequence_Button->setSizePolicy(sizePolicy3);
         pausePatSequence_Button->setMinimumSize(QSize(81, 50));
-        QIcon icon13;
-        icon13.addFile(QStringLiteral(":/new/prefix1/Icons/my_pause.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pausePatSequence_Button->setIcon(icon13);
+        QIcon icon12;
+        icon12.addFile(QStringLiteral(":/new/prefix1/Icons/my_pause.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pausePatSequence_Button->setIcon(icon12);
 
         verticalLayout_6->addWidget(pausePatSequence_Button);
 
@@ -2343,9 +2135,9 @@ public:
         sizePolicy3.setHeightForWidth(stopPatSequence_Button->sizePolicy().hasHeightForWidth());
         stopPatSequence_Button->setSizePolicy(sizePolicy3);
         stopPatSequence_Button->setMinimumSize(QSize(81, 50));
-        QIcon icon14;
-        icon14.addFile(QStringLiteral(":/new/prefix1/Icons/my_stop.png"), QSize(), QIcon::Normal, QIcon::Off);
-        stopPatSequence_Button->setIcon(icon14);
+        QIcon icon13;
+        icon13.addFile(QStringLiteral(":/new/prefix1/Icons/my_stop.png"), QSize(), QIcon::Normal, QIcon::Off);
+        stopPatSequence_Button->setIcon(icon13);
 
         verticalLayout_6->addWidget(stopPatSequence_Button);
 
@@ -2353,7 +2145,7 @@ public:
         AutoPlayPatSeq->setObjectName(QStringLiteral("AutoPlayPatSeq"));
         AutoPlayPatSeq->setMinimumSize(QSize(80, 60));
         AutoPlayPatSeq->setFont(font11);
-        AutoPlayPatSeq->setIcon(icon12);
+        AutoPlayPatSeq->setIcon(icon11);
 
         verticalLayout_6->addWidget(AutoPlayPatSeq);
 
@@ -3085,30 +2877,6 @@ public:
         gridLayout_3->addWidget(frame_patternMode, 0, 0, 1, 1);
 
         stackedWidget->addWidget(patternModePage);
-        batchFilePage = new QWidget();
-        batchFilePage->setObjectName(QStringLiteral("batchFilePage"));
-        gridLayout_4 = new QGridLayout(batchFilePage);
-        gridLayout_4->setSpacing(6);
-        gridLayout_4->setContentsMargins(11, 11, 11, 11);
-        gridLayout_4->setObjectName(QStringLiteral("gridLayout_4"));
-        gridLayout_4->setContentsMargins(0, 0, 0, 0);
-        stackedWidget->addWidget(batchFilePage);
-        peripheralsPage = new QWidget();
-        peripheralsPage->setObjectName(QStringLiteral("peripheralsPage"));
-        gridLayout_5 = new QGridLayout(peripheralsPage);
-        gridLayout_5->setSpacing(6);
-        gridLayout_5->setContentsMargins(11, 11, 11, 11);
-        gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
-        gridLayout_5->setContentsMargins(0, 0, 0, 0);
-        stackedWidget->addWidget(peripheralsPage);
-        firmwarePage = new QWidget();
-        firmwarePage->setObjectName(QStringLiteral("firmwarePage"));
-        gridLayout_6 = new QGridLayout(firmwarePage);
-        gridLayout_6->setSpacing(6);
-        gridLayout_6->setContentsMargins(11, 11, 11, 11);
-        gridLayout_6->setObjectName(QStringLiteral("gridLayout_6"));
-        gridLayout_6->setContentsMargins(0, 0, 0, 0);
-        stackedWidget->addWidget(firmwarePage);
 
         horizontalLayout_25->addWidget(stackedWidget);
 
@@ -3126,7 +2894,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(3);
+        stackedWidget->setCurrentIndex(2);
         EVM_Picture_stackedWidget->setCurrentIndex(0);
         onlineResources_stackedWidget->setCurrentIndex(1);
         patternMode_stackedWidget->setCurrentIndex(0);
@@ -3139,8 +2907,6 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
         pushButton_info->setText(QApplication::translate("MainWindow", "Information", nullptr));
-        pushButton_systemControls->setText(QApplication::translate("MainWindow", "System \n"
-"Settings", nullptr));
         pushButton_patternMode->setText(QApplication::translate("MainWindow", "Pattern \n"
 " Mode", nullptr));
         pushButton_LEDDriver->setText(QApplication::translate("MainWindow", "LED Driver", nullptr));
@@ -3198,33 +2964,6 @@ public:
         dlp_pushButton->setText(QString());
         label_DLPText2->setText(QApplication::translate("MainWindow", "Start innovating with high resolution, high speed DLP technology!", nullptr));
         label_DLPText1->setText(QApplication::translate("MainWindow", "                   Scan more.   Design brighter.   Build bigger.", nullptr));
-        groupBox_SystemSettings->setTitle(QApplication::translate("MainWindow", "System Settings", nullptr));
-        groupBox_ImageOrientation->setTitle(QApplication::translate("MainWindow", "Image Orientation", nullptr));
-        setFlipPushButton->setText(QApplication::translate("MainWindow", "Set", nullptr));
-        ShortAxisFlipCheckBox->setText(QApplication::translate("MainWindow", "North/South Flip", nullptr));
-        LongAxisFlipCheckBox->setText(QApplication::translate("MainWindow", "East/West Flip", nullptr));
-        getFlipPushButton->setText(QApplication::translate("MainWindow", "Get", nullptr));
-        groupBox_LEDControl->setTitle(QApplication::translate("MainWindow", "LED Control", nullptr));
-        GetLEDpushButton->setText(QApplication::translate("MainWindow", "Get", nullptr));
-        SetLEDpushButton->setText(QApplication::translate("MainWindow", "Set", nullptr));
-        groupBox_LEDSelection->setTitle(QApplication::translate("MainWindow", "LED Selection", nullptr));
-        radioButton_ColorDisplayAuto->setText(QApplication::translate("MainWindow", "Automatic", nullptr));
-        radioButton_ColorDisplayManual->setText(QApplication::translate("MainWindow", "Manual", nullptr));
-        RedCheckBox->setText(QApplication::translate("MainWindow", "Red", nullptr));
-        GreenCheckBox->setText(QApplication::translate("MainWindow", "Green", nullptr));
-        BlueCheckBox->setText(QApplication::translate("MainWindow", "Blue", nullptr));
-        groupBox_LEDCurrent->setTitle(QApplication::translate("MainWindow", "LED Current(0-255)", nullptr));
-        RedLEDCurrent->setText(QApplication::translate("MainWindow", "0", nullptr));
-        BlueLEDCurrent->setText(QApplication::translate("MainWindow", "0", nullptr));
-        GreenLEDCurrent->setText(QApplication::translate("MainWindow", "0", nullptr));
-        LedPwmInvert_checkBox->setText(QApplication::translate("MainWindow", "Invert PWM", nullptr));
-        label_Red->setText(QApplication::translate("MainWindow", "Red", nullptr));
-        label_Blue->setText(QApplication::translate("MainWindow", "Blue", nullptr));
-        label_Green->setText(QApplication::translate("MainWindow", "Green", nullptr));
-        groupBox_OpticalInvert->setTitle(QApplication::translate("MainWindow", "Optical Invert", nullptr));
-        patternDisplayInvertData_checkBox->setText(QApplication::translate("MainWindow", "Pattern Display Invert Data", nullptr));
-        getPatternDisplayInvertData_button->setText(QApplication::translate("MainWindow", "Get", nullptr));
-        setPatternDisplayInvertData_button->setText(QApplication::translate("MainWindow", "Set", nullptr));
         groupBox_LEDDriver->setTitle(QApplication::translate("MainWindow", "LED Driver", nullptr));
         groupBox_LEDDriverStatus->setTitle(QApplication::translate("MainWindow", "Status", nullptr));
         label_LEDDriverStatus->setText(QApplication::translate("MainWindow", "Light Engine Disconnected", nullptr));

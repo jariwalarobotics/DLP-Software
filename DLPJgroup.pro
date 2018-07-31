@@ -39,7 +39,6 @@ SOURCES += \
     HiresLib/splash.c \
     HiresLib/usb.c \
     patternmode.cpp \
-    systemsettings.cpp \
     leddriver.cpp
 
 HEADERS += \
