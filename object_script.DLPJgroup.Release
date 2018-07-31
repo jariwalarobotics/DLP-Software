@@ -14,7 +14,6 @@ INPUT(
 ./release\splash.o
 ./release\usb.o
 ./release\patternmode.o
-./release\systemsettings.o
 ./release\leddriver.o
 ./release\qrc_hires.o
 ./release\moc_mainwindow.o

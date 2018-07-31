@@ -14,7 +14,6 @@ INPUT(
 ./debug\splash.o
 ./debug\usb.o
 ./debug\patternmode.o
-./debug\systemsettings.o
 ./debug\leddriver.o
 ./debug\qrc_hires.o
 ./debug\moc_mainwindow.o

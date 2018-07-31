@@ -349,6 +349,7 @@ int MainWindow::calculateSingleSplashImageDetails(int *SingleSplashImage)
 void MainWindow::hideFrames()
 {
     ui->pushButton_info->setChecked(false);
+    ui->pushButton_systemControls->setChecked(false);
     ui->pushButton_LEDDriver->setChecked(false);
     ui->pushButton_patternMode->setChecked(false);
 }
@@ -731,10 +732,20 @@ void MainWindow::on_pushButton_LEDDriver_clicked()
 {
     hideFrames();
 
-    ui->stackedWidget->setCurrentIndex(1);
+    ui->stackedWidget->setCurrentIndex(2);
     ui->pushButton_LEDDriver->setChecked(true);
 }
 
+/**
+  * @brief MainWindow::on_pushButton_systemControls_clicked
+  */
+void MainWindow::on_pushButton_systemControls_clicked()
+{
+    hideFrames();
+
+    ui->stackedWidget->setCurrentIndex(1);
+    ui->pushButton_systemControls->setChecked(true);
+}
 
 /**
   * @brie MainWindow::on_pushButton_globalSettings_clicked
@@ -763,7 +774,7 @@ void MainWindow::on_pushButton_patternMode_clicked()
     }
 
     ;
-    ui->stackedWidget->setCurrentIndex(2);
+    ui->stackedWidget->setCurrentIndex(3);
     ui->pushButton_patternMode->setChecked(true);
 }
 
