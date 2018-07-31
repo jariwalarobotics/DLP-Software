@@ -132,19 +132,12 @@ private slots:
 
     void on_triggerOut2_checkBox_clicked();
 
-    void on_pushButton_systemControls_clicked();
     void on_pushButton_LEDDriver_clicked();
     void on_pushButton_patternControls_clicked();
     void on_pushButton_globalSettings_clicked();
     void on_dummyConnection_clicked(bool checked);
     void on_startDmdBlock_currentIndexChanged(int index);
 
-    void on_getPatternDisplayInvertData_button_clicked();
-    void on_setPatternDisplayInvertData_button_clicked();
-    void on_GetLEDpushButton_clicked();
-    void on_SetLEDpushButton_clicked();
-    void on_getFlipPushButton_clicked();
-    void on_setFlipPushButton_clicked();
     void on_pDMD_radioButton_clicked();
     void on_resetDMD_Button_clicked();
     void on_powerOn_radioButton_clicked();
