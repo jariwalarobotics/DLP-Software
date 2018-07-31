@@ -1377,15 +1377,6 @@ void MainWindow::SendPatSequence()
           Auto_m_elements.clear();
           LCR_ClearPatLut();
 
-          QString ImagePath = m_elements[0].name;
-          scene->addPixmap(QPixmap(ImagePath));
-
-          view->setBackgroundBrush(QBrush(Qt::black));
-          view->setScene(scene);
-          //view->updateGeometry();
-          view->showMaximized();
-          //view->showFullScreen();
-
           uploadSingleImageSeq();
           StartSigleImageSeq();
     }
@@ -1396,7 +1387,6 @@ void MainWindow::SendPatSequence()
         waveWindow->draw();
         AutoSendPatSeq->stop();
         showStatus("Pattern sequence completed!!");
-        view->close();
         return;
     }
 
@@ -1490,6 +1480,4 @@ void MainWindow::StartSigleImageSeq()
 void MainWindow::on_AutoPlayPatSeq_clicked()
 {
      AutoSendPatSeq->start();
-     scene = new QGraphicsScene();
-     view = new QGraphicsView();
 }

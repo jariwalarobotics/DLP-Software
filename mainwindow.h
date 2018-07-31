@@ -7,8 +7,6 @@
 #include <QLibrary>
 #include <QTextEdit>
 #include <QTableWidget>
-#include <QGraphicsScene>
-#include <QGraphicsView>
 #include "waveformwindow.h"
 #include "common.h"
 #include "definitions.h"
@@ -111,8 +109,6 @@ public:
     }
 
     QTextEdit * path;
-    QGraphicsScene *scene;
-    QGraphicsView *view;
 
 
 private slots:
