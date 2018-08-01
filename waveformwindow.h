@@ -41,6 +41,7 @@ public:
     void setZoom(int zoom);
     void select(SelectType type, int index);
     void draw(void);
+    void ClearElements(void);
     void updateInvertTrigOut1(bool value)
     {
         m_invertTrigOut1 = value;
@@ -52,6 +53,10 @@ public:
     void updatePatternList(QList<PatternElement> patElem)
     {
         m_elements = patElem;
+    }
+    void updatePatternSingleList(QList<PatternElement> singlepatElem)
+    {
+        Auto_m_elements = singlepatElem;
     }
     void updateTriggerInType(int value)
     {
@@ -102,6 +107,7 @@ private:
     bool m_videoPatternMode;
     InTriggerType m_triggerInType;
     QList<PatternElement> m_elements;
+    QList<PatternElement> Auto_m_elements;
     int m_accessCounter;
     int m_ptnWidth;
     int m_ptnHeight;

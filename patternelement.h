@@ -26,6 +26,7 @@ struct PatternElement
     bool trigIn;
     bool trigOut2;
     bool selected;
+    int Tempindex;
 
     QColor getColor()
     {

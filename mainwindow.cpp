@@ -293,7 +293,7 @@ int MainWindow::calculateSingleSplashImageDetails(int *SingleSplashImage)
     int imgCount = 0;
     int bits = 0;
     int totalBits = 0;
-    int elemCount = 0;
+    int elemCount = PatCount;
 
     if (m_elements[elemCount].bits > 8)
     {

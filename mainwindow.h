@@ -39,6 +39,7 @@ public:
     int _register2;
     int _write1;
     int PatCount = 0;
+    int delay;
 
 
     bool loadDll();

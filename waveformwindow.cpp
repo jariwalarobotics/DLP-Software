@@ -9,14 +9,14 @@
 
 static const int MIN_WAVEFORMWINDOW_SIZE=431;
 static const int PATTERN_GAP = 16;
-static const int WAVE_HEIGHT = 30;
-static const int PTN_IMG_HEIGHT = 150;
-static const int PTN_IMG_WIDTH = 1500;
+static const int WAVE_HEIGHT = 0;
+static const int PTN_IMG_HEIGHT = 440;
+static const int PTN_IMG_WIDTH = 6400;
 static const int ELEMENT_GAP = 20;
-static const int TRIGGER_WIDTH = 20;
+static const int TRIGGER_WIDTH = 0;
 static const int PTN_NUM_WIN_HEIGHT = 20;
-static const int COLOR_WIN_HEIGHT = 30;
-static const int TOTAL_HEIGHT = WAVE_HEIGHT * 3 + ELEMENT_GAP * 6 +
+static const int COLOR_WIN_HEIGHT = 0;
+static const int TOTAL_HEIGHT = WAVE_HEIGHT * 3 +
         PTN_NUM_WIN_HEIGHT + PTN_IMG_HEIGHT + COLOR_WIN_HEIGHT;
 
 /**
@@ -122,9 +122,20 @@ WaveFormWindow::WaveFormWindow(QWidget *parent) :
 void WaveFormWindow::draw(void)
 {
     int totalWidth;
-    totalWidth = PTN_IMG_WIDTH * m_scale * m_elements.size() + PATTERN_GAP * m_elements.size();
+    if (Auto_m_elements.size() > 0)
+    {
+        totalWidth = PTN_IMG_WIDTH * m_scale * Auto_m_elements.size();
+    } else
+    {
+        totalWidth = PTN_IMG_WIDTH * m_scale * m_elements.size() + PATTERN_GAP * m_elements.size();
+    }
     setMinimumSize(totalWidth, TOTAL_HEIGHT);
     update();
+}
+
+void WaveFormWindow::ClearElements()
+{
+    Auto_m_elements.clear();
 }
 
 /**
@@ -138,24 +149,64 @@ void WaveFormWindow::paintEvent(QPaintEvent *)
     QColor selectColor1 = QColor(0x80, 0x80, 0x80);
     QColor selectColor2 = QColor(0x40, 0x40, 0x40);
 
-    int gap = 25 + (this->height() - MIN_WAVEFORMWINDOW_SIZE)/6;
-
     QRect visibleRect = visibleRegion().boundingRect();
-
-    WaveDrawer waveTrigIn(0, PTN_NUM_WIN_HEIGHT + PTN_IMG_HEIGHT + COLOR_WIN_HEIGHT + gap * 3, width(), WAVE_HEIGHT);
-    WaveDrawer waveTrigOut1(0, PTN_NUM_WIN_HEIGHT + PTN_IMG_HEIGHT + COLOR_WIN_HEIGHT + gap * 4 + WAVE_HEIGHT, width(), WAVE_HEIGHT);
-    WaveDrawer waveTrigOut2(0, PTN_NUM_WIN_HEIGHT + PTN_IMG_HEIGHT + COLOR_WIN_HEIGHT + gap * 5 + WAVE_HEIGHT * 2, width(), WAVE_HEIGHT);
 
     painter.begin(this);
     painter.fillRect(0, 0, width(), height(), QColor(0,0,0));
 
-
-    if(m_elements.size() > 0)
+    if (Auto_m_elements.size() > 0)
     {
-        waveTrigIn.start(&painter, 0);
-        waveTrigOut1.start(&painter, 0);
-        waveTrigOut2.start(&painter, 0);
+        PatternElement *e = &Auto_m_elements[0];
+        int imgWin_x, imgWin_width;
+        int width = PTN_IMG_WIDTH * m_scale + PATTERN_GAP;
+        QRect rect(x, 0, width, height());
 
+        if(!visibleRect.intersects(rect))
+        {
+            x += width;
+            //continue;
+        }
+
+        if(e->selected)
+        {
+            painter.fillRect(rect.adjusted(2,2,-2,-2), selectColor2);
+        }
+
+        imgWin_x = rect.x();
+        imgWin_width = rect.width();
+
+        QRect textRect(imgWin_x, rect.y(), imgWin_width, PTN_NUM_WIN_HEIGHT);
+        QRect imgRect(imgWin_x, rect.y() + PTN_NUM_WIN_HEIGHT, imgWin_width, PTN_IMG_HEIGHT);
+
+        painter.setPen(selectColor1);
+        painter.drawRect(textRect);
+        painter.drawText(textRect, Qt::AlignCenter, QString::number(Auto_m_elements[0].Tempindex));
+
+        painter.drawRect(imgRect);
+
+        QImage *scaledImage = loadImage(Auto_m_elements[0].name, Auto_m_elements[0].bits);
+        if(scaledImage)
+        {
+           if (imgRect.width() > scaledImage->width())
+           {
+              int scaledImage_width = scaledImage->width();
+              int scaledImage_x = ((2 * rect.x() + rect.width()) / 2) - scaledImage_width / 2;
+              QRect scaledImage_rect(scaledImage_x, rect.y() + PTN_NUM_WIN_HEIGHT, scaledImage_width, PTN_IMG_HEIGHT);
+              painter.setPen(QColor(0,0,0));
+              painter.drawRect(scaledImage_rect.adjusted(0,2,0,-2));
+              painter.drawImage(scaledImage_rect.adjusted(0,2,0,-2), *scaledImage);
+              painter.setPen(selectColor1);
+           }
+           else
+           {
+              painter.drawImage(imgRect.adjusted(2,2,-2,-2), *scaledImage);
+           }
+        }
+    }
+    else
+    {
+      if(m_elements.size() > 0)
+      {
         for(int i = 0; i < m_elements.size(); i++)
         {
             PatternElement *e = &m_elements[i];
@@ -194,7 +245,7 @@ void WaveFormWindow::paintEvent(QPaintEvent *)
             }
             QRect textRect(imgWin_x, rect.y(), imgWin_width, PTN_NUM_WIN_HEIGHT);
             QRect imgRect(imgWin_x, rect.y() + PTN_NUM_WIN_HEIGHT, imgWin_width, PTN_IMG_HEIGHT);
-            QRect colorRect(imgWin_x, rect.y() + PTN_NUM_WIN_HEIGHT + PTN_IMG_HEIGHT + gap * 2, imgWin_width, COLOR_WIN_HEIGHT);
+            //QRect colorRect(imgWin_x, rect.y() + PTN_NUM_WIN_HEIGHT + PTN_IMG_HEIGHT + gap * 2, imgWin_width, COLOR_WIN_HEIGHT);
 
             painter.setPen(selectColor1);
             painter.drawRect(textRect);
@@ -260,81 +311,13 @@ void WaveFormWindow::paintEvent(QPaintEvent *)
                     }
                 }
             }
-
-            painter.fillRect(colorRect, e->getColor());
-
-            waveTrigIn.skipTo(x);
-            waveTrigOut1.skipTo(x);
-            waveTrigOut2.skipTo(x);
-
-            if (e->trigIn)
-            {
-                switch(m_triggerInType)
-                {
-                case TRIG_IN_EXT_POSITIVE:
-                    waveTrigIn.draw(0, PATTERN_GAP/2, Qt::white);
-                    waveTrigIn.draw(1, PATTERN_GAP, Qt::white);
-                    waveTrigIn.draw(0, width - (PATTERN_GAP + PATTERN_GAP/2), Qt::white);
-                    break;
-                case TRIG_IN_EXT_NEGATIVE:
-                    waveTrigIn.draw(1, PATTERN_GAP, Qt::white);
-                    waveTrigIn.draw(0, width  - PATTERN_GAP, Qt::white);
-                    break;
-                }
-            }
-            else
-            {
-                waveTrigIn.draw(0, width, Qt::white);
-            }
-
-            if ((e->trigIn) || (insertDark))
-            {
-                if (m_invertTrigOut1)
-                {
-                    waveTrigOut1.draw(1, PATTERN_GAP, Qt::white);
-                    waveTrigOut1.draw(0, imgWin_width, Qt::white);
-                }
-                else
-                {
-                    waveTrigOut1.draw(0, PATTERN_GAP, Qt::white);
-                    waveTrigOut1.draw(1, imgWin_width, Qt::white);
-                }
-            }
-            else
-            {
-                if (m_invertTrigOut1)
-                    waveTrigOut1.draw(0, width, Qt::white);
-                else
-                    waveTrigOut1.draw(1, width, Qt::white);
-            }
-
-            if (e->trigOut2)
-            {
-                if (m_invertTrigOut2)
-                {
-                    if ((e->trigIn) || (insertDark))
-                        waveTrigOut2.draw(1, PATTERN_GAP, Qt::white);
-
-                    waveTrigOut2.draw(0, PATTERN_GAP, Qt::white);
-                    waveTrigOut2.draw(1, imgWin_width - PATTERN_GAP, Qt::white);
-                }
-                else
-                {
-                    if ((e->trigIn) || (insertDark))
-                        waveTrigOut2.draw(0, PATTERN_GAP, Qt::white);
-                    waveTrigOut2.draw(1, PATTERN_GAP, Qt::white);
-                    waveTrigOut2.draw(0, imgWin_width - PATTERN_GAP, Qt::white);
-                }
-            }
-            else
-            {
-                waveTrigOut2.draw(0, width, Qt::white);
-            }
-
             x += width;
         }
-    }
+      }
+   }
 }
+
+
 /**
  * Select a set of patterns on the pattern preview window
  * @param type Type of slection

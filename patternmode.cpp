@@ -8,6 +8,7 @@
 #include <QTextStream>
 #include <QTime>
 #include <QTimer>
+#include <QThread>
 #include <QProgressDialog>
 
 
@@ -738,9 +739,25 @@ void MainWindow::on_startPatSequence_Button_clicked()
  */
 void MainWindow::on_pausePatSequence_Button_clicked()
 {
-    AutoSendPatSeq->stop();
-    if (LCR_PatternDisplay(0x1) < 0)
-        showError("Unable to pause pattern display");
+    QString state = ui->pausePatSequence_Button->text();
+    if (state == "Pause")
+    {
+        QIcon icon(":/new/prefix1/Icons/my_play.png");
+        ui->pausePatSequence_Button->setIcon(icon);
+        ui->pausePatSequence_Button->setText("Resume");
+        Auto_m_elements.clear();
+        AutoSendPatSeq->stop();
+        QThread::msleep(delay);
+        if (LCR_PatternDisplay(0x1) < 0)
+            showError("Unable to pause pattern display");
+    }
+    else
+    {
+        QIcon icon(":/new/prefix1/Icons/my_pause.png");
+        ui->pausePatSequence_Button->setIcon(icon);
+        ui->pausePatSequence_Button->setText("Pause");
+        AutoSendPatSeq->start();
+    }
 }
 
 /**
@@ -748,7 +765,16 @@ void MainWindow::on_pausePatSequence_Button_clicked()
  */
 void MainWindow::on_stopPatSequence_Button_clicked()
 {
+    Auto_m_elements.clear();
+    waveWindow->ClearElements();
+    waveWindow->updatePatternList(m_elements);
+    //waveWindow->select(WaveFormWindow::SELECT_NONE, -1);
+    waveWindow->draw();
     AutoSendPatSeq->stop();
+
+    PatCount = 0;
+
+    QThread::msleep(delay);
     if (LCR_PatternDisplay(0x0) < 0)
         showError("Unable to stop pattern display");
 }
@@ -1371,27 +1397,47 @@ void MainWindow::SendPatSequence()
 {
     if (PatCount < m_elements.size())
     {
-          waveWindow->updatePatternList(m_elements);
-          waveWindow->select(WaveFormWindow::SELECT_SINGLE, 0);
-          waveWindow->draw();
-          Auto_m_elements.clear();
-          LCR_ClearPatLut();
+        PatternElement AutoPatSeq;
+        AutoPatSeq.bits = m_elements[PatCount].bits;
+        AutoPatSeq.color = m_elements[PatCount].color;
+        AutoPatSeq.exposure = m_elements[PatCount].exposure;
+        AutoPatSeq.darkPeriod = m_elements[PatCount].darkPeriod;
+        AutoPatSeq.trigIn = m_elements[PatCount].trigIn;
+        AutoPatSeq.trigOut2 = m_elements[PatCount].trigOut2;
 
-          uploadSingleImageSeq();
-          StartSigleImageSeq();
+        AutoPatSeq.name = m_elements[PatCount].name;
+        AutoPatSeq.Tempindex = PatCount;
+
+        m_patternImageChange = true;
+        Auto_m_elements.append(AutoPatSeq);
+
+
+        waveWindow->updatePatternSingleList(Auto_m_elements);
+        waveWindow->select(WaveFormWindow::SELECT_SINGLE, PatCount);
+        waveWindow->draw();
+
+        LCR_ClearPatLut();
+
+        uploadSingleImageSeq();
+        StartSigleImageSeq();
     }
     else
     {
+        showStatus("Pattern sequence completed!!");
+        Auto_m_elements.clear();
+        waveWindow->ClearElements();
         waveWindow->updatePatternList(m_elements);
-        waveWindow->select(WaveFormWindow::SELECT_NONE, -1);
+        //waveWindow->select(WaveFormWindow::SELECT_NONE, -1);
         waveWindow->draw();
         AutoSendPatSeq->stop();
-        showStatus("Pattern sequence completed!!");
+
+        PatCount = 0;
         return;
     }
 
-    on_removePatternsButton_clicked();
-    AutoSendPatSeq->setInterval(3000);
+    Auto_m_elements.clear();
+    AutoSendPatSeq->setInterval(delay);
+    PatCount = PatCount + 1;
 }
 
 void MainWindow::uploadSingleImageSeq()
@@ -1401,7 +1447,7 @@ void MainWindow::uploadSingleImageSeq()
     char errStr[255];
     //QTime waitEndTime;
 
-    if(m_elements.size() <= 0)
+    if(Auto_m_elements.size() <= 0)
     {
         showStatus("Error:No pattern sequence to send");
         return;
@@ -1409,30 +1455,14 @@ void MainWindow::uploadSingleImageSeq()
 
     LCR_ClearPatLut();
 
-    PatternElement AutoPatSeq;
-    AutoPatSeq.bits = m_elements[0].bits;
-    AutoPatSeq.color = m_elements[0].color;
-    AutoPatSeq.exposure = m_elements[0].exposure;
-    AutoPatSeq.darkPeriod = m_elements[0].darkPeriod;
-    AutoPatSeq.trigIn = m_elements[0].trigIn;
-    AutoPatSeq.trigOut2 = m_elements[0].trigOut2;
-
-    AutoPatSeq.name = m_elements[0].name;
-    AutoPatSeq.selected = true;
-    m_elements[0].selected = true;
-
-    m_patternImageChange = true;
-    Auto_m_elements.append(AutoPatSeq);
-
-
     if (!m_videoPatternMode)
     {
        if (calculateSingleSplashImageDetails(&SingleSplashImage))
           return;
     }
 
-    Auto_m_elements[0].splashImageBitPos = m_elements[0].splashImageBitPos;
-    Auto_m_elements[0].splashImageIndex = m_elements[0].splashImageIndex;
+    Auto_m_elements[0].splashImageBitPos = m_elements[PatCount].splashImageBitPos;
+    Auto_m_elements[0].splashImageIndex = m_elements[PatCount].splashImageIndex;
 
     for (int i = 0; i < Auto_m_elements.size(); i++)
     {
@@ -1480,4 +1510,8 @@ void MainWindow::StartSigleImageSeq()
 void MainWindow::on_AutoPlayPatSeq_clicked()
 {
      AutoSendPatSeq->start();
+     int ExposureTime = ui->exposure_lineEdit->text().toInt();
+     int DarkTime = ui->darkPeriod_lineEdit->text().toInt();
+
+     delay = (ExposureTime + DarkTime) / 1000;
 }
