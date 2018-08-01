@@ -15,7 +15,7 @@
 /***************Helper Functions**************************/
 
 /**
- * @brief MainWindow::UpdatePatternMemory
+ * @brief MainWindow::updateSinglePatternMemory
  * Creates Splash images from all the Pattern elements
  * If it is Firmware update, adds the splash images to the firmware
  * If on the fly, converts the slpash images to splash blocks and updates on teh fly
@@ -23,80 +23,6 @@
  * @param firmware - I - boolean to determine if it is to update firmware or On the Fly mode
  * @return
  */
-int MainWindow::updatePatternMemory(int totalSplashImages, BOOL firmware)
-{
-    //Stop timer
-    usbPollTimer2->stop();
-    for(int image = 0; image < totalSplashImages; image++)
-    {
-        int spalshImageCount;
-
-        if(firmware)
-        {
-            spalshImageCount = image;
-        }
-        else
-        {
-            spalshImageCount = totalSplashImages - 1 - image;
-        }
-
-        PtnImage merge_image(m_ptnWidth, m_ptnHeight, 24);
-
-        merge_image.fill(0);
-
-        for(int i = 0; i < m_elements.size(); i++)
-        {
-            if(m_elements[i].splashImageIndex != spalshImageCount)
-                continue;
-            int bitpos = m_elements[i].splashImageBitPos;
-            int bitdepth = m_elements[i].bits;
-            PtnImage image(m_elements[i].name);
-            merge_image.merge(image,bitpos,bitdepth);
-        }
-
-        merge_image.swapColors(PTN_COLOR_RED, PTN_COLOR_BLUE, PTN_COLOR_GREEN);
-        uint08* splash_block = NULL;
-
-        PtnImage merge_image_master(m_ptnWidth, m_ptnHeight, 24);
-        PtnImage merge_image_slave(m_ptnWidth, m_ptnHeight, 24);
-        merge_image_master = merge_image;
-        merge_image_slave = merge_image;
-        if (m_dualAsic)
-        {
-
-            merge_image_master.crop(0, 0, m_ptnWidth/2, m_ptnHeight);
-            merge_image_slave.crop(m_ptnWidth/2, 0, m_ptnWidth/2, m_ptnHeight);
-
-            uint08* splash_block_master = NULL;
-            uint08* splash_block_slave = NULL;
-
-            int splashSizeMaster  = merge_image_master.toSplash(&splash_block_master);
-            int splashSizeSlave = merge_image_slave.toSplash(&splash_block_slave);
-
-            if(splashSizeMaster <= 0 || splashSizeSlave <= 0)
-                 return -1;
-
-            if(uploadPatternToEVM(true, spalshImageCount, splashSizeMaster, splash_block_master) == -1)
-                 return -1;
-
-            if(uploadPatternToEVM(false, spalshImageCount, splashSizeSlave, splash_block_slave) == -1)
-                 return -1;
-        }
-        else
-        {
-            int splashSize = merge_image.toSplash(&splash_block);
-            if(splashSize <= 0)
-                return -1;
-            if(uploadPatternToEVM(true, spalshImageCount, splashSize, splash_block) < 0)
-                return -1;
-        }
-    }
-
-    usbPollTimer2->start();
-    return 0;
-}
-
-
 int MainWindow::updateSinglePatternMemory(int totalSplashImages, BOOL firmware)
 {
     //Stop timer
@@ -260,23 +186,6 @@ void MainWindow::resizeEvent(QResizeEvent *)
     waveWindow->draw();
 }
 
-/**
- * @brief MainWindow::UpdatePtnCheckbox
- */
-
-void MainWindow::updatePtnCheckbox(void)
-{
-    bool enable = m_videoPatternMode == false && m_elements.size() > 0;
-    if(enable)
-    {
-        //ui->addPat_checkBox->setEnabled(true);
-    }
-    else
-    {
-        //ui->addPat_checkBox->setChecked(false);
-        //ui->addPat_checkBox->setEnabled(false);
-    }
-}
 
 /***************Handler Functions**************************/
 
@@ -488,7 +397,6 @@ void MainWindow::on_loadButton_patternSettings_clicked()
     {
         waveWindow->updatePatternList(m_elements);
         waveWindow->draw();
-        ui->zoomSlider->setEnabled(true);
         ui->selectAllButton->setEnabled(true);
         ui->ptnSetting_groupBox->setEnabled(true);
         ui->removePatternsButton->setEnabled(true);
@@ -496,7 +404,6 @@ void MainWindow::on_loadButton_patternSettings_clicked()
     }
     settingsFile.close();
 
-    updatePtnCheckbox();
 }
 
 /**
@@ -614,14 +521,12 @@ void MainWindow::on_addPatternsButton_clicked()
     {
         waveWindow->updatePatternList(m_elements);
         waveWindow->draw();
-        ui->zoomSlider->setEnabled(true);
         ui->selectAllButton->setEnabled(true);
         ui->ptnSetting_groupBox->setEnabled(true);
         ui->removePatternsButton->setEnabled(true);
         on_patternSelect(m_elements.size()-1,m_elements);
     }
 
-    updatePtnCheckbox();
     return;
 }
 
@@ -647,69 +552,7 @@ void MainWindow::on_removePatternsButton_clicked()
     waveWindow->draw();
     if (!m_elements.size())
     {
-        ui->zoomSlider->setEnabled(false);
         ui->selectAllButton->setEnabled(false);
-    }
-
-    updatePtnCheckbox();
-}
-
-/**
- * @brief MainWindow::on_updateLUT_Button_clicked
- */
-void MainWindow::on_updateLUT_Button_clicked()
-{
-    int totalSplashImages = 0;
-    int ret;
-    QTime waitEndTime;
-    char errStr[255];
-
-    if(m_elements.size() <= 0)
-    {
-        showStatus("Error:No pattern sequence to send");
-        return;
-    }
-
-    LCR_ClearPatLut();
-
-    if (!m_videoPatternMode)
-    {
-        if (calculateSplashImageDetails(&totalSplashImages))
-            return;
-    }
-
-    for(int i = 0; i < m_elements.size(); i++)
-    {
-        if(LCR_AddToPatLut(i, m_elements[i].exposure, true, m_elements[i].bits, m_elements[i].color, m_elements[i].trigIn, m_elements[i].darkPeriod, m_elements[i].trigOut2, m_elements[i].splashImageIndex, m_elements[i].splashImageBitPos)<0)
-        {
-            sprintf(errStr,"Unable to add pattern number %d to the LUT",i);
-            showError(QString::fromLocal8Bit(errStr));
-            break;
-        }
-    }
-
-    if (LCR_SendPatLut() < 0)
-    {
-        showError("Sending pattern LUT failed!");
-        return;
-    }
-
-    if (ui->repeat_radioButton->isChecked())
-        ret = LCR_SetPatternConfig(m_elements.size(), 0);
-    else
-        ret = LCR_SetPatternConfig(m_elements.size(), m_elements.size());
-    if (ret < 0)
-    {
-        showError("Sending pattern LUT size failed!");
-        return;
-    }
-
-    if (ui->patternMemory_radioButton->isChecked() && m_patternImageChange)
-    {
-        if(updatePatternMemory(totalSplashImages, false) == 0)
-        {
-            m_patternImageChange = false;
-        }
     }
 }
 
@@ -718,20 +561,11 @@ void MainWindow::on_updateLUT_Button_clicked()
  */
 void MainWindow::on_startPatSequence_Button_clicked()
 {
-    unsigned int repeat;
+    AutoSendPatSeq->start();
+    int ExposureTime = ui->exposure_lineEdit->text().toInt();
+    int DarkTime = ui->darkPeriod_lineEdit->text().toInt();
 
-    if(ui->repeat_radioButton->isChecked())
-        repeat = 0;
-    else
-        repeat = m_elements.size();
-
-    if(LCR_SetPatternConfig(m_elements.size(), repeat)<0)
-    {
-        showError("Error in setting LUT Configuration!");
-        return;
-    }
-    if (LCR_PatternDisplay(0x2) < 0)
-        showError("Unable to stat pattern display");
+    delay = (ExposureTime + DarkTime) / 1000;
 }
 
 /**
@@ -768,7 +602,7 @@ void MainWindow::on_stopPatSequence_Button_clicked()
     Auto_m_elements.clear();
     waveWindow->ClearElements();
     waveWindow->updatePatternList(m_elements);
-    //waveWindow->select(WaveFormWindow::SELECT_NONE, -1);
+    waveWindow->select(WaveFormWindow::SELECT_SINGLE, m_elements.size());
     waveWindow->draw();
     AutoSendPatSeq->stop();
 
@@ -790,283 +624,6 @@ void MainWindow::on_selectAllButton_clicked()
 }
 
 /**
- * @brief MainWindow::on_dmdBlockSet_clicked
- */
-
-void MainWindow::on_dmdBlockSet_clicked()
-{
-    int start = ui->startDmdBlock->currentText().toInt();
-    int end =  ui->endDmdBlock->currentText().toInt();
-
-    if(LCR_SetDMDBlocks(start, end - start + 1) < 0)
-    {
-        showError("Error setting active DMD blocks");
-    }
-    updateMinExposure();
-}
-
-/**
- * @brief MainWindow::on_dmdBlockGet_clicked
- */
-void MainWindow::on_dmdBlockGet_clicked()
-{
-    int start;
-    int count;
-
-    if(LCR_GetDMDBlocks(&start, &count) < 0)
-    {
-        showError("Error getting active DMD blocks");
-        return;
-    }
-    ui->startDmdBlock->setCurrentIndex(start);
-    ui->endDmdBlock->setCurrentIndex(count - 1);
-    updateMinExposure();
-}
-
-/**
- * @brief MainWindow::on_pushButton_DMDSaverModeOn_clicked
- */
-void MainWindow::on_pushButton_DMDSaverModeOn_clicked()
-{
-    int SLmode = 0;
-
-    if(LCR_GetMode(&SLmode) == 0)
-    {
-        if(!SLmode) //this is not supported in video mode
-        {
-            showStatus("Error:Option not supported in Video Mode");
-            return;
-        }
-
-    }
-
-
-    short mode = 1;
-
-    if(LCR_SetDMDSaverMode(mode) < 0)
-    {
-        showError("DMD Saver Mode Enable failed!");
-        return;
-    }
-    else
-    {
-        ui->pushButton_DMDSaverModeOn->setEnabled(false);
-        ui->pushButton_DMDSaverModeOff->setEnabled(true);
-    }
-}
-
-/**
- * @brief MainWindow::on_pushButton_DMDSaverModeOff_clicked
- */
-void MainWindow::on_pushButton_DMDSaverModeOff_clicked()
-{
-
-    int SLmode = 0;
-
-    if(LCR_GetMode(&SLmode) == 0)
-    {
-        if(!SLmode) //this is not supported in video mode
-        {
-            showStatus("Error:Option not supported in Video Mode");
-            return;
-        }
-
-    }
-
-    short mode = 0;
-
-
-    if(LCR_SetDMDSaverMode(mode) < 0)
-    {
-        showError("DMD Saver Mode Disable failed!");
-        return;
-    }
-    else
-
-    {
-        ui->pushButton_DMDSaverModeOff->setEnabled(false);
-        ui->pushButton_DMDSaverModeOn->setEnabled(true);
-    }
-}
-
-/**
- * @brief MainWindow::on_trigOut1GetButton_clicked
- */
-void MainWindow::on_trigOut1GetButton_clicked()
-{
-    int invert;
-    short risingDelay, fallingDelay;
-
-    int ret = LCR_GetTrigOutConfig(1, &invert, &risingDelay, &fallingDelay);
-    if (ret)
-    {
-        showError("Unable to get Trigger Out1 details");
-        return;
-    }
-    ui->invertTrigOut1_checkBox->setChecked(invert);
-    ui->trigOut1_risingDelay_spinBox->setValue(risingDelay);
-    ui->trigOut1_fallingDelay_spinBox->setValue(fallingDelay);
-}
-
-/**
- * @brief MainWindow::on_trigOut1SetButton_clicked
- */
-void MainWindow::on_trigOut1SetButton_clicked()
-{
-    int ret = LCR_SetTrigOutConfig(1, ui->invertTrigOut1_checkBox->isChecked(), ui->trigOut1_risingDelay_spinBox->value(), ui->trigOut1_fallingDelay_spinBox->value());
-
-    if (ret <= 0)
-        showError("Unable to set Trigger Out1 details");
-}
-
-/**
- * @brief MainWindow::on_trigOut2GetButton_clicked
- */
-void MainWindow::on_trigOut2GetButton_clicked()
-{
-    int invert;
-    short risingDelay, fallingDelay;
-
-    int ret = LCR_GetTrigOutConfig(2, &invert, &risingDelay, &fallingDelay);
-    if (ret)
-    {
-        showError("Unable to get Trigger Out2 details");
-        return;
-    }
-    ui->invertTrigOut2_checkBox->setChecked(invert);
-    ui->trigOut2_risingDelay_spinBox->setValue(risingDelay);
-    ui->trigOut2_fallingDelay_spinBox->setValue(fallingDelay);
-
-}
-
-/**
- * @brief MainWindow::on_trigOut2SetButton_clicked
- */
-void MainWindow::on_trigOut2SetButton_clicked()
-{
-    int ret = LCR_SetTrigOutConfig(2, ui->invertTrigOut2_checkBox->isChecked(), ui->trigOut2_risingDelay_spinBox->value(), ui->trigOut2_fallingDelay_spinBox->value());
-
-    if (ret <= 0)
-        showError("Unable to set Trigger Out2 details");
-}
-
-/**
- * @brief MainWindow::on_trigIn1SetButton_clicked
- */
-void MainWindow::on_trigIn1SetButton_clicked()
-{
-    if(LCR_SetTrigIn1Config(ui->invertTrigIn1_checkBox->isChecked(),ui->trigIn1_Delay_spinBox->value())<0)
-    {
-        showError("Unable to set Trig In 1 Config!");
-        return;
-    }
-
-    waveWindow->updateTriggerInType(ui->invertTrigIn1_checkBox->isChecked());
-    waveWindow->draw();
-}
-
-/**
- * @brief MainWindow::on_trigIn1GetButton_clicked
- */
-void MainWindow::on_trigIn1GetButton_clicked()
-{
-    int invert;
-    unsigned int trigDelay;
-    if(LCR_GetTrigIn1Config(&invert,&trigDelay)<0)
-        showError("Unable to get Trig In 1 Config!");
-    else
-    {
-        ui->invertTrigIn1_checkBox->setChecked(invert);
-        ui->trigIn1_Delay_spinBox->setValue(trigDelay);
-    }
-}
-
-/**
- * @brief MainWindow::on_trigIn2GetButton_clicked
- */
-void MainWindow::on_trigIn2GetButton_clicked()
-{
-    int invert;
-
-    if(LCR_GetTrigIn2Config(&invert)<0)
-        showError("Unable to get Trig In 2 Config!");
-    else
-        ui->invertTrigIn2_checkBox->setChecked(invert);
-
-}
-
-/**
- * @brief MainWindow::on_trigIn2SetButton_clicked
- */
-void MainWindow::on_trigIn2SetButton_clicked()
-{
-    if(LCR_SetTrigIn2Config(ui->invertTrigIn2_checkBox->isChecked())<0)
-        showError("Unable to Set Trig In 2 Config!");
-}
-
-/**
- * @brief MainWindow::on_ledGetDelayButton_clicked
- */
-void MainWindow::on_ledGetDelayButton_clicked()
-{
-    int ret;
-    short risingDelay, fallingDelay;
-
-    ret = LCR_GetRedLEDStrobeDelay(&risingDelay, &fallingDelay);
-    if (ret)
-    {
-        showError("Unable to get Red Led Delay");
-    }
-    else
-    {
-        ui->ledRedRising_spinBox->setValue(risingDelay);
-        ui->ledRedFalling_spinBox->setValue(fallingDelay);
-    }
-
-    ret = LCR_GetGreenLEDStrobeDelay(&risingDelay, &fallingDelay);
-    if (ret)
-    {
-        showError("Unable to get Green Led Delay");
-    }
-    else
-    {
-        ui->ledGreenRising_spinBox->setValue(risingDelay);
-        ui->ledGreenFalling_spinBox->setValue(fallingDelay);
-    }
-
-    ret = LCR_GetBlueLEDStrobeDelay(&risingDelay, &fallingDelay);
-    if (ret)
-    {
-        showError("Unable to get Blue Led Delay");
-    }
-    else
-    {
-        ui->ledBlueRising_spinBox->setValue(risingDelay);
-        ui->ledBlueFalling_spinBox->setValue(fallingDelay);
-    }
-}
-
-/**
- * @brief MainWindow::on_ledSetDelayButton_clicked
- */
-void MainWindow::on_ledSetDelayButton_clicked()
-{
-    int ret;
-
-    ret = LCR_SetRedLEDStrobeDelay(ui->ledRedRising_spinBox->value(), ui->ledRedFalling_spinBox->value());
-    if (ret <= 0)
-        showError("Unable to set Red Led delay");
-
-    ret = LCR_SetGreenLEDStrobeDelay(ui->ledGreenRising_spinBox->value(), ui->ledGreenFalling_spinBox->value());
-    if (ret <= 0)
-        showError("Unable to set Green Led delay");
-
-    ret = LCR_SetBlueLEDStrobeDelay(ui->ledBlueRising_spinBox->value(), ui->ledBlueFalling_spinBox->value());
-    if (ret <= 0)
-        showError("Unable to set Blue Led delay");
-}
-
-/**
  * @brief MainWindow::on_patternSelect
  * updates the GUI contraols on selecting a particular pattern
  * @param index - I - index of teh selected PatternElement
@@ -1080,26 +637,20 @@ void MainWindow::on_patternSelect(int index, QList<PatternElement> patElem)
 
     if (index < 0)
     {
-        ui->ptnSetting_groupBox->setTitle("Pattern -");
+        ui->ptnSetting_groupBox->setTitle("Pattern");
         ui->ptnSetting_groupBox->setEnabled(false);
         ui->removePatternsButton->setEnabled(false);
         return;
     }
 
     ui->ptnSetting_groupBox->setEnabled(true);
-    ui->ptnSetting_groupBox->setTitle(QString("Pattern %1").arg(index));
-    ui->color_ComboBox->setCurrentIndex(m_elements[index].color - 1);
+    ui->PatternIndex->setText(QString ("Pattern %1").arg(index));
+    //ui->ptnSetting_groupBox->setTitle(QString("Pattern %1").arg(index));
     ui->triggerIn_checkBox->setChecked(m_elements[index].trigIn);
     ui->triggerOut2_checkBox->setChecked(m_elements[index].trigOut2);
-    ui->bitDepth_ComboBox->setCurrentIndex(m_elements[index].bits - 1);
     ui->exposure_lineEdit->setText(QString::number(m_elements[index].exposure));
     ui->darkPeriod_lineEdit->setText(QString::number(m_elements[index].darkPeriod));
     ui->removePatternsButton->setEnabled(true);
-
-    if(m_videoPatternMode)
-    {
-        ui->startPos_ComboBox->setCurrentIndex(m_elements[index].splashImageBitPos);
-    }
 
     return;
 }
@@ -1148,79 +699,6 @@ void MainWindow::on_triggerOut2_checkBox_clicked()
         waveWindow->updatePatternList(m_elements);
         waveWindow->draw();
     }
-}
-
-/**
- * @brief MainWindow::on_color_ComboBox_activated
- * @param index
- */
-void MainWindow::on_color_ComboBox_activated(int index)
-{
-    bool changed = false;
-
-    for (int i = 0; i < m_elements.size(); i++)
-    {
-        if (m_elements[i].selected)
-        {
-            m_elements[i].color = PatternElement::Color(index + 1);
-            changed = true;
-        }
-    }
-
-    if (changed)
-    {
-        waveWindow->updatePatternList(m_elements);
-        waveWindow->draw();
-    }
-}
-
-/**
- * @brief MainWindow::on_bitDepth_ComboBox_activated
- * @param index
- */
-void MainWindow::on_bitDepth_ComboBox_activated(int index)
-{
-
-    bool changed = false;
-    int bitDepth = index + 1;
-    int curExp = ui->exposure_lineEdit->text().toInt();
-
-    for (int i = 0; i < m_elements.size(); i++)
-    {
-        if (!m_elements[i].selected)
-            continue;
-
-        if (bitDepth == m_elements[i].bits)
-            continue;
-
-        if (m_videoPatternMode)
-        {
-            if(bitDepth + m_elements[i].splashImageBitPos > 24)
-            {
-                bitDepth = 24 - m_elements[i].splashImageBitPos;
-                ui->bitDepth_ComboBox->setCurrentIndex(bitDepth - 1);
-            }
-        }
-        m_elements[i].bits = bitDepth;
-        changed = true;
-        int minExp = GetMinExposure(m_elements[i].bits);
-
-        if(curExp < minExp)
-        {
-            ui->exposure_lineEdit->setText(QString::number(minExp));
-            m_elements[i].exposure = minExp;
-        }
-
-        m_patternImageChange = true;
-    }
-
-    if (changed)
-    {
-        waveWindow->updatePatternList(m_elements);
-        waveWindow->draw();
-    }
-
-    return;
 }
 
 /**
@@ -1286,76 +764,6 @@ void MainWindow::on_darkPeriod_lineEdit_editingFinished()
 }
 
 /**
- * @brief MainWindow::on_startPos_ComboBox_activated
- * @param index
- */
-void MainWindow::on_startPos_ComboBox_activated(int index)
-{
-    bool changed = false;
-
-    for (int i = 0; i < m_elements.size(); i++)
-    {
-        if (!m_elements[i].selected)
-            continue;
-
-        if(index == m_elements[i].splashImageBitPos)
-            continue;
-
-        if (m_videoPatternMode)
-        {
-            if(index + m_elements[i].bits > 24)
-            {
-                m_elements[i].bits = 24 - index;
-                ui->bitDepth_ComboBox->setCurrentIndex(m_elements[i].bits - 1);
-            }
-            m_elements[i].splashImageBitPos = index;
-        }
-        changed = true;
-    }
-
-    if (changed)
-    {
-        waveWindow->updatePatternList(m_elements);
-        waveWindow->draw();
-    }
-}
-
-/**
- * @brief MainWindow::on_zoomSlider_valueChanged
- * @param value
- */
-void MainWindow::on_zoomSlider_valueChanged(int value)
-{
-    waveWindow->setZoom(value);
-    waveWindow->updatePatternList(m_elements);
-    waveWindow->draw();
-}
-
-/**
- * @brief MainWindow::on_invertTrigOut2_checkBox_toggled
- * @param checked
- */
-void MainWindow::on_invertTrigOut2_checkBox_toggled(bool checked)
-{
-    waveWindow->updatePatternList(m_elements);
-    waveWindow->updateInvertTrigOut2(checked);
-    waveWindow->draw();
-    return;
-}
-
-/**
- * @brief MainWindow::on_invertTrigOut1_checkBox_toggled
- * @param checked
- */
-void MainWindow::on_invertTrigOut1_checkBox_toggled(bool checked)
-{
-    waveWindow->updatePatternList(m_elements);
-    waveWindow->updateInvertTrigOut1(checked);
-    waveWindow->draw();
-    return;
-}
-
-/**
  * @brief Updates the minimum exposure period for each bitdepth
  */
 void MainWindow::updateMinExposure(void)
@@ -1379,13 +787,10 @@ void MainWindow::updateMinExposure(void)
             { 24, 42, 42, 42, 45, 51, 56, 61, 67, 72, 77, 83, 88,  93,  99, 105 }
         };
 
-        int activeBlocks = ui->endDmdBlock->currentText().toInt() -
-                            ui->startDmdBlock->currentText().toInt();
-
         for(int i = 0; i < 8; i++)
         {
             if(i == 0)
-                minPatExposure[i] = oneBitExposure[m_dualAsic][activeBlocks];
+                minPatExposure[i] = oneBitExposure[m_dualAsic][i];
             else
                 minPatExposure[i] = bitDepthExposure[m_dualAsic][i];
         }
@@ -1507,11 +912,3 @@ void MainWindow::StartSigleImageSeq()
         showError("Unable to start pattern display");
 }
 
-void MainWindow::on_AutoPlayPatSeq_clicked()
-{
-     AutoSendPatSeq->start();
-     int ExposureTime = ui->exposure_lineEdit->text().toInt();
-     int DarkTime = ui->darkPeriod_lineEdit->text().toInt();
-
-     delay = (ExposureTime + DarkTime) / 1000;
-}

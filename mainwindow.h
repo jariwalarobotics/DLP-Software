@@ -133,63 +133,24 @@ private slots:
     void on_pushButton_patternControls_clicked();
     void on_pushButton_globalSettings_clicked();
     void on_dummyConnection_clicked(bool checked);
-    void on_startDmdBlock_currentIndexChanged(int index);
 
     void on_pDMD_radioButton_clicked();
     void on_resetDMD_Button_clicked();
     void on_powerOn_radioButton_clicked();
-    void on_ledPulseWidthGet_clicked();
-    void on_updateLUT_Button_clicked();
-    void on_color_ComboBox_activated(int index);
-    void on_bitDepth_ComboBox_activated(int index);
 
     void on_saveButton_patternSettings_clicked();
     void on_loadButton_patternSettings_clicked();
     void on_exposure_lineEdit_editingFinished();
     void on_darkPeriod_lineEdit_editingFinished();
-    void on_startPos_ComboBox_activated(int index);
-    void on_zoomSlider_valueChanged(int value);
-    void on_invertTrigOut2_checkBox_toggled(bool checked);
-
-    void on_invertTrigOut1_checkBox_toggled(bool checked);
 
     void on_startPatSequence_Button_clicked();
     void on_stopPatSequence_Button_clicked();
     void on_pausePatSequence_Button_clicked();
     void on_selectAllButton_clicked();
-    void on_pushButton_DMDSaverModeOn_clicked();
 
-    void on_pushButton_DMDSaverModeOff_clicked();
-
-    void on_dmdBlockSet_clicked();
-
-    void on_dmdBlockGet_clicked();
-    void on_trigOut1GetButton_clicked();
-
-    void on_trigOut1SetButton_clicked();
-
-    void on_trigOut2GetButton_clicked();
-
-    void on_trigOut2SetButton_clicked();
-
-    void on_trigIn1SetButton_clicked();
-
-    void on_trigIn1GetButton_clicked();
-
-    void on_trigIn2GetButton_clicked();
-
-    void on_trigIn2SetButton_clicked();
-
-    void on_ledGetDelayButton_clicked();
-
-    void on_ledSetDelayButton_clicked();
-
-
-    void on_ledPulseWidthSet_clicked();
     void resizeEvent(QResizeEvent *);
 
     void on_standBy_radioButton_clicked();
-    int calculateSplashImageDetails(int *totalSplashImages);
     int calculateSingleSplashImageDetails(int *SingleSplashImage);
     void uploadSingleImageSeq();
     void StartSigleImageSeq();
@@ -221,8 +182,6 @@ private slots:
     void on_pushButton_SwTrigger_clicked();
 
     void on_pushButton_ExTrigger_clicked();
-
-    void on_AutoPlayPatSeq_clicked();
 
 private:
 
@@ -259,10 +218,8 @@ private:
     int addPatterns();
     void processChosenFirmwareImage();
     void hideFrames();
-    int updatePatternMemory(int totalSplashImages, BOOL firmware);
     int updateSinglePatternMemory(int totalSplashImages, BOOL firmware);
     void changePtnBitDepth(int ptnNum, int bitDepth);
-    void updatePtnCheckbox(void);
     void updateBlocks(bool full);
     int GetMinExposure(int bitDetph);
     int GetMinDarktime(int);

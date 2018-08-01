@@ -13,7 +13,6 @@
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCheckBox>
-#include <QtWidgets/QComboBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
@@ -24,9 +23,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QScrollArea>
-#include <QtWidgets/QSlider>
 #include <QtWidgets/QSpacerItem>
-#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTextBrowser>
@@ -99,8 +96,8 @@ public:
     QStackedWidget *EVM_Picture_stackedWidget;
     QWidget *page_12;
     QGridLayout *gridLayout_23;
-    QLabel *label_evm6500;
     QSpacerItem *horizontalSpacer_9;
+    QLabel *label_evm6500;
     QWidget *page_13;
     QGridLayout *gridLayout_22;
     QLabel *label_evm9000;
@@ -221,7 +218,6 @@ public:
     QHBoxLayout *horizontalLayout_26;
     QVBoxLayout *verticalLayout_39;
     QPushButton *pushButton_patternControls;
-    QPushButton *pushButton_globalSettings;
     QStackedWidget *patternMode_stackedWidget;
     QWidget *patternDesignPage;
     QGridLayout *gridLayout_31;
@@ -238,26 +234,17 @@ public:
     QPushButton *removePatternsButton;
     QPushButton *selectAllButton;
     QSpacerItem *horizontalSpacer_32;
-    QLabel *label_Zoom;
-    QSlider *zoomSlider;
     QGroupBox *groupBox_PatternImage;
     QHBoxLayout *horizontalLayout_46;
     QGroupBox *ptnSetting_groupBox;
     QVBoxLayout *verticalLayout_38;
-    QGroupBox *groupBox_BitInfo;
-    QComboBox *bitDepth_ComboBox;
-    QLabel *label_Depth;
-    QLabel *startPos_label;
-    QComboBox *startPos_ComboBox;
+    QLabel *PatternIndex;
     QGroupBox *groupBox_Timing;
     QLineEdit *exposure_lineEdit;
     QLabel *label_Exposure;
     QLabel *label_DarkTime;
     QLineEdit *darkPeriod_lineEdit;
     QSpacerItem *verticalSpacer_32;
-    QGroupBox *groupBox_Color;
-    QVBoxLayout *verticalLayout_4;
-    QComboBox *color_ComboBox;
     QSpacerItem *verticalSpacer_33;
     QCheckBox *triggerIn_checkBox;
     QSpacerItem *verticalSpacer_34;
@@ -269,139 +256,13 @@ public:
     QWidget *scrollAreaWidgetContents_4;
     QVBoxLayout *verticalLayout_36;
     QSpacerItem *verticalSpacer_29;
-    QGroupBox *groupBox_UpdateLUT;
-    QGridLayout *gridLayout_37;
-    QPushButton *updateLUT_Button;
     QSpacerItem *verticalSpacer_28;
-    QGroupBox *groupBox_PlayRepeat;
-    QVBoxLayout *verticalLayout_35;
-    QRadioButton *playOnce_radioButton;
-    QRadioButton *repeat_radioButton;
     QGroupBox *groupBox_StartPauseStop;
     QVBoxLayout *verticalLayout_6;
     QPushButton *startPatSequence_Button;
     QPushButton *pausePatSequence_Button;
     QPushButton *stopPatSequence_Button;
-    QPushButton *AutoPlayPatSeq;
     QSpacerItem *verticalSpacer_31;
-    QWidget *patternSettingsPage;
-    QGridLayout *gridLayout_32;
-    QGroupBox *groupBox_patternMode_globalSettings;
-    QGroupBox *groupBox_TriggerControl;
-    QGridLayout *gridLayout_33;
-    QHBoxLayout *horizontalLayout;
-    QGroupBox *groupBox_TriggerOut1;
-    QHBoxLayout *horizontalLayout_41;
-    QSpacerItem *horizontalSpacer_20;
-    QVBoxLayout *verticalLayout_33;
-    QGridLayout *gridLayout_35;
-    QSpinBox *trigOut1_fallingDelay_spinBox;
-    QSpinBox *trigOut1_risingDelay_spinBox;
-    QLabel *label_TrigOut1_FallingEdge;
-    QLabel *label_TrigOut1_RisingEdge;
-    QSpacerItem *verticalSpacer_24;
-    QSpacerItem *verticalSpacer_23;
-    QCheckBox *invertTrigOut1_checkBox;
-    QHBoxLayout *horizontalLayout_6;
-    QPushButton *trigOut1GetButton;
-    QPushButton *trigOut1SetButton;
-    QSpacerItem *horizontalSpacer_21;
-    QGroupBox *groupBox_TriggerOut;
-    QHBoxLayout *horizontalLayout_40;
-    QSpacerItem *horizontalSpacer_18;
-    QVBoxLayout *verticalLayout_32;
-    QGridLayout *gridLayout_34;
-    QLabel *label_TrigOut2_RisingEdge;
-    QSpinBox *trigOut2_risingDelay_spinBox;
-    QSpinBox *trigOut2_fallingDelay_spinBox;
-    QLabel *label_TrigOut2_FallingEdge;
-    QSpacerItem *verticalSpacer_22;
-    QSpacerItem *verticalSpacer_21;
-    QCheckBox *invertTrigOut2_checkBox;
-    QHBoxLayout *horizontalLayout_3;
-    QPushButton *trigOut2GetButton;
-    QPushButton *trigOut2SetButton;
-    QSpacerItem *horizontalSpacer_19;
-    QGroupBox *groupBox_TriggerInput1;
-    QHBoxLayout *horizontalLayout_39;
-    QSpacerItem *horizontalSpacer_16;
-    QVBoxLayout *verticalLayout_31;
-    QSpacerItem *verticalSpacer_20;
-    QHBoxLayout *horizontalLayout_38;
-    QLabel *label_TrigIn1_Delay;
-    QSpinBox *trigIn1_Delay_spinBox;
-    QSpacerItem *verticalSpacer_19;
-    QCheckBox *invertTrigIn1_checkBox;
-    QHBoxLayout *horizontalLayout_4;
-    QPushButton *trigIn1GetButton;
-    QPushButton *trigIn1SetButton;
-    QSpacerItem *horizontalSpacer_17;
-    QGroupBox *groupBox_TriggerInput2;
-    QHBoxLayout *horizontalLayout_37;
-    QSpacerItem *horizontalSpacer_14;
-    QVBoxLayout *verticalLayout_30;
-    QSpacerItem *verticalSpacer_18;
-    QCheckBox *invertTrigIn2_checkBox;
-    QSpacerItem *verticalSpacer_17;
-    QHBoxLayout *horizontalLayout_5;
-    QPushButton *trigIn2GetButton;
-    QPushButton *trigIn2SetButton;
-    QSpacerItem *horizontalSpacer_15;
-    QGroupBox *groupBox_LEDDelayControls;
-    QHBoxLayout *horizontalLayout_43;
-    QSpacerItem *horizontalSpacer_26;
-    QVBoxLayout *verticalLayout_34;
-    QGridLayout *gridLayout_36;
-    QSpacerItem *horizontalSpacer_25;
-    QLabel *label_GreenRisingEdge;
-    QSpacerItem *horizontalSpacer_24;
-    QSpacerItem *horizontalSpacer_28;
-    QSpacerItem *horizontalSpacer_29;
-    QLabel *label_BlueFallingEdge;
-    QLabel *label_RedFallingEdge;
-    QSpinBox *ledBlueRising_spinBox;
-    QLabel *label_BlueRisingEdge;
-    QSpinBox *ledGreenRising_spinBox;
-    QSpinBox *ledRedRising_spinBox;
-    QLabel *label_Red_RisingEdge;
-    QSpinBox *ledGreenFalling_spinBox;
-    QLabel *label_GreenFallingEdge;
-    QSpinBox *ledBlueFalling_spinBox;
-    QSpinBox *ledRedFalling_spinBox;
-    QSpacerItem *verticalSpacer_26;
-    QSpacerItem *verticalSpacer_27;
-    QSpacerItem *verticalSpacer_25;
-    QHBoxLayout *horizontalLayout_42;
-    QSpacerItem *horizontalSpacer_22;
-    QPushButton *ledGetDelayButton;
-    QPushButton *ledSetDelayButton;
-    QSpacerItem *horizontalSpacer_23;
-    QSpacerItem *horizontalSpacer_27;
-    QGroupBox *operatingModes_groupBox_2;
-    QVBoxLayout *verticalLayout_51;
-    QSpacerItem *verticalSpacer_7;
-    QHBoxLayout *horizontalLayout_35;
-    QVBoxLayout *verticalLayout_28;
-    QLabel *apiVersionLabel_2;
-    QLabel *apiVersionLabel_3;
-    QVBoxLayout *verticalLayout_29;
-    QComboBox *startDmdBlock;
-    QComboBox *endDmdBlock;
-    QHBoxLayout *horizontalLayout_28;
-    QPushButton *dmdBlockGet;
-    QPushButton *dmdBlockSet;
-    QGroupBox *groupBox_DMDIdle;
-    QPushButton *pushButton_DMDSaverModeOn;
-    QPushButton *pushButton_DMDSaverModeOff;
-    QGroupBox *groupBox_LEDPulseWidth;
-    QWidget *layoutWidget_4;
-    QVBoxLayout *verticalLayout_16;
-    QHBoxLayout *horizontalLayout_9;
-    QLabel *label;
-    QSpinBox *ledPulseWidth;
-    QHBoxLayout *horizontalLayout_32;
-    QPushButton *ledPulseWidthGet;
-    QPushButton *ledPulseWidthSet;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -861,6 +722,10 @@ public:
         gridLayout_23->setObjectName(QStringLiteral("gridLayout_23"));
         gridLayout_23->setHorizontalSpacing(0);
         gridLayout_23->setContentsMargins(0, 0, 0, 0);
+        horizontalSpacer_9 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_23->addItem(horizontalSpacer_9, 0, 1, 1, 1);
+
         label_evm6500 = new QLabel(page_12);
         label_evm6500->setObjectName(QStringLiteral("label_evm6500"));
         QSizePolicy sizePolicy7(QSizePolicy::Fixed, QSizePolicy::Preferred);
@@ -874,10 +739,6 @@ public:
         label_evm6500->setScaledContents(true);
 
         gridLayout_23->addWidget(label_evm6500, 0, 0, 1, 1);
-
-        horizontalSpacer_9 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_23->addItem(horizontalSpacer_9, 0, 1, 1, 1);
 
         EVM_Picture_stackedWidget->addWidget(page_12);
         page_13 = new QWidget();
@@ -1680,19 +1541,6 @@ public:
 
         verticalLayout_39->addWidget(pushButton_patternControls);
 
-        pushButton_globalSettings = new QPushButton(groupBox_PatternMode);
-        pushButton_globalSettings->setObjectName(QStringLiteral("pushButton_globalSettings"));
-        sizePolicy3.setHeightForWidth(pushButton_globalSettings->sizePolicy().hasHeightForWidth());
-        pushButton_globalSettings->setSizePolicy(sizePolicy3);
-        pushButton_globalSettings->setMinimumSize(QSize(81, 71));
-        pushButton_globalSettings->setFont(font12);
-        pushButton_globalSettings->setStyleSheet(QLatin1String("QPushButton{\n"
-"	color:rgb(0,150,150);\n"
-"}"));
-        pushButton_globalSettings->setCheckable(true);
-
-        verticalLayout_39->addWidget(pushButton_globalSettings);
-
 
         horizontalLayout_26->addLayout(verticalLayout_39);
 
@@ -1813,30 +1661,6 @@ public:
 
         horizontalLayout_44->addItem(horizontalSpacer_32);
 
-        label_Zoom = new QLabel(groupBox_Menu);
-        label_Zoom->setObjectName(QStringLiteral("label_Zoom"));
-        sizePolicy7.setHeightForWidth(label_Zoom->sizePolicy().hasHeightForWidth());
-        label_Zoom->setSizePolicy(sizePolicy7);
-        label_Zoom->setMinimumSize(QSize(0, 35));
-        label_Zoom->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
-
-        horizontalLayout_44->addWidget(label_Zoom);
-
-        zoomSlider = new QSlider(groupBox_Menu);
-        zoomSlider->setObjectName(QStringLiteral("zoomSlider"));
-        zoomSlider->setEnabled(false);
-        sizePolicy1.setHeightForWidth(zoomSlider->sizePolicy().hasHeightForWidth());
-        zoomSlider->setSizePolicy(sizePolicy1);
-        zoomSlider->setMinimumSize(QSize(271, 35));
-        zoomSlider->setMinimum(50);
-        zoomSlider->setMaximum(200);
-        zoomSlider->setValue(100);
-        zoomSlider->setSliderPosition(100);
-        zoomSlider->setOrientation(Qt::Horizontal);
-        zoomSlider->setInvertedAppearance(false);
-
-        horizontalLayout_44->addWidget(zoomSlider);
-
 
         verticalLayout_37->addWidget(groupBox_Menu);
 
@@ -1869,112 +1693,50 @@ public:
         verticalLayout_38->setContentsMargins(11, 11, 11, 11);
         verticalLayout_38->setObjectName(QStringLiteral("verticalLayout_38"));
         verticalLayout_38->setContentsMargins(-1, 20, -1, -1);
-        groupBox_BitInfo = new QGroupBox(ptnSetting_groupBox);
-        groupBox_BitInfo->setObjectName(QStringLiteral("groupBox_BitInfo"));
-        sizePolicy8.setHeightForWidth(groupBox_BitInfo->sizePolicy().hasHeightForWidth());
-        groupBox_BitInfo->setSizePolicy(sizePolicy8);
-        groupBox_BitInfo->setMinimumSize(QSize(0, 80));
-        bitDepth_ComboBox = new QComboBox(groupBox_BitInfo);
-        bitDepth_ComboBox->addItem(QString());
-        bitDepth_ComboBox->addItem(QString());
-        bitDepth_ComboBox->addItem(QString());
-        bitDepth_ComboBox->addItem(QString());
-        bitDepth_ComboBox->addItem(QString());
-        bitDepth_ComboBox->addItem(QString());
-        bitDepth_ComboBox->addItem(QString());
-        bitDepth_ComboBox->addItem(QString());
-        bitDepth_ComboBox->setObjectName(QStringLiteral("bitDepth_ComboBox"));
-        bitDepth_ComboBox->setGeometry(QRect(63, 20, 41, 22));
-        label_Depth = new QLabel(groupBox_BitInfo);
-        label_Depth->setObjectName(QStringLiteral("label_Depth"));
-        label_Depth->setGeometry(QRect(10, 22, 31, 16));
-        label_Depth->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
-        startPos_label = new QLabel(groupBox_BitInfo);
-        startPos_label->setObjectName(QStringLiteral("startPos_label"));
-        startPos_label->setGeometry(QRect(10, 52, 51, 21));
-        startPos_label->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
-        startPos_label->setWordWrap(true);
-        startPos_ComboBox = new QComboBox(groupBox_BitInfo);
-        startPos_ComboBox->addItem(QString());
-        startPos_ComboBox->addItem(QString());
-        startPos_ComboBox->addItem(QString());
-        startPos_ComboBox->addItem(QString());
-        startPos_ComboBox->addItem(QString());
-        startPos_ComboBox->addItem(QString());
-        startPos_ComboBox->addItem(QString());
-        startPos_ComboBox->addItem(QString());
-        startPos_ComboBox->addItem(QString());
-        startPos_ComboBox->addItem(QString());
-        startPos_ComboBox->addItem(QString());
-        startPos_ComboBox->addItem(QString());
-        startPos_ComboBox->addItem(QString());
-        startPos_ComboBox->addItem(QString());
-        startPos_ComboBox->addItem(QString());
-        startPos_ComboBox->addItem(QString());
-        startPos_ComboBox->addItem(QString());
-        startPos_ComboBox->addItem(QString());
-        startPos_ComboBox->addItem(QString());
-        startPos_ComboBox->addItem(QString());
-        startPos_ComboBox->addItem(QString());
-        startPos_ComboBox->addItem(QString());
-        startPos_ComboBox->addItem(QString());
-        startPos_ComboBox->addItem(QString());
-        startPos_ComboBox->setObjectName(QStringLiteral("startPos_ComboBox"));
-        startPos_ComboBox->setGeometry(QRect(63, 50, 41, 22));
+        PatternIndex = new QLabel(ptnSetting_groupBox);
+        PatternIndex->setObjectName(QStringLiteral("PatternIndex"));
+        PatternIndex->setMinimumSize(QSize(0, 30));
+        QFont font13;
+        font13.setFamily(QStringLiteral("Arial"));
+        font13.setBold(true);
+        font13.setWeight(75);
+        PatternIndex->setFont(font13);
+        PatternIndex->setStyleSheet(QLatin1String("QLabel{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+"color:rgb(0,120,120);\n"
+";}"));
 
-        verticalLayout_38->addWidget(groupBox_BitInfo);
+        verticalLayout_38->addWidget(PatternIndex);
 
         groupBox_Timing = new QGroupBox(ptnSetting_groupBox);
         groupBox_Timing->setObjectName(QStringLiteral("groupBox_Timing"));
         sizePolicy8.setHeightForWidth(groupBox_Timing->sizePolicy().hasHeightForWidth());
         groupBox_Timing->setSizePolicy(sizePolicy8);
-        groupBox_Timing->setMinimumSize(QSize(0, 80));
+        groupBox_Timing->setMinimumSize(QSize(0, 150));
         exposure_lineEdit = new QLineEdit(groupBox_Timing);
         exposure_lineEdit->setObjectName(QStringLiteral("exposure_lineEdit"));
-        exposure_lineEdit->setGeometry(QRect(64, 19, 41, 20));
+        exposure_lineEdit->setGeometry(QRect(13, 45, 90, 30));
         label_Exposure = new QLabel(groupBox_Timing);
         label_Exposure->setObjectName(QStringLiteral("label_Exposure"));
-        label_Exposure->setGeometry(QRect(13, 20, 45, 21));
+        label_Exposure->setGeometry(QRect(30, 20, 61, 21));
+        label_Exposure->setFont(font13);
         label_Exposure->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
         label_Exposure->setWordWrap(true);
         label_DarkTime = new QLabel(groupBox_Timing);
         label_DarkTime->setObjectName(QStringLiteral("label_DarkTime"));
-        label_DarkTime->setGeometry(QRect(13, 50, 47, 21));
+        label_DarkTime->setGeometry(QRect(30, 82, 61, 21));
+        label_DarkTime->setFont(font13);
         label_DarkTime->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
         darkPeriod_lineEdit = new QLineEdit(groupBox_Timing);
         darkPeriod_lineEdit->setObjectName(QStringLiteral("darkPeriod_lineEdit"));
-        darkPeriod_lineEdit->setGeometry(QRect(64, 54, 41, 20));
+        darkPeriod_lineEdit->setGeometry(QRect(13, 110, 90, 30));
 
         verticalLayout_38->addWidget(groupBox_Timing);
 
         verticalSpacer_32 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout_38->addItem(verticalSpacer_32);
-
-        groupBox_Color = new QGroupBox(ptnSetting_groupBox);
-        groupBox_Color->setObjectName(QStringLiteral("groupBox_Color"));
-        sizePolicy8.setHeightForWidth(groupBox_Color->sizePolicy().hasHeightForWidth());
-        groupBox_Color->setSizePolicy(sizePolicy8);
-        groupBox_Color->setMinimumSize(QSize(100, 50));
-        groupBox_Color->setMaximumSize(QSize(16777215, 45));
-        verticalLayout_4 = new QVBoxLayout(groupBox_Color);
-        verticalLayout_4->setSpacing(6);
-        verticalLayout_4->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
-        color_ComboBox = new QComboBox(groupBox_Color);
-        color_ComboBox->addItem(QString());
-        color_ComboBox->addItem(QString());
-        color_ComboBox->addItem(QString());
-        color_ComboBox->addItem(QString());
-        color_ComboBox->addItem(QString());
-        color_ComboBox->addItem(QString());
-        color_ComboBox->addItem(QString());
-        color_ComboBox->setObjectName(QStringLiteral("color_ComboBox"));
-
-        verticalLayout_4->addWidget(color_ComboBox);
-
-
-        verticalLayout_38->addWidget(groupBox_Color);
 
         verticalSpacer_33 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -2042,59 +1804,9 @@ public:
 
         verticalLayout_36->addItem(verticalSpacer_29);
 
-        groupBox_UpdateLUT = new QGroupBox(groupBox_patternMode_patternControls);
-        groupBox_UpdateLUT->setObjectName(QStringLiteral("groupBox_UpdateLUT"));
-        groupBox_UpdateLUT->setMinimumSize(QSize(101, 0));
-        groupBox_UpdateLUT->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
-"background-color: transparent;\n"
-"border-color: rgb(0,150,150);\n"
-"color:rgb(0,120,120);\n"
-";}"));
-        gridLayout_37 = new QGridLayout(groupBox_UpdateLUT);
-        gridLayout_37->setSpacing(6);
-        gridLayout_37->setContentsMargins(11, 11, 11, 11);
-        gridLayout_37->setObjectName(QStringLiteral("gridLayout_37"));
-        updateLUT_Button = new QPushButton(groupBox_UpdateLUT);
-        updateLUT_Button->setObjectName(QStringLiteral("updateLUT_Button"));
-        sizePolicy3.setHeightForWidth(updateLUT_Button->sizePolicy().hasHeightForWidth());
-        updateLUT_Button->setSizePolicy(sizePolicy3);
-        updateLUT_Button->setMinimumSize(QSize(81, 71));
-
-        gridLayout_37->addWidget(updateLUT_Button, 1, 0, 1, 1);
-
-
-        verticalLayout_36->addWidget(groupBox_UpdateLUT);
-
         verticalSpacer_28 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
         verticalLayout_36->addItem(verticalSpacer_28);
-
-        groupBox_PlayRepeat = new QGroupBox(groupBox_patternMode_patternControls);
-        groupBox_PlayRepeat->setObjectName(QStringLiteral("groupBox_PlayRepeat"));
-        groupBox_PlayRepeat->setMinimumSize(QSize(101, 66));
-        groupBox_PlayRepeat->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
-"background-color: transparent;\n"
-"border-color: rgb(0,150,150);\n"
-"color:rgb(0,120,120);\n"
-";}"));
-        verticalLayout_35 = new QVBoxLayout(groupBox_PlayRepeat);
-        verticalLayout_35->setSpacing(6);
-        verticalLayout_35->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_35->setObjectName(QStringLiteral("verticalLayout_35"));
-        playOnce_radioButton = new QRadioButton(groupBox_PlayRepeat);
-        playOnce_radioButton->setObjectName(QStringLiteral("playOnce_radioButton"));
-        playOnce_radioButton->setChecked(true);
-
-        verticalLayout_35->addWidget(playOnce_radioButton);
-
-        repeat_radioButton = new QRadioButton(groupBox_PlayRepeat);
-        repeat_radioButton->setObjectName(QStringLiteral("repeat_radioButton"));
-        repeat_radioButton->setChecked(false);
-
-        verticalLayout_35->addWidget(repeat_radioButton);
-
-
-        verticalLayout_36->addWidget(groupBox_PlayRepeat);
 
         groupBox_StartPauseStop = new QGroupBox(groupBox_patternMode_patternControls);
         groupBox_StartPauseStop->setObjectName(QStringLiteral("groupBox_StartPauseStop"));
@@ -2112,7 +1824,7 @@ public:
         startPatSequence_Button->setObjectName(QStringLiteral("startPatSequence_Button"));
         sizePolicy3.setHeightForWidth(startPatSequence_Button->sizePolicy().hasHeightForWidth());
         startPatSequence_Button->setSizePolicy(sizePolicy3);
-        startPatSequence_Button->setMinimumSize(QSize(81, 50));
+        startPatSequence_Button->setMinimumSize(QSize(81, 60));
         QIcon icon11;
         icon11.addFile(QStringLiteral(":/new/prefix1/Icons/my_play.png"), QSize(), QIcon::Normal, QIcon::Off);
         startPatSequence_Button->setIcon(icon11);
@@ -2123,7 +1835,7 @@ public:
         pausePatSequence_Button->setObjectName(QStringLiteral("pausePatSequence_Button"));
         sizePolicy3.setHeightForWidth(pausePatSequence_Button->sizePolicy().hasHeightForWidth());
         pausePatSequence_Button->setSizePolicy(sizePolicy3);
-        pausePatSequence_Button->setMinimumSize(QSize(81, 50));
+        pausePatSequence_Button->setMinimumSize(QSize(81, 60));
         QIcon icon12;
         icon12.addFile(QStringLiteral(":/new/prefix1/Icons/my_pause.png"), QSize(), QIcon::Normal, QIcon::Off);
         pausePatSequence_Button->setIcon(icon12);
@@ -2134,20 +1846,12 @@ public:
         stopPatSequence_Button->setObjectName(QStringLiteral("stopPatSequence_Button"));
         sizePolicy3.setHeightForWidth(stopPatSequence_Button->sizePolicy().hasHeightForWidth());
         stopPatSequence_Button->setSizePolicy(sizePolicy3);
-        stopPatSequence_Button->setMinimumSize(QSize(81, 50));
+        stopPatSequence_Button->setMinimumSize(QSize(81, 60));
         QIcon icon13;
         icon13.addFile(QStringLiteral(":/new/prefix1/Icons/my_stop.png"), QSize(), QIcon::Normal, QIcon::Off);
         stopPatSequence_Button->setIcon(icon13);
 
         verticalLayout_6->addWidget(stopPatSequence_Button);
-
-        AutoPlayPatSeq = new QPushButton(groupBox_StartPauseStop);
-        AutoPlayPatSeq->setObjectName(QStringLiteral("AutoPlayPatSeq"));
-        AutoPlayPatSeq->setMinimumSize(QSize(80, 60));
-        AutoPlayPatSeq->setFont(font11);
-        AutoPlayPatSeq->setIcon(icon11);
-
-        verticalLayout_6->addWidget(AutoPlayPatSeq);
 
 
         verticalLayout_36->addWidget(groupBox_StartPauseStop);
@@ -2163,710 +1867,6 @@ public:
         gridLayout_31->addWidget(groupBox_patternMode_patternControls, 0, 0, 1, 1);
 
         patternMode_stackedWidget->addWidget(patternDesignPage);
-        patternSettingsPage = new QWidget();
-        patternSettingsPage->setObjectName(QStringLiteral("patternSettingsPage"));
-        gridLayout_32 = new QGridLayout(patternSettingsPage);
-        gridLayout_32->setSpacing(6);
-        gridLayout_32->setContentsMargins(11, 11, 11, 11);
-        gridLayout_32->setObjectName(QStringLiteral("gridLayout_32"));
-        gridLayout_32->setContentsMargins(0, 0, 0, 0);
-        groupBox_patternMode_globalSettings = new QGroupBox(patternSettingsPage);
-        groupBox_patternMode_globalSettings->setObjectName(QStringLiteral("groupBox_patternMode_globalSettings"));
-        groupBox_patternMode_globalSettings->setStyleSheet(QLatin1String("QGroupBox{ border: 1.5px solid ;\n"
-"background-color: transparent;\n"
-"border-color: rgb(0,150,150);\n"
-"color:rgb(0,120,120);\n"
-";}"));
-        groupBox_TriggerControl = new QGroupBox(groupBox_patternMode_globalSettings);
-        groupBox_TriggerControl->setObjectName(QStringLiteral("groupBox_TriggerControl"));
-        groupBox_TriggerControl->setGeometry(QRect(11, 160, 811, 200));
-        sizePolicy8.setHeightForWidth(groupBox_TriggerControl->sizePolicy().hasHeightForWidth());
-        groupBox_TriggerControl->setSizePolicy(sizePolicy8);
-        groupBox_TriggerControl->setMinimumSize(QSize(390, 200));
-        groupBox_TriggerControl->setMaximumSize(QSize(16777215, 200));
-        groupBox_TriggerControl->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
-"background-color: transparent;\n"
-"border-color: rgb(0,150,150);\n"
-"color:rgb(0,120,120);\n"
-";}"));
-        gridLayout_33 = new QGridLayout(groupBox_TriggerControl);
-        gridLayout_33->setSpacing(6);
-        gridLayout_33->setContentsMargins(11, 11, 11, 11);
-        gridLayout_33->setObjectName(QStringLiteral("gridLayout_33"));
-        gridLayout_33->setContentsMargins(-1, 15, -1, -1);
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setSpacing(6);
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        groupBox_TriggerOut1 = new QGroupBox(groupBox_TriggerControl);
-        groupBox_TriggerOut1->setObjectName(QStringLiteral("groupBox_TriggerOut1"));
-        groupBox_TriggerOut1->setMinimumSize(QSize(170, 169));
-        groupBox_TriggerOut1->setMaximumSize(QSize(250, 16777215));
-        horizontalLayout_41 = new QHBoxLayout(groupBox_TriggerOut1);
-        horizontalLayout_41->setSpacing(6);
-        horizontalLayout_41->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_41->setObjectName(QStringLiteral("horizontalLayout_41"));
-        horizontalSpacer_20 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_41->addItem(horizontalSpacer_20);
-
-        verticalLayout_33 = new QVBoxLayout();
-        verticalLayout_33->setSpacing(6);
-        verticalLayout_33->setObjectName(QStringLiteral("verticalLayout_33"));
-        gridLayout_35 = new QGridLayout();
-        gridLayout_35->setSpacing(6);
-        gridLayout_35->setObjectName(QStringLiteral("gridLayout_35"));
-        trigOut1_fallingDelay_spinBox = new QSpinBox(groupBox_TriggerOut1);
-        trigOut1_fallingDelay_spinBox->setObjectName(QStringLiteral("trigOut1_fallingDelay_spinBox"));
-        trigOut1_fallingDelay_spinBox->setMinimum(-100);
-        trigOut1_fallingDelay_spinBox->setMaximum(20000);
-
-        gridLayout_35->addWidget(trigOut1_fallingDelay_spinBox, 2, 1, 1, 1);
-
-        trigOut1_risingDelay_spinBox = new QSpinBox(groupBox_TriggerOut1);
-        trigOut1_risingDelay_spinBox->setObjectName(QStringLiteral("trigOut1_risingDelay_spinBox"));
-        trigOut1_risingDelay_spinBox->setMinimum(-100);
-        trigOut1_risingDelay_spinBox->setMaximum(20000);
-
-        gridLayout_35->addWidget(trigOut1_risingDelay_spinBox, 1, 1, 1, 1);
-
-        label_TrigOut1_FallingEdge = new QLabel(groupBox_TriggerOut1);
-        label_TrigOut1_FallingEdge->setObjectName(QStringLiteral("label_TrigOut1_FallingEdge"));
-        label_TrigOut1_FallingEdge->setStyleSheet(QStringLiteral("QLabel{border:0px solid black}"));
-        label_TrigOut1_FallingEdge->setWordWrap(true);
-
-        gridLayout_35->addWidget(label_TrigOut1_FallingEdge, 2, 0, 1, 1);
-
-        label_TrigOut1_RisingEdge = new QLabel(groupBox_TriggerOut1);
-        label_TrigOut1_RisingEdge->setObjectName(QStringLiteral("label_TrigOut1_RisingEdge"));
-        label_TrigOut1_RisingEdge->setStyleSheet(QStringLiteral("QLabel{border:0px solid black}"));
-        label_TrigOut1_RisingEdge->setWordWrap(true);
-
-        gridLayout_35->addWidget(label_TrigOut1_RisingEdge, 1, 0, 1, 1);
-
-        verticalSpacer_24 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        gridLayout_35->addItem(verticalSpacer_24, 0, 0, 1, 2);
-
-
-        verticalLayout_33->addLayout(gridLayout_35);
-
-        verticalSpacer_23 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        verticalLayout_33->addItem(verticalSpacer_23);
-
-        invertTrigOut1_checkBox = new QCheckBox(groupBox_TriggerOut1);
-        invertTrigOut1_checkBox->setObjectName(QStringLiteral("invertTrigOut1_checkBox"));
-
-        verticalLayout_33->addWidget(invertTrigOut1_checkBox);
-
-        horizontalLayout_6 = new QHBoxLayout();
-        horizontalLayout_6->setSpacing(6);
-        horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
-        trigOut1GetButton = new QPushButton(groupBox_TriggerOut1);
-        trigOut1GetButton->setObjectName(QStringLiteral("trigOut1GetButton"));
-        sizePolicy3.setHeightForWidth(trigOut1GetButton->sizePolicy().hasHeightForWidth());
-        trigOut1GetButton->setSizePolicy(sizePolicy3);
-        trigOut1GetButton->setMinimumSize(QSize(70, 0));
-
-        horizontalLayout_6->addWidget(trigOut1GetButton);
-
-        trigOut1SetButton = new QPushButton(groupBox_TriggerOut1);
-        trigOut1SetButton->setObjectName(QStringLiteral("trigOut1SetButton"));
-        sizePolicy3.setHeightForWidth(trigOut1SetButton->sizePolicy().hasHeightForWidth());
-        trigOut1SetButton->setSizePolicy(sizePolicy3);
-        trigOut1SetButton->setMinimumSize(QSize(70, 0));
-
-        horizontalLayout_6->addWidget(trigOut1SetButton);
-
-
-        verticalLayout_33->addLayout(horizontalLayout_6);
-
-
-        horizontalLayout_41->addLayout(verticalLayout_33);
-
-        horizontalSpacer_21 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_41->addItem(horizontalSpacer_21);
-
-
-        horizontalLayout->addWidget(groupBox_TriggerOut1);
-
-        groupBox_TriggerOut = new QGroupBox(groupBox_TriggerControl);
-        groupBox_TriggerOut->setObjectName(QStringLiteral("groupBox_TriggerOut"));
-        groupBox_TriggerOut->setMinimumSize(QSize(170, 169));
-        groupBox_TriggerOut->setMaximumSize(QSize(250, 16777215));
-        horizontalLayout_40 = new QHBoxLayout(groupBox_TriggerOut);
-        horizontalLayout_40->setSpacing(6);
-        horizontalLayout_40->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_40->setObjectName(QStringLiteral("horizontalLayout_40"));
-        horizontalSpacer_18 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_40->addItem(horizontalSpacer_18);
-
-        verticalLayout_32 = new QVBoxLayout();
-        verticalLayout_32->setSpacing(6);
-        verticalLayout_32->setObjectName(QStringLiteral("verticalLayout_32"));
-        gridLayout_34 = new QGridLayout();
-        gridLayout_34->setSpacing(6);
-        gridLayout_34->setObjectName(QStringLiteral("gridLayout_34"));
-        label_TrigOut2_RisingEdge = new QLabel(groupBox_TriggerOut);
-        label_TrigOut2_RisingEdge->setObjectName(QStringLiteral("label_TrigOut2_RisingEdge"));
-        label_TrigOut2_RisingEdge->setStyleSheet(QStringLiteral("QLabel{border:0px solid black}"));
-        label_TrigOut2_RisingEdge->setWordWrap(true);
-
-        gridLayout_34->addWidget(label_TrigOut2_RisingEdge, 1, 0, 1, 1);
-
-        trigOut2_risingDelay_spinBox = new QSpinBox(groupBox_TriggerOut);
-        trigOut2_risingDelay_spinBox->setObjectName(QStringLiteral("trigOut2_risingDelay_spinBox"));
-        trigOut2_risingDelay_spinBox->setMinimum(-100);
-        trigOut2_risingDelay_spinBox->setMaximum(20000);
-
-        gridLayout_34->addWidget(trigOut2_risingDelay_spinBox, 1, 1, 1, 1);
-
-        trigOut2_fallingDelay_spinBox = new QSpinBox(groupBox_TriggerOut);
-        trigOut2_fallingDelay_spinBox->setObjectName(QStringLiteral("trigOut2_fallingDelay_spinBox"));
-        trigOut2_fallingDelay_spinBox->setMinimum(-100);
-        trigOut2_fallingDelay_spinBox->setMaximum(20000);
-
-        gridLayout_34->addWidget(trigOut2_fallingDelay_spinBox, 2, 1, 1, 1);
-
-        label_TrigOut2_FallingEdge = new QLabel(groupBox_TriggerOut);
-        label_TrigOut2_FallingEdge->setObjectName(QStringLiteral("label_TrigOut2_FallingEdge"));
-        label_TrigOut2_FallingEdge->setStyleSheet(QStringLiteral("QLabel{border:0px solid black}"));
-        label_TrigOut2_FallingEdge->setWordWrap(true);
-
-        gridLayout_34->addWidget(label_TrigOut2_FallingEdge, 2, 0, 1, 1);
-
-        verticalSpacer_22 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        gridLayout_34->addItem(verticalSpacer_22, 0, 0, 1, 2);
-
-
-        verticalLayout_32->addLayout(gridLayout_34);
-
-        verticalSpacer_21 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        verticalLayout_32->addItem(verticalSpacer_21);
-
-        invertTrigOut2_checkBox = new QCheckBox(groupBox_TriggerOut);
-        invertTrigOut2_checkBox->setObjectName(QStringLiteral("invertTrigOut2_checkBox"));
-
-        verticalLayout_32->addWidget(invertTrigOut2_checkBox);
-
-        horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setSpacing(6);
-        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-        trigOut2GetButton = new QPushButton(groupBox_TriggerOut);
-        trigOut2GetButton->setObjectName(QStringLiteral("trigOut2GetButton"));
-        sizePolicy3.setHeightForWidth(trigOut2GetButton->sizePolicy().hasHeightForWidth());
-        trigOut2GetButton->setSizePolicy(sizePolicy3);
-        trigOut2GetButton->setMinimumSize(QSize(70, 0));
-
-        horizontalLayout_3->addWidget(trigOut2GetButton);
-
-        trigOut2SetButton = new QPushButton(groupBox_TriggerOut);
-        trigOut2SetButton->setObjectName(QStringLiteral("trigOut2SetButton"));
-        sizePolicy3.setHeightForWidth(trigOut2SetButton->sizePolicy().hasHeightForWidth());
-        trigOut2SetButton->setSizePolicy(sizePolicy3);
-        trigOut2SetButton->setMinimumSize(QSize(70, 0));
-
-        horizontalLayout_3->addWidget(trigOut2SetButton);
-
-
-        verticalLayout_32->addLayout(horizontalLayout_3);
-
-
-        horizontalLayout_40->addLayout(verticalLayout_32);
-
-        horizontalSpacer_19 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_40->addItem(horizontalSpacer_19);
-
-
-        horizontalLayout->addWidget(groupBox_TriggerOut);
-
-        groupBox_TriggerInput1 = new QGroupBox(groupBox_TriggerControl);
-        groupBox_TriggerInput1->setObjectName(QStringLiteral("groupBox_TriggerInput1"));
-        groupBox_TriggerInput1->setMinimumSize(QSize(170, 169));
-        groupBox_TriggerInput1->setMaximumSize(QSize(250, 16777215));
-        horizontalLayout_39 = new QHBoxLayout(groupBox_TriggerInput1);
-        horizontalLayout_39->setSpacing(6);
-        horizontalLayout_39->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_39->setObjectName(QStringLiteral("horizontalLayout_39"));
-        horizontalSpacer_16 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_39->addItem(horizontalSpacer_16);
-
-        verticalLayout_31 = new QVBoxLayout();
-        verticalLayout_31->setSpacing(6);
-        verticalLayout_31->setObjectName(QStringLiteral("verticalLayout_31"));
-        verticalSpacer_20 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        verticalLayout_31->addItem(verticalSpacer_20);
-
-        horizontalLayout_38 = new QHBoxLayout();
-        horizontalLayout_38->setSpacing(6);
-        horizontalLayout_38->setObjectName(QStringLiteral("horizontalLayout_38"));
-        label_TrigIn1_Delay = new QLabel(groupBox_TriggerInput1);
-        label_TrigIn1_Delay->setObjectName(QStringLiteral("label_TrigIn1_Delay"));
-        label_TrigIn1_Delay->setStyleSheet(QStringLiteral("QLabel{border:0px solid black}"));
-        label_TrigIn1_Delay->setWordWrap(true);
-
-        horizontalLayout_38->addWidget(label_TrigIn1_Delay);
-
-        trigIn1_Delay_spinBox = new QSpinBox(groupBox_TriggerInput1);
-        trigIn1_Delay_spinBox->setObjectName(QStringLiteral("trigIn1_Delay_spinBox"));
-        trigIn1_Delay_spinBox->setMinimum(105);
-        trigIn1_Delay_spinBox->setMaximum(20000);
-
-        horizontalLayout_38->addWidget(trigIn1_Delay_spinBox);
-
-
-        verticalLayout_31->addLayout(horizontalLayout_38);
-
-        verticalSpacer_19 = new QSpacerItem(20, 30, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        verticalLayout_31->addItem(verticalSpacer_19);
-
-        invertTrigIn1_checkBox = new QCheckBox(groupBox_TriggerInput1);
-        invertTrigIn1_checkBox->setObjectName(QStringLiteral("invertTrigIn1_checkBox"));
-
-        verticalLayout_31->addWidget(invertTrigIn1_checkBox);
-
-        horizontalLayout_4 = new QHBoxLayout();
-        horizontalLayout_4->setSpacing(6);
-        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
-        trigIn1GetButton = new QPushButton(groupBox_TriggerInput1);
-        trigIn1GetButton->setObjectName(QStringLiteral("trigIn1GetButton"));
-        sizePolicy3.setHeightForWidth(trigIn1GetButton->sizePolicy().hasHeightForWidth());
-        trigIn1GetButton->setSizePolicy(sizePolicy3);
-        trigIn1GetButton->setMinimumSize(QSize(70, 0));
-
-        horizontalLayout_4->addWidget(trigIn1GetButton);
-
-        trigIn1SetButton = new QPushButton(groupBox_TriggerInput1);
-        trigIn1SetButton->setObjectName(QStringLiteral("trigIn1SetButton"));
-        sizePolicy3.setHeightForWidth(trigIn1SetButton->sizePolicy().hasHeightForWidth());
-        trigIn1SetButton->setSizePolicy(sizePolicy3);
-        trigIn1SetButton->setMinimumSize(QSize(70, 0));
-
-        horizontalLayout_4->addWidget(trigIn1SetButton);
-
-
-        verticalLayout_31->addLayout(horizontalLayout_4);
-
-
-        horizontalLayout_39->addLayout(verticalLayout_31);
-
-        horizontalSpacer_17 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_39->addItem(horizontalSpacer_17);
-
-
-        horizontalLayout->addWidget(groupBox_TriggerInput1);
-
-        groupBox_TriggerInput2 = new QGroupBox(groupBox_TriggerControl);
-        groupBox_TriggerInput2->setObjectName(QStringLiteral("groupBox_TriggerInput2"));
-        groupBox_TriggerInput2->setMinimumSize(QSize(170, 169));
-        groupBox_TriggerInput2->setMaximumSize(QSize(250, 16777215));
-        horizontalLayout_37 = new QHBoxLayout(groupBox_TriggerInput2);
-        horizontalLayout_37->setSpacing(6);
-        horizontalLayout_37->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_37->setObjectName(QStringLiteral("horizontalLayout_37"));
-        horizontalSpacer_14 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_37->addItem(horizontalSpacer_14);
-
-        verticalLayout_30 = new QVBoxLayout();
-        verticalLayout_30->setSpacing(6);
-        verticalLayout_30->setObjectName(QStringLiteral("verticalLayout_30"));
-        verticalSpacer_18 = new QSpacerItem(20, 15, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        verticalLayout_30->addItem(verticalSpacer_18);
-
-        invertTrigIn2_checkBox = new QCheckBox(groupBox_TriggerInput2);
-        invertTrigIn2_checkBox->setObjectName(QStringLiteral("invertTrigIn2_checkBox"));
-
-        verticalLayout_30->addWidget(invertTrigIn2_checkBox);
-
-        verticalSpacer_17 = new QSpacerItem(20, 58, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        verticalLayout_30->addItem(verticalSpacer_17);
-
-        horizontalLayout_5 = new QHBoxLayout();
-        horizontalLayout_5->setSpacing(6);
-        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
-        trigIn2GetButton = new QPushButton(groupBox_TriggerInput2);
-        trigIn2GetButton->setObjectName(QStringLiteral("trigIn2GetButton"));
-        sizePolicy3.setHeightForWidth(trigIn2GetButton->sizePolicy().hasHeightForWidth());
-        trigIn2GetButton->setSizePolicy(sizePolicy3);
-        trigIn2GetButton->setMinimumSize(QSize(70, 0));
-
-        horizontalLayout_5->addWidget(trigIn2GetButton);
-
-        trigIn2SetButton = new QPushButton(groupBox_TriggerInput2);
-        trigIn2SetButton->setObjectName(QStringLiteral("trigIn2SetButton"));
-        sizePolicy3.setHeightForWidth(trigIn2SetButton->sizePolicy().hasHeightForWidth());
-        trigIn2SetButton->setSizePolicy(sizePolicy3);
-        trigIn2SetButton->setMinimumSize(QSize(70, 0));
-
-        horizontalLayout_5->addWidget(trigIn2SetButton);
-
-
-        verticalLayout_30->addLayout(horizontalLayout_5);
-
-
-        horizontalLayout_37->addLayout(verticalLayout_30);
-
-        horizontalSpacer_15 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_37->addItem(horizontalSpacer_15);
-
-
-        horizontalLayout->addWidget(groupBox_TriggerInput2);
-
-
-        gridLayout_33->addLayout(horizontalLayout, 0, 0, 1, 1);
-
-        groupBox_LEDDelayControls = new QGroupBox(groupBox_patternMode_globalSettings);
-        groupBox_LEDDelayControls->setObjectName(QStringLiteral("groupBox_LEDDelayControls"));
-        groupBox_LEDDelayControls->setGeometry(QRect(11, 389, 778, 181));
-        sizePolicy8.setHeightForWidth(groupBox_LEDDelayControls->sizePolicy().hasHeightForWidth());
-        groupBox_LEDDelayControls->setSizePolicy(sizePolicy8);
-        groupBox_LEDDelayControls->setMinimumSize(QSize(0, 181));
-        groupBox_LEDDelayControls->setMaximumSize(QSize(16777215, 181));
-        groupBox_LEDDelayControls->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
-"background-color: transparent;\n"
-"border-color: rgb(0,150,150);\n"
-"color:rgb(0,120,120);\n"
-";}"));
-        horizontalLayout_43 = new QHBoxLayout(groupBox_LEDDelayControls);
-        horizontalLayout_43->setSpacing(6);
-        horizontalLayout_43->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_43->setObjectName(QStringLiteral("horizontalLayout_43"));
-        horizontalSpacer_26 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
-
-        horizontalLayout_43->addItem(horizontalSpacer_26);
-
-        verticalLayout_34 = new QVBoxLayout();
-        verticalLayout_34->setSpacing(6);
-        verticalLayout_34->setObjectName(QStringLiteral("verticalLayout_34"));
-        gridLayout_36 = new QGridLayout();
-        gridLayout_36->setSpacing(6);
-        gridLayout_36->setObjectName(QStringLiteral("gridLayout_36"));
-        horizontalSpacer_25 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_36->addItem(horizontalSpacer_25, 1, 6, 1, 1);
-
-        label_GreenRisingEdge = new QLabel(groupBox_LEDDelayControls);
-        label_GreenRisingEdge->setObjectName(QStringLiteral("label_GreenRisingEdge"));
-        label_GreenRisingEdge->setMinimumSize(QSize(141, 0));
-        label_GreenRisingEdge->setAutoFillBackground(false);
-        label_GreenRisingEdge->setStyleSheet(QStringLiteral("QLabel{border:0px solid black}"));
-        label_GreenRisingEdge->setLineWidth(0);
-        label_GreenRisingEdge->setWordWrap(true);
-
-        gridLayout_36->addWidget(label_GreenRisingEdge, 1, 4, 1, 1);
-
-        horizontalSpacer_24 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_36->addItem(horizontalSpacer_24, 1, 3, 1, 1);
-
-        horizontalSpacer_28 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_36->addItem(horizontalSpacer_28, 1, 0, 1, 1);
-
-        horizontalSpacer_29 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_36->addItem(horizontalSpacer_29, 1, 9, 1, 1);
-
-        label_BlueFallingEdge = new QLabel(groupBox_LEDDelayControls);
-        label_BlueFallingEdge->setObjectName(QStringLiteral("label_BlueFallingEdge"));
-        label_BlueFallingEdge->setStyleSheet(QStringLiteral("QLabel{border:0px solid black}"));
-        label_BlueFallingEdge->setWordWrap(true);
-
-        gridLayout_36->addWidget(label_BlueFallingEdge, 3, 7, 1, 1);
-
-        label_RedFallingEdge = new QLabel(groupBox_LEDDelayControls);
-        label_RedFallingEdge->setObjectName(QStringLiteral("label_RedFallingEdge"));
-        label_RedFallingEdge->setStyleSheet(QStringLiteral("QLabel{border:0px solid black}"));
-        label_RedFallingEdge->setWordWrap(true);
-
-        gridLayout_36->addWidget(label_RedFallingEdge, 3, 1, 1, 1);
-
-        ledBlueRising_spinBox = new QSpinBox(groupBox_LEDDelayControls);
-        ledBlueRising_spinBox->setObjectName(QStringLiteral("ledBlueRising_spinBox"));
-        ledBlueRising_spinBox->setMaximumSize(QSize(51, 16777215));
-        ledBlueRising_spinBox->setMinimum(-100);
-        ledBlueRising_spinBox->setMaximum(20000);
-
-        gridLayout_36->addWidget(ledBlueRising_spinBox, 1, 8, 1, 1);
-
-        label_BlueRisingEdge = new QLabel(groupBox_LEDDelayControls);
-        label_BlueRisingEdge->setObjectName(QStringLiteral("label_BlueRisingEdge"));
-        label_BlueRisingEdge->setMinimumSize(QSize(131, 0));
-        label_BlueRisingEdge->setStyleSheet(QStringLiteral("QLabel{border:0px solid black}"));
-        label_BlueRisingEdge->setWordWrap(true);
-
-        gridLayout_36->addWidget(label_BlueRisingEdge, 1, 7, 1, 1);
-
-        ledGreenRising_spinBox = new QSpinBox(groupBox_LEDDelayControls);
-        ledGreenRising_spinBox->setObjectName(QStringLiteral("ledGreenRising_spinBox"));
-        ledGreenRising_spinBox->setMaximumSize(QSize(51, 16777215));
-        ledGreenRising_spinBox->setMinimum(-100);
-        ledGreenRising_spinBox->setMaximum(20000);
-
-        gridLayout_36->addWidget(ledGreenRising_spinBox, 1, 5, 1, 1);
-
-        ledRedRising_spinBox = new QSpinBox(groupBox_LEDDelayControls);
-        ledRedRising_spinBox->setObjectName(QStringLiteral("ledRedRising_spinBox"));
-        ledRedRising_spinBox->setMaximumSize(QSize(51, 16777215));
-        ledRedRising_spinBox->setMinimum(-100);
-        ledRedRising_spinBox->setMaximum(20000);
-
-        gridLayout_36->addWidget(ledRedRising_spinBox, 1, 2, 1, 1);
-
-        label_Red_RisingEdge = new QLabel(groupBox_LEDDelayControls);
-        label_Red_RisingEdge->setObjectName(QStringLiteral("label_Red_RisingEdge"));
-        label_Red_RisingEdge->setMinimumSize(QSize(141, 0));
-        label_Red_RisingEdge->setMaximumSize(QSize(900, 16777215));
-        label_Red_RisingEdge->setStyleSheet(QStringLiteral("QLabel{border:0px solid black}"));
-        label_Red_RisingEdge->setWordWrap(true);
-
-        gridLayout_36->addWidget(label_Red_RisingEdge, 1, 1, 1, 1);
-
-        ledGreenFalling_spinBox = new QSpinBox(groupBox_LEDDelayControls);
-        ledGreenFalling_spinBox->setObjectName(QStringLiteral("ledGreenFalling_spinBox"));
-        ledGreenFalling_spinBox->setMaximumSize(QSize(51, 16777215));
-        ledGreenFalling_spinBox->setMinimum(-100);
-        ledGreenFalling_spinBox->setMaximum(20000);
-
-        gridLayout_36->addWidget(ledGreenFalling_spinBox, 3, 5, 1, 1);
-
-        label_GreenFallingEdge = new QLabel(groupBox_LEDDelayControls);
-        label_GreenFallingEdge->setObjectName(QStringLiteral("label_GreenFallingEdge"));
-        label_GreenFallingEdge->setMinimumSize(QSize(141, 0));
-        label_GreenFallingEdge->setStyleSheet(QStringLiteral("QLabel{border:0px solid black}"));
-        label_GreenFallingEdge->setWordWrap(true);
-
-        gridLayout_36->addWidget(label_GreenFallingEdge, 3, 4, 1, 1);
-
-        ledBlueFalling_spinBox = new QSpinBox(groupBox_LEDDelayControls);
-        ledBlueFalling_spinBox->setObjectName(QStringLiteral("ledBlueFalling_spinBox"));
-        ledBlueFalling_spinBox->setMinimum(-100);
-        ledBlueFalling_spinBox->setMaximum(20000);
-
-        gridLayout_36->addWidget(ledBlueFalling_spinBox, 3, 8, 1, 1);
-
-        ledRedFalling_spinBox = new QSpinBox(groupBox_LEDDelayControls);
-        ledRedFalling_spinBox->setObjectName(QStringLiteral("ledRedFalling_spinBox"));
-        ledRedFalling_spinBox->setMaximumSize(QSize(51, 16777215));
-        ledRedFalling_spinBox->setMinimum(-100);
-        ledRedFalling_spinBox->setMaximum(20000);
-
-        gridLayout_36->addWidget(ledRedFalling_spinBox, 3, 2, 1, 1);
-
-        verticalSpacer_26 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        gridLayout_36->addItem(verticalSpacer_26, 0, 4, 1, 1);
-
-        verticalSpacer_27 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        gridLayout_36->addItem(verticalSpacer_27, 2, 1, 1, 9);
-
-
-        verticalLayout_34->addLayout(gridLayout_36);
-
-        verticalSpacer_25 = new QSpacerItem(20, 13, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        verticalLayout_34->addItem(verticalSpacer_25);
-
-        horizontalLayout_42 = new QHBoxLayout();
-        horizontalLayout_42->setSpacing(6);
-        horizontalLayout_42->setObjectName(QStringLiteral("horizontalLayout_42"));
-        horizontalSpacer_22 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_42->addItem(horizontalSpacer_22);
-
-        ledGetDelayButton = new QPushButton(groupBox_LEDDelayControls);
-        ledGetDelayButton->setObjectName(QStringLiteral("ledGetDelayButton"));
-        sizePolicy3.setHeightForWidth(ledGetDelayButton->sizePolicy().hasHeightForWidth());
-        ledGetDelayButton->setSizePolicy(sizePolicy3);
-        ledGetDelayButton->setMaximumSize(QSize(75, 16777215));
-
-        horizontalLayout_42->addWidget(ledGetDelayButton);
-
-        ledSetDelayButton = new QPushButton(groupBox_LEDDelayControls);
-        ledSetDelayButton->setObjectName(QStringLiteral("ledSetDelayButton"));
-        sizePolicy3.setHeightForWidth(ledSetDelayButton->sizePolicy().hasHeightForWidth());
-        ledSetDelayButton->setSizePolicy(sizePolicy3);
-
-        horizontalLayout_42->addWidget(ledSetDelayButton);
-
-        horizontalSpacer_23 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_42->addItem(horizontalSpacer_23);
-
-
-        verticalLayout_34->addLayout(horizontalLayout_42);
-
-
-        horizontalLayout_43->addLayout(verticalLayout_34);
-
-        horizontalSpacer_27 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
-
-        horizontalLayout_43->addItem(horizontalSpacer_27);
-
-        operatingModes_groupBox_2 = new QGroupBox(groupBox_patternMode_globalSettings);
-        operatingModes_groupBox_2->setObjectName(QStringLiteral("operatingModes_groupBox_2"));
-        operatingModes_groupBox_2->setGeometry(QRect(10, 20, 201, 121));
-        sizePolicy3.setHeightForWidth(operatingModes_groupBox_2->sizePolicy().hasHeightForWidth());
-        operatingModes_groupBox_2->setSizePolicy(sizePolicy3);
-        operatingModes_groupBox_2->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
-"background-color: transparent;\n"
-"border-color: rgb(0,150,150);\n"
-"color:rgb(0,120,120);\n"
-";}"));
-        verticalLayout_51 = new QVBoxLayout(operatingModes_groupBox_2);
-        verticalLayout_51->setSpacing(6);
-        verticalLayout_51->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_51->setObjectName(QStringLiteral("verticalLayout_51"));
-        verticalSpacer_7 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        verticalLayout_51->addItem(verticalSpacer_7);
-
-        horizontalLayout_35 = new QHBoxLayout();
-        horizontalLayout_35->setSpacing(6);
-        horizontalLayout_35->setObjectName(QStringLiteral("horizontalLayout_35"));
-        verticalLayout_28 = new QVBoxLayout();
-        verticalLayout_28->setSpacing(6);
-        verticalLayout_28->setObjectName(QStringLiteral("verticalLayout_28"));
-        apiVersionLabel_2 = new QLabel(operatingModes_groupBox_2);
-        apiVersionLabel_2->setObjectName(QStringLiteral("apiVersionLabel_2"));
-        apiVersionLabel_2->setMinimumSize(QSize(20, 0));
-        apiVersionLabel_2->setFont(font1);
-        apiVersionLabel_2->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
-
-        verticalLayout_28->addWidget(apiVersionLabel_2);
-
-        apiVersionLabel_3 = new QLabel(operatingModes_groupBox_2);
-        apiVersionLabel_3->setObjectName(QStringLiteral("apiVersionLabel_3"));
-        apiVersionLabel_3->setMinimumSize(QSize(20, 0));
-        apiVersionLabel_3->setFont(font1);
-        apiVersionLabel_3->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
-
-        verticalLayout_28->addWidget(apiVersionLabel_3);
-
-
-        horizontalLayout_35->addLayout(verticalLayout_28);
-
-        verticalLayout_29 = new QVBoxLayout();
-        verticalLayout_29->setSpacing(6);
-        verticalLayout_29->setObjectName(QStringLiteral("verticalLayout_29"));
-        startDmdBlock = new QComboBox(operatingModes_groupBox_2);
-        startDmdBlock->setObjectName(QStringLiteral("startDmdBlock"));
-
-        verticalLayout_29->addWidget(startDmdBlock);
-
-        endDmdBlock = new QComboBox(operatingModes_groupBox_2);
-        endDmdBlock->setObjectName(QStringLiteral("endDmdBlock"));
-
-        verticalLayout_29->addWidget(endDmdBlock);
-
-
-        horizontalLayout_35->addLayout(verticalLayout_29);
-
-
-        verticalLayout_51->addLayout(horizontalLayout_35);
-
-        horizontalLayout_28 = new QHBoxLayout();
-        horizontalLayout_28->setSpacing(6);
-        horizontalLayout_28->setObjectName(QStringLiteral("horizontalLayout_28"));
-        dmdBlockGet = new QPushButton(operatingModes_groupBox_2);
-        dmdBlockGet->setObjectName(QStringLiteral("dmdBlockGet"));
-
-        horizontalLayout_28->addWidget(dmdBlockGet);
-
-        dmdBlockSet = new QPushButton(operatingModes_groupBox_2);
-        dmdBlockSet->setObjectName(QStringLiteral("dmdBlockSet"));
-
-        horizontalLayout_28->addWidget(dmdBlockSet);
-
-
-        verticalLayout_51->addLayout(horizontalLayout_28);
-
-        groupBox_DMDIdle = new QGroupBox(groupBox_patternMode_globalSettings);
-        groupBox_DMDIdle->setObjectName(QStringLiteral("groupBox_DMDIdle"));
-        groupBox_DMDIdle->setGeometry(QRect(460, 20, 201, 121));
-        groupBox_DMDIdle->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
-"background-color: transparent;\n"
-"border-color: rgb(0,150,150);\n"
-"color:rgb(0,120,120);\n"
-";}\n"
-""));
-        groupBox_DMDIdle->setTitle(QStringLiteral("DMD Idle Mode (50/50 Sequence)"));
-        pushButton_DMDSaverModeOn = new QPushButton(groupBox_DMDIdle);
-        pushButton_DMDSaverModeOn->setObjectName(QStringLiteral("pushButton_DMDSaverModeOn"));
-        pushButton_DMDSaverModeOn->setGeometry(QRect(10, 50, 80, 40));
-        pushButton_DMDSaverModeOff = new QPushButton(groupBox_DMDIdle);
-        pushButton_DMDSaverModeOff->setObjectName(QStringLiteral("pushButton_DMDSaverModeOff"));
-        pushButton_DMDSaverModeOff->setGeometry(QRect(110, 50, 80, 40));
-        groupBox_LEDPulseWidth = new QGroupBox(groupBox_patternMode_globalSettings);
-        groupBox_LEDPulseWidth->setObjectName(QStringLiteral("groupBox_LEDPulseWidth"));
-        groupBox_LEDPulseWidth->setGeometry(QRect(220, 20, 231, 121));
-        groupBox_LEDPulseWidth->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
-"background-color: transparent;\n"
-"border-color: rgb(0,150,150);\n"
-"color:rgb(0,120,120);\n"
-";}\n"
-""));
-        groupBox_LEDPulseWidth->setTitle(QStringLiteral("Minimum LED Pulse Width"));
-        layoutWidget_4 = new QWidget(groupBox_LEDPulseWidth);
-        layoutWidget_4->setObjectName(QStringLiteral("layoutWidget_4"));
-        layoutWidget_4->setGeometry(QRect(20, 20, 197, 101));
-        verticalLayout_16 = new QVBoxLayout(layoutWidget_4);
-        verticalLayout_16->setSpacing(6);
-        verticalLayout_16->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_16->setObjectName(QStringLiteral("verticalLayout_16"));
-        verticalLayout_16->setContentsMargins(0, 0, 0, 0);
-        horizontalLayout_9 = new QHBoxLayout();
-        horizontalLayout_9->setSpacing(6);
-        horizontalLayout_9->setObjectName(QStringLiteral("horizontalLayout_9"));
-        label = new QLabel(layoutWidget_4);
-        label->setObjectName(QStringLiteral("label"));
-        label->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
-
-        horizontalLayout_9->addWidget(label);
-
-        ledPulseWidth = new QSpinBox(layoutWidget_4);
-        ledPulseWidth->setObjectName(QStringLiteral("ledPulseWidth"));
-        ledPulseWidth->setMaximum(999);
-
-        horizontalLayout_9->addWidget(ledPulseWidth);
-
-
-        verticalLayout_16->addLayout(horizontalLayout_9);
-
-        horizontalLayout_32 = new QHBoxLayout();
-        horizontalLayout_32->setSpacing(6);
-        horizontalLayout_32->setObjectName(QStringLiteral("horizontalLayout_32"));
-        ledPulseWidthGet = new QPushButton(layoutWidget_4);
-        ledPulseWidthGet->setObjectName(QStringLiteral("ledPulseWidthGet"));
-
-        horizontalLayout_32->addWidget(ledPulseWidthGet);
-
-        ledPulseWidthSet = new QPushButton(layoutWidget_4);
-        ledPulseWidthSet->setObjectName(QStringLiteral("ledPulseWidthSet"));
-
-        horizontalLayout_32->addWidget(ledPulseWidthSet);
-
-
-        verticalLayout_16->addLayout(horizontalLayout_32);
-
-
-        gridLayout_32->addWidget(groupBox_patternMode_globalSettings, 0, 0, 1, 1);
-
-        patternMode_stackedWidget->addWidget(patternSettingsPage);
 
         horizontalLayout_26->addWidget(patternMode_stackedWidget);
 
@@ -3010,8 +2010,6 @@ public:
         groupBox_PatternMode->setTitle(QApplication::translate("MainWindow", "Pattern Mode", nullptr));
         pushButton_patternControls->setText(QApplication::translate("MainWindow", "Pattern \n"
 " Design", nullptr));
-        pushButton_globalSettings->setText(QApplication::translate("MainWindow", "Pattern \n"
-" Settings", nullptr));
         groupBox_Menu->setTitle(QApplication::translate("MainWindow", "Menu", nullptr));
 #ifndef QT_NO_TOOLTIP
         saveButton_patternSettings->setToolTip(QApplication::translate("MainWindow", "Save settings to a file", nullptr));
@@ -3033,118 +2031,20 @@ public:
         selectAllButton->setToolTip(QApplication::translate("MainWindow", "Select All Patterns", nullptr));
 #endif // QT_NO_TOOLTIP
         selectAllButton->setText(QString());
-        label_Zoom->setText(QApplication::translate("MainWindow", "Zoom", nullptr));
         groupBox_PatternImage->setTitle(QString());
         ptnSetting_groupBox->setTitle(QApplication::translate("MainWindow", "Pattern -", nullptr));
-        groupBox_BitInfo->setTitle(QApplication::translate("MainWindow", "Bit Information", nullptr));
-        bitDepth_ComboBox->setItemText(0, QApplication::translate("MainWindow", "1", nullptr));
-        bitDepth_ComboBox->setItemText(1, QApplication::translate("MainWindow", "2", nullptr));
-        bitDepth_ComboBox->setItemText(2, QApplication::translate("MainWindow", "3", nullptr));
-        bitDepth_ComboBox->setItemText(3, QApplication::translate("MainWindow", "4", nullptr));
-        bitDepth_ComboBox->setItemText(4, QApplication::translate("MainWindow", "5", nullptr));
-        bitDepth_ComboBox->setItemText(5, QApplication::translate("MainWindow", "6", nullptr));
-        bitDepth_ComboBox->setItemText(6, QApplication::translate("MainWindow", "7", nullptr));
-        bitDepth_ComboBox->setItemText(7, QApplication::translate("MainWindow", "8", nullptr));
-
-        bitDepth_ComboBox->setCurrentText(QApplication::translate("MainWindow", "1", nullptr));
-        label_Depth->setText(QApplication::translate("MainWindow", "Depth", nullptr));
-        startPos_label->setText(QApplication::translate("MainWindow", "Start Bit", nullptr));
-        startPos_ComboBox->setItemText(0, QApplication::translate("MainWindow", "G0", nullptr));
-        startPos_ComboBox->setItemText(1, QApplication::translate("MainWindow", "G1", nullptr));
-        startPos_ComboBox->setItemText(2, QApplication::translate("MainWindow", "G2", nullptr));
-        startPos_ComboBox->setItemText(3, QApplication::translate("MainWindow", "G3", nullptr));
-        startPos_ComboBox->setItemText(4, QApplication::translate("MainWindow", "G4", nullptr));
-        startPos_ComboBox->setItemText(5, QApplication::translate("MainWindow", "G5", nullptr));
-        startPos_ComboBox->setItemText(6, QApplication::translate("MainWindow", "G6", nullptr));
-        startPos_ComboBox->setItemText(7, QApplication::translate("MainWindow", "G7", nullptr));
-        startPos_ComboBox->setItemText(8, QApplication::translate("MainWindow", "R0", nullptr));
-        startPos_ComboBox->setItemText(9, QApplication::translate("MainWindow", "R1", nullptr));
-        startPos_ComboBox->setItemText(10, QApplication::translate("MainWindow", "R2", nullptr));
-        startPos_ComboBox->setItemText(11, QApplication::translate("MainWindow", "R3", nullptr));
-        startPos_ComboBox->setItemText(12, QApplication::translate("MainWindow", "R4", nullptr));
-        startPos_ComboBox->setItemText(13, QApplication::translate("MainWindow", "R5", nullptr));
-        startPos_ComboBox->setItemText(14, QApplication::translate("MainWindow", "R6", nullptr));
-        startPos_ComboBox->setItemText(15, QApplication::translate("MainWindow", "R7", nullptr));
-        startPos_ComboBox->setItemText(16, QApplication::translate("MainWindow", "B0", nullptr));
-        startPos_ComboBox->setItemText(17, QApplication::translate("MainWindow", "B1", nullptr));
-        startPos_ComboBox->setItemText(18, QApplication::translate("MainWindow", "B2", nullptr));
-        startPos_ComboBox->setItemText(19, QApplication::translate("MainWindow", "B3", nullptr));
-        startPos_ComboBox->setItemText(20, QApplication::translate("MainWindow", "B4", nullptr));
-        startPos_ComboBox->setItemText(21, QApplication::translate("MainWindow", "B5", nullptr));
-        startPos_ComboBox->setItemText(22, QApplication::translate("MainWindow", "B6", nullptr));
-        startPos_ComboBox->setItemText(23, QApplication::translate("MainWindow", "B7", nullptr));
-
+        PatternIndex->setText(QString());
         groupBox_Timing->setTitle(QApplication::translate("MainWindow", "Timing (us)", nullptr));
         exposure_lineEdit->setText(QString());
         label_Exposure->setText(QApplication::translate("MainWindow", "Exposure", nullptr));
         label_DarkTime->setText(QApplication::translate("MainWindow", "Dark Time", nullptr));
-        groupBox_Color->setTitle(QApplication::translate("MainWindow", "Color", nullptr));
-        color_ComboBox->setItemText(0, QApplication::translate("MainWindow", "RED", nullptr));
-        color_ComboBox->setItemText(1, QApplication::translate("MainWindow", "GREEN", nullptr));
-        color_ComboBox->setItemText(2, QApplication::translate("MainWindow", "YELLOW", nullptr));
-        color_ComboBox->setItemText(3, QApplication::translate("MainWindow", "BLUE", nullptr));
-        color_ComboBox->setItemText(4, QApplication::translate("MainWindow", "MAGENTA", nullptr));
-        color_ComboBox->setItemText(5, QApplication::translate("MainWindow", "CYAN", nullptr));
-        color_ComboBox->setItemText(6, QApplication::translate("MainWindow", "WHITE", nullptr));
-
         triggerIn_checkBox->setText(QApplication::translate("MainWindow", "Trigger Input", nullptr));
         label_TrigOut1->setText(QApplication::translate("MainWindow", "      Trigger Out 1", nullptr));
         triggerOut2_checkBox->setText(QApplication::translate("MainWindow", "Trigger Out 2", nullptr));
-        groupBox_UpdateLUT->setTitle(QString());
-        updateLUT_Button->setText(QApplication::translate("MainWindow", "Update\n"
-" LUT", nullptr));
-        groupBox_PlayRepeat->setTitle(QString());
-        playOnce_radioButton->setText(QApplication::translate("MainWindow", "Play Once", nullptr));
-        repeat_radioButton->setText(QApplication::translate("MainWindow", "Repeat", nullptr));
         groupBox_StartPauseStop->setTitle(QString());
         startPatSequence_Button->setText(QApplication::translate("MainWindow", "Start  ", nullptr));
         pausePatSequence_Button->setText(QApplication::translate("MainWindow", "Pause", nullptr));
         stopPatSequence_Button->setText(QApplication::translate("MainWindow", "Stop  ", nullptr));
-        AutoPlayPatSeq->setText(QApplication::translate("MainWindow", "AutoPlay", nullptr));
-        groupBox_TriggerControl->setTitle(QApplication::translate("MainWindow", "Trigger Control", nullptr));
-        groupBox_TriggerOut1->setTitle(QApplication::translate("MainWindow", "Trigger Out 1 (us)", nullptr));
-        label_TrigOut1_FallingEdge->setText(QApplication::translate("MainWindow", "Falling Edge Delay", nullptr));
-        label_TrigOut1_RisingEdge->setText(QApplication::translate("MainWindow", "Rising Edge Delay", nullptr));
-        invertTrigOut1_checkBox->setText(QApplication::translate("MainWindow", "Invert", nullptr));
-        trigOut1GetButton->setText(QApplication::translate("MainWindow", "Get", nullptr));
-        trigOut1SetButton->setText(QApplication::translate("MainWindow", "Set", nullptr));
-        groupBox_TriggerOut->setTitle(QApplication::translate("MainWindow", "Trigger Out 2 (us)", nullptr));
-        label_TrigOut2_RisingEdge->setText(QApplication::translate("MainWindow", "Rising Edge Delay", nullptr));
-        label_TrigOut2_FallingEdge->setText(QApplication::translate("MainWindow", "Falling Edge Delay", nullptr));
-        invertTrigOut2_checkBox->setText(QApplication::translate("MainWindow", "Invert", nullptr));
-        trigOut2GetButton->setText(QApplication::translate("MainWindow", "Get", nullptr));
-        trigOut2SetButton->setText(QApplication::translate("MainWindow", "Set", nullptr));
-        groupBox_TriggerInput1->setTitle(QApplication::translate("MainWindow", "Trigger In 1 (us)", nullptr));
-        label_TrigIn1_Delay->setText(QApplication::translate("MainWindow", "Delay  (us)", nullptr));
-        invertTrigIn1_checkBox->setText(QApplication::translate("MainWindow", "Invert", nullptr));
-        trigIn1GetButton->setText(QApplication::translate("MainWindow", "Get", nullptr));
-        trigIn1SetButton->setText(QApplication::translate("MainWindow", "Set", nullptr));
-        groupBox_TriggerInput2->setTitle(QApplication::translate("MainWindow", "Trigger In 2", nullptr));
-        invertTrigIn2_checkBox->setText(QApplication::translate("MainWindow", "Invert", nullptr));
-        trigIn2GetButton->setText(QApplication::translate("MainWindow", "Get", nullptr));
-        trigIn2SetButton->setText(QApplication::translate("MainWindow", "Set", nullptr));
-        groupBox_LEDDelayControls->setTitle(QApplication::translate("MainWindow", "LED Delay Controls (us)", nullptr));
-        label_GreenRisingEdge->setText(QApplication::translate("MainWindow", "Green LED Rising Edge Delay", nullptr));
-        label_BlueFallingEdge->setText(QApplication::translate("MainWindow", "Blue LED Falling Edge Delay", nullptr));
-        label_RedFallingEdge->setText(QApplication::translate("MainWindow", "Red LED Falling Edge Delay", nullptr));
-        label_BlueRisingEdge->setText(QApplication::translate("MainWindow", "Blue LED Rising Edge Delay", nullptr));
-        label_Red_RisingEdge->setText(QApplication::translate("MainWindow", "Red LED Rising Edge Delay", nullptr));
-        label_GreenFallingEdge->setText(QApplication::translate("MainWindow", "Green LED Falling Edge Delay", nullptr));
-        ledGetDelayButton->setText(QApplication::translate("MainWindow", "Get", nullptr));
-        ledSetDelayButton->setText(QApplication::translate("MainWindow", "Set", nullptr));
-        operatingModes_groupBox_2->setTitle(QApplication::translate("MainWindow", "DMD Active Blocks", nullptr));
-        apiVersionLabel_2->setText(QApplication::translate("MainWindow", "Start Block", nullptr));
-        apiVersionLabel_3->setText(QApplication::translate("MainWindow", "End Block", nullptr));
-        dmdBlockGet->setText(QApplication::translate("MainWindow", "Get", nullptr));
-        dmdBlockSet->setText(QApplication::translate("MainWindow", "Set", nullptr));
-        pushButton_DMDSaverModeOn->setText(QApplication::translate("MainWindow", "Enable", nullptr));
-        pushButton_DMDSaverModeOff->setText(QApplication::translate("MainWindow", "Disable", nullptr));
-#ifndef QT_NO_TOOLTIP
-        groupBox_LEDPulseWidth->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>Minimum LED pulse width supported by the LED driver.</p><p>The pattern sequence will not generate any pulse less then this value.</p><p>Pattern sequence setting may fail if such sequence is not possible.</p><p>Use zero for no LED modulation.</p></body></html>", nullptr));
-#endif // QT_NO_TOOLTIP
-        label->setText(QApplication::translate("MainWindow", "Pulse Width (us)", nullptr));
-        ledPulseWidthGet->setText(QApplication::translate("MainWindow", "Get", nullptr));
-        ledPulseWidthSet->setText(QApplication::translate("MainWindow", "Set", nullptr));
     } // retranslateUi
 
 };

@@ -84,14 +84,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     m_dmdDetected = false;
 
-    updateBlocks(true);
-
     m_videoPatternMode = false;
-
-    ui->startPos_label->hide();
-    ui->startPos_ComboBox->hide();
-
-   // API_SetDataCallback(updateBatchCallback, this);// Cmd, PayLoad, PayLoadSize));//Cmd, PayLoad,PayLoadSize));
 
     m_firstConnect = false;
 
@@ -120,7 +113,6 @@ MainWindow::MainWindow(QWidget *parent) :
     sprintf(versionStr, "DLP JGroup - %d.%d.%d", GUI_VERSION_MAJOR, GUI_VERSION_MINOR, GUI_VERSION_BUILD);
     setWindowTitle(versionStr);
 
-    updatePtnCheckbox();
     updateMinExposure();
     emit on_connectButton_clicked();
 }
@@ -213,7 +205,7 @@ void MainWindow::timerTimeout(void)
 }
 
 /**
- * @brief MainWindow::calculateSplashImageDetails
+ * @brief MainWindow::calculateSingleSplashImageDetails
  * for each of the pattern image on the pattern settings page, calculates the
  * total number of splash images of bit depth 24 based on the bit depth of each image
  * Also calculates the bitposition of each pattern element in the splash Image
@@ -223,71 +215,6 @@ void MainWindow::timerTimeout(void)
  * @return - 0 - success
  *          -1 - failure
  */
-int MainWindow::calculateSplashImageDetails(int *totalSplashImages)
-{
-    int imgCount = 0;
-    int bits = 0;
-    int totalBits = 0;
-    for(int elemCount = 0; elemCount < m_elements.size(); elemCount++)
-    {
-        if (m_elements[elemCount].bits > 8)
-        {
-            char dispStr[255];
-            sprintf(dispStr, "Error:Bit depth not selected for pattern=%d\n", elemCount);
-            showStatus(dispStr);
-            return -1;
-        }
-
-        totalBits = totalBits + m_elements[elemCount].bits;
-
-        if(totalBits > 12000)
-        {
-            char dispStr[255];
-            sprintf(dispStr, "Error:Total Bit Depth cannot exceed 400");
-            showError(dispStr);
-            return -1;
-        }
-
-        /* Check if the same pattern is used already */
-        int i;
-        for(i = 0; i < elemCount; i++)
-        {
-            /* Only if file name and bit depth matches */
-            if(m_elements[i].bits == m_elements[elemCount].bits &&
-                    m_elements[i].name == m_elements[elemCount].name)
-            {
-                break;
-            }
-        }
-
-        /* Match found. use the same splash image */
-        if(i < elemCount)
-        {
-            m_elements[elemCount].splashImageIndex = m_elements[i].splashImageIndex;
-            m_elements[elemCount].splashImageBitPos = m_elements[i].splashImageBitPos;
-            continue;
-        }
-
-        /* If it is the last image or cant fit in the current image */
-        if(elemCount == m_elements.size() ||
-                (bits + m_elements[elemCount].bits) > 24)
-        {
-            /* Goto next image */
-            imgCount++;
-            bits = 0;
-        }
-
-        m_elements[elemCount].splashImageIndex = imgCount;
-        m_elements[elemCount].splashImageBitPos = bits;
-        bits += m_elements[elemCount].bits;
-    }
-
-    *totalSplashImages = imgCount + 1;
-
-    return 0;
-}
-
-
 int MainWindow::calculateSingleSplashImageDetails(int *SingleSplashImage)
 {
     int imgCount = 0;
@@ -660,11 +587,7 @@ void MainWindow::on_patternMode_radioButton_clicked()
     waveWindow->updatePatternList(m_elements);
     waveWindow->draw();
     waveWindow->updateVideoPatternMode(false);
-    ui->bitDepth_ComboBox->setCurrentText("8");
-    ui->startPos_label->hide();
-    ui->startPos_ComboBox->hide();
     ui->triggerIn_checkBox->setText("Trigger Input");
-    updatePtnCheckbox();
 }
 
 /**
@@ -692,9 +615,6 @@ void MainWindow::on_patternMemory_radioButton_clicked()
     waveWindow->updatePatternList(m_elements);
     waveWindow->draw();
     waveWindow->updateVideoPatternMode(false);
-    ui->bitDepth_ComboBox->setCurrentText("8");
-    ui->startPos_label->hide();
-    ui->startPos_ComboBox->hide();
     ui->triggerIn_checkBox->setText("Trigger Input");
 }
 
@@ -710,7 +630,6 @@ void MainWindow::on_pDMD_radioButton_clicked()
     ui->onlineResources_stackedWidget->setCurrentIndex(0);
     waveWindow->setPatternSize(m_ptnWidth, m_ptnHeight);
     m_dualAsic = false;
-    updateBlocks(true);
 }
 
 /**
@@ -744,7 +663,6 @@ void MainWindow::on_pushButton_globalSettings_clicked()
 
     ui->patternMode_stackedWidget->setCurrentIndex(1);
     ui->pushButton_patternControls->setChecked(false);
-    ui->pushButton_globalSettings->setChecked(true);
 }
 
 
@@ -775,7 +693,6 @@ void MainWindow::on_pushButton_patternControls_clicked()
 
     ui->patternMode_stackedWidget->setCurrentIndex(0);
     ui->pushButton_patternControls->setChecked(true);
-    ui->pushButton_globalSettings->setChecked(false);
 }
 
 /**
@@ -786,82 +703,3 @@ void MainWindow::on_dummyConnection_clicked(bool checked)
     USB_SetFakeConnection(checked);
 }
 
-/**
-  * @brief MainWindow::updateBlocks
-  * @brief full
-  */
-void MainWindow::updateBlocks(bool full)
-{
-    int count = m_dualAsic ? 16 : 15;
-    int prevStart = ui->startDmdBlock->currentText().toInt();
-
-    if(full)
-    {
-        prevStart = 0;
-        ui->endDmdBlock->clear();
-    }
-
-    ui->startDmdBlock->clear();
-    for (int i = 0; i < count; i++)
-    {
-        ui->startDmdBlock->addItem(QString::number(i));
-    }
-
-    if(prevStart < count && prevStart >= 0)
-        ui->startDmdBlock->setCurrentIndex(prevStart);
-}
-
-/**
-  * @brief MainWindow::on_startDmdBlock_currentIndexChanged
-  * @param index
-  */
-void MainWindow::on_startDmdBlock_currentIndexChanged(int index)
-{
-    int count = m_dualAsic ? 16 : 15;
-
-    int prevEnd = -1;
-
-    if(ui->endDmdBlock->count() > 0)
-    {
-        prevEnd = ui->endDmdBlock->currentText().toInt();
-    }
-
-    ui->endDmdBlock->clear();
-    for(int i = index; i <count; i++)
-    {
-        ui->endDmdBlock->addItem(QString::number(i));
-    }
-
-    if(prevEnd >= index)
-    {
-        ui->endDmdBlock->setCurrentIndex(prevEnd - index);
-    }
-    else
-    {
-        ui->endDmdBlock->setCurrentIndex(count - index - 1);
-    }
-}
-
-void MainWindow::on_ledPulseWidthGet_clicked()
-{
-    int pulseWidth;
-    if(LCR_GetMinLEDPulseWidth(&pulseWidth) < 0)
-    {
-        showError("Unable to get LED Pulse Width");
-        return;
-    }
-
-    ui->ledPulseWidth->setValue(pulseWidth);
-    updateMinExposure();
-}
-
-void MainWindow::on_ledPulseWidthSet_clicked()
-{
-   int pulseWidth = ui->ledPulseWidth->value();
-   if(LCR_SetMinLEDPulseWidth(pulseWidth) < 0)
-   {
-       showError("Unable to set LED Pulse Width");
-       return;
-   }
-   updateMinExposure();
-}
