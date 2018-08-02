@@ -443,6 +443,7 @@ void MainWindow::on_connectButton_clicked()
         ui->connectButton->setText("Connected");
         ui->operatingModes_groupBox->setEnabled(true);
         ui->status_groupBox->setEnabled(true);
+        ui->pushButton_ConnectLED->setEnabled(true);
 
         if(LCR_GetPowerMode(&standBy)==0)
         {
@@ -512,6 +513,7 @@ void MainWindow::on_connectButton_clicked()
         ui->connectButton->setText("Disconnected");
         ui->operatingModes_groupBox->setEnabled(false);
         ui->status_groupBox->setEnabled(false);
+        ui->pushButton_ConnectLED->setEnabled(false);
         m_firstConnect = false;
 
         ui->internalMemTest_checkBox->setChecked(false);

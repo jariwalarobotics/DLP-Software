@@ -524,7 +524,7 @@ void MainWindow::on_addPatternsButton_clicked()
         ui->selectAllButton->setEnabled(true);
         ui->ptnSetting_groupBox->setEnabled(true);
         ui->removePatternsButton->setEnabled(true);
-        on_patternSelect(m_elements.size()-1,m_elements);
+        on_patternSelect(0,m_elements);
     }
 
     return;
@@ -561,11 +561,19 @@ void MainWindow::on_removePatternsButton_clicked()
  */
 void MainWindow::on_startPatSequence_Button_clicked()
 {
+    if (m_elements.size() <= 0)
+    {
+        showStatus("Error:No pattern sequence to Start");
+        return;
+    }
     AutoSendPatSeq->start();
     int ExposureTime = ui->exposure_lineEdit->text().toInt();
     int DarkTime = ui->darkPeriod_lineEdit->text().toInt();
 
     delay = (ExposureTime + DarkTime) / 1000;
+    ui->stopPatSequence_Button->setEnabled(true);
+    ui->pausePatSequence_Button->setEnabled(true);
+    ui->startPatSequence_Button->setEnabled(false);
 }
 
 /**
@@ -600,9 +608,12 @@ void MainWindow::on_pausePatSequence_Button_clicked()
 void MainWindow::on_stopPatSequence_Button_clicked()
 {
     Auto_m_elements.clear();
+    ui->startPatSequence_Button->setEnabled(true);
+    ui->pausePatSequence_Button->setEnabled(false);
+    ui->stopPatSequence_Button->setEnabled(false);
     waveWindow->ClearElements();
     waveWindow->updatePatternList(m_elements);
-    waveWindow->select(WaveFormWindow::SELECT_SINGLE, m_elements.size());
+    on_patternSelect(0,m_elements);
     waveWindow->draw();
     AutoSendPatSeq->stop();
 
@@ -637,14 +648,21 @@ void MainWindow::on_patternSelect(int index, QList<PatternElement> patElem)
 
     if (index < 0)
     {
-        ui->ptnSetting_groupBox->setTitle("Pattern");
         ui->ptnSetting_groupBox->setEnabled(false);
         ui->removePatternsButton->setEnabled(false);
+        if (m_elements.size() <= 0)
+        {
+            ui->PatternIndex->setText("");
+        }else
+        {
+            on_patternSelect(0, m_elements);
+        }
         return;
     }
 
     ui->ptnSetting_groupBox->setEnabled(true);
-    ui->PatternIndex->setText(QString ("Pattern %1").arg(index));
+    QString lenght = QString::number(m_elements.size() - 1);
+    ui->PatternIndex->setText(QString::number(index)+ " / " + lenght);
     //ui->ptnSetting_groupBox->setTitle(QString("Pattern %1").arg(index));
     ui->triggerIn_checkBox->setChecked(m_elements[index].trigIn);
     ui->triggerOut2_checkBox->setChecked(m_elements[index].trigOut2);
@@ -835,7 +853,7 @@ void MainWindow::SendPatSequence()
         //waveWindow->select(WaveFormWindow::SELECT_NONE, -1);
         waveWindow->draw();
         AutoSendPatSeq->stop();
-
+        ui->startPatSequence_Button->setEnabled(true);
         PatCount = 0;
         return;
     }

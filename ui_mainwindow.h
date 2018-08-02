@@ -238,6 +238,7 @@ public:
     QHBoxLayout *horizontalLayout_46;
     QGroupBox *ptnSetting_groupBox;
     QVBoxLayout *verticalLayout_38;
+    QGroupBox *groupBox_PatternIndex;
     QLabel *PatternIndex;
     QGroupBox *groupBox_Timing;
     QLineEdit *exposure_lineEdit;
@@ -1166,6 +1167,10 @@ public:
         font8.setFamily(QStringLiteral("Arial"));
         font8.setPointSize(10);
         USBDevicePath_TextEdit->setFont(font8);
+        USBDevicePath_TextEdit->setStyleSheet(QLatin1String("QTextEdit{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+";}"));
         USBDevicePath = new QLabel(groupBox_LEDDriverStatus);
         USBDevicePath->setObjectName(QStringLiteral("USBDevicePath"));
         USBDevicePath->setGeometry(QRect(360, 23, 121, 31));
@@ -1185,6 +1190,11 @@ public:
         font9.setBold(true);
         font9.setWeight(75);
         pushButton_RestartLEDDriver->setFont(font9);
+        pushButton_RestartLEDDriver->setStyleSheet(QLatin1String("QPushButtonl{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+"color:rgb(0,120,120);\n"
+";}"));
         checkBox_InternalInitialization = new QCheckBox(groupBox_LEDDriverStatus);
         checkBox_InternalInitialization->setObjectName(QStringLiteral("checkBox_InternalInitialization"));
         checkBox_InternalInitialization->setEnabled(false);
@@ -1235,6 +1245,10 @@ public:
         DMDTempMax_text->setEnabled(false);
         DMDTempMax_text->setGeometry(QRect(300, 110, 75, 25));
         DMDTempMax_text->setFont(font4);
+        DMDTempMax_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+";}"));
         label_LEDTempMax = new QLabel(groupBox_LEDDriverStatus);
         label_LEDTempMax->setObjectName(QStringLiteral("label_LEDTempMax"));
         label_LEDTempMax->setGeometry(QRect(200, 146, 90, 25));
@@ -1245,6 +1259,10 @@ public:
         LEDTempMax_text->setEnabled(false);
         LEDTempMax_text->setGeometry(QRect(300, 146, 75, 25));
         LEDTempMax_text->setFont(font4);
+        LEDTempMax_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+";}"));
         label_BoardTempMax = new QLabel(groupBox_LEDDriverStatus);
         label_BoardTempMax->setObjectName(QStringLiteral("label_BoardTempMax"));
         label_BoardTempMax->setGeometry(QRect(200, 185, 95, 25));
@@ -1255,6 +1273,10 @@ public:
         BoardTempMax_text->setEnabled(false);
         BoardTempMax_text->setGeometry(QRect(300, 185, 75, 25));
         BoardTempMax_text->setFont(font4);
+        BoardTempMax_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+";}"));
         label_LEDCurrentMax = new QLabel(groupBox_LEDDriverStatus);
         label_LEDCurrentMax->setObjectName(QStringLiteral("label_LEDCurrentMax"));
         label_LEDCurrentMax->setGeometry(QRect(200, 220, 100, 25));
@@ -1265,6 +1287,10 @@ public:
         LEDCurrentMax_text->setEnabled(false);
         LEDCurrentMax_text->setGeometry(QRect(300, 220, 75, 25));
         LEDCurrentMax_text->setFont(font4);
+        LEDCurrentMax_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+";}"));
         label_IntensityOffset = new QLabel(groupBox_LEDDriverStatus);
         label_IntensityOffset->setObjectName(QStringLiteral("label_IntensityOffset"));
         label_IntensityOffset->setGeometry(QRect(200, 260, 90, 25));
@@ -1274,6 +1300,10 @@ public:
         Intensity_offset_text->setObjectName(QStringLiteral("Intensity_offset_text"));
         Intensity_offset_text->setEnabled(false);
         Intensity_offset_text->setGeometry(QRect(300, 260, 75, 25));
+        Intensity_offset_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+";}"));
         label_IntensityGain = new QLabel(groupBox_LEDDriverStatus);
         label_IntensityGain->setObjectName(QStringLiteral("label_IntensityGain"));
         label_IntensityGain->setGeometry(QRect(200, 300, 95, 25));
@@ -1284,6 +1314,10 @@ public:
         IntensityGain_text->setEnabled(false);
         IntensityGain_text->setGeometry(QRect(300, 300, 75, 25));
         IntensityGain_text->setFont(font4);
+        IntensityGain_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+";}"));
         Label_DMDTemp = new QLabel(groupBox_LEDDriverStatus);
         Label_DMDTemp->setObjectName(QStringLiteral("Label_DMDTemp"));
         Label_DMDTemp->setGeometry(QRect(400, 110, 90, 25));
@@ -1294,6 +1328,10 @@ public:
         DMDTemp_text->setEnabled(false);
         DMDTemp_text->setGeometry(QRect(520, 110, 75, 25));
         DMDTemp_text->setFont(font4);
+        DMDTemp_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+";}"));
         label_LEDTemp = new QLabel(groupBox_LEDDriverStatus);
         label_LEDTemp->setObjectName(QStringLiteral("label_LEDTemp"));
         label_LEDTemp->setGeometry(QRect(400, 146, 95, 25));
@@ -1304,6 +1342,10 @@ public:
         LEDTemp_text->setEnabled(false);
         LEDTemp_text->setGeometry(QRect(520, 146, 75, 25));
         LEDTemp_text->setFont(font4);
+        LEDTemp_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+";}"));
         label_BoardTemp = new QLabel(groupBox_LEDDriverStatus);
         label_BoardTemp->setObjectName(QStringLiteral("label_BoardTemp"));
         label_BoardTemp->setGeometry(QRect(400, 185, 95, 25));
@@ -1314,6 +1356,10 @@ public:
         BoardTemp_text->setEnabled(false);
         BoardTemp_text->setGeometry(QRect(520, 185, 75, 25));
         BoardTemp_text->setFont(font4);
+        BoardTemp_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+";}"));
         label_LEDVoltage = new QLabel(groupBox_LEDDriverStatus);
         label_LEDVoltage->setObjectName(QStringLiteral("label_LEDVoltage"));
         label_LEDVoltage->setGeometry(QRect(400, 220, 95, 25));
@@ -1324,6 +1370,10 @@ public:
         LEDVoltage_text->setEnabled(false);
         LEDVoltage_text->setGeometry(QRect(520, 220, 75, 25));
         LEDVoltage_text->setFont(font4);
+        LEDVoltage_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+";}"));
         label_LEDCurrent = new QLabel(groupBox_LEDDriverStatus);
         label_LEDCurrent->setObjectName(QStringLiteral("label_LEDCurrent"));
         label_LEDCurrent->setGeometry(QRect(400, 260, 105, 25));
@@ -1333,6 +1383,10 @@ public:
         LEDCurrent_text->setObjectName(QStringLiteral("LEDCurrent_text"));
         LEDCurrent_text->setEnabled(false);
         LEDCurrent_text->setGeometry(QRect(520, 260, 75, 25));
+        LEDCurrent_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+";}"));
         label_CycleTime = new QLabel(groupBox_LEDDriverStatus);
         label_CycleTime->setObjectName(QStringLiteral("label_CycleTime"));
         label_CycleTime->setGeometry(QRect(400, 300, 95, 25));
@@ -1343,6 +1397,10 @@ public:
         CycleTime_Text->setEnabled(false);
         CycleTime_Text->setGeometry(QRect(520, 300, 75, 25));
         CycleTime_Text->setFont(font4);
+        CycleTime_Text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+";}"));
         label_IntensityVoltage = new QLabel(groupBox_LEDDriverStatus);
         label_IntensityVoltage->setObjectName(QStringLiteral("label_IntensityVoltage"));
         label_IntensityVoltage->setGeometry(QRect(620, 110, 150, 25));
@@ -1353,6 +1411,10 @@ public:
         IntensityVoltage_text->setEnabled(false);
         IntensityVoltage_text->setGeometry(QRect(770, 110, 150, 25));
         IntensityVoltage_text->setFont(font4);
+        IntensityVoltage_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+";}"));
         label_Intensity = new QLabel(groupBox_LEDDriverStatus);
         label_Intensity->setObjectName(QStringLiteral("label_Intensity"));
         label_Intensity->setGeometry(QRect(620, 146, 120, 25));
@@ -1362,6 +1424,10 @@ public:
         Intensity_text->setObjectName(QStringLiteral("Intensity_text"));
         Intensity_text->setEnabled(false);
         Intensity_text->setGeometry(QRect(770, 146, 150, 25));
+        Intensity_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+";}"));
         label_LEDSerial = new QLabel(groupBox_LEDDriverStatus);
         label_LEDSerial->setObjectName(QStringLiteral("label_LEDSerial"));
         label_LEDSerial->setGeometry(QRect(620, 185, 120, 25));
@@ -1373,6 +1439,10 @@ public:
         LEDSerial_text->setGeometry(QRect(770, 185, 200, 25));
         sizePolicy3.setHeightForWidth(LEDSerial_text->sizePolicy().hasHeightForWidth());
         LEDSerial_text->setSizePolicy(sizePolicy3);
+        LEDSerial_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+";}"));
         label_LESerial = new QLabel(groupBox_LEDDriverStatus);
         label_LESerial->setObjectName(QStringLiteral("label_LESerial"));
         label_LESerial->setGeometry(QRect(620, 220, 120, 25));
@@ -1389,6 +1459,10 @@ public:
         sizePolicy3.setHeightForWidth(LESerial_text->sizePolicy().hasHeightForWidth());
         LESerial_text->setSizePolicy(sizePolicy3);
         LESerial_text->setFont(font4);
+        LESerial_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+";}"));
         label_PCBFanSpeed = new QLabel(groupBox_LEDDriverStatus);
         label_PCBFanSpeed->setObjectName(QStringLiteral("label_PCBFanSpeed"));
         label_PCBFanSpeed->setGeometry(QRect(10, 350, 150, 25));
@@ -1398,6 +1472,10 @@ public:
         PCBFanSpeed_text->setObjectName(QStringLiteral("PCBFanSpeed_text"));
         PCBFanSpeed_text->setGeometry(QRect(160, 350, 95, 25));
         PCBFanSpeed_text->setFont(font4);
+        PCBFanSpeed_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+";}"));
         label_DMDFanSpeed = new QLabel(groupBox_LEDDriverStatus);
         label_DMDFanSpeed->setObjectName(QStringLiteral("label_DMDFanSpeed"));
         label_DMDFanSpeed->setGeometry(QRect(10, 385, 150, 25));
@@ -1407,6 +1485,10 @@ public:
         DMDFanSpeed_text->setObjectName(QStringLiteral("DMDFanSpeed_text"));
         DMDFanSpeed_text->setGeometry(QRect(160, 385, 95, 25));
         DMDFanSpeed_text->setFont(font4);
+        DMDFanSpeed_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+";}"));
         label_LEDFanSpeed = new QLabel(groupBox_LEDDriverStatus);
         label_LEDFanSpeed->setObjectName(QStringLiteral("label_LEDFanSpeed"));
         label_LEDFanSpeed->setGeometry(QRect(10, 420, 150, 25));
@@ -1416,6 +1498,10 @@ public:
         LEDFanSpeed_text->setObjectName(QStringLiteral("LEDFanSpeed_text"));
         LEDFanSpeed_text->setGeometry(QRect(160, 420, 95, 25));
         LEDFanSpeed_text->setFont(font4);
+        LEDFanSpeed_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+";}"));
         label_LEDCurrent2 = new QLabel(groupBox_LEDDriverStatus);
         label_LEDCurrent2->setObjectName(QStringLiteral("label_LEDCurrent2"));
         label_LEDCurrent2->setGeometry(QRect(10, 470, 150, 25));
@@ -1462,18 +1548,29 @@ public:
         pushButton_SwTrigger->setFont(font9);
         pushButton_ConnectLED = new QPushButton(groupBox_LEDDriverStatus);
         pushButton_ConnectLED->setObjectName(QStringLiteral("pushButton_ConnectLED"));
+        pushButton_ConnectLED->setEnabled(false);
         pushButton_ConnectLED->setGeometry(QRect(10, 23, 95, 31));
         pushButton_ConnectLED->setFont(font11);
+        pushButton_ConnectLED->setStyleSheet(QLatin1String("QPushButtonl{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+"color:rgb(0,120,120);\n"
+";}"));
         Text_Readbuffer = new QTextEdit(groupBox_LEDDriverStatus);
         Text_Readbuffer->setObjectName(QStringLiteral("Text_Readbuffer"));
         Text_Readbuffer->setGeometry(QRect(100, 65, 801, 35));
         sizePolicy10.setHeightForWidth(Text_Readbuffer->sizePolicy().hasHeightForWidth());
         Text_Readbuffer->setSizePolicy(sizePolicy10);
         Text_Readbuffer->setFont(font4);
+        Text_Readbuffer->setStyleSheet(QLatin1String("QTextEdit{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+";}"));
         LEDCurrent_lineEdit = new QLineEdit(groupBox_LEDDriverStatus);
         LEDCurrent_lineEdit->setObjectName(QStringLiteral("LEDCurrent_lineEdit"));
         LEDCurrent_lineEdit->setGeometry(QRect(10, 495, 150, 25));
         LEDCurrent_lineEdit->setFont(font4);
+        LEDCurrent_lineEdit->setStyleSheet(QStringLiteral(""));
         Intensity_lineEdit = new QLineEdit(groupBox_LEDDriverStatus);
         Intensity_lineEdit->setObjectName(QStringLiteral("Intensity_lineEdit"));
         Intensity_lineEdit->setGeometry(QRect(330, 495, 150, 25));
@@ -1693,44 +1790,49 @@ public:
         verticalLayout_38->setContentsMargins(11, 11, 11, 11);
         verticalLayout_38->setObjectName(QStringLiteral("verticalLayout_38"));
         verticalLayout_38->setContentsMargins(-1, 20, -1, -1);
-        PatternIndex = new QLabel(ptnSetting_groupBox);
+        groupBox_PatternIndex = new QGroupBox(ptnSetting_groupBox);
+        groupBox_PatternIndex->setObjectName(QStringLiteral("groupBox_PatternIndex"));
+        groupBox_PatternIndex->setMinimumSize(QSize(0, 70));
+        PatternIndex = new QLabel(groupBox_PatternIndex);
         PatternIndex->setObjectName(QStringLiteral("PatternIndex"));
-        PatternIndex->setMinimumSize(QSize(0, 30));
-        QFont font13;
-        font13.setFamily(QStringLiteral("Arial"));
-        font13.setBold(true);
-        font13.setWeight(75);
-        PatternIndex->setFont(font13);
-        PatternIndex->setStyleSheet(QLatin1String("QLabel{ border: 1px solid ;\n"
-"background-color: transparent;\n"
-"border-color: rgb(0,150,150);\n"
-"color:rgb(0,120,120);\n"
-";}"));
+        PatternIndex->setGeometry(QRect(3, 20, 105, 35));
+        PatternIndex->setFont(font);
+        PatternIndex->setStyleSheet(QLatin1String("QLabel{border:0px;\n"
+"color:rgb(0,150,150);}"));
 
-        verticalLayout_38->addWidget(PatternIndex);
+        verticalLayout_38->addWidget(groupBox_PatternIndex);
 
         groupBox_Timing = new QGroupBox(ptnSetting_groupBox);
         groupBox_Timing->setObjectName(QStringLiteral("groupBox_Timing"));
         sizePolicy8.setHeightForWidth(groupBox_Timing->sizePolicy().hasHeightForWidth());
         groupBox_Timing->setSizePolicy(sizePolicy8);
-        groupBox_Timing->setMinimumSize(QSize(0, 150));
+        groupBox_Timing->setMinimumSize(QSize(0, 160));
         exposure_lineEdit = new QLineEdit(groupBox_Timing);
         exposure_lineEdit->setObjectName(QStringLiteral("exposure_lineEdit"));
-        exposure_lineEdit->setGeometry(QRect(13, 45, 90, 30));
+        exposure_lineEdit->setGeometry(QRect(13, 50, 90, 30));
+        QFont font13;
+        font13.setPointSize(10);
+        exposure_lineEdit->setFont(font13);
         label_Exposure = new QLabel(groupBox_Timing);
         label_Exposure->setObjectName(QStringLiteral("label_Exposure"));
         label_Exposure->setGeometry(QRect(30, 20, 61, 21));
-        label_Exposure->setFont(font13);
+        QFont font14;
+        font14.setFamily(QStringLiteral("Arial"));
+        font14.setPointSize(10);
+        font14.setBold(false);
+        font14.setWeight(50);
+        label_Exposure->setFont(font14);
         label_Exposure->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
         label_Exposure->setWordWrap(true);
         label_DarkTime = new QLabel(groupBox_Timing);
         label_DarkTime->setObjectName(QStringLiteral("label_DarkTime"));
-        label_DarkTime->setGeometry(QRect(30, 82, 61, 21));
-        label_DarkTime->setFont(font13);
+        label_DarkTime->setGeometry(QRect(30, 88, 61, 21));
+        label_DarkTime->setFont(font14);
         label_DarkTime->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
         darkPeriod_lineEdit = new QLineEdit(groupBox_Timing);
         darkPeriod_lineEdit->setObjectName(QStringLiteral("darkPeriod_lineEdit"));
-        darkPeriod_lineEdit->setGeometry(QRect(13, 110, 90, 30));
+        darkPeriod_lineEdit->setGeometry(QRect(13, 115, 90, 30));
+        darkPeriod_lineEdit->setFont(font13);
 
         verticalLayout_38->addWidget(groupBox_Timing);
 
@@ -1833,17 +1935,21 @@ public:
 
         pausePatSequence_Button = new QPushButton(groupBox_StartPauseStop);
         pausePatSequence_Button->setObjectName(QStringLiteral("pausePatSequence_Button"));
+        pausePatSequence_Button->setEnabled(false);
         sizePolicy3.setHeightForWidth(pausePatSequence_Button->sizePolicy().hasHeightForWidth());
         pausePatSequence_Button->setSizePolicy(sizePolicy3);
         pausePatSequence_Button->setMinimumSize(QSize(81, 60));
         QIcon icon12;
         icon12.addFile(QStringLiteral(":/new/prefix1/Icons/my_pause.png"), QSize(), QIcon::Normal, QIcon::Off);
         pausePatSequence_Button->setIcon(icon12);
+        pausePatSequence_Button->setCheckable(false);
+        pausePatSequence_Button->setChecked(false);
 
         verticalLayout_6->addWidget(pausePatSequence_Button);
 
         stopPatSequence_Button = new QPushButton(groupBox_StartPauseStop);
         stopPatSequence_Button->setObjectName(QStringLiteral("stopPatSequence_Button"));
+        stopPatSequence_Button->setEnabled(false);
         sizePolicy3.setHeightForWidth(stopPatSequence_Button->sizePolicy().hasHeightForWidth());
         stopPatSequence_Button->setSizePolicy(sizePolicy3);
         stopPatSequence_Button->setMinimumSize(QSize(81, 60));
@@ -2033,6 +2139,7 @@ public:
         selectAllButton->setText(QString());
         groupBox_PatternImage->setTitle(QString());
         ptnSetting_groupBox->setTitle(QApplication::translate("MainWindow", "Pattern -", nullptr));
+        groupBox_PatternIndex->setTitle(QApplication::translate("MainWindow", "Index", nullptr));
         PatternIndex->setText(QString());
         groupBox_Timing->setTitle(QApplication::translate("MainWindow", "Timing (us)", nullptr));
         exposure_lineEdit->setText(QString());
