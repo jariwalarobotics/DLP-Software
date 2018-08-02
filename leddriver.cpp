@@ -152,7 +152,7 @@ void MainWindow::on_pushButton_SetIntensity_clicked()
     unsigned int written = 0;
     int number = ui->Intensity_lineEdit->text().toInt();
 
-    if(number < 18000)
+    if(number > 18000)
     {
         showStatus("Error: Enter value below 18000!!");
         return;
@@ -194,7 +194,7 @@ void MainWindow::on_pushButton_SetLEDCurrent_clicked()
     unsigned int written = 0;
     int number = ui->LEDCurrent_lineEdit->text().toInt();
 
-    if (number < 18000)
+    if (number > 18000)
     {
         showStatus("Error: Enter value below 18000!!");
         return;
