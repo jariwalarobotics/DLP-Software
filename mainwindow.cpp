@@ -278,6 +278,7 @@ void MainWindow::hideFrames()
     ui->pushButton_info->setChecked(false);
     ui->pushButton_LEDDriver->setChecked(false);
     ui->pushButton_patternMode->setChecked(false);
+    ui->pushButton_ZMachineControl->setChecked(false);
 }
 
 /**
@@ -683,7 +684,7 @@ void MainWindow::on_pushButton_patternMode_clicked()
     }
 
     ;
-    ui->stackedWidget->setCurrentIndex(2);
+    ui->stackedWidget->setCurrentIndex(3);
     ui->pushButton_patternMode->setChecked(true);
 }
 
@@ -705,3 +706,11 @@ void MainWindow::on_dummyConnection_clicked(bool checked)
     USB_SetFakeConnection(checked);
 }
 
+
+void MainWindow::on_pushButton_ZMachineControl_clicked()
+{
+    hideFrames();
+
+    ui->stackedWidget->setCurrentIndex(2);
+    ui->pushButton_ZMachineControl->setChecked(true);
+}

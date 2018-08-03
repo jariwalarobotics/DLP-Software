@@ -183,6 +183,8 @@ private slots:
 
     void on_pushButton_ExTrigger_clicked();
 
+    void on_pushButton_ZMachineControl_clicked();
+
 private:
 
     Ui::MainWindow *ui;
