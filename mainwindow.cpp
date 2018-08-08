@@ -8,6 +8,8 @@
 #include <QTime>
 #include <QDateTime>
 #include <QTextStream>
+#include <QSerialPort>
+#include <QSerialPortInfo>
 #include <QInputDialog>
 #include <QDesktopServices>
 
@@ -61,6 +63,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
 
     ui->setupUi(this);
+
     this->setCentralWidget(ui->scrollArea);
 
     waveWindow = new WaveFormWindow();
@@ -437,6 +440,7 @@ void MainWindow::on_connectButton_clicked()
     {
 
         getStatus();
+        getSerialPort();
         LCR_SetMode(SLmode);
 
         QIcon icon(":/new/prefix1/Icons/Led_G.png");
@@ -714,3 +718,4 @@ void MainWindow::on_pushButton_ZMachineControl_clicked()
     ui->stackedWidget->setCurrentIndex(2);
     ui->pushButton_ZMachineControl->setChecked(true);
 }
+

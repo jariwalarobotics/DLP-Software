@@ -848,12 +848,15 @@ void MainWindow::SendPatSequence()
     {
         showStatus("Pattern sequence completed!!");
         Auto_m_elements.clear();
+        ui->startPatSequence_Button->setEnabled(true);
+        ui->pausePatSequence_Button->setEnabled(false);
+        ui->stopPatSequence_Button->setEnabled(false);
         waveWindow->ClearElements();
         waveWindow->updatePatternList(m_elements);
-        //waveWindow->select(WaveFormWindow::SELECT_NONE, -1);
+        on_patternSelect(0,m_elements);
         waveWindow->draw();
         AutoSendPatSeq->stop();
-        ui->startPatSequence_Button->setEnabled(true);
+
         PatCount = 0;
         return;
     }

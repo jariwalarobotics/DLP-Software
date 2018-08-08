@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -39,7 +39,8 @@ SOURCES += \
     HiresLib/splash.c \
     HiresLib/usb.c \
     patternmode.cpp \
-    leddriver.cpp
+    leddriver.cpp \
+    machinecontrol.cpp
 
 HEADERS += \
         mainwindow.h \

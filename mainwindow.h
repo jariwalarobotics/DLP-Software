@@ -23,6 +23,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+    BOOL DeviceConnected = false;
     BOOL _connected1 = false;
     BOOL _connected2 = false;
     BOOL _attached1 = false;
@@ -46,9 +47,10 @@ public:
 
     int AHid_Init()
     {
+        unsigned char LicenseKey[] = "IN_VISION_TESTSTAENDE_GUNTRAMS1FD5C1C29EE04879D755C3B46439BA2C27B43F684A4D74E3724D5D6CF575414176F97545576CEE645B5577E47556536FF9";
         AHID_INIT function = (AHID_INIT)ahid.resolve("AHid_Init");
         if (function != NULL)
-            return (function)(0, NULL);
+            return (function)(0, LicenseKey);
         return -1;
     }
     int AHid_Register(int * pipe, unsigned int vid, unsigned int pid, int mi,
@@ -157,6 +159,7 @@ private slots:
 
 
     void getStatus();
+    void getSerialPort();
 
     void getVersion();
     void getFrmwVersion();
@@ -184,6 +187,8 @@ private slots:
     void on_pushButton_ExTrigger_clicked();
 
     void on_pushButton_ZMachineControl_clicked();
+
+    void on_BoardConnect_clicked();
 
 private:
 

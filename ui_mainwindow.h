@@ -13,6 +13,7 @@
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCheckBox>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
@@ -215,7 +216,59 @@ public:
     QFrame *frame_ZMavhineControl;
     QGridLayout *gridLayout_12;
     QGroupBox *groupBox_ZMachineControl;
-    QHBoxLayout *horizontalLayout_28;
+    QGroupBox *PrinterBoard;
+    QLabel *ShielConnections;
+    QComboBox *comboBox_ShieldConnections;
+    QComboBox *comboBox_DataEncoding;
+    QLabel *DataEncoding;
+    QComboBox *comboBox_MovementPos;
+    QLabel *MovementPositioning;
+    QLabel *USBpath;
+    QTextEdit *PortPath;
+    QLabel *Baudrate;
+    QComboBox *comboBox_MovementPos_2;
+    QPushButton *BoardConnect;
+    QLabel *ComPort;
+    QComboBox *SerialPort;
+    QGroupBox *Speed;
+    QLabel *MaxSpeed;
+    QTextEdit *MaxSpeed_Text;
+    QLabel *MinSpeed;
+    QTextEdit *MinSpeed_Text;
+    QTextEdit *MotorStarupSpeed_Text;
+    QLabel *MotrStartSpeed;
+    QGroupBox *ActuatorMotor;
+    QLabel *MotorStep;
+    QTextEdit *MotorStepAngle_Text;
+    QLabel *MicroStep;
+    QTextEdit *MicroStep_Text;
+    QTextEdit *LeadScrew_Text;
+    QLabel *LeadScrewPitch;
+    QLabel *ZAxisHeight;
+    QTextEdit *ZAxisHeight_Text;
+    QGroupBox *Gcode;
+    QTextEdit *StartPrintGcode;
+    QLabel *EndPrint;
+    QTextEdit *EndPrintGcode;
+    QTextEdit *StartLayerGcode;
+    QLabel *StartLayer;
+    QLabel *startPrint;
+    QLabel *EndLayer;
+    QTextEdit *EndLayerGcode;
+    QGroupBox *ZMovement;
+    QLabel *label;
+    QLabel *label_2;
+    QPushButton *Moveup100;
+    QPushButton *Moveup50;
+    QPushButton *Moveup10;
+    QPushButton *Moveup1;
+    QPushButton *Moveup01;
+    QPushButton *Movedown50;
+    QPushButton *Movedown01;
+    QPushButton *Movedown1;
+    QPushButton *Movedown100;
+    QPushButton *Movedown10;
+    QPushButton *AutoHome;
     QWidget *patternModePage;
     QGridLayout *gridLayout_3;
     QFrame *frame_patternMode;
@@ -1623,22 +1676,273 @@ public:
         gridLayout_12->setObjectName(QStringLiteral("gridLayout_12"));
         groupBox_ZMachineControl = new QGroupBox(frame_ZMavhineControl);
         groupBox_ZMachineControl->setObjectName(QStringLiteral("groupBox_ZMachineControl"));
-        sizePolicy7.setHeightForWidth(groupBox_ZMachineControl->sizePolicy().hasHeightForWidth());
-        groupBox_ZMachineControl->setSizePolicy(sizePolicy7);
         groupBox_ZMachineControl->setFont(font2);
         groupBox_ZMachineControl->setAutoFillBackground(false);
         groupBox_ZMachineControl->setStyleSheet(QLatin1String("QGroupBox{ border: 1.5px solid ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
 "color:rgb(0,120,120);\n"
+";}\n"
+"QLabel{border:0px}"));
+        PrinterBoard = new QGroupBox(groupBox_ZMachineControl);
+        PrinterBoard->setObjectName(QStringLiteral("PrinterBoard"));
+        PrinterBoard->setGeometry(QRect(11, 35, 1055, 150));
+        sizePolicy4.setHeightForWidth(PrinterBoard->sizePolicy().hasHeightForWidth());
+        PrinterBoard->setSizePolicy(sizePolicy4);
+        PrinterBoard->setMinimumSize(QSize(429, 150));
+        PrinterBoard->setFont(font11);
+        PrinterBoard->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+"color:rgb(0,120,120);\n"
 ";}"));
-        horizontalLayout_28 = new QHBoxLayout(groupBox_ZMachineControl);
-        horizontalLayout_28->setSpacing(6);
-        horizontalLayout_28->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_28->setObjectName(QStringLiteral("horizontalLayout_28"));
-        horizontalLayout_28->setContentsMargins(-1, 18, -1, -1);
+        ShielConnections = new QLabel(PrinterBoard);
+        ShielConnections->setObjectName(QStringLiteral("ShielConnections"));
+        ShielConnections->setGeometry(QRect(20, 18, 140, 23));
+        ShielConnections->setFont(font6);
+        comboBox_ShieldConnections = new QComboBox(PrinterBoard);
+        comboBox_ShieldConnections->addItem(QString());
+        comboBox_ShieldConnections->addItem(QString());
+        comboBox_ShieldConnections->setObjectName(QStringLiteral("comboBox_ShieldConnections"));
+        comboBox_ShieldConnections->setGeometry(QRect(10, 45, 150, 30));
+        comboBox_ShieldConnections->setFont(font8);
+        comboBox_DataEncoding = new QComboBox(PrinterBoard);
+        comboBox_DataEncoding->addItem(QString());
+        comboBox_DataEncoding->addItem(QString());
+        comboBox_DataEncoding->setObjectName(QStringLiteral("comboBox_DataEncoding"));
+        comboBox_DataEncoding->setGeometry(QRect(185, 45, 150, 30));
+        comboBox_DataEncoding->setFont(font8);
+        DataEncoding = new QLabel(PrinterBoard);
+        DataEncoding->setObjectName(QStringLiteral("DataEncoding"));
+        DataEncoding->setGeometry(QRect(215, 18, 111, 23));
+        DataEncoding->setFont(font6);
+        comboBox_MovementPos = new QComboBox(PrinterBoard);
+        comboBox_MovementPos->addItem(QString());
+        comboBox_MovementPos->addItem(QString());
+        comboBox_MovementPos->setObjectName(QStringLiteral("comboBox_MovementPos"));
+        comboBox_MovementPos->setGeometry(QRect(365, 45, 165, 30));
+        comboBox_MovementPos->setFont(font8);
+        MovementPositioning = new QLabel(PrinterBoard);
+        MovementPositioning->setObjectName(QStringLiteral("MovementPositioning"));
+        MovementPositioning->setGeometry(QRect(375, 18, 150, 23));
+        MovementPositioning->setFont(font6);
+        USBpath = new QLabel(PrinterBoard);
+        USBpath->setObjectName(QStringLiteral("USBpath"));
+        USBpath->setGeometry(QRect(595, 18, 150, 23));
+        USBpath->setFont(font6);
+        PortPath = new QTextEdit(PrinterBoard);
+        PortPath->setObjectName(QStringLiteral("PortPath"));
+        PortPath->setGeometry(QRect(560, 45, 250, 30));
+        PortPath->setFont(font8);
+        Baudrate = new QLabel(PrinterBoard);
+        Baudrate->setObjectName(QStringLiteral("Baudrate"));
+        Baudrate->setGeometry(QRect(875, 18, 150, 23));
+        Baudrate->setFont(font6);
+        comboBox_MovementPos_2 = new QComboBox(PrinterBoard);
+        comboBox_MovementPos_2->addItem(QString());
+        comboBox_MovementPos_2->addItem(QString());
+        comboBox_MovementPos_2->addItem(QString());
+        comboBox_MovementPos_2->addItem(QString());
+        comboBox_MovementPos_2->addItem(QString());
+        comboBox_MovementPos_2->addItem(QString());
+        comboBox_MovementPos_2->addItem(QString());
+        comboBox_MovementPos_2->addItem(QString());
+        comboBox_MovementPos_2->addItem(QString());
+        comboBox_MovementPos_2->addItem(QString());
+        comboBox_MovementPos_2->addItem(QString());
+        comboBox_MovementPos_2->addItem(QString());
+        comboBox_MovementPos_2->setObjectName(QStringLiteral("comboBox_MovementPos_2"));
+        comboBox_MovementPos_2->setGeometry(QRect(840, 45, 165, 30));
+        comboBox_MovementPos_2->setFont(font8);
+        comboBox_MovementPos_2->setMaxVisibleItems(11);
+        BoardConnect = new QPushButton(PrinterBoard);
+        BoardConnect->setObjectName(QStringLiteral("BoardConnect"));
+        BoardConnect->setEnabled(false);
+        BoardConnect->setGeometry(QRect(20, 100, 135, 41));
+        BoardConnect->setFont(font);
+        ComPort = new QLabel(PrinterBoard);
+        ComPort->setObjectName(QStringLiteral("ComPort"));
+        ComPort->setGeometry(QRect(200, 85, 111, 23));
+        ComPort->setFont(font6);
+        SerialPort = new QComboBox(PrinterBoard);
+        SerialPort->setObjectName(QStringLiteral("SerialPort"));
+        SerialPort->setEnabled(false);
+        SerialPort->setGeometry(QRect(170, 110, 150, 30));
+        SerialPort->setFont(font8);
+        Speed = new QGroupBox(groupBox_ZMachineControl);
+        Speed->setObjectName(QStringLiteral("Speed"));
+        Speed->setGeometry(QRect(9, 200, 441, 90));
+        Speed->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+"color:rgb(0,120,120);\n"
+";}"));
+        MaxSpeed = new QLabel(Speed);
+        MaxSpeed->setObjectName(QStringLiteral("MaxSpeed"));
+        MaxSpeed->setGeometry(QRect(30, 15, 81, 23));
+        MaxSpeed->setFont(font6);
+        MaxSpeed_Text = new QTextEdit(Speed);
+        MaxSpeed_Text->setObjectName(QStringLiteral("MaxSpeed_Text"));
+        MaxSpeed_Text->setGeometry(QRect(10, 40, 121, 31));
+        MaxSpeed_Text->setFont(font8);
+        MinSpeed = new QLabel(Speed);
+        MinSpeed->setObjectName(QStringLiteral("MinSpeed"));
+        MinSpeed->setGeometry(QRect(170, 15, 81, 23));
+        MinSpeed->setFont(font6);
+        MinSpeed_Text = new QTextEdit(Speed);
+        MinSpeed_Text->setObjectName(QStringLiteral("MinSpeed_Text"));
+        MinSpeed_Text->setGeometry(QRect(150, 40, 121, 31));
+        MinSpeed_Text->setFont(font10);
+        MotorStarupSpeed_Text = new QTextEdit(Speed);
+        MotorStarupSpeed_Text->setObjectName(QStringLiteral("MotorStarupSpeed_Text"));
+        MotorStarupSpeed_Text->setGeometry(QRect(290, 40, 135, 31));
+        MotorStarupSpeed_Text->setFont(font10);
+        MotrStartSpeed = new QLabel(Speed);
+        MotrStartSpeed->setObjectName(QStringLiteral("MotrStartSpeed"));
+        MotrStartSpeed->setGeometry(QRect(295, 15, 131, 23));
+        MotrStartSpeed->setFont(font6);
+        ActuatorMotor = new QGroupBox(groupBox_ZMachineControl);
+        ActuatorMotor->setObjectName(QStringLiteral("ActuatorMotor"));
+        ActuatorMotor->setGeometry(QRect(465, 200, 600, 90));
+        ActuatorMotor->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+"color:rgb(0,120,120);\n"
+";}"));
+        MotorStep = new QLabel(ActuatorMotor);
+        MotorStep->setObjectName(QStringLiteral("MotorStep"));
+        MotorStep->setGeometry(QRect(16, 15, 111, 23));
+        MotorStep->setFont(font6);
+        MotorStepAngle_Text = new QTextEdit(ActuatorMotor);
+        MotorStepAngle_Text->setObjectName(QStringLiteral("MotorStepAngle_Text"));
+        MotorStepAngle_Text->setGeometry(QRect(10, 40, 121, 31));
+        MotorStepAngle_Text->setFont(font10);
+        MicroStep = new QLabel(ActuatorMotor);
+        MicroStep->setObjectName(QStringLiteral("MicroStep"));
+        MicroStep->setGeometry(QRect(185, 15, 81, 23));
+        MicroStep->setFont(font6);
+        MicroStep_Text = new QTextEdit(ActuatorMotor);
+        MicroStep_Text->setObjectName(QStringLiteral("MicroStep_Text"));
+        MicroStep_Text->setGeometry(QRect(160, 40, 121, 31));
+        MicroStep_Text->setFont(font10);
+        LeadScrew_Text = new QTextEdit(ActuatorMotor);
+        LeadScrew_Text->setObjectName(QStringLiteral("LeadScrew_Text"));
+        LeadScrew_Text->setGeometry(QRect(305, 40, 135, 31));
+        LeadScrew_Text->setFont(font10);
+        LeadScrewPitch = new QLabel(ActuatorMotor);
+        LeadScrewPitch->setObjectName(QStringLiteral("LeadScrewPitch"));
+        LeadScrewPitch->setGeometry(QRect(315, 15, 121, 23));
+        LeadScrewPitch->setFont(font6);
+        ZAxisHeight = new QLabel(ActuatorMotor);
+        ZAxisHeight->setObjectName(QStringLiteral("ZAxisHeight"));
+        ZAxisHeight->setGeometry(QRect(480, 15, 91, 23));
+        ZAxisHeight->setFont(font6);
+        ZAxisHeight_Text = new QTextEdit(ActuatorMotor);
+        ZAxisHeight_Text->setObjectName(QStringLiteral("ZAxisHeight_Text"));
+        ZAxisHeight_Text->setGeometry(QRect(460, 40, 121, 31));
+        ZAxisHeight_Text->setFont(font10);
+        Gcode = new QGroupBox(groupBox_ZMachineControl);
+        Gcode->setObjectName(QStringLiteral("Gcode"));
+        Gcode->setGeometry(QRect(10, 300, 681, 321));
+        Gcode->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+"color:rgb(0,120,120);\n"
+";}"));
+        StartPrintGcode = new QTextEdit(Gcode);
+        StartPrintGcode->setObjectName(QStringLiteral("StartPrintGcode"));
+        StartPrintGcode->setGeometry(QRect(10, 40, 141, 271));
+        StartPrintGcode->setFont(font8);
+        EndPrint = new QLabel(Gcode);
+        EndPrint->setObjectName(QStringLiteral("EndPrint"));
+        EndPrint->setGeometry(QRect(170, 15, 81, 23));
+        EndPrint->setFont(font6);
+        EndPrintGcode = new QTextEdit(Gcode);
+        EndPrintGcode->setObjectName(QStringLiteral("EndPrintGcode"));
+        EndPrintGcode->setGeometry(QRect(160, 40, 131, 271));
+        EndPrintGcode->setFont(font8);
+        StartLayerGcode = new QTextEdit(Gcode);
+        StartLayerGcode->setObjectName(QStringLiteral("StartLayerGcode"));
+        StartLayerGcode->setGeometry(QRect(300, 40, 181, 271));
+        StartLayerGcode->setFont(font8);
+        StartLayer = new QLabel(Gcode);
+        StartLayer->setObjectName(QStringLiteral("StartLayer"));
+        StartLayer->setGeometry(QRect(300, 15, 101, 23));
+        StartLayer->setFont(font6);
+        startPrint = new QLabel(Gcode);
+        startPrint->setObjectName(QStringLiteral("startPrint"));
+        startPrint->setGeometry(QRect(25, 15, 81, 23));
+        startPrint->setFont(font6);
+        EndLayer = new QLabel(Gcode);
+        EndLayer->setObjectName(QStringLiteral("EndLayer"));
+        EndLayer->setGeometry(QRect(490, 15, 91, 23));
+        EndLayer->setFont(font6);
+        EndLayerGcode = new QTextEdit(Gcode);
+        EndLayerGcode->setObjectName(QStringLiteral("EndLayerGcode"));
+        EndLayerGcode->setGeometry(QRect(490, 40, 181, 271));
+        EndLayerGcode->setFont(font8);
+        ZMovement = new QGroupBox(groupBox_ZMachineControl);
+        ZMovement->setObjectName(QStringLiteral("ZMovement"));
+        ZMovement->setGeometry(QRect(700, 300, 365, 321));
+        ZMovement->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+"color:rgb(0,120,120);\n"
+";}"));
+        label = new QLabel(ZMovement);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(60, 20, 61, 25));
+        label->setFont(font9);
+        label_2 = new QLabel(ZMovement);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setGeometry(QRect(240, 20, 81, 25));
+        label_2->setFont(font9);
+        Moveup100 = new QPushButton(ZMovement);
+        Moveup100->setObjectName(QStringLiteral("Moveup100"));
+        Moveup100->setGeometry(QRect(40, 50, 95, 30));
+        Moveup100->setFont(font8);
+        Moveup50 = new QPushButton(ZMovement);
+        Moveup50->setObjectName(QStringLiteral("Moveup50"));
+        Moveup50->setGeometry(QRect(40, 90, 95, 30));
+        Moveup50->setFont(font8);
+        Moveup10 = new QPushButton(ZMovement);
+        Moveup10->setObjectName(QStringLiteral("Moveup10"));
+        Moveup10->setGeometry(QRect(40, 130, 95, 30));
+        Moveup10->setFont(font8);
+        Moveup1 = new QPushButton(ZMovement);
+        Moveup1->setObjectName(QStringLiteral("Moveup1"));
+        Moveup1->setGeometry(QRect(40, 170, 95, 30));
+        Moveup1->setFont(font8);
+        Moveup01 = new QPushButton(ZMovement);
+        Moveup01->setObjectName(QStringLiteral("Moveup01"));
+        Moveup01->setGeometry(QRect(40, 210, 95, 30));
+        Moveup01->setFont(font8);
+        Movedown50 = new QPushButton(ZMovement);
+        Movedown50->setObjectName(QStringLiteral("Movedown50"));
+        Movedown50->setGeometry(QRect(230, 90, 95, 30));
+        Movedown50->setFont(font8);
+        Movedown01 = new QPushButton(ZMovement);
+        Movedown01->setObjectName(QStringLiteral("Movedown01"));
+        Movedown01->setGeometry(QRect(230, 210, 95, 30));
+        Movedown01->setFont(font8);
+        Movedown1 = new QPushButton(ZMovement);
+        Movedown1->setObjectName(QStringLiteral("Movedown1"));
+        Movedown1->setGeometry(QRect(230, 170, 95, 30));
+        Movedown1->setFont(font8);
+        Movedown100 = new QPushButton(ZMovement);
+        Movedown100->setObjectName(QStringLiteral("Movedown100"));
+        Movedown100->setGeometry(QRect(230, 50, 95, 30));
+        Movedown100->setFont(font8);
+        Movedown10 = new QPushButton(ZMovement);
+        Movedown10->setObjectName(QStringLiteral("Movedown10"));
+        Movedown10->setGeometry(QRect(230, 130, 95, 30));
+        Movedown10->setFont(font8);
+        AutoHome = new QPushButton(ZMovement);
+        AutoHome->setObjectName(QStringLiteral("AutoHome"));
+        AutoHome->setGeometry(QRect(140, 260, 95, 30));
+        AutoHome->setFont(font8);
 
-        gridLayout_12->addWidget(groupBox_ZMachineControl, 0, 0, 1, 1);
+        gridLayout_12->addWidget(groupBox_ZMachineControl, 0, 1, 1, 1);
 
         stackedWidget->addWidget(ZMachineControl);
         patternModePage = new QWidget();
@@ -1950,7 +2254,7 @@ public:
         waveFormArea->setWidgetResizable(true);
         scrollAreaWidgetContents_4 = new QWidget();
         scrollAreaWidgetContents_4->setObjectName(QStringLiteral("scrollAreaWidgetContents_4"));
-        scrollAreaWidgetContents_4->setGeometry(QRect(0, 0, 675, 500));
+        scrollAreaWidgetContents_4->setGeometry(QRect(0, 0, 508, 429));
         waveFormArea->setWidget(scrollAreaWidgetContents_4);
 
         horizontalLayout_46->addWidget(waveFormArea);
@@ -2065,6 +2369,7 @@ public:
         stackedWidget->setCurrentIndex(2);
         EVM_Picture_stackedWidget->setCurrentIndex(0);
         onlineResources_stackedWidget->setCurrentIndex(1);
+        comboBox_MovementPos_2->setCurrentIndex(11);
         patternMode_stackedWidget->setCurrentIndex(0);
 
 
@@ -2177,6 +2482,64 @@ public:
         pushButton_SwTrigger->setText(QApplication::translate("MainWindow", "SW Trigger", nullptr));
         pushButton_ConnectLED->setText(QApplication::translate("MainWindow", "Connect", nullptr));
         groupBox_ZMachineControl->setTitle(QApplication::translate("MainWindow", "Z Machine Control", nullptr));
+        PrinterBoard->setTitle(QApplication::translate("MainWindow", "3D Printer Board", nullptr));
+        ShielConnections->setText(QApplication::translate("MainWindow", "Shield Connections", nullptr));
+        comboBox_ShieldConnections->setItemText(0, QApplication::translate("MainWindow", "USB / Serial", nullptr));
+        comboBox_ShieldConnections->setItemText(1, QApplication::translate("MainWindow", "Disabled", nullptr));
+
+        comboBox_DataEncoding->setItemText(0, QApplication::translate("MainWindow", "ASCII", nullptr));
+        comboBox_DataEncoding->setItemText(1, QApplication::translate("MainWindow", "Binary", nullptr));
+
+        DataEncoding->setText(QApplication::translate("MainWindow", "Data Encoding", nullptr));
+        comboBox_MovementPos->setItemText(0, QApplication::translate("MainWindow", "Absolute", nullptr));
+        comboBox_MovementPos->setItemText(1, QApplication::translate("MainWindow", "Relative", nullptr));
+
+        MovementPositioning->setText(QApplication::translate("MainWindow", "Movement Positioning", nullptr));
+        USBpath->setText(QApplication::translate("MainWindow", "USB/Serial Port Path", nullptr));
+        Baudrate->setText(QApplication::translate("MainWindow", "Baud Rate", nullptr));
+        comboBox_MovementPos_2->setItemText(0, QApplication::translate("MainWindow", "300", nullptr));
+        comboBox_MovementPos_2->setItemText(1, QApplication::translate("MainWindow", "600", nullptr));
+        comboBox_MovementPos_2->setItemText(2, QApplication::translate("MainWindow", "1200", nullptr));
+        comboBox_MovementPos_2->setItemText(3, QApplication::translate("MainWindow", "2400", nullptr));
+        comboBox_MovementPos_2->setItemText(4, QApplication::translate("MainWindow", "4800", nullptr));
+        comboBox_MovementPos_2->setItemText(5, QApplication::translate("MainWindow", "9600", nullptr));
+        comboBox_MovementPos_2->setItemText(6, QApplication::translate("MainWindow", "14400", nullptr));
+        comboBox_MovementPos_2->setItemText(7, QApplication::translate("MainWindow", "19200", nullptr));
+        comboBox_MovementPos_2->setItemText(8, QApplication::translate("MainWindow", "28800", nullptr));
+        comboBox_MovementPos_2->setItemText(9, QApplication::translate("MainWindow", "38400", nullptr));
+        comboBox_MovementPos_2->setItemText(10, QApplication::translate("MainWindow", "57600", nullptr));
+        comboBox_MovementPos_2->setItemText(11, QApplication::translate("MainWindow", "115200", nullptr));
+
+        BoardConnect->setText(QApplication::translate("MainWindow", "Connect", nullptr));
+        ComPort->setText(QApplication::translate("MainWindow", "Com Port", nullptr));
+        Speed->setTitle(QApplication::translate("MainWindow", "Speed", nullptr));
+        MaxSpeed->setText(QApplication::translate("MainWindow", "Max Speed", nullptr));
+        MinSpeed->setText(QApplication::translate("MainWindow", "Min Speed", nullptr));
+        MotrStartSpeed->setText(QApplication::translate("MainWindow", "Motor Starup Speed", nullptr));
+        ActuatorMotor->setTitle(QApplication::translate("MainWindow", "Actuator / Motor", nullptr));
+        MotorStep->setText(QApplication::translate("MainWindow", "Motor Step Angle", nullptr));
+        MicroStep->setText(QApplication::translate("MainWindow", "Micro Step", nullptr));
+        LeadScrewPitch->setText(QApplication::translate("MainWindow", "LeadScrew Pitch", nullptr));
+        ZAxisHeight->setText(QApplication::translate("MainWindow", "Z Axis Height", nullptr));
+        Gcode->setTitle(QApplication::translate("MainWindow", "Gcode", nullptr));
+        EndPrint->setText(QApplication::translate("MainWindow", "End of Print", nullptr));
+        StartLayer->setText(QApplication::translate("MainWindow", "Start of Layer", nullptr));
+        startPrint->setText(QApplication::translate("MainWindow", "Start of Print", nullptr));
+        EndLayer->setText(QApplication::translate("MainWindow", "End of Layer", nullptr));
+        ZMovement->setTitle(QApplication::translate("MainWindow", "Z Axis Movement", nullptr));
+        label->setText(QApplication::translate("MainWindow", "Move Up", nullptr));
+        label_2->setText(QApplication::translate("MainWindow", "Move Down", nullptr));
+        Moveup100->setText(QApplication::translate("MainWindow", "100 mm", nullptr));
+        Moveup50->setText(QApplication::translate("MainWindow", "50 mm", nullptr));
+        Moveup10->setText(QApplication::translate("MainWindow", "10 mm", nullptr));
+        Moveup1->setText(QApplication::translate("MainWindow", "1 mm", nullptr));
+        Moveup01->setText(QApplication::translate("MainWindow", "0.1 mm", nullptr));
+        Movedown50->setText(QApplication::translate("MainWindow", "50 mm", nullptr));
+        Movedown01->setText(QApplication::translate("MainWindow", "0.1 mm", nullptr));
+        Movedown1->setText(QApplication::translate("MainWindow", "1 mm", nullptr));
+        Movedown100->setText(QApplication::translate("MainWindow", "100 mm", nullptr));
+        Movedown10->setText(QApplication::translate("MainWindow", "10 mm", nullptr));
+        AutoHome->setText(QApplication::translate("MainWindow", "Auto Home", nullptr));
         groupBox_PatternMode->setTitle(QApplication::translate("MainWindow", "Pattern Mode", nullptr));
         pushButton_patternControls->setText(QApplication::translate("MainWindow", "Pattern \n"
 " Design", nullptr));
