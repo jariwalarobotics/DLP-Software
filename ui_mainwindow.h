@@ -1891,11 +1891,11 @@ public:
 ";}"));
         label = new QLabel(ZMovement);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(60, 20, 61, 25));
+        label->setGeometry(QRect(50, 20, 91, 25));
         label->setFont(font9);
         label_2 = new QLabel(ZMovement);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(240, 20, 81, 25));
+        label_2->setGeometry(QRect(250, 20, 81, 25));
         label_2->setFont(font9);
         Moveup100 = new QPushButton(ZMovement);
         Moveup100->setObjectName(QStringLiteral("Moveup100"));
@@ -2527,8 +2527,8 @@ public:
         startPrint->setText(QApplication::translate("MainWindow", "Start of Print", nullptr));
         EndLayer->setText(QApplication::translate("MainWindow", "End of Layer", nullptr));
         ZMovement->setTitle(QApplication::translate("MainWindow", "Z Axis Movement", nullptr));
-        label->setText(QApplication::translate("MainWindow", "Move Up", nullptr));
-        label_2->setText(QApplication::translate("MainWindow", "Move Down", nullptr));
+        label->setText(QApplication::translate("MainWindow", "Move Down", nullptr));
+        label_2->setText(QApplication::translate("MainWindow", "Move Up", nullptr));
         Moveup100->setText(QApplication::translate("MainWindow", "100 mm", nullptr));
         Moveup50->setText(QApplication::translate("MainWindow", "50 mm", nullptr));
         Moveup10->setText(QApplication::translate("MainWindow", "10 mm", nullptr));

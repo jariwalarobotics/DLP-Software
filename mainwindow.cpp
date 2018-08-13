@@ -719,3 +719,4 @@ void MainWindow::on_pushButton_ZMachineControl_clicked()
     ui->pushButton_ZMachineControl->setChecked(true);
 }
 
+

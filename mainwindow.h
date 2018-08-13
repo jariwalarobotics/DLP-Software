@@ -7,6 +7,7 @@
 #include <QLibrary>
 #include <QTextEdit>
 #include <QTableWidget>
+#include <QSerialPort>
 #include "waveformwindow.h"
 #include "common.h"
 #include "definitions.h"
@@ -190,6 +191,30 @@ private slots:
 
     void on_BoardConnect_clicked();
 
+    void on_Moveup100_clicked();
+
+    void on_Movedown100_clicked();
+
+    void on_AutoHome_clicked();
+
+    void on_Moveup01_clicked();
+
+    void on_Movedown50_clicked();
+
+    void on_Moveup50_clicked();
+
+    void on_Moveup10_clicked();
+
+    void on_Movedown10_clicked();
+
+    void on_Moveup1_clicked();
+
+    void on_Movedown1_clicked();
+
+    void on_Movedown01_clicked();
+
+    void writeToBoard(QString cmd);
+
 private:
 
     Ui::MainWindow *ui;
@@ -199,6 +224,7 @@ private:
     QTimer *usbPollTimer2;
     QTimer *AutoSendPatSeq;
     QSettings settings;
+    QSerialPort *arduino;
 
 
     QList<PatternElement> m_elements;

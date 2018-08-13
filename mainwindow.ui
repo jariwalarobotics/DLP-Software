@@ -4180,9 +4180,9 @@ color:rgb(0,120,120);
                 <widget class="QLabel" name="label">
                  <property name="geometry">
                   <rect>
-                   <x>60</x>
+                   <x>50</x>
                    <y>20</y>
-                   <width>61</width>
+                   <width>91</width>
                    <height>25</height>
                   </rect>
                  </property>
@@ -4195,13 +4195,13 @@ color:rgb(0,120,120);
                   </font>
                  </property>
                  <property name="text">
-                  <string>Move Up</string>
+                  <string>Move Down</string>
                  </property>
                 </widget>
                 <widget class="QLabel" name="label_2">
                  <property name="geometry">
                   <rect>
-                   <x>240</x>
+                   <x>250</x>
                    <y>20</y>
                    <width>81</width>
                    <height>25</height>
@@ -4216,7 +4216,7 @@ color:rgb(0,120,120);
                   </font>
                  </property>
                  <property name="text">
-                  <string>Move Down</string>
+                  <string>Move Up</string>
                  </property>
                 </widget>
                 <widget class="QPushButton" name="Moveup100">
