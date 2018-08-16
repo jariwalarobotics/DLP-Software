@@ -42,6 +42,8 @@ public:
     int _write1;
     int PatCount = 0;
     int delay;
+    int StartPrintDelay = 0;
+    int ZLiftDelay = 0;
 
 
     bool loadDll();
@@ -158,7 +160,6 @@ private slots:
     void uploadSingleImageSeq();
     void StartSigleImageSeq();
 
-
     void getStatus();
     void getSerialPort();
 
@@ -170,6 +171,7 @@ private slots:
     void updateControls();
     void timer_read_led_driver_Status(void);
     void SendPatSequence(void);
+    void ZAxisMovement(QString cmd);
     void on_pushButton_ConnectLED_clicked();
     void On_DataReceived();
 
@@ -214,6 +216,14 @@ private slots:
     void on_Movedown01_clicked();
 
     void writeToBoard(QString cmd);
+
+    void on_SendManualGcode_clicked();
+
+    void on_ClearManualGcode_clicked();
+
+    void on_MotorConDisable_clicked();
+
+    void on_AutoBedLevel_clicked();
 
 private:
 

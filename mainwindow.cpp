@@ -72,7 +72,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(waveWindow, SIGNAL(selectionChange(int, QList<PatternElement>)),
                      this, SLOT(on_patternSelect(int, QList<PatternElement>)));
     USB_Init();
-
+    getSerialPort();
     m_firmwarePath = settings.value("FirmwarePath", "").toString();
     m_ptnImagePath = settings.value("PtnImagePath", "").toString();
     m_ptnSettingPath = settings.value("PtnSettingPath", "").toString();
@@ -718,5 +718,3 @@ void MainWindow::on_pushButton_ZMachineControl_clicked()
     ui->stackedWidget->setCurrentIndex(2);
     ui->pushButton_ZMachineControl->setChecked(true);
 }
-
-

@@ -112,7 +112,42 @@ void MainWindow::on_Movedown01_clicked()
 
 void MainWindow::writeToBoard(QString cmd)
 {
-    arduino->write("G91\n");
-    arduino->write(cmd.toStdString().c_str());
+    if (DeviceConnected)
+    {
+        arduino->write("G91\n");
+        arduino->write(cmd.toStdString().c_str());
+    } else {
+        showStatus("Please connect first!!");
+    }
 }
+
+void MainWindow::on_SendManualGcode_clicked()
+{
+    QString cmd = ui->ManualGcode->toPlainText();
+    QStringList cmdbuffer = cmd.split(QRegExp("[;]"),QString::SkipEmptyParts);
+
+    for (int i = 0; i<cmdbuffer.size(); i++)
+    {
+        QString temp = cmdbuffer.at(i) + "\n";
+        writeToBoard(temp);
+    }
+}
+
+void MainWindow::on_ClearManualGcode_clicked()
+{
+    ui->ManualGcode->clear();
+}
+
+void MainWindow::on_MotorConDisable_clicked()
+{
+    QString cmd = "M84";
+    writeToBoard(cmd);
+}
+
+void MainWindow::on_AutoBedLevel_clicked()
+{
+    //Write code for Auto Bed Levelling..
+}
+
+
 

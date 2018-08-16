@@ -566,7 +566,15 @@ void MainWindow::on_startPatSequence_Button_clicked()
         showStatus("Error:No pattern sequence to Start");
         return;
     }
-    AutoSendPatSeq->start();
+
+    QString cmd = ui->StartPrintGcode->toPlainText();
+    ZAxisMovement(cmd);
+
+    StartPrintDelay = ui->StartPrintDelay->text().toInt();
+    ZLiftDelay = ui->ZLiftdelay->text().toInt();
+
+    AutoSendPatSeq->start(StartPrintDelay);
+
     int ExposureTime = ui->exposure_lineEdit->text().toInt();
     int DarkTime = ui->darkPeriod_lineEdit->text().toInt();
 
@@ -820,6 +828,9 @@ void MainWindow::SendPatSequence()
 {
     if (PatCount < m_elements.size())
     {
+        QString cmd = ui->StartLayerGcode->toPlainText();
+        ZAxisMovement(cmd);
+
         PatternElement AutoPatSeq;
         AutoPatSeq.bits = m_elements[PatCount].bits;
         AutoPatSeq.color = m_elements[PatCount].color;
@@ -834,7 +845,6 @@ void MainWindow::SendPatSequence()
         m_patternImageChange = true;
         Auto_m_elements.append(AutoPatSeq);
 
-
         waveWindow->updatePatternSingleList(Auto_m_elements);
         waveWindow->select(WaveFormWindow::SELECT_SINGLE, PatCount);
         waveWindow->draw();
@@ -846,6 +856,9 @@ void MainWindow::SendPatSequence()
     }
     else
     {
+        QString cmd = ui->EndPrintGcode->toPlainText();
+        ZAxisMovement(cmd);
+
         showStatus("Pattern sequence completed!!");
         Auto_m_elements.clear();
         ui->startPatSequence_Button->setEnabled(true);
@@ -861,9 +874,26 @@ void MainWindow::SendPatSequence()
         return;
     }
 
+    QString LayerPrintdelay = ui->LayerPrintDelay->text();
+    QString delaycmd = "G4 P"+ LayerPrintdelay;
+    writeToBoard(delaycmd);
+
+    QString cmd = ui->EndLayerGcode->toPlainText();
+    ZAxisMovement(cmd);
     Auto_m_elements.clear();
-    AutoSendPatSeq->setInterval(delay);
+    AutoSendPatSeq->setInterval(delay + 500 + ZLiftDelay);
     PatCount = PatCount + 1;
+}
+
+void MainWindow::ZAxisMovement(QString cmd)
+{
+    QStringList cmdbuffer = cmd.split(QRegExp("[;]"),QString::SkipEmptyParts);
+    for (int i = 0; i<cmdbuffer.size(); i++)
+    {
+        QString temp = cmdbuffer.at(i) + "\n";
+        writeToBoard(temp);
+        //arduino->write(temp.toStdString().c_str());
+    }
 }
 
 void MainWindow::uploadSingleImageSeq()
