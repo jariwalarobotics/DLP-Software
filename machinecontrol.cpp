@@ -2,18 +2,22 @@
 #include "ui_mainwindow.h"
 #include <QSerialPort>
 #include <QSerialPortInfo>
+#include <QFileDialog>
+#include <QTextStream>
 
 
-void MainWindow::on_BoardConnect_clicked()
+void MainWindow::on_ConnectBoard_clicked()
 {
-
-    QString usbport = ui->SerialPort->currentText();
-    arduino = new QSerialPort();
-    //QSerialPort serial;
-    if (!DeviceConnected)
+    if (ui->SerialPort->count() == 0)
     {
-        DeviceConnected = true;
-        ui->BoardConnect->setText("Disconnect");
+        showError("USB not Connected!!");
+        return;
+    }
+    QString usbport = ui->SerialPort->currentText();
+    //QSerialPort serial;
+    if (!BoardConnected)
+    {
+        BoardConnected = true;
         arduino->setPortName(usbport);
         arduino->open(QIODevice::ReadWrite);
         arduino->setBaudRate(QSerialPort::Baud115200);
@@ -26,20 +30,23 @@ void MainWindow::on_BoardConnect_clicked()
         if (arduino->isOpen()){
             arduino->write("M105\n");
             ui->SerialPort->setEnabled(false);
+            ui->BoardStatus->setText("Com port open!!");
         }
     }
     else
     {
-        DeviceConnected = false;
+        BoardConnected = false;
         arduino->close();
+        arduino->reset();
+        arduino->flush();
+        arduino->clear();
         if (!arduino->isOpen())
         {
-            ui->BoardConnect->setText("Connect");
+            ui->BoardStatus->setText("Com port close!!");
             ui->SerialPort->setEnabled(true);
         }
     }
 }
-
 
 void MainWindow::getSerialPort()
 {
@@ -50,7 +57,7 @@ void MainWindow::getSerialPort()
 
     if (ui->SerialPort->count() != 0)
     {
-        ui->BoardConnect->setEnabled(true);
+        arduino = new QSerialPort();
         ui->SerialPort->setEnabled(true);
     }
 }
@@ -112,12 +119,12 @@ void MainWindow::on_Movedown01_clicked()
 
 void MainWindow::writeToBoard(QString cmd)
 {
-    if (DeviceConnected)
+    if (BoardConnected)
     {
         arduino->write("G91\n");
         arduino->write(cmd.toStdString().c_str());
     } else {
-        showStatus("Please connect first!!");
+        showStatus("USB not connected!!");
     }
 }
 
@@ -148,6 +155,152 @@ void MainWindow::on_AutoBedLevel_clicked()
 {
     //Write code for Auto Bed Levelling..
 }
+
+void MainWindow::on_SaveMacProfile_clicked()
+{
+    if (ui->ProfileName->toPlainText().isEmpty())
+    {
+        showError("Please Enter Machine profile Name");
+        return;
+    }
+    QString filename;
+
+    filename = QFileDialog::getSaveFileName(this, QString("Enter name of profile"),
+                                            m_ptnProfilePath,
+                                            tr("setting files(*.fff)"));
+
+    if(filename.isEmpty())
+        return;
+
+    QFile settingsFile(filename);
+
+    if(!settingsFile.open(QIODevice::WriteOnly | QIODevice::Text))
+    {
+        showStatus("Error:Unable to open file for saving\n");
+        return;
+    }
+
+    QDir dir = QFileInfo(settingsFile).absoluteDir();
+    m_ptnProfilePath = dir.absolutePath();
+    settings.setValue("PtnProfilePath",m_ptnProfilePath);
+
+    QTextStream out(&settingsFile);
+
+    out << "Machine Profile Name:" + ui->ProfileName->toPlainText() << "," << "\n";
+
+    if (!ui->StartPrintGcode->toPlainText().isEmpty())
+    {
+        out << "Start Print Gcode:" + ui->StartPrintGcode->toPlainText() << "," << "\n";
+    }
+
+    if (!ui->EndPrintGcode->toPlainText().isEmpty())
+    {
+        out << "End Print Gcode:" + ui->EndPrintGcode->toPlainText() << "," << "\n";
+    }
+
+    if (!ui->StartLayerGcode->toPlainText().isEmpty())
+    {
+        out << "Start Layer Gcode:" + ui->StartLayerGcode->toPlainText() << "," << "\n";
+    }
+
+    if (!ui->EndLayerGcode->toPlainText().isEmpty())
+    {
+        out << "End Layer Gcode:" + ui->EndLayerGcode->toPlainText() << "," << "\n";
+    }
+
+    if (!ui->StartPrintDelay->text().isEmpty())
+    {
+        out << "Start Print Delay:" + ui->StartPrintDelay->text() << "," << "\n";
+    }
+
+    if (!ui->ZLiftdelay->text().isEmpty())
+    {
+        out << "Z Lift Delay:" + ui->ZLiftdelay->text() << "," << "\n";
+    }
+
+    settingsFile.close();
+}
+
+void MainWindow::on_LoadMacProfile_clicked()
+{
+    QString fileName;
+
+    //char dispStr[255];
+
+    fileName = QFileDialog::getOpenFileName(this,
+                                            QString("Choose Profile File"),
+                                            m_ptnProfilePath,
+                                            tr("Settings File(*.fff)"));
+
+    if(fileName.isEmpty())
+        return;
+
+    QFile settingsFile(fileName);
+    if(!settingsFile.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        showStatus("Unable to open the Machine Profile file\n");
+        return;
+    }
+
+    QDir dir = QFileInfo(settingsFile).absoluteDir();
+    m_ptnProfilePath = dir.absolutePath();
+    settings.setValue("PtnProfilePath",m_ptnProfilePath);
+
+    QTextStream in(&settingsFile);
+
+    QString line;
+    line = in.readAll();
+
+    QStringList list = line.split(",");
+    for (int i = 0; i<list.size()-1;i++)
+    {
+       QString str = list[i];
+
+       if (str.contains("\n"))
+       {
+          str.remove(0,1);
+       }
+
+       QStringList Strbuffer = str.split(QRegExp("[:]"),QString::SkipEmptyParts);
+       if (!Strbuffer.isEmpty())
+       {
+           if (Strbuffer[0] == "Machine Profile Name")
+           {
+               ui->ProfileName->setPlainText(Strbuffer[1]);
+           }
+           if (Strbuffer[0] == "Start Print Gcode")
+           {
+               ui->StartPrintGcode->setPlainText(Strbuffer[1]);
+           }
+           if (Strbuffer[0] == "End Print Gcode")
+           {
+               ui->EndPrintGcode->setPlainText(Strbuffer[1]);
+           }
+           if (Strbuffer[0] == "Start Layer Gcode")
+           {
+               ui->StartLayerGcode->setPlainText(Strbuffer[1]);
+           }
+           if (Strbuffer[0] == "End Layer Gcode")
+           {
+               ui->EndLayerGcode->setPlainText(Strbuffer[1]);
+           }
+           if (Strbuffer[0] == "Start Print Delay")
+           {
+               ui->StartPrintDelay->setText(Strbuffer[1]);
+           }
+           if (Strbuffer[0] == "Z Lift Delay")
+           {
+               ui->ZLiftdelay->setText(Strbuffer[1]);
+           }
+       }
+       else {
+           showError("No Matching found");
+           return;
+       }
+    }
+}
+
+
 
 
 

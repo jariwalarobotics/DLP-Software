@@ -88,25 +88,6 @@ int USB_Open()
     return 0;
 }
 
-int USB_IkarusOpen()
-{
-    if(FakeConnection == FALSE)
-    {
-        // Open the device using the VID, PID,
-        // and optionally the Serial number.
-        DeviceHandle = hid_open(0x2da0, 0x110, NULL);
-
-        if(DeviceHandle == NULL)
-        {
-            USBConnected = FALSE;
-            return -1;
-        }
-    }
-    USBConnected = TRUE;
-    return 0;
-}
-
-
 static hidMessageStruct dummyMsg;
 static unsigned char powermode;
 static unsigned char dispmode;

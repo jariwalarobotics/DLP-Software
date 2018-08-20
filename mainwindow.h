@@ -24,11 +24,12 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    BOOL DeviceConnected = false;
-    BOOL _connected1 = false;
-    BOOL _connected2 = false;
-    BOOL _attached1 = false;
-    BOOL _attached2 = false;
+    BOOL BoardConnected = false;
+    BOOL USB_Connected = false;
+    BOOL LEDConnected1 = false;
+    BOOL LEDConnected2 = false;
+    BOOL LEDAttached1 = false;
+    BOOL LEDAttached2 = false;
     int _pipe1;
     int _pipe2;
     unsigned int _repSize1;
@@ -129,15 +130,11 @@ private slots:
     void on_patternMode_radioButton_clicked();
     void on_patternMemory_radioButton_clicked();
     void on_pushButton_patternMode_clicked();
-    void on_pushButton_info_clicked();
     void on_triggerIn_checkBox_clicked();
 
     void on_triggerOut2_checkBox_clicked();
 
     void on_pushButton_LEDDriver_clicked();
-    void on_pushButton_patternControls_clicked();
-    void on_pushButton_globalSettings_clicked();
-    void on_dummyConnection_clicked(bool checked);
 
     void on_pDMD_radioButton_clicked();
     void on_resetDMD_Button_clicked();
@@ -168,11 +165,10 @@ private slots:
     void showError(QString errMsg);
     void showCriticalError(QString errMsg);
 
-    void updateControls();
     void timer_read_led_driver_Status(void);
     void SendPatSequence(void);
     void ZAxisMovement(QString cmd);
-    void on_pushButton_ConnectLED_clicked();
+    void on_ConnectLED_clicked();
     void On_DataReceived();
 
     void on_pushButton_RestartLEDDriver_clicked();
@@ -191,7 +187,7 @@ private slots:
 
     void on_pushButton_ZMachineControl_clicked();
 
-    void on_BoardConnect_clicked();
+    void on_ConnectBoard_clicked();
 
     void on_Moveup100_clicked();
 
@@ -225,6 +221,10 @@ private slots:
 
     void on_AutoBedLevel_clicked();
 
+    void on_SaveMacProfile_clicked();
+
+    void on_LoadMacProfile_clicked();
+
 private:
 
     Ui::MainWindow *ui;
@@ -239,10 +239,9 @@ private:
 
     QList<PatternElement> m_elements;
     QList<PatternElement> Auto_m_elements;
-    QString m_firmwarePath;
     QString m_ptnImagePath;
     QString m_ptnSettingPath;
-    QString m_batchFilePath;
+    QString m_ptnProfilePath;
 
     bool m_dualAsic;
     uint32 m_ptnWidth, m_ptnHeight;

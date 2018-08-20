@@ -23,6 +23,9 @@
         <file>images/video.png</file>
         <file>images/batchFile_icon.png</file>
         <file>images/LEDDriver_icon.png</file>
+        <file>images/connected.png</file>
+        <file>images/disconnected.png</file>
+        <file>images/my_pause.png</file>
     </qresource>
     <qresource prefix="/new/prefix1">
         <file>Icons/add.ico</file>
@@ -69,5 +72,6 @@
         <file>Icons/trigger_item_inv.png</file>
         <file>Icons/txlogo.png</file>
         <file>Icons/video.png</file>
+        <file>Icons/my_resume.png</file>
     </qresource>
 </RCC>

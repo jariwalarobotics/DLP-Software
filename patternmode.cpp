@@ -561,6 +561,12 @@ void MainWindow::on_removePatternsButton_clicked()
  */
 void MainWindow::on_startPatSequence_Button_clicked()
 {
+    if (USB_Connected == false || ui->SerialPort->count() == 0)
+    {
+        showError("USB not Connected!!");
+        return;
+    }
+
     if (m_elements.size() <= 0)
     {
         showStatus("Error:No pattern sequence to Start");
@@ -589,12 +595,10 @@ void MainWindow::on_startPatSequence_Button_clicked()
  */
 void MainWindow::on_pausePatSequence_Button_clicked()
 {
-    QString state = ui->pausePatSequence_Button->text();
-    if (state == "Pause")
+    if (AutoSendPatSeq->isActive())
     {
-        QIcon icon(":/new/prefix1/Icons/my_play.png");
+        QIcon icon(":/new/prefix1/Icons/my_resume.png");
         ui->pausePatSequence_Button->setIcon(icon);
-        ui->pausePatSequence_Button->setText("Resume");
         Auto_m_elements.clear();
         AutoSendPatSeq->stop();
         QThread::msleep(delay);
@@ -605,7 +609,6 @@ void MainWindow::on_pausePatSequence_Button_clicked()
     {
         QIcon icon(":/new/prefix1/Icons/my_pause.png");
         ui->pausePatSequence_Button->setIcon(icon);
-        ui->pausePatSequence_Button->setText("Pause");
         AutoSendPatSeq->start();
     }
 }
@@ -874,8 +877,7 @@ void MainWindow::SendPatSequence()
         return;
     }
 
-    QString LayerPrintdelay = ui->LayerPrintDelay->text();
-    QString delaycmd = "G4 P"+ LayerPrintdelay;
+    QString delaycmd = "G4 P" + QString::number(delay+500);
     writeToBoard(delaycmd);
 
     QString cmd = ui->EndLayerGcode->toPlainText();

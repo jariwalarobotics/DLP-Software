@@ -73,10 +73,9 @@ MainWindow::MainWindow(QWidget *parent) :
                      this, SLOT(on_patternSelect(int, QList<PatternElement>)));
     USB_Init();
     getSerialPort();
-    m_firmwarePath = settings.value("FirmwarePath", "").toString();
     m_ptnImagePath = settings.value("PtnImagePath", "").toString();
     m_ptnSettingPath = settings.value("PtnSettingPath", "").toString();
-    m_batchFilePath = settings.value("BatchFilePath", "").toString();
+    m_ptnProfilePath = settings.value("PtnProfilePath", "").toString();
 
     m_patternImageChange = false;
     m_ptnWidth = PTN_WIDTH_1080p;
@@ -95,7 +94,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     m_displayCommand = true;
 
-    emit on_pushButton_info_clicked();
     usbPollTimer = new QTimer(this);
     usbPollTimer->setInterval(1000);
     connect(usbPollTimer, SIGNAL(timeout()), this, SLOT(timer_read_led_driver_Status(void)));
@@ -103,13 +101,9 @@ MainWindow::MainWindow(QWidget *parent) :
     usbPollTimer2 = new QTimer(this);
     usbPollTimer2->setInterval(2000);
     connect(usbPollTimer2, SIGNAL(timeout()), this, SLOT(timerTimeout()(void)));
-    usbPollTimer2->start();
 
     AutoSendPatSeq = new QTimer(this);
     connect(AutoSendPatSeq, SIGNAL(timeout()), this, SLOT(SendPatSequence(void)));
-
-    ui->EVM_Picture_stackedWidget->setCurrentIndex(0);
-    ui->onlineResources_stackedWidget->setCurrentIndex(0);
 
     char versionStr[255];
     // Display GUI Version #
@@ -117,21 +111,22 @@ MainWindow::MainWindow(QWidget *parent) :
     setWindowTitle(versionStr);
 
     updateMinExposure();
-    emit on_connectButton_clicked();
 }
 
 MainWindow::~MainWindow()
 {
+    if (USB_Connected)
+    {
+        USB_Close();
+        USB_Exit();
+        arduino->close();
+    }
     //Close USB connection
-    USB_Close();
-    USB_Exit();
 
     //Store the settings to reuse next time
-    settings.value("FirmwarePath", m_firmwarePath);
     settings.value("PtnImagePath", m_ptnImagePath);
     settings.value("PtnSettingPath", m_ptnSettingPath);
-    settings.value("BatchFilePath", m_batchFilePath);
-
+    settings.value("PtnProfilePath", m_ptnProfilePath);
     delete ui;
 
 }
@@ -142,20 +137,6 @@ bool MainWindow::loadDll()
 
     return ahid.load();
 }
-
-void MainWindow::updateControls()
-{
-    QString str = ui->pushButton_ConnectLED->text();
-    if (str == "Connect")
-    {
-        ui->pushButton_ConnectLED->setText("Disconnect");
-    }
-    else
-    {
-        ui->pushButton_ConnectLED->setText("Connect");
-    }
-}
-
 
 /**
  * helper function to show the appropriate status messages
@@ -204,6 +185,7 @@ void MainWindow::showError(QString errMsg)
 
 void MainWindow::timerTimeout(void)
 {
+    USB_Init();
     emit on_connectButton_clicked();
 }
 
@@ -278,7 +260,7 @@ int MainWindow::calculateSingleSplashImageDetails(int *SingleSplashImage)
  */
 void MainWindow::hideFrames()
 {
-    ui->pushButton_info->setChecked(false);
+    ui->connectButton->setChecked(false);
     ui->pushButton_LEDDriver->setChecked(false);
     ui->pushButton_patternMode->setChecked(false);
     ui->pushButton_ZMachineControl->setChecked(false);
@@ -429,40 +411,24 @@ void MainWindow::on_connectButton_clicked()
 {
     static int SLModePrev = -1;
     int SLmode = 3;
-    int standBy = 0;
 
-    if(USB_IsConnected() == false)
+    if(!USB_Connected)
     {
-        USB_Open();
-    }
-
-    if(USB_IsConnected())
-    {
-
+        if (USB_Open() != 0 || ui->SerialPort->count() == 0)
+        {
+            showError("USB not Connected!!");
+            return;
+        }
+        USB_Connected = true;
+        usbPollTimer2->start();
         getStatus();
-        getSerialPort();
         LCR_SetMode(SLmode);
+        emit on_ConnectBoard_clicked();
+        emit on_ConnectLED_clicked();
 
-        QIcon icon(":/new/prefix1/Icons/Led_G.png");
-        ui->connectButton->setIcon(icon);
-        ui->connectButton->setText("Connected");
         ui->operatingModes_groupBox->setEnabled(true);
         ui->status_groupBox->setEnabled(true);
-        ui->pushButton_ConnectLED->setEnabled(true);
 
-        if(LCR_GetPowerMode(&standBy)==0)
-        {
-            if(standBy)
-            {
-                ui->standBy_radioButton->setChecked(true);
-                ui->powerOn_radioButton->setChecked(false);
-            }
-            else
-            {
-                ui->standBy_radioButton->setChecked(false);
-                ui->powerOn_radioButton->setChecked(true);
-            }
-        }
         if(LCR_GetMode(&SLmode) == 0)
         {
             if (SLmode == 0)
@@ -509,16 +475,20 @@ void MainWindow::on_connectButton_clicked()
             m_patternImageChange = true;
         }
         updateMinExposure();
+        QIcon icon(":/Images/images/disconnected.png");
+        ui->connectButton->setIcon(icon);
     }
     else
     {
+        USB_Connected = false;
         USB_Close();
-        QIcon icon(":/new/prefix1/Icons/Led_R.png");
-        ui->connectButton->setIcon(icon);
-        ui->connectButton->setText("Disconnected");
+        USB_Exit();
+        emit on_ConnectBoard_clicked();
+
+        usbPollTimer2->stop();
         ui->operatingModes_groupBox->setEnabled(false);
         ui->status_groupBox->setEnabled(false);
-        ui->pushButton_ConnectLED->setEnabled(false);
+        emit on_ConnectLED_clicked();
         m_firstConnect = false;
 
         ui->internalMemTest_checkBox->setChecked(false);
@@ -537,6 +507,8 @@ void MainWindow::on_connectButton_clicked()
         ui->apiVersionLabel->setText("xx.xx.xx");
 
         m_dmdDetected = false;
+        QIcon icon(":/Images/images/connected.png");
+        ui->connectButton->setIcon(icon);
     }
 }
 
@@ -633,21 +605,8 @@ void MainWindow::on_pDMD_radioButton_clicked()
 {
     m_ptnWidth = PTN_WIDTH_1080p;
     m_ptnHeight = PTN_HEIGHT_1080p;
-    ui->EVM_Picture_stackedWidget->setCurrentIndex(0);
-    ui->onlineResources_stackedWidget->setCurrentIndex(0);
     waveWindow->setPatternSize(m_ptnWidth, m_ptnHeight);
     m_dualAsic = false;
-}
-
-/**
-  * @brief MainWindow::on_pushButton_info_clicked
-  */
-void MainWindow::on_pushButton_info_clicked()
-{
-    hideFrames();
-
-    ui->stackedWidget->setCurrentIndex(0);
-    ui->pushButton_info->setChecked(true);
 }
 
 /**
@@ -663,51 +622,14 @@ void MainWindow::on_pushButton_LEDDriver_clicked()
 
 
 /**
-  * @brie MainWindow::on_pushButton_globalSettings_clicked
-  */
-void MainWindow::on_pushButton_globalSettings_clicked()
-{
-
-    ui->patternMode_stackedWidget->setCurrentIndex(1);
-    ui->pushButton_patternControls->setChecked(false);
-}
-
-
-/**
  * @brief MainWindow::on_pushButton_patternMode_clicked
  */
 void MainWindow::on_pushButton_patternMode_clicked()
 {
-    static bool first = false;
     hideFrames();
 
-    if (!first)
-    {
-        emit on_pushButton_patternControls_clicked();
-        first = true;
-    }
-
-    ;
-    ui->stackedWidget->setCurrentIndex(3);
+    ui->stackedWidget->setCurrentIndex(0);
     ui->pushButton_patternMode->setChecked(true);
-}
-
-/**
- * @brief MainWindow::on_pushButton_patternControls_clicked
- */
-void MainWindow::on_pushButton_patternControls_clicked()
-{
-
-    ui->patternMode_stackedWidget->setCurrentIndex(0);
-    ui->pushButton_patternControls->setChecked(true);
-}
-
-/**
-  * @brief MainWindow::on_dummyConection_clicked
-  */
-void MainWindow::on_dummyConnection_clicked(bool checked)
-{
-    USB_SetFakeConnection(checked);
 }
 
 
@@ -718,3 +640,4 @@ void MainWindow::on_pushButton_ZMachineControl_clicked()
     ui->stackedWidget->setCurrentIndex(2);
     ui->pushButton_ZMachineControl->setChecked(true);
 }
+

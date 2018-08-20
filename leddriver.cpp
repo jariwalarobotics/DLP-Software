@@ -12,12 +12,12 @@
  * appropriately sets the "Connected" and "Disconnected"
  * After gets connected read data form DLP Light crafter
  */
-void MainWindow::on_pushButton_ConnectLED_clicked()
+void MainWindow::on_ConnectLED_clicked()
 {
-    if(_connected1)
+    if(LEDConnected1)
     {
-        _connected1 =false;
-        _attached1 =false;
+        LEDConnected1 =false;
+        LEDAttached1 =false;
         AHid_Deregister(_pipe1);
         _pipe1 = 0;
         ui->label_LEDDriverStatus->setText("Light Engine disconnected!!");
@@ -35,17 +35,18 @@ void MainWindow::on_pushButton_ConnectLED_clicked()
 
         if(AHid_Find(_pipe1) != 0)
         {
-            _connected1 = false;
-            _attached1 = false;
+            LEDConnected1 = false;
+            LEDAttached1 = false;
             AHid_Deregister(_pipe1);
             _pipe1 = 0;
-            ui->label_LEDDriverStatus->setText("LED Driver not Discovered!");
+			ui->label_LEDDriverStatus->setText("LED Driver not Discovered!");
+            return;
         }
         else
         {
-            _connected1 = true;
-            _attached1 = true;
-            ui->label_LEDDriverStatus->setText("Light Engine connected!");
+            LEDConnected1 = true;
+            LEDAttached1 = true;
+ 		    ui->label_LEDDriverStatus->setText("Light Engine connected!");
             AHid_Identify(_pipe1, buffer, bufferSize);
             int index = 0;
             QString pipePath;
@@ -64,38 +65,37 @@ void MainWindow::on_pushButton_ConnectLED_clicked()
             ui->USBDevicePath_TextEdit->setText(pipePath);
         }
    }
-   if(!_connected2)
+   if(!LEDConnected2)
    {
        _inputCount2 = 0;
        _register2 = AHid_Register(&_pipe2,_vid1,_pid1,-1,_repID1,_repSize1,0);
        if(AHid_Find(_pipe2) == 0)
        {
-           _connected2 = true;
-           _attached2 = true;
+           LEDConnected2 = true;
+           LEDAttached2 = true;
            usbPollTimer->start();
        }
        else
        {
-           _connected2 = false;
-           _attached2 = false;
+           LEDConnected2 = false;
+           LEDAttached2 = false;
            AHid_Deregister(_pipe2);
            _pipe2 = 0;
        }
    }
    else
    {
-       _connected2 = false;
-       _attached2 = false;
+       LEDConnected2 = false;
+       LEDAttached2 = false;
        usbPollTimer->stop();
        AHid_Deregister(_pipe2);
        _pipe2 = 0;
    }
-   updateControls();
 }
 
 void MainWindow::on_pushButton_RestartLEDDriver_clicked()
 {
-    if (!_connected1)
+    if (!LEDConnected1)
     {
         showStatus("Error: Please connect LED Engine!!");
         return;
@@ -115,7 +115,7 @@ void MainWindow::on_pushButton_RestartLEDDriver_clicked()
 
 void MainWindow::on_pushButton_EnableIntensityReg_clicked()
 {
-    if (!_connected1)
+    if (!LEDConnected1)
     {
         showStatus("Error: Please connect LED Engine!!");
         return;
@@ -143,7 +143,7 @@ void MainWindow::on_pushButton_EnableIntensityReg_clicked()
 
 void MainWindow::on_pushButton_SetIntensity_clicked()
 {
-    if (!_connected1)
+    if (!LEDConnected1)
     {
         showStatus("Error: Please connect LED Engine!!");
         return;
@@ -185,7 +185,7 @@ void MainWindow::on_pushButton_SetIntensity_clicked()
 
 void MainWindow::on_pushButton_SetLEDCurrent_clicked()
 {
-    if (!_connected1)
+    if (!LEDConnected1)
     {
         showStatus("Error: Please connect LED Engine!!");
         return;
@@ -225,7 +225,7 @@ void MainWindow::on_pushButton_SetLEDCurrent_clicked()
 
 void MainWindow::on_pushButton_LEDPWMON_OFF_clicked()
 {
-    if (!_connected1)
+    if (!LEDConnected1)
     {
         showStatus("Error: Please connect LED Engine!!");
         return;
@@ -253,7 +253,7 @@ void MainWindow::on_pushButton_LEDPWMON_OFF_clicked()
 
 void MainWindow::on_pushButton_SwTrigger_clicked()
 {
-    if (!_connected1)
+    if (!LEDConnected1)
     {
         showStatus("Error: Please connect LED Engine!!");
         return;
@@ -273,7 +273,7 @@ void MainWindow::on_pushButton_SwTrigger_clicked()
 
 void MainWindow::on_pushButton_ExTrigger_clicked()
 {
-    if (!_connected1)
+    if (!LEDConnected1)
     {
         showStatus("Error: Please connect LED Engine!!");
         return;
