@@ -44,6 +44,7 @@ public:
     int PatCount = 0;
     int delay;
     int ZLiftDelay = 0;
+    int PrintingDelay = 0;
     BOOL WaitforEndstopHit = false;
 
 
@@ -225,6 +226,10 @@ private slots:
     void on_SaveMacProfile_clicked();
 
     void on_LoadMacProfile_clicked();
+
+    void on_ManualHoming_clicked();
+
+    void on_AutoHoming_clicked();
 
 private:
 

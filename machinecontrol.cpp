@@ -64,6 +64,19 @@ void MainWindow::getSerialPort()
     }
 }
 
+void MainWindow::on_ManualHoming_clicked()
+{
+    ui->HomeDelay->setEnabled(true);
+    ui->HomingDelay->setEnabled(true);
+}
+
+void MainWindow::on_AutoHoming_clicked()
+{
+    ui->HomeDelay->setEnabled(false);
+    ui->HomingDelay->setEnabled(false);
+    ui->HomingDelay->setText(NULL);
+}
+
 void MainWindow::on_Moveup100_clicked()
 {
     writeToBoard("G1 Z100 F1000 \n");
@@ -140,7 +153,7 @@ void MainWindow::serialdataRead()
         if (WaitforEndstopHit == true)
         {
             if (myString.startsWith("Z_EndStop_Hit")) {
-                AutoSendPatSeq->start(1000);
+                AutoSendPatSeq->start(PrintingDelay);
             }
         }
    }
@@ -231,6 +244,25 @@ void MainWindow::on_SaveMacProfile_clicked()
         out << "Z Lift Delay:" + ui->ZLiftdelay->text() << "," << "\n";
     }
 
+    if (!ui->PrintingDelay->text().isEmpty())
+    {
+        out << "Printing Delay:" + ui->PrintingDelay->text() << "," << "\n";
+    }
+
+    if (ui->AutoHoming->isChecked())
+    {
+        out << "Auto Homing:true" << "," << "\n";
+        out << "Manual Homing:false" << "," << "\n";
+        out << "Homing Delay:NULL" << "," << "\n";
+    }
+
+    if (ui->ManualHoming->isChecked())
+    {
+        out << "Auto Homing:false" << "," << "\n";
+        out << "Manual Homing:true" << "," << "\n";
+        out << "Homing Delay:" + ui->HomingDelay->text() << "," << "\n";
+    }
+
     settingsFile.close();
 }
 
@@ -300,6 +332,37 @@ void MainWindow::on_LoadMacProfile_clicked()
            if (Strbuffer[0] == "Z Lift Delay")
            {
                ui->ZLiftdelay->setText(Strbuffer[1]);
+           }
+           if (Strbuffer[0] == "Printing Delay")
+           {
+               ui->PrintingDelay->setText(Strbuffer[1]);
+           }
+           if (Strbuffer[0] == "Auto Homing")
+           {
+               if (Strbuffer[1] == "true")
+               {
+                   ui->AutoHoming->setChecked(true);
+                   ui->ManualHoming->setChecked(false);
+                   ui->HomingDelay->setEnabled(false);
+               }
+           }
+           if (Strbuffer[0] == "Manual Homing")
+           {
+               if (Strbuffer[1] == "true")
+               {
+                   ui->AutoHoming->setChecked(false);
+                   ui->ManualHoming->setChecked(true);
+                   ui->HomingDelay->setEnabled(true);
+               }
+           }
+           if (Strbuffer[0] == "Homing Delay")
+           {
+               if (Strbuffer[1] == "NULL")
+               {
+                   ui->HomingDelay->setText(NULL);
+               }else {
+                   ui->HomingDelay->setText(Strbuffer[1]);
+               }
            }
        }
        else {

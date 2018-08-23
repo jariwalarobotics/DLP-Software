@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>DLPJGroup</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="hires.qrc">
+    <normaloff>:/new/prefix1/Icons/logo.png</normaloff>:/new/prefix1/Icons/logo.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QScrollArea" name="scrollArea">
@@ -998,7 +1002,7 @@ color:rgb(0,120,120);
            <string notr="true">QStackedWidget{background-image : url(:/images/img.jpg);}</string>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="patternModePage">
            <layout class="QGridLayout" name="gridLayout_3">
@@ -3679,8 +3683,8 @@ color:rgb(0,120,120);
                  <rect>
                   <x>800</x>
                   <y>90</y>
-                  <width>151</width>
-                  <height>101</height>
+                  <width>261</width>
+                  <height>181</height>
                  </rect>
                 </property>
                 <property name="font">
@@ -3706,7 +3710,7 @@ color:rgb(0,120,120);
                   <rect>
                    <x>10</x>
                    <y>50</y>
-                   <width>131</width>
+                   <width>111</width>
                    <height>41</height>
                   </rect>
                  </property>
@@ -3720,7 +3724,7 @@ color:rgb(0,120,120);
                 <widget class="QLabel" name="label_9">
                  <property name="geometry">
                   <rect>
-                   <x>30</x>
+                   <x>20</x>
                    <y>20</y>
                    <width>100</width>
                    <height>20</height>
@@ -3735,6 +3739,130 @@ color:rgb(0,120,120);
                  <property name="text">
                   <string>Z Lift Time (ms)</string>
                  </property>
+                </widget>
+                <widget class="QLineEdit" name="PrintingDelay">
+                 <property name="geometry">
+                  <rect>
+                   <x>140</x>
+                   <y>50</y>
+                   <width>111</width>
+                   <height>41</height>
+                  </rect>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Arial</family>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="label_10">
+                 <property name="geometry">
+                  <rect>
+                   <x>138</x>
+                   <y>20</y>
+                   <width>120</width>
+                   <height>20</height>
+                  </rect>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Arial</family>
+                   <pointsize>10</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>Printing Delay (ms)</string>
+                 </property>
+                </widget>
+                <widget class="QGroupBox" name="groupBox_2">
+                 <property name="geometry">
+                  <rect>
+                   <x>10</x>
+                   <y>100</y>
+                   <width>241</width>
+                   <height>71</height>
+                  </rect>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Arial</family>
+                   <pointsize>9</pointsize>
+                  </font>
+                 </property>
+                 <property name="title">
+                  <string>Auto Homing</string>
+                 </property>
+                 <widget class="QRadioButton" name="AutoHoming">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>20</y>
+                    <width>100</width>
+                    <height>17</height>
+                   </rect>
+                  </property>
+                  <property name="text">
+                   <string>Auto Homing</string>
+                  </property>
+                  <property name="checked">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QRadioButton" name="ManualHoming">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>45</y>
+                    <width>100</width>
+                    <height>17</height>
+                   </rect>
+                  </property>
+                  <property name="text">
+                   <string>Manual Homing</string>
+                  </property>
+                 </widget>
+                 <widget class="QLabel" name="HomeDelay">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="geometry">
+                   <rect>
+                    <x>130</x>
+                    <y>5</y>
+                    <width>90</width>
+                    <height>18</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Homing Delay (ms)</string>
+                  </property>
+                 </widget>
+                 <widget class="QLineEdit" name="HomingDelay">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="geometry">
+                   <rect>
+                    <x>125</x>
+                    <y>30</y>
+                    <width>100</width>
+                    <height>30</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                 </widget>
                 </widget>
                </widget>
                <widget class="QLabel" name="ComPort">

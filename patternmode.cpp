@@ -568,16 +568,26 @@ void MainWindow::on_startPatSequence_Button_clicked()
         return;
     }
 
+    ZLiftDelay = ui->ZLiftdelay->text().toInt();
+    PrintingDelay = ui->PrintingDelay->text().toInt();
+
     QString cmd = ui->StartPrintGcode->toPlainText();
-    if (cmd.contains("G28"))
+
+    if (ui->ManualHoming->isChecked())
     {
         ZAxisMovement(cmd);
+        int homingDelay = ui->HomingDelay->text().toInt();
+        AutoSendPatSeq->start(homingDelay + PrintingDelay);
     } else {
-        ZAxisMovement(cmd);
-        AutoSendPatSeq->start(1000);
+        if (cmd.contains("G28"))
+        {
+            ZAxisMovement(cmd);
+            WaitforEndstopHit = true;
+        } else {
+            showError("Please Enter G28 Command in Start Print Gcode!!");
+            return;
+        }
     }
-
-    ZLiftDelay = ui->ZLiftdelay->text().toInt();
 
     //AutoSendPatSeq->start();
     int ExposureTime = ui->exposure_lineEdit->text().toInt();
@@ -587,7 +597,7 @@ void MainWindow::on_startPatSequence_Button_clicked()
     ui->stopPatSequence_Button->setEnabled(true);
     ui->pausePatSequence_Button->setEnabled(true);
     ui->startPatSequence_Button->setEnabled(false);
-    WaitforEndstopHit = true;
+
 }
 
 /**
@@ -609,7 +619,7 @@ void MainWindow::on_pausePatSequence_Button_clicked()
     {
         QIcon icon(":/new/prefix1/Icons/my_pause.png");
         ui->pausePatSequence_Button->setIcon(icon);
-        AutoSendPatSeq->start(1000);
+        AutoSendPatSeq->start(PrintingDelay);
     }
 }
 

@@ -233,6 +233,13 @@ public:
     QGroupBox *LiftSeqTime;
     QLineEdit *ZLiftdelay;
     QLabel *label_9;
+    QLineEdit *PrintingDelay;
+    QLabel *label_10;
+    QGroupBox *groupBox_2;
+    QRadioButton *AutoHoming;
+    QRadioButton *ManualHoming;
+    QLabel *HomeDelay;
+    QLineEdit *HomingDelay;
     QLabel *ComPort;
     QComboBox *SerialPort;
     QLabel *BoardStatus;
@@ -248,6 +255,9 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(1388, 764);
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/new/prefix1/Icons/logo.png"), QSize(), QIcon::Normal, QIcon::Off);
+        MainWindow->setWindowIcon(icon);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         scrollArea = new QScrollArea(centralWidget);
@@ -294,9 +304,9 @@ public:
 "border: none;\n"
 "background-repeat: none;\n"
 "}"));
-        QIcon icon;
-        icon.addFile(QStringLiteral(":/Images/images/connected.png"), QSize(), QIcon::Normal, QIcon::Off);
-        connectButton->setIcon(icon);
+        QIcon icon1;
+        icon1.addFile(QStringLiteral(":/Images/images/connected.png"), QSize(), QIcon::Normal, QIcon::Off);
+        connectButton->setIcon(icon1);
         connectButton->setIconSize(QSize(50, 50));
         connectButton->setCheckable(true);
         connectButton->setChecked(false);
@@ -314,9 +324,9 @@ public:
 "border: none;\n"
 "background-repeat: none;\n"
 "}"));
-        QIcon icon1;
-        icon1.addFile(QStringLiteral(":/new/prefix1/Icons/my_play.png"), QSize(), QIcon::Normal, QIcon::Off);
-        startPatSequence_Button->setIcon(icon1);
+        QIcon icon2;
+        icon2.addFile(QStringLiteral(":/new/prefix1/Icons/my_play.png"), QSize(), QIcon::Normal, QIcon::Off);
+        startPatSequence_Button->setIcon(icon2);
         startPatSequence_Button->setIconSize(QSize(40, 40));
 
         horizontalLayout_24->addWidget(startPatSequence_Button);
@@ -333,9 +343,9 @@ public:
 "border: none;\n"
 "background-repeat: none;\n"
 "}"));
-        QIcon icon2;
-        icon2.addFile(QStringLiteral(":/new/prefix1/Icons/my_pause.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pausePatSequence_Button->setIcon(icon2);
+        QIcon icon3;
+        icon3.addFile(QStringLiteral(":/new/prefix1/Icons/my_pause.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pausePatSequence_Button->setIcon(icon3);
         pausePatSequence_Button->setIconSize(QSize(40, 40));
         pausePatSequence_Button->setCheckable(false);
         pausePatSequence_Button->setChecked(false);
@@ -355,9 +365,9 @@ public:
 "border: none;\n"
 "background-repeat: none;\n"
 "}"));
-        QIcon icon3;
-        icon3.addFile(QStringLiteral(":/new/prefix1/Icons/my_stop.png"), QSize(), QIcon::Normal, QIcon::Off);
-        stopPatSequence_Button->setIcon(icon3);
+        QIcon icon4;
+        icon4.addFile(QStringLiteral(":/new/prefix1/Icons/my_stop.png"), QSize(), QIcon::Normal, QIcon::Off);
+        stopPatSequence_Button->setIcon(icon4);
         stopPatSequence_Button->setIconSize(QSize(40, 40));
 
         horizontalLayout_24->addWidget(stopPatSequence_Button);
@@ -376,9 +386,9 @@ public:
         pushButton_patternMode->setStyleSheet(QLatin1String("QPushButton{\n"
 "	color:rgb(0,150,150);\n"
 "   }"));
-        QIcon icon4;
-        icon4.addFile(QStringLiteral(":/Images/images/pattern.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton_patternMode->setIcon(icon4);
+        QIcon icon5;
+        icon5.addFile(QStringLiteral(":/Images/images/pattern.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_patternMode->setIcon(icon5);
         pushButton_patternMode->setIconSize(QSize(40, 40));
         pushButton_patternMode->setCheckable(true);
         pushButton_patternMode->setChecked(true);
@@ -394,9 +404,9 @@ public:
         pushButton_LEDDriver->setStyleSheet(QLatin1String("QPushButton{\n"
 "	color:rgb(0,150,150);\n"
 "   }"));
-        QIcon icon5;
-        icon5.addFile(QStringLiteral(":/Images/images/LEDDriver_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton_LEDDriver->setIcon(icon5);
+        QIcon icon6;
+        icon6.addFile(QStringLiteral(":/Images/images/LEDDriver_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_LEDDriver->setIcon(icon6);
         pushButton_LEDDriver->setIconSize(QSize(40, 40));
         pushButton_LEDDriver->setCheckable(true);
 
@@ -411,9 +421,9 @@ public:
         pushButton_ZMachineControl->setStyleSheet(QLatin1String("QPushButton{\n"
 "	color:rgb(0,150,150);\n"
 "   }"));
-        QIcon icon6;
-        icon6.addFile(QStringLiteral(":/Images/images/settings.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton_ZMachineControl->setIcon(icon6);
+        QIcon icon7;
+        icon7.addFile(QStringLiteral(":/Images/images/settings.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_ZMachineControl->setIcon(icon7);
         pushButton_ZMachineControl->setIconSize(QSize(40, 40));
         pushButton_ZMachineControl->setCheckable(true);
 
@@ -460,9 +470,9 @@ public:
         sizePolicy2.setHeightForWidth(addPatternsButton->sizePolicy().hasHeightForWidth());
         addPatternsButton->setSizePolicy(sizePolicy2);
         addPatternsButton->setMinimumSize(QSize(40, 35));
-        QIcon icon7;
-        icon7.addFile(QStringLiteral(":/new/prefix1/Icons/add.png"), QSize(), QIcon::Normal, QIcon::Off);
-        addPatternsButton->setIcon(icon7);
+        QIcon icon8;
+        icon8.addFile(QStringLiteral(":/new/prefix1/Icons/add.png"), QSize(), QIcon::Normal, QIcon::Off);
+        addPatternsButton->setIcon(icon8);
         removePatternsButton = new QPushButton(groupBox);
         removePatternsButton->setObjectName(QStringLiteral("removePatternsButton"));
         removePatternsButton->setEnabled(false);
@@ -470,9 +480,9 @@ public:
         sizePolicy2.setHeightForWidth(removePatternsButton->sizePolicy().hasHeightForWidth());
         removePatternsButton->setSizePolicy(sizePolicy2);
         removePatternsButton->setMinimumSize(QSize(40, 35));
-        QIcon icon8;
-        icon8.addFile(QStringLiteral(":/new/prefix1/Icons/delete.png"), QSize(), QIcon::Normal, QIcon::Off);
-        removePatternsButton->setIcon(icon8);
+        QIcon icon9;
+        icon9.addFile(QStringLiteral(":/new/prefix1/Icons/delete.png"), QSize(), QIcon::Normal, QIcon::Off);
+        removePatternsButton->setIcon(icon9);
         selectAllButton = new QPushButton(groupBox);
         selectAllButton->setObjectName(QStringLiteral("selectAllButton"));
         selectAllButton->setEnabled(false);
@@ -480,9 +490,9 @@ public:
         sizePolicy2.setHeightForWidth(selectAllButton->sizePolicy().hasHeightForWidth());
         selectAllButton->setSizePolicy(sizePolicy2);
         selectAllButton->setMinimumSize(QSize(40, 35));
-        QIcon icon9;
-        icon9.addFile(QStringLiteral(":/new/prefix1/Icons/select.png"), QSize(), QIcon::Normal, QIcon::Off);
-        selectAllButton->setIcon(icon9);
+        QIcon icon10;
+        icon10.addFile(QStringLiteral(":/new/prefix1/Icons/select.png"), QSize(), QIcon::Normal, QIcon::Off);
+        selectAllButton->setIcon(icon10);
         saveButton_patternSettings = new QPushButton(groupBox);
         saveButton_patternSettings->setObjectName(QStringLiteral("saveButton_patternSettings"));
         saveButton_patternSettings->setEnabled(true);
@@ -496,9 +506,9 @@ public:
         saveButton_patternSettings->setStyleSheet(QLatin1String("QPushButton{\n"
 "	color:rgb(0,150,150);\n"
 "}"));
-        QIcon icon10;
-        icon10.addFile(QStringLiteral(":/new/prefix1/Icons/save.png"), QSize(), QIcon::Normal, QIcon::Off);
-        saveButton_patternSettings->setIcon(icon10);
+        QIcon icon11;
+        icon11.addFile(QStringLiteral(":/new/prefix1/Icons/save.png"), QSize(), QIcon::Normal, QIcon::Off);
+        saveButton_patternSettings->setIcon(icon11);
         loadButton_patternSettings = new QPushButton(groupBox);
         loadButton_patternSettings->setObjectName(QStringLiteral("loadButton_patternSettings"));
         loadButton_patternSettings->setGeometry(QRect(110, 20, 75, 35));
@@ -506,9 +516,9 @@ public:
         loadButton_patternSettings->setStyleSheet(QLatin1String("QPushButton{\n"
 "	color:rgb(0,150,150);\n"
 "}"));
-        QIcon icon11;
-        icon11.addFile(QStringLiteral(":/new/prefix1/Icons/load.png"), QSize(), QIcon::Normal, QIcon::Off);
-        loadButton_patternSettings->setIcon(icon11);
+        QIcon icon12;
+        icon12.addFile(QStringLiteral(":/new/prefix1/Icons/load.png"), QSize(), QIcon::Normal, QIcon::Off);
+        loadButton_patternSettings->setIcon(icon12);
         groupBox_firmware = new QGroupBox(frame_common);
         groupBox_firmware->setObjectName(QStringLiteral("groupBox_firmware"));
         groupBox_firmware->setGeometry(QRect(10, 150, 221, 60));
@@ -1611,7 +1621,7 @@ public:
         AutoBedLevel->setFont(font8);
         LiftSeqTime = new QGroupBox(groupBox_ZMachineControl);
         LiftSeqTime->setObjectName(QStringLiteral("LiftSeqTime"));
-        LiftSeqTime->setGeometry(QRect(800, 90, 151, 101));
+        LiftSeqTime->setGeometry(QRect(800, 90, 261, 181));
         LiftSeqTime->setFont(font11);
         LiftSeqTime->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
 "background-color: transparent;\n"
@@ -1620,12 +1630,44 @@ public:
 ";}"));
         ZLiftdelay = new QLineEdit(LiftSeqTime);
         ZLiftdelay->setObjectName(QStringLiteral("ZLiftdelay"));
-        ZLiftdelay->setGeometry(QRect(10, 50, 131, 41));
+        ZLiftdelay->setGeometry(QRect(10, 50, 111, 41));
         ZLiftdelay->setFont(font12);
         label_9 = new QLabel(LiftSeqTime);
         label_9->setObjectName(QStringLiteral("label_9"));
-        label_9->setGeometry(QRect(30, 20, 100, 20));
+        label_9->setGeometry(QRect(20, 20, 100, 20));
         label_9->setFont(font6);
+        PrintingDelay = new QLineEdit(LiftSeqTime);
+        PrintingDelay->setObjectName(QStringLiteral("PrintingDelay"));
+        PrintingDelay->setGeometry(QRect(140, 50, 111, 41));
+        PrintingDelay->setFont(font12);
+        label_10 = new QLabel(LiftSeqTime);
+        label_10->setObjectName(QStringLiteral("label_10"));
+        label_10->setGeometry(QRect(138, 20, 120, 20));
+        label_10->setFont(font6);
+        groupBox_2 = new QGroupBox(LiftSeqTime);
+        groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
+        groupBox_2->setGeometry(QRect(10, 100, 241, 71));
+        groupBox_2->setFont(font9);
+        AutoHoming = new QRadioButton(groupBox_2);
+        AutoHoming->setObjectName(QStringLiteral("AutoHoming"));
+        AutoHoming->setGeometry(QRect(10, 20, 100, 17));
+        AutoHoming->setChecked(true);
+        ManualHoming = new QRadioButton(groupBox_2);
+        ManualHoming->setObjectName(QStringLiteral("ManualHoming"));
+        ManualHoming->setGeometry(QRect(10, 45, 100, 17));
+        HomeDelay = new QLabel(groupBox_2);
+        HomeDelay->setObjectName(QStringLiteral("HomeDelay"));
+        HomeDelay->setEnabled(false);
+        HomeDelay->setGeometry(QRect(130, 5, 90, 18));
+        QFont font13;
+        font13.setFamily(QStringLiteral("Arial"));
+        font13.setPointSize(8);
+        HomeDelay->setFont(font13);
+        HomingDelay = new QLineEdit(groupBox_2);
+        HomingDelay->setObjectName(QStringLiteral("HomingDelay"));
+        HomingDelay->setEnabled(false);
+        HomingDelay->setGeometry(QRect(125, 30, 100, 30));
+        HomingDelay->setFont(font12);
         ComPort = new QLabel(groupBox_ZMachineControl);
         ComPort->setObjectName(QStringLiteral("ComPort"));
         ComPort->setGeometry(QRect(10, 16, 101, 50));
@@ -1688,7 +1730,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(2);
+        stackedWidget->setCurrentIndex(0);
         patternMode_stackedWidget->setCurrentIndex(0);
 
 
@@ -1697,7 +1739,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "DLPJGroup", nullptr));
         connectButton->setText(QString());
         startPatSequence_Button->setText(QString());
         pausePatSequence_Button->setText(QString());
@@ -1834,6 +1876,11 @@ public:
         AutoBedLevel->setText(QApplication::translate("MainWindow", "AutoBed Level", nullptr));
         LiftSeqTime->setTitle(QApplication::translate("MainWindow", "Lift / Sequence Time", nullptr));
         label_9->setText(QApplication::translate("MainWindow", "Z Lift Time (ms)", nullptr));
+        label_10->setText(QApplication::translate("MainWindow", "Printing Delay (ms)", nullptr));
+        groupBox_2->setTitle(QApplication::translate("MainWindow", "Auto Homing", nullptr));
+        AutoHoming->setText(QApplication::translate("MainWindow", "Auto Homing", nullptr));
+        ManualHoming->setText(QApplication::translate("MainWindow", "Manual Homing", nullptr));
+        HomeDelay->setText(QApplication::translate("MainWindow", "Homing Delay (ms)", nullptr));
         ComPort->setText(QApplication::translate("MainWindow", "Com Port", nullptr));
         BoardStatus->setText(QString());
         label_3->setText(QApplication::translate("MainWindow", "Machine Profile", nullptr));

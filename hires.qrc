@@ -73,5 +73,6 @@
         <file>Icons/txlogo.png</file>
         <file>Icons/video.png</file>
         <file>Icons/my_resume.png</file>
+        <file>Icons/logo.png</file>
     </qresource>
 </RCC>
