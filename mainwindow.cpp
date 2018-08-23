@@ -98,10 +98,6 @@ MainWindow::MainWindow(QWidget *parent) :
     usbPollTimer->setInterval(1000);
     connect(usbPollTimer, SIGNAL(timeout()), this, SLOT(timer_read_led_driver_Status(void)));
 
-    usbPollTimer2 = new QTimer(this);
-    usbPollTimer2->setInterval(2000);
-    connect(usbPollTimer2, SIGNAL(timeout()), this, SLOT(timerTimeout()(void)));
-
     AutoSendPatSeq = new QTimer(this);
     connect(AutoSendPatSeq, SIGNAL(timeout()), this, SLOT(SendPatSequence(void)));
 
@@ -177,16 +173,6 @@ void MainWindow::showError(QString errMsg)
         errMsgBox.setText(errMsg + "\nError: " + QString::fromLocal8Bit(errStr));
 
     errMsgBox.exec();
-}
-
-/**
- * @brief MainWindow::timerTimeout
- */
-
-void MainWindow::timerTimeout(void)
-{
-    USB_Init();
-    emit on_connectButton_clicked();
 }
 
 /**
@@ -420,7 +406,6 @@ void MainWindow::on_connectButton_clicked()
             return;
         }
         USB_Connected = true;
-        usbPollTimer2->start();
         getStatus();
         LCR_SetMode(SLmode);
         emit on_ConnectBoard_clicked();
@@ -485,7 +470,6 @@ void MainWindow::on_connectButton_clicked()
         USB_Exit();
         emit on_ConnectBoard_clicked();
 
-        usbPollTimer2->stop();
         ui->operatingModes_groupBox->setEnabled(false);
         ui->status_groupBox->setEnabled(false);
         emit on_ConnectLED_clicked();
@@ -640,4 +624,3 @@ void MainWindow::on_pushButton_ZMachineControl_clicked()
     ui->stackedWidget->setCurrentIndex(2);
     ui->pushButton_ZMachineControl->setChecked(true);
 }
-

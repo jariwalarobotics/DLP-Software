@@ -231,8 +231,6 @@ public:
     QGroupBox *AutoBed;
     QPushButton *AutoBedLevel;
     QGroupBox *LiftSeqTime;
-    QLabel *label_8;
-    QLineEdit *StartPrintDelay;
     QLineEdit *ZLiftdelay;
     QLabel *label_9;
     QLabel *ComPort;
@@ -1397,7 +1395,7 @@ public:
         ZMachineControl->setObjectName(QStringLiteral("ZMachineControl"));
         frame_ZMavhineControl = new QFrame(ZMachineControl);
         frame_ZMavhineControl->setObjectName(QStringLiteral("frame_ZMavhineControl"));
-        frame_ZMavhineControl->setGeometry(QRect(7, 0, 1091, 641));
+        frame_ZMavhineControl->setGeometry(QRect(0, 0, 1091, 641));
         sizePolicy5.setHeightForWidth(frame_ZMavhineControl->sizePolicy().hasHeightForWidth());
         frame_ZMavhineControl->setSizePolicy(sizePolicy5);
         frame_ZMavhineControl->setMinimumSize(QSize(931, 581));
@@ -1469,7 +1467,7 @@ public:
         Moveup10->setFont(font6);
         label = new QLabel(PrinterBoard);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(20, 260, 91, 25));
+        label->setGeometry(QRect(29, 260, 60, 25));
         label->setFont(font8);
         Movedown50 = new QPushButton(PrinterBoard);
         Movedown50->setObjectName(QStringLiteral("Movedown50"));
@@ -1477,7 +1475,7 @@ public:
         Movedown50->setFont(font6);
         label_2 = new QLabel(PrinterBoard);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(140, 260, 81, 25));
+        label_2->setGeometry(QRect(127, 260, 80, 25));
         label_2->setFont(font8);
         Movedown01 = new QPushButton(PrinterBoard);
         Movedown01->setObjectName(QStringLiteral("Movedown01"));
@@ -1613,29 +1611,20 @@ public:
         AutoBedLevel->setFont(font8);
         LiftSeqTime = new QGroupBox(groupBox_ZMachineControl);
         LiftSeqTime->setObjectName(QStringLiteral("LiftSeqTime"));
-        LiftSeqTime->setGeometry(QRect(800, 90, 151, 181));
+        LiftSeqTime->setGeometry(QRect(800, 90, 151, 101));
         LiftSeqTime->setFont(font11);
         LiftSeqTime->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
 "color:rgb(0,120,120);\n"
 ";}"));
-        label_8 = new QLabel(LiftSeqTime);
-        label_8->setObjectName(QStringLiteral("label_8"));
-        label_8->setGeometry(QRect(10, 20, 131, 20));
-        label_8->setFont(font6);
-        StartPrintDelay = new QLineEdit(LiftSeqTime);
-        StartPrintDelay->setObjectName(QStringLiteral("StartPrintDelay"));
-        StartPrintDelay->setGeometry(QRect(10, 50, 131, 41));
-        StartPrintDelay->setFont(font12);
-        StartPrintDelay->setStyleSheet(QStringLiteral(""));
         ZLiftdelay = new QLineEdit(LiftSeqTime);
         ZLiftdelay->setObjectName(QStringLiteral("ZLiftdelay"));
-        ZLiftdelay->setGeometry(QRect(10, 130, 131, 41));
+        ZLiftdelay->setGeometry(QRect(10, 50, 131, 41));
         ZLiftdelay->setFont(font12);
         label_9 = new QLabel(LiftSeqTime);
         label_9->setObjectName(QStringLiteral("label_9"));
-        label_9->setGeometry(QRect(10, 100, 133, 20));
+        label_9->setGeometry(QRect(30, 20, 100, 20));
         label_9->setFont(font6);
         ComPort = new QLabel(groupBox_ZMachineControl);
         ComPort->setObjectName(QStringLiteral("ComPort"));
@@ -1699,7 +1688,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(2);
         patternMode_stackedWidget->setCurrentIndex(0);
 
 
@@ -1827,9 +1816,9 @@ public:
         Moveup01->setText(QApplication::translate("MainWindow", "0.1 mm", nullptr));
         Movedown10->setText(QApplication::translate("MainWindow", "10 mm", nullptr));
         Moveup10->setText(QApplication::translate("MainWindow", "10 mm", nullptr));
-        label->setText(QApplication::translate("MainWindow", "Move Down", nullptr));
+        label->setText(QApplication::translate("MainWindow", "Move Up", nullptr));
         Movedown50->setText(QApplication::translate("MainWindow", "50 mm", nullptr));
-        label_2->setText(QApplication::translate("MainWindow", "Move Up", nullptr));
+        label_2->setText(QApplication::translate("MainWindow", "Move Down", nullptr));
         Movedown01->setText(QApplication::translate("MainWindow", "0.1 mm", nullptr));
         Gcode->setTitle(QApplication::translate("MainWindow", "Gcode", nullptr));
         label_7->setText(QApplication::translate("MainWindow", "Start of the print", nullptr));
@@ -1844,7 +1833,6 @@ public:
         AutoBed->setTitle(QApplication::translate("MainWindow", "AutoBed Level", nullptr));
         AutoBedLevel->setText(QApplication::translate("MainWindow", "AutoBed Level", nullptr));
         LiftSeqTime->setTitle(QApplication::translate("MainWindow", "Lift / Sequence Time", nullptr));
-        label_8->setText(QApplication::translate("MainWindow", "Start Print Delay (ms)", nullptr));
         label_9->setText(QApplication::translate("MainWindow", "Z Lift Time (ms)", nullptr));
         ComPort->setText(QApplication::translate("MainWindow", "Com Port", nullptr));
         BoardStatus->setText(QString());

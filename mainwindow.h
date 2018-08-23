@@ -43,8 +43,8 @@ public:
     int _write1;
     int PatCount = 0;
     int delay;
-    int StartPrintDelay = 0;
     int ZLiftDelay = 0;
+    BOOL WaitforEndstopHit = false;
 
 
     bool loadDll();
@@ -124,7 +124,6 @@ private slots:
     void on_addPatternsButton_clicked();
     void on_patternSelect(int index, QList<PatternElement> patElem);
     void on_connectButton_clicked();
-    void timerTimeout(void);
 
     void on_removePatternsButton_clicked();
     void on_patternMode_radioButton_clicked();
@@ -213,6 +212,8 @@ private slots:
 
     void writeToBoard(QString cmd);
 
+    void serialdataRead();
+
     void on_SendManualGcode_clicked();
 
     void on_ClearManualGcode_clicked();
@@ -231,7 +232,6 @@ private:
     QLibrary ahid;
     WaveFormWindow *waveWindow;
     QTimer *usbPollTimer;
-    QTimer *usbPollTimer2;
     QTimer *AutoSendPatSeq;
     QSettings settings;
     QSerialPort *arduino;

@@ -4,6 +4,7 @@
 #include <QSerialPortInfo>
 #include <QFileDialog>
 #include <QTextStream>
+#include <QTimer>
 
 
 void MainWindow::on_ConnectBoard_clicked()
@@ -31,6 +32,7 @@ void MainWindow::on_ConnectBoard_clicked()
             arduino->write("M105\n");
             ui->SerialPort->setEnabled(false);
             ui->BoardStatus->setText("Com port open!!");
+            QObject::connect(arduino, SIGNAL(readyRead()), this, SLOT(serialdataRead()));
         }
     }
     else
@@ -128,6 +130,22 @@ void MainWindow::writeToBoard(QString cmd)
     }
 }
 
+void MainWindow::serialdataRead()
+{
+   while (arduino->canReadLine()) {
+       QByteArray SerialData = arduino->readLine();
+       QString myString(SerialData);
+
+       // Write code to know Endstop Hits
+        if (WaitforEndstopHit == true)
+        {
+            if (myString.startsWith("Z_EndStop_Hit")) {
+                AutoSendPatSeq->start(1000);
+            }
+        }
+   }
+}
+
 void MainWindow::on_SendManualGcode_clicked()
 {
     QString cmd = ui->ManualGcode->toPlainText();
@@ -208,11 +226,6 @@ void MainWindow::on_SaveMacProfile_clicked()
         out << "End Layer Gcode:" + ui->EndLayerGcode->toPlainText() << "," << "\n";
     }
 
-    if (!ui->StartPrintDelay->text().isEmpty())
-    {
-        out << "Start Print Delay:" + ui->StartPrintDelay->text() << "," << "\n";
-    }
-
     if (!ui->ZLiftdelay->text().isEmpty())
     {
         out << "Z Lift Delay:" + ui->ZLiftdelay->text() << "," << "\n";
@@ -283,10 +296,6 @@ void MainWindow::on_LoadMacProfile_clicked()
            if (Strbuffer[0] == "End Layer Gcode")
            {
                ui->EndLayerGcode->setPlainText(Strbuffer[1]);
-           }
-           if (Strbuffer[0] == "Start Print Delay")
-           {
-               ui->StartPrintDelay->setText(Strbuffer[1]);
            }
            if (Strbuffer[0] == "Z Lift Delay")
            {

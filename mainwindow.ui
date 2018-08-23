@@ -998,7 +998,7 @@ color:rgb(0,120,120);
            <string notr="true">QStackedWidget{background-image : url(:/images/img.jpg);}</string>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>2</number>
           </property>
           <widget class="QWidget" name="patternModePage">
            <layout class="QGridLayout" name="gridLayout_3">
@@ -2994,7 +2994,7 @@ border-color: rgb(0,150,150);
            <widget class="QFrame" name="frame_ZMavhineControl">
             <property name="geometry">
              <rect>
-              <x>7</x>
+              <x>0</x>
               <y>0</y>
               <width>1091</width>
               <height>641</height>
@@ -3260,9 +3260,9 @@ color:rgb(0,120,120);
                 <widget class="QLabel" name="label">
                  <property name="geometry">
                   <rect>
-                   <x>20</x>
+                   <x>29</x>
                    <y>260</y>
-                   <width>91</width>
+                   <width>60</width>
                    <height>25</height>
                   </rect>
                  </property>
@@ -3275,7 +3275,7 @@ color:rgb(0,120,120);
                   </font>
                  </property>
                  <property name="text">
-                  <string>Move Down</string>
+                  <string>Move Up</string>
                  </property>
                 </widget>
                 <widget class="QPushButton" name="Movedown50">
@@ -3300,9 +3300,9 @@ color:rgb(0,120,120);
                 <widget class="QLabel" name="label_2">
                  <property name="geometry">
                   <rect>
-                   <x>140</x>
+                   <x>127</x>
                    <y>260</y>
-                   <width>81</width>
+                   <width>80</width>
                    <height>25</height>
                   </rect>
                  </property>
@@ -3315,7 +3315,7 @@ color:rgb(0,120,120);
                   </font>
                  </property>
                  <property name="text">
-                  <string>Move Up</string>
+                  <string>Move Down</string>
                  </property>
                 </widget>
                 <widget class="QPushButton" name="Movedown01">
@@ -3680,7 +3680,7 @@ color:rgb(0,120,120);
                   <x>800</x>
                   <y>90</y>
                   <width>151</width>
-                  <height>181</height>
+                  <height>101</height>
                  </rect>
                 </property>
                 <property name="font">
@@ -3701,26 +3701,7 @@ color:rgb(0,120,120);
                 <property name="title">
                  <string>Lift / Sequence Time</string>
                 </property>
-                <widget class="QLabel" name="label_8">
-                 <property name="geometry">
-                  <rect>
-                   <x>10</x>
-                   <y>20</y>
-                   <width>131</width>
-                   <height>20</height>
-                  </rect>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <family>Arial</family>
-                   <pointsize>10</pointsize>
-                  </font>
-                 </property>
-                 <property name="text">
-                  <string>Start Print Delay (ms)</string>
-                 </property>
-                </widget>
-                <widget class="QLineEdit" name="StartPrintDelay">
+                <widget class="QLineEdit" name="ZLiftdelay">
                  <property name="geometry">
                   <rect>
                    <x>10</x>
@@ -3735,32 +3716,13 @@ color:rgb(0,120,120);
                    <pointsize>12</pointsize>
                   </font>
                  </property>
-                 <property name="styleSheet">
-                  <string notr="true"/>
-                 </property>
-                </widget>
-                <widget class="QLineEdit" name="ZLiftdelay">
-                 <property name="geometry">
-                  <rect>
-                   <x>10</x>
-                   <y>130</y>
-                   <width>131</width>
-                   <height>41</height>
-                  </rect>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <family>Arial</family>
-                   <pointsize>12</pointsize>
-                  </font>
-                 </property>
                 </widget>
                 <widget class="QLabel" name="label_9">
                  <property name="geometry">
                   <rect>
-                   <x>10</x>
-                   <y>100</y>
-                   <width>133</width>
+                   <x>30</x>
+                   <y>20</y>
+                   <width>100</width>
                    <height>20</height>
                   </rect>
                  </property>

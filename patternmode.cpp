@@ -25,8 +25,6 @@
  */
 int MainWindow::updateSinglePatternMemory(int totalSplashImages, BOOL firmware)
 {
-    //Stop timer
-    usbPollTimer2->stop();
     for(int image = 0; image < totalSplashImages; image++)
     {
         int spalshImageCount;
@@ -92,8 +90,6 @@ int MainWindow::updateSinglePatternMemory(int totalSplashImages, BOOL firmware)
         }
     }
 
-    usbPollTimer2->start();
-
     return 0;
 }
 
@@ -129,7 +125,6 @@ int MainWindow::uploadPatternToEVM(bool master, int splashImageCount, int splash
         {
             // free(imageBuffer);
             showCriticalError("Downloading failed");
-            usbPollTimer2->start();
             imgDataDownload.close();
             return -1;
         }
@@ -574,20 +569,25 @@ void MainWindow::on_startPatSequence_Button_clicked()
     }
 
     QString cmd = ui->StartPrintGcode->toPlainText();
-    ZAxisMovement(cmd);
+    if (cmd.contains("G28"))
+    {
+        ZAxisMovement(cmd);
+    } else {
+        ZAxisMovement(cmd);
+        AutoSendPatSeq->start(1000);
+    }
 
-    StartPrintDelay = ui->StartPrintDelay->text().toInt();
     ZLiftDelay = ui->ZLiftdelay->text().toInt();
 
-    AutoSendPatSeq->start(StartPrintDelay);
-
+    //AutoSendPatSeq->start();
     int ExposureTime = ui->exposure_lineEdit->text().toInt();
     int DarkTime = ui->darkPeriod_lineEdit->text().toInt();
 
-    delay = (ExposureTime + DarkTime) / 1000;
+    delay = ((ExposureTime + DarkTime) / 1000) + 500;
     ui->stopPatSequence_Button->setEnabled(true);
     ui->pausePatSequence_Button->setEnabled(true);
     ui->startPatSequence_Button->setEnabled(false);
+    WaitforEndstopHit = true;
 }
 
 /**
@@ -609,7 +609,7 @@ void MainWindow::on_pausePatSequence_Button_clicked()
     {
         QIcon icon(":/new/prefix1/Icons/my_pause.png");
         ui->pausePatSequence_Button->setIcon(icon);
-        AutoSendPatSeq->start();
+        AutoSendPatSeq->start(1000);
     }
 }
 
@@ -627,6 +627,7 @@ void MainWindow::on_stopPatSequence_Button_clicked()
     on_patternSelect(0,m_elements);
     waveWindow->draw();
     AutoSendPatSeq->stop();
+    WaitforEndstopHit = false;
 
     PatCount = 0;
 
@@ -872,18 +873,19 @@ void MainWindow::SendPatSequence()
         on_patternSelect(0,m_elements);
         waveWindow->draw();
         AutoSendPatSeq->stop();
+        WaitforEndstopHit = false;
 
         PatCount = 0;
         return;
     }
 
-    QString delaycmd = "G4 P" + QString::number(delay+500);
+    QString delaycmd = "G4 P" + QString::number(delay);
     writeToBoard(delaycmd);
 
     QString cmd = ui->EndLayerGcode->toPlainText();
     ZAxisMovement(cmd);
     Auto_m_elements.clear();
-    AutoSendPatSeq->setInterval(delay + 500 + ZLiftDelay);
+    AutoSendPatSeq->setInterval(delay + ZLiftDelay);
     PatCount = PatCount + 1;
 }
 
