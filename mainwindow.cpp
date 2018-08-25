@@ -71,8 +71,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QObject::connect(waveWindow, SIGNAL(selectionChange(int, QList<PatternElement>)),
                      this, SLOT(on_patternSelect(int, QList<PatternElement>)));
-    USB_Init();
-    getSerialPort();
+    //USB_Init();
+    //getSerialPort();
+    arduino = new QSerialPort();
     m_ptnImagePath = settings.value("PtnImagePath", "").toString();
     m_ptnSettingPath = settings.value("PtnSettingPath", "").toString();
     m_ptnProfilePath = settings.value("PtnProfilePath", "").toString();
@@ -107,6 +108,7 @@ MainWindow::MainWindow(QWidget *parent) :
     setWindowTitle(versionStr);
 
     updateMinExposure();
+    startTimer(0);
 }
 
 MainWindow::~MainWindow()
@@ -400,6 +402,9 @@ void MainWindow::on_connectButton_clicked()
 
     if(!USB_Connected)
     {
+        USB_Init();
+        getSerialPort();
+
         if (USB_Open() != 0 || ui->SerialPort->count() == 0)
         {
             showError("USB not Connected!!");
@@ -623,4 +628,21 @@ void MainWindow::on_pushButton_ZMachineControl_clicked()
 
     ui->stackedWidget->setCurrentIndex(2);
     ui->pushButton_ZMachineControl->setChecked(true);
+}
+
+void MainWindow::timerEvent(QTimerEvent *)
+{
+    if (AutoSendPatSeq->isActive())
+    {
+        mSessionTime = mStartTime.msecsTo(QDateTime::currentDateTime());
+        qint64 time =  mSessionTime + mResumeSessionTime;;
+        unsigned int h = time / 1000 / 60 / 60;
+        unsigned int m = (time / 1000 / 60) - (h * 60);
+        unsigned int s = (time / 1000) - ((m + (h * 60))* 60); //<<<<<<<<<<<<<<<<<<<<<<
+        const QString diff = QString("%1:%2:%3")
+                                .arg(h, 2, 10, QChar('0'))
+                                .arg(m, 2, 10, QChar('0'))
+                                .arg(s, 2, 10, QChar('0'));
+        ui->StartTime->setText(diff);
+    }
 }

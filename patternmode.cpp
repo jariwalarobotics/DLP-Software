@@ -109,13 +109,13 @@ int MainWindow::uploadPatternToEVM(bool master, int splashImageCount, int splash
 
     LCR_InitPatternMemLoad(master, splashImageCount, splash_size);
 
-    QProgressDialog imgDataDownload("Image data download", "Abort", 0, splash_size, this);
-    imgDataDownload.setWindowTitle(QString("Pattern Data Download.."));
-    imgDataDownload.setWindowModality(Qt::WindowModal);
-    imgDataDownload.setLabelText(QString("Uploading to EVM"));
-    imgDataDownload.setValue(0);
+    //QProgressDialog imgDataDownload("Image data download", "Abort", 0, splash_size, this);
+    //imgDataDownload.setWindowTitle(QString("Pattern Data Download.."));
+    //imgDataDownload.setWindowModality(Qt::WindowModal);
+    //imgDataDownload.setLabelText(QString("Uploading to EVM"));
+    //imgDataDownload.setValue(0);
     int imgDataDwld = 0;
-    imgDataDownload.setMaximum(origSize);
+    //imgDataDownload.setMaximum(origSize);
     //imgDataDownload.show();
     QApplication::processEvents();
     while(splash_size > 0)
@@ -125,7 +125,7 @@ int MainWindow::uploadPatternToEVM(bool master, int splashImageCount, int splash
         {
             // free(imageBuffer);
             showCriticalError("Downloading failed");
-            imgDataDownload.close();
+            //imgDataDownload.close();
             return -1;
         }
 
@@ -135,17 +135,17 @@ int MainWindow::uploadPatternToEVM(bool master, int splashImageCount, int splash
             splash_size = 0;
 
         imgDataDwld += dnldSize;
-        imgDataDownload.setValue(imgDataDwld);
+        //imgDataDownload.setValue(imgDataDwld);
          QApplication::processEvents();
-        if(imgDataDownload.wasCanceled())
-        {
-            imgDataDownload.setValue(splash_size);
-            imgDataDownload.close();
-            return -1;
-        }
+        //if(imgDataDownload.wasCanceled())
+        //{
+          //  imgDataDownload.setValue(splash_size);
+         //   imgDataDownload.close();
+        //    return -1;
+      //  }
     }
     QApplication::processEvents();
-    imgDataDownload.close();
+    //imgDataDownload.close();
 
     return 0;
 }
@@ -486,10 +486,10 @@ void MainWindow::on_addPatternsButton_clicked()
 
             if(m_elements.size()==0)
             {
-                pattern.bits = 1;
+                pattern.bits = 8;
                 pattern.color = PatternElement::RED;
-                pattern.exposure = 1500000;
-                pattern.darkPeriod = 1000000;
+                pattern.exposure = 4000000;
+                pattern.darkPeriod = 0;
                 pattern.trigIn = false;
                 pattern.trigOut2 = true;
             }
@@ -577,6 +577,7 @@ void MainWindow::on_startPatSequence_Button_clicked()
     {
         ZAxisMovement(cmd);
         int homingDelay = ui->HomingDelay->text().toInt();
+        mStartTime = QDateTime::currentDateTime();
         AutoSendPatSeq->start(homingDelay + PrintingDelay);
     } else {
         if (cmd.contains("G28"))
@@ -589,15 +590,13 @@ void MainWindow::on_startPatSequence_Button_clicked()
         }
     }
 
-    //AutoSendPatSeq->start();
-    int ExposureTime = ui->exposure_lineEdit->text().toInt();
-    int DarkTime = ui->darkPeriod_lineEdit->text().toInt();
+    ExposureTime = ui->exposure_lineEdit->text().toInt();
+    DarkTime = ui->darkPeriod_lineEdit->text().toInt();
 
     delay = ((ExposureTime + DarkTime) / 1000) + 500;
     ui->stopPatSequence_Button->setEnabled(true);
     ui->pausePatSequence_Button->setEnabled(true);
     ui->startPatSequence_Button->setEnabled(false);
-
 }
 
 /**
@@ -611,7 +610,8 @@ void MainWindow::on_pausePatSequence_Button_clicked()
         ui->pausePatSequence_Button->setIcon(icon);
         Auto_m_elements.clear();
         AutoSendPatSeq->stop();
-        QThread::msleep(delay);
+        mResumeSessionTime = mSessionTime;
+        QThread::msleep(delay - DarkTime);
         if (LCR_PatternDisplay(0x1) < 0)
             showError("Unable to pause pattern display");
     }
@@ -619,7 +619,8 @@ void MainWindow::on_pausePatSequence_Button_clicked()
     {
         QIcon icon(":/new/prefix1/Icons/my_pause.png");
         ui->pausePatSequence_Button->setIcon(icon);
-        AutoSendPatSeq->start(PrintingDelay);
+        mStartTime = QDateTime::currentDateTime();
+        AutoSendPatSeq->start(2000);
     }
 }
 
@@ -637,11 +638,13 @@ void MainWindow::on_stopPatSequence_Button_clicked()
     on_patternSelect(0,m_elements);
     waveWindow->draw();
     AutoSendPatSeq->stop();
+    ui->StartTime->setText("00:00:00");
     WaitforEndstopHit = false;
+    mResumeSessionTime = 0;
 
     PatCount = 0;
 
-    QThread::msleep(delay);
+    QThread::msleep(delay - DarkTime);
     if (LCR_PatternDisplay(0x0) < 0)
         showError("Unable to stop pattern display");
 }
@@ -664,10 +667,7 @@ void MainWindow::on_selectAllButton_clicked()
  */
 void MainWindow::on_patternSelect(int index, QList<PatternElement> patElem)
 {
-
     m_elements = patElem;
-
-
     if (index < 0)
     {
         ui->ptnSetting_groupBox->setEnabled(false);
@@ -685,11 +685,11 @@ void MainWindow::on_patternSelect(int index, QList<PatternElement> patElem)
     ui->ptnSetting_groupBox->setEnabled(true);
     QString lenght = QString::number(m_elements.size() - 1);
     ui->PatternIndex->setText(QString::number(index)+ " / " + lenght);
-    //ui->ptnSetting_groupBox->setTitle(QString("Pattern %1").arg(index));
     ui->triggerIn_checkBox->setChecked(m_elements[index].trigIn);
     ui->triggerOut2_checkBox->setChecked(m_elements[index].trigOut2);
     ui->exposure_lineEdit->setText(QString::number(m_elements[index].exposure));
     ui->darkPeriod_lineEdit->setText(QString::number(m_elements[index].darkPeriod));
+    ui->UpdateTotalTime->setEnabled(true);
     ui->removePatternsButton->setEnabled(true);
 
     return;
@@ -873,8 +873,6 @@ void MainWindow::SendPatSequence()
         QString cmd = ui->EndPrintGcode->toPlainText();
         ZAxisMovement(cmd);
 
-        showStatus("Pattern sequence completed!!");
-        Auto_m_elements.clear();
         ui->startPatSequence_Button->setEnabled(true);
         ui->pausePatSequence_Button->setEnabled(false);
         ui->stopPatSequence_Button->setEnabled(false);
@@ -884,7 +882,9 @@ void MainWindow::SendPatSequence()
         waveWindow->draw();
         AutoSendPatSeq->stop();
         WaitforEndstopHit = false;
-
+        mResumeSessionTime = 0;
+        showStatus("Pattern sequence completed!!");
+        Auto_m_elements.clear();
         PatCount = 0;
         return;
     }
@@ -976,4 +976,36 @@ void MainWindow::StartSigleImageSeq()
     if (LCR_PatternDisplay(0x2) < 0)
         showError("Unable to start pattern display");
 }
+
+
+void MainWindow::on_UpdateTotalTime_clicked()
+{
+    if (m_elements.size() <= 0)
+    {
+        showStatus("Error:No pattern sequence to Count");
+        return;
+    }
+
+    ExposureTime = ui->exposure_lineEdit->text().toInt();
+    int TotalExposureTime = (ExposureTime / 1000) * m_elements.size();
+    DarkTime = ui->darkPeriod_lineEdit->text().toInt();
+    int TotalDarkTime = (DarkTime / 1000) * m_elements.size();
+
+    PrintingDelay = ui->PrintingDelay->text().toInt();
+    ZLiftDelay = ui->ZLiftdelay->text().toInt();
+    int TotalDelay = ZLiftDelay * m_elements.size();
+
+    int Totaltime = (PrintingDelay + TotalExposureTime + TotalDarkTime + TotalDelay);
+
+    unsigned int h = Totaltime / 1000 / 60 / 60;
+    unsigned int m = (Totaltime / 1000 / 60) - (h * 60);
+    unsigned int s = (Totaltime / 1000) - ((m + (h * 60))* 60); //<<<<<<<<<<<<<<<<<<<<<<
+    const QString diff = QString("%1:%2:%3")
+                            .arg(h, 2, 10, QChar('0'))
+                            .arg(m, 2, 10, QChar('0'))
+                            .arg(s, 2, 10, QChar('0'));
+    ui->TotalTime->setText(diff);
+
+}
+
 

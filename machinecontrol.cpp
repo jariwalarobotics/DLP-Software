@@ -59,7 +59,6 @@ void MainWindow::getSerialPort()
 
     if (ui->SerialPort->count() != 0)
     {
-        arduino = new QSerialPort();
         ui->SerialPort->setEnabled(true);
     }
 }
@@ -154,6 +153,7 @@ void MainWindow::serialdataRead()
         {
             if (myString.startsWith("Z_EndStop_Hit")) {
                 AutoSendPatSeq->start(PrintingDelay);
+                mStartTime = QDateTime::currentDateTime();
             }
         }
    }

@@ -6,6 +6,7 @@
 #include <QFile>
 #include <QLibrary>
 #include <QTextEdit>
+#include <QDateTime>
 #include <QTableWidget>
 #include <QSerialPort>
 #include "waveformwindow.h"
@@ -44,7 +45,10 @@ public:
     int PatCount = 0;
     int delay;
     int ZLiftDelay = 0;
+    int ExposureTime = 0;
+    int DarkTime = 0;
     int PrintingDelay = 0;
+    int counter = 0;
     BOOL WaitforEndstopHit = false;
 
 
@@ -231,8 +235,14 @@ private slots:
 
     void on_AutoHoming_clicked();
 
+    void on_UpdateTotalTime_clicked();
+
 private:
 
+    void timerEvent(QTimerEvent *);
+    QDateTime mStartTime;
+    qint64 mSessionTime;
+    qint64 mResumeSessionTime = 0;
     Ui::MainWindow *ui;
     QLibrary ahid;
     WaveFormWindow *waveWindow;
