@@ -446,6 +446,9 @@ public:
         font1.setBold(true);
         font1.setWeight(75);
         label_8->setFont(font1);
+        label_8->setStyleSheet(QLatin1String("QLabel{\n"
+"	color:rgb(0,150,150);\n"
+"   }"));
 
         horizontalLayout_24->addWidget(label_8);
 
@@ -458,6 +461,9 @@ public:
         StartTime->setSizePolicy(sizePolicy1);
         StartTime->setMinimumSize(QSize(70, 0));
         StartTime->setFont(font1);
+        StartTime->setStyleSheet(QLatin1String("QLabel{\n"
+"	color:rgb(0,150,150);\n"
+"   }"));
 
         horizontalLayout_24->addWidget(StartTime);
 
@@ -469,6 +475,9 @@ public:
         font2.setBold(true);
         font2.setWeight(75);
         label_12->setFont(font2);
+        label_12->setStyleSheet(QLatin1String("QLabel{\n"
+"	color:rgb(0,150,150);\n"
+"   }"));
 
         horizontalLayout_24->addWidget(label_12);
 
@@ -478,6 +487,9 @@ public:
         TotalTime->setSizePolicy(sizePolicy1);
         TotalTime->setMinimumSize(QSize(70, 0));
         TotalTime->setFont(font1);
+        TotalTime->setStyleSheet(QLatin1String("QLabel{\n"
+"	color:rgb(0,150,150);\n"
+"   }"));
 
         horizontalLayout_24->addWidget(TotalTime);
 

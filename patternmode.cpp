@@ -606,12 +606,12 @@ void MainWindow::on_pausePatSequence_Button_clicked()
 {
     if (AutoSendPatSeq->isActive())
     {
+        QThread::msleep(delay - DarkTime);
         QIcon icon(":/new/prefix1/Icons/my_resume.png");
         ui->pausePatSequence_Button->setIcon(icon);
         Auto_m_elements.clear();
         AutoSendPatSeq->stop();
         mResumeSessionTime = mSessionTime;
-        QThread::msleep(delay - DarkTime);
         if (LCR_PatternDisplay(0x1) < 0)
             showError("Unable to pause pattern display");
     }

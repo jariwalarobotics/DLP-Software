@@ -432,6 +432,11 @@ background-repeat: none;
             <bold>true</bold>
            </font>
           </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel{
+	color:rgb(0,150,150);
+   }</string>
+          </property>
           <property name="text">
            <string>Time -</string>
           </property>
@@ -459,6 +464,11 @@ background-repeat: none;
             <bold>true</bold>
            </font>
           </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel{
+	color:rgb(0,150,150);
+   }</string>
+          </property>
           <property name="text">
            <string>00:00:00</string>
           </property>
@@ -473,6 +483,11 @@ background-repeat: none;
             <weight>75</weight>
             <bold>true</bold>
            </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel{
+	color:rgb(0,150,150);
+   }</string>
           </property>
           <property name="text">
            <string>/</string>
@@ -500,6 +515,11 @@ background-repeat: none;
             <weight>75</weight>
             <bold>true</bold>
            </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel{
+	color:rgb(0,150,150);
+   }</string>
           </property>
           <property name="text">
            <string>00:00:00</string>
