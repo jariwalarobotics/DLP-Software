@@ -6,6 +6,7 @@
 #include <QFileInfo>
 #include <QMessageBox>
 #include <QTextStream>
+#include <QCollator>
 #include <QTime>
 #include <QTimer>
 #include <QThread>
@@ -409,108 +410,97 @@ void MainWindow::on_addPatternsButton_clicked()
     int i;
     int numPatAdded = 0;
 
-    if (m_videoPatternMode)
-    {
-        PatternElement pattern;
-        if(m_elements.size()==0)
-        {
-            pattern.bits = 1;
-            pattern.color = PatternElement::RED;
-            pattern.exposure = GetMinExposure(1);
-            pattern.darkPeriod = 0;
-            pattern.trigIn = false;
-            pattern.trigOut2 = true;
-            pattern.splashImageBitPos = 0;
-            pattern.splashImageIndex = 0;
-        }
-        else
-        {
-            for(i=0;i<m_elements.size();i++)
-                m_elements[i].selected=false;
-            pattern.bits = m_elements[m_elements.size()-1].bits;
-            pattern.color = m_elements[m_elements.size()-1].color;
-            pattern.exposure = m_elements[m_elements.size()-1].exposure;
-            pattern.darkPeriod =m_elements[m_elements.size()-1].darkPeriod;
-            pattern.trigIn = m_elements[m_elements.size()-1].trigIn;
-            pattern.trigOut2 = m_elements[m_elements.size()-1].trigOut2;
-            pattern.splashImageBitPos = m_elements[m_elements.size()-1].splashImageBitPos +
-                    m_elements[m_elements.size()-1].bits;
-            pattern.splashImageIndex = 0;
-        }
+    QStringList fileNames;
 
-        pattern.selected = false;
-        m_elements.append(pattern);
-        m_elements[0].trigIn = true;    // First pattern always on a Frame Change
-        numPatAdded = 1;
-    }
-    else
-    {
-        QStringList fileNames;
+    //fileNames = QFileDialog::getOpenFileNames(this,
+                                             // QString("Select Image for Pattern"),
+                                            //  m_ptnImagePath,
+                                            //  "*.bmp *.png");
 
-        fileNames = QFileDialog::getOpenFileNames(this,
-                                                  QString("Select Image for Pattern"),
-                                                  m_ptnImagePath,
-                                                  "*.bmp *.png");
-        if(fileNames.isEmpty())
-            return;
+    QDir directory = QFileDialog::getExistingDirectory(this,
+                                                       QString("select directory"),
+                                                       m_ptnImagePath);
+    QStringList filters;
+    filters << "*.png" << "*.jpg" << "*.bmp";
 
-        //fileNames.sort();
+    QStringList list = directory.entryList(filters,QDir::Files|QDir::NoSymLinks);
 
-        QDir dir = QFileInfo(QFile(fileNames.at(0))).absoluteDir();
-        m_ptnImagePath = dir.absolutePath();
-        settings.setValue("PtnImagePath",m_ptnImagePath);
+    QCollator collator;
+    collator.setNumericMode(true);
 
-        for(i=0;i<m_elements.size();i++)
-            m_elements[i].selected=false;
+    std::sort(
+         list.begin(),
+         list.end(),
+         [&collator](const QString &file1, const QString &file2)
+         {
+            return collator.compare(file1, file2) < 0;
+         });
 
-        for(i = 0; i < fileNames.size(); i++)
-        {
+     for (int i = 0; i < list.size(); i++)
+     {
+         QString str = directory.path() +"/" + list.at(i);
+         fileNames.append(str);
+     }
+
+     if(fileNames.isEmpty())
+          return;
+
+     //fileNames.sort();
+
+     //QDir dir = QFileInfo(QFile(fileNames.at(0))).absoluteDir();
+     m_ptnImagePath = directory.path();
+     settings.setValue("PtnImagePath",m_ptnImagePath);
+
+     for(i=0;i<m_elements.size();i++)
+          m_elements[i].selected=false;
+
+     for(i = 0; i < fileNames.size(); i++)
+     {
 #if 0
-            QByteArray ba = fileNames.at(i).toLocal8Bit();
-            int width, height;
+          QByteArray ba = fileNames.at(i).toLocal8Bit();
+          int width, height;
 
-            BMP_GetImageSize(ba.data(), &width, &height);
-            if ((width != m_ptnWidth) || (height != m_ptnHeight))
-            {
+          BMP_GetImageSize(ba.data(), &width, &height);
+          if ((width != m_ptnWidth) || (height != m_ptnHeight))
+          {
+              if (m_dualAsic)
+                 sprintf(errMsg, "Error: Cannot add image %s. Image resolution permitted is 2560 * 1600", ba.data());
+              else
+                 sprintf(errMsg, "Error: Cannot add image %s. Image resolution permitted is 1920 * 1080", ba.data());
 
-                if (m_dualAsic)
-                    sprintf(errMsg, "Error: Cannot add image %s. Image resolution permitted is 2560 * 1600", ba.data());
-                else
-                    sprintf(errMsg, "Error: Cannot add image %s. Image resolution permitted is 1920 * 1080", ba.data());
-
-                showCriticalError(errMsg);
+              showCriticalError(errMsg);
                 continue;
-            }
+          }
 #endif
-            PatternElement pattern;
+       PatternElement pattern;
 
-            if(m_elements.size()==0)
-            {
-                pattern.bits = 8;
-                pattern.color = PatternElement::RED;
-                pattern.exposure = 4000000;
-                pattern.darkPeriod = 0;
-                pattern.trigIn = false;
-                pattern.trigOut2 = true;
-            }
-            else
-            {
-                pattern.bits = m_elements[m_elements.size()-1].bits;
-                pattern.color = m_elements[m_elements.size()-1].color;
-                pattern.exposure = m_elements[m_elements.size()-1].exposure;
-                pattern.darkPeriod = m_elements[m_elements.size()-1].darkPeriod;
-                pattern.trigIn = m_elements[m_elements.size()-1].trigIn;
-                pattern.trigOut2 = m_elements[m_elements.size()-1].trigOut2;
-            }
+       if(m_elements.size()==0)
+       {
+           pattern.bits = 8;
+           pattern.color = PatternElement::RED;
+           pattern.exposure = 4000000;
+           pattern.darkPeriod = 0;
+           pattern.trigIn = false;
+           pattern.trigOut2 = true;
+       }
+       else
+       {
+           pattern.bits = m_elements[m_elements.size()-1].bits;
+           pattern.color = m_elements[m_elements.size()-1].color;
+           pattern.exposure = m_elements[m_elements.size()-1].exposure;
+           pattern.darkPeriod = m_elements[m_elements.size()-1].darkPeriod;
+           pattern.trigIn = m_elements[m_elements.size()-1].trigIn;
+           pattern.trigOut2 = m_elements[m_elements.size()-1].trigOut2;
+       }
 
-            pattern.name = fileNames.at(i);
-            pattern.selected = false;
+       pattern.name = fileNames.at(i);
+       pattern.selected = false;
 
-            m_elements.append(pattern);
-            numPatAdded++;
-            m_patternImageChange = true;
-        }
+       m_elements.append(pattern);
+       numPatAdded++;
+       m_patternImageChange = true;
     }
+
 
     if (m_elements.size() > 0)
     {
@@ -884,6 +874,7 @@ void MainWindow::SendPatSequence()
         WaitforEndstopHit = false;
         mResumeSessionTime = 0;
         showStatus("Pattern sequence completed!!");
+        ui->StartTime->setText("00:00:00");
         Auto_m_elements.clear();
         PatCount = 0;
         return;
@@ -993,7 +984,7 @@ void MainWindow::on_UpdateTotalTime_clicked()
 
     PrintingDelay = ui->PrintingDelay->text().toInt();
     ZLiftDelay = ui->ZLiftdelay->text().toInt();
-    int TotalDelay = ZLiftDelay * m_elements.size();
+    int TotalDelay = ZLiftDelay * (m_elements.size() + 1);
 
     int Totaltime = (PrintingDelay + TotalExposureTime + TotalDarkTime + TotalDelay);
 
