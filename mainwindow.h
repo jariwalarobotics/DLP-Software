@@ -140,10 +140,6 @@ private slots:
 
     void on_pushButton_LEDDriver_clicked();
 
-    void on_pDMD_radioButton_clicked();
-    void on_resetDMD_Button_clicked();
-    void on_powerOn_radioButton_clicked();
-
     void on_saveButton_patternSettings_clicked();
     void on_loadButton_patternSettings_clicked();
     void on_exposure_lineEdit_editingFinished();
@@ -156,16 +152,11 @@ private slots:
 
     void resizeEvent(QResizeEvent *);
 
-    void on_standBy_radioButton_clicked();
     int calculateSingleSplashImageDetails(int *SingleSplashImage);
     void uploadSingleImageSeq();
     void StartSigleImageSeq();
 
-    void getStatus();
     void getSerialPort();
-
-    void getVersion();
-    void getFrmwVersion();
     void showError(QString errMsg);
     void showCriticalError(QString errMsg);
 

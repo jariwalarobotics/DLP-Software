@@ -61,486 +61,6 @@
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0">
-       <layout class="QHBoxLayout" name="horizontalLayout_24" stretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0">
-        <property name="sizeConstraint">
-         <enum>QLayout::SetNoConstraint</enum>
-        </property>
-        <item>
-         <widget class="QPushButton" name="connectButton">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>10</width>
-            <height>48</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Arial</family>
-            <pointsize>11</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">#connectButton{
-background-color: transparent;
-border-image: url(:connected.png);
-backgorund: none;
-border: none;
-background-repeat: none;
-}</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="hires.qrc">
-            <normaloff>:/Images/images/connected.png</normaloff>:/Images/images/connected.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>50</width>
-            <height>50</height>
-           </size>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <property name="checked">
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="startPatSequence_Button">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>50</width>
-            <height>60</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">#startPatSequence_Button{
-background-color: transparent;
-backgorund: none;
-border: none;
-background-repeat: none;
-}</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="hires.qrc">
-            <normaloff>:/new/prefix1/Icons/my_play.png</normaloff>:/new/prefix1/Icons/my_play.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pausePatSequence_Button">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>50</width>
-            <height>60</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">#pausePatSequence_Button{
-background-color: transparent;
-backgorund: none;
-border: none;
-background-repeat: none;
-}</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="hires.qrc">
-            <normaloff>:/new/prefix1/Icons/my_pause.png</normaloff>:/new/prefix1/Icons/my_pause.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="checkable">
-           <bool>false</bool>
-          </property>
-          <property name="checked">
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="stopPatSequence_Button">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>50</width>
-            <height>60</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">#stopPatSequence_Button{
-background-color: transparent;
-border-image: url(:connected.png);
-backgorund: none;
-border: none;
-background-repeat: none;
-}</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="hires.qrc">
-            <normaloff>:/new/prefix1/Icons/my_stop.png</normaloff>:/new/prefix1/Icons/my_stop.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Fixed</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_patternMode">
-          <property name="enabled">
-           <bool>true</bool>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Arial</family>
-            <pointsize>11</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton{
-	color:rgb(0,150,150);
-   }</string>
-          </property>
-          <property name="text">
-           <string>Pattern 
- Mode</string>
-          </property>
-          <property name="icon">
-           <iconset resource="hires.qrc">
-            <normaloff>:/Images/images/pattern.png</normaloff>:/Images/images/pattern.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_LEDDriver">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>45</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Arial</family>
-            <pointsize>11</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton{
-	color:rgb(0,150,150);
-   }</string>
-          </property>
-          <property name="text">
-           <string>LED Driver</string>
-          </property>
-          <property name="icon">
-           <iconset resource="hires.qrc">
-            <normaloff>:/Images/images/LEDDriver_icon.png</normaloff>:/Images/images/LEDDriver_icon.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_ZMachineControl">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Arial</family>
-            <pointsize>11</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton{
-	color:rgb(0,150,150);
-   }</string>
-          </property>
-          <property name="text">
-           <string>Z Control</string>
-          </property>
-          <property name="icon">
-           <iconset resource="hires.qrc">
-            <normaloff>:/Images/images/settings.png</normaloff>:/Images/images/settings.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer_3">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Fixed</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>120</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_8">
-          <property name="font">
-           <font>
-            <family>Arial</family>
-            <pointsize>12</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel{
-	color:rgb(0,150,150);
-   }</string>
-          </property>
-          <property name="text">
-           <string>Time -</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="StartTime">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>70</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Arial</family>
-            <pointsize>12</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel{
-	color:rgb(0,150,150);
-   }</string>
-          </property>
-          <property name="text">
-           <string>00:00:00</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_12">
-          <property name="font">
-           <font>
-            <family>Arial</family>
-            <pointsize>14</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel{
-	color:rgb(0,150,150);
-   }</string>
-          </property>
-          <property name="text">
-           <string>/</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="TotalTime">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>70</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Arial</family>
-            <pointsize>12</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel{
-	color:rgb(0,150,150);
-   }</string>
-          </property>
-          <property name="text">
-           <string>00:00:00</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
-      </item>
       <item row="1" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout_25">
         <item>
@@ -573,7 +93,7 @@ border:1px solid black}</string>
              <x>10</x>
              <y>10</y>
              <width>221</width>
-             <height>131</height>
+             <height>111</height>
             </rect>
            </property>
            <property name="sizePolicy">
@@ -596,7 +116,7 @@ color:rgb(0,120,120);
             <property name="geometry">
              <rect>
               <x>20</x>
-              <y>80</y>
+              <y>65</y>
               <width>40</width>
               <height>35</height>
              </rect>
@@ -631,7 +151,7 @@ color:rgb(0,120,120);
             <property name="geometry">
              <rect>
               <x>85</x>
-              <y>80</y>
+              <y>65</y>
               <width>40</width>
               <height>35</height>
              </rect>
@@ -666,7 +186,7 @@ color:rgb(0,120,120);
             <property name="geometry">
              <rect>
               <x>150</x>
-              <y>80</y>
+              <y>65</y>
               <width>40</width>
               <height>35</height>
              </rect>
@@ -700,7 +220,7 @@ color:rgb(0,120,120);
             </property>
             <property name="geometry">
              <rect>
-              <x>10</x>
+              <x>25</x>
               <y>20</y>
               <width>75</width>
               <height>35</height>
@@ -737,7 +257,7 @@ color:rgb(0,120,120);
            <widget class="QPushButton" name="loadButton_patternSettings">
             <property name="geometry">
              <rect>
-              <x>110</x>
+              <x>120</x>
               <y>20</y>
               <width>75</width>
               <height>35</height>
@@ -766,20 +286,22 @@ color:rgb(0,120,120);
             </property>
            </widget>
           </widget>
-          <widget class="QGroupBox" name="groupBox_firmware">
+          <widget class="QGroupBox" name="LiftSeqTime">
            <property name="geometry">
             <rect>
              <x>10</x>
-             <y>150</y>
+             <y>128</y>
              <width>221</width>
-             <height>60</height>
+             <height>501</height>
             </rect>
            </property>
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>9</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
            </property>
            <property name="styleSheet">
             <string notr="true">QGroupBox{ border: 1px solid ;
@@ -789,318 +311,493 @@ color:rgb(0,120,120);
 ;}</string>
            </property>
            <property name="title">
-            <string>Firmware</string>
+            <string>Lift / Sequence Time</string>
            </property>
-           <layout class="QHBoxLayout" name="horizontalLayout_22">
-            <property name="topMargin">
-             <number>15</number>
+           <widget class="QLineEdit" name="ZLiftdelay">
+            <property name="geometry">
+             <rect>
+              <x>115</x>
+              <y>155</y>
+              <width>95</width>
+              <height>35</height>
+             </rect>
             </property>
-            <item>
-             <layout class="QVBoxLayout" name="verticalLayout_18">
-              <item>
-               <widget class="QLabel" name="label_version">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="font">
-                 <font>
-                  <pointsize>8</pointsize>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QLabel{border:0px}</string>
-                </property>
-                <property name="text">
-                 <string>Version:</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_Tag">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="font">
-                 <font>
-                  <pointsize>8</pointsize>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QLabel{border:0px}</string>
-                </property>
-                <property name="text">
-                 <string>Tag : </string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QVBoxLayout" name="verticalLayout_19">
-              <item>
-               <widget class="QLabel" name="apiVersionLabel">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>20</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <pointsize>8</pointsize>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QLabel{border:0px}</string>
-                </property>
-                <property name="text">
-                 <string>xx.xx.xx</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="firmwareTag_label">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="font">
-                 <font>
-                  <pointsize>8</pointsize>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QLabel{border:0px}</string>
-                </property>
-                <property name="text">
-                 <string>xxxx</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QGroupBox" name="groupBox_ChipSetType">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>220</y>
-             <width>221</width>
-             <height>43</height>
-            </rect>
-           </property>
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QGroupBox{ border: 1px solid ;
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_9">
+            <property name="geometry">
+             <rect>
+              <x>115</x>
+              <y>120</y>
+              <width>91</width>
+              <height>20</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{ border: 0px ;
 background-color: transparent;
 border-color: rgb(0,150,150);
 color:rgb(0,120,120);
 ;}</string>
-           </property>
-           <property name="title">
-            <string>Chipset Type</string>
-           </property>
-           <layout class="QHBoxLayout" name="horizontalLayout_14">
-            <property name="topMargin">
-             <number>15</number>
             </property>
-            <item>
-             <widget class="QRadioButton" name="pDMD_radioButton">
-              <property name="text">
-               <string>DLP6500</string>
-              </property>
-              <property name="checked">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QGroupBox" name="operatingModes_groupBox">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>270</y>
-             <width>221</width>
-             <height>81</height>
-            </rect>
-           </property>
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QGroupBox{ border: 1px solid ;
+            <property name="text">
+             <string>Z Lift Time (ms)</string>
+            </property>
+           </widget>
+           <widget class="QLineEdit" name="PrintingDelay">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>155</y>
+              <width>95</width>
+              <height>35</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_10">
+            <property name="geometry">
+             <rect>
+              <x>30</x>
+              <y>105</y>
+              <width>51</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{ border: 0px ;
 background-color: transparent;
 border-color: rgb(0,150,150);
 color:rgb(0,120,120);
 ;}</string>
-           </property>
-           <property name="title">
-            <string>Operating Mode</string>
-           </property>
-           <layout class="QVBoxLayout" name="verticalLayout_40">
-            <property name="topMargin">
-             <number>20</number>
             </property>
-            <item>
-             <widget class="QRadioButton" name="patternMode_radioButton">
-              <property name="text">
-               <string>Pre-stored Pattern Mode</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QRadioButton" name="patternMemory_radioButton">
-              <property name="text">
-               <string>Pattern On-The-Fly Mode</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QGroupBox" name="status_groupBox">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>360</y>
-             <width>221</width>
-             <height>271</height>
-            </rect>
-           </property>
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QGroupBox{ border: 1px solid ;
+            <property name="text">
+             <string>Printing</string>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_13">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>125</y>
+              <width>101</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{ border: 0px ;
 background-color: transparent;
 border-color: rgb(0,150,150);
 color:rgb(0,120,120);
 ;}</string>
-           </property>
-           <property name="title">
-            <string>Status</string>
-           </property>
-           <layout class="QVBoxLayout" name="verticalLayout_5">
-            <property name="topMargin">
-             <number>20</number>
             </property>
-            <item>
-             <widget class="QCheckBox" name="internalMemTest_checkBox">
-              <property name="text">
-               <string>Internal Memory Test Passed</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="incompatibleASICorDMD_checkBox">
-              <property name="text">
-               <string>Controller/DMD Incompatible</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="slaveReady_checkBox">
-              <property name="text">
-               <string>Slave Present and Ready (DLP9000)</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="internalInit_checkBox">
-              <property name="text">
-               <string>Internal Initialization Complete </string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="DMDResetWaveformControllerErr_checkBox">
-              <property name="text">
-               <string>DMD Reset Waveform Controller Error </string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="forcedSwapErr_checkBox">
-              <property name="text">
-               <string>Forced Swap Error </string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="seqAbortStatus_checkBox">
-              <property name="text">
-               <string>Sequencer Abort Status Flag Error</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="seqErr_checkBox">
-              <property name="text">
-               <string>Sequencer Error </string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="DMDParkStatus_checkBox">
-              <property name="text">
-               <string>DMD Micromirrors Parked</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="sequencerRunState_checkBox">
-              <property name="text">
-               <string>Sequencer Running</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="videoState_checkBox">
-              <property name="text">
-               <string>Video Running</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="extSourceLocked_checkBox">
-              <property name="text">
-               <string>Locked to External Source</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
+            <property name="text">
+             <string>Start Delay (ms)</string>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="UpdateTotalTime">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="geometry">
+             <rect>
+              <x>50</x>
+              <y>200</y>
+              <width>111</width>
+              <height>35</height>
+             </rect>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="mouseTracking">
+             <bool>true</bool>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{
+	color:rgb(0,150,150);
+}</string>
+            </property>
+            <property name="text">
+             <string>Update</string>
+            </property>
+            <property name="checkable">
+             <bool>false</bool>
+            </property>
+           </widget>
+           <widget class="QCheckBox" name="triggerIn_checkBox">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>250</y>
+              <width>111</width>
+              <height>17</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QCheckBox{
+	color:rgb(0,150,150);
+}</string>
+            </property>
+            <property name="text">
+             <string>Trigger Input</string>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_TrigOut1">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>280</y>
+              <width>111</width>
+              <height>13</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{border:0px;
+	color:rgb(0,150,150);
+}</string>
+            </property>
+            <property name="lineWidth">
+             <number>1</number>
+            </property>
+            <property name="text">
+             <string>      Trigger Out 1</string>
+            </property>
+           </widget>
+           <widget class="QCheckBox" name="triggerOut2_checkBox">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>310</y>
+              <width>111</width>
+              <height>17</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QCheckBox{
+	color:rgb(0,150,150);
+}</string>
+            </property>
+            <property name="text">
+             <string>Trigger Out 2</string>
+            </property>
+           </widget>
+           <widget class="QGroupBox" name="groupBox_2">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>340</y>
+              <width>201</width>
+              <height>151</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>9</pointsize>
+             </font>
+            </property>
+            <property name="title">
+             <string>Auto Homing</string>
+            </property>
+            <widget class="QRadioButton" name="AutoHoming">
+             <property name="geometry">
+              <rect>
+               <x>50</x>
+               <y>20</y>
+               <width>100</width>
+               <height>20</height>
+              </rect>
+             </property>
+             <property name="font">
+              <font>
+               <family>Arial</family>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QRadioButton{
+	color:rgb(0,150,150);
+}</string>
+             </property>
+             <property name="text">
+              <string>Auto Homing</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+            <widget class="QRadioButton" name="ManualHoming">
+             <property name="geometry">
+              <rect>
+               <x>50</x>
+               <y>50</y>
+               <width>110</width>
+               <height>20</height>
+              </rect>
+             </property>
+             <property name="font">
+              <font>
+               <family>Arial</family>
+               <pointsize>9</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QRadioButton{
+	color:rgb(0,150,150);
+}</string>
+             </property>
+             <property name="text">
+              <string>Manual Homing</string>
+             </property>
+            </widget>
+            <widget class="QLabel" name="HomeDelay">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="geometry">
+              <rect>
+               <x>40</x>
+               <y>80</y>
+               <width>120</width>
+               <height>20</height>
+              </rect>
+             </property>
+             <property name="font">
+              <font>
+               <family>Arial</family>
+               <pointsize>9</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel{ border: 0px ;
+background-color: transparent;
+border-color: rgb(0,150,150);
+color:rgb(0,120,120);
+;}</string>
+             </property>
+             <property name="text">
+              <string>Homing Delay (ms)</string>
+             </property>
+            </widget>
+            <widget class="QLineEdit" name="HomingDelay">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="geometry">
+              <rect>
+               <x>40</x>
+               <y>110</y>
+               <width>100</width>
+               <height>30</height>
+              </rect>
+             </property>
+             <property name="font">
+              <font>
+               <family>Arial</family>
+               <pointsize>11</pointsize>
+              </font>
+             </property>
+            </widget>
+           </widget>
+           <widget class="QLabel" name="label_DarkTime">
+            <property name="geometry">
+             <rect>
+              <x>125</x>
+              <y>20</y>
+              <width>61</width>
+              <height>21</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>10</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{ border: 0px ;
+background-color: transparent;
+border-color: rgb(0,150,150);
+color:rgb(0,120,120);
+;}</string>
+            </property>
+            <property name="text">
+             <string>Dark Time</string>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_Exposure">
+            <property name="geometry">
+             <rect>
+              <x>25</x>
+              <y>17</y>
+              <width>61</width>
+              <height>21</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>10</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{ border: 0px ;
+background-color: transparent;
+border-color: rgb(0,150,150);
+color:rgb(0,120,120);
+;}</string>
+            </property>
+            <property name="text">
+             <string>Exposure</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_14">
+            <property name="geometry">
+             <rect>
+              <x>25</x>
+              <y>32</y>
+              <width>61</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{ border: 0px ;
+background-color: transparent;
+border-color: rgb(0,150,150);
+color:rgb(0,120,120);
+;}</string>
+            </property>
+            <property name="text">
+             <string>Time (us)</string>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_15">
+            <property name="geometry">
+             <rect>
+              <x>145</x>
+              <y>32</y>
+              <width>30</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{ border: 0px ;
+background-color: transparent;
+border-color: rgb(0,150,150);
+color:rgb(0,120,120);
+;}</string>
+            </property>
+            <property name="text">
+             <string>(us)</string>
+            </property>
+           </widget>
+           <widget class="QLineEdit" name="darkPeriod_lineEdit">
+            <property name="geometry">
+             <rect>
+              <x>115</x>
+              <y>67</y>
+              <width>95</width>
+              <height>35</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+           </widget>
+           <widget class="QLineEdit" name="exposure_lineEdit">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>67</y>
+              <width>95</width>
+              <height>35</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
           </widget>
          </widget>
         </item>
@@ -1197,6 +894,22 @@ color:rgb(0,120,120);
                    <number>18</number>
                   </property>
                   <item>
+                   <spacer name="horizontalSpacer_5">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                     <enum>QSizePolicy::Fixed</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
                    <widget class="QStackedWidget" name="patternMode_stackedWidget">
                     <property name="minimumSize">
                      <size>
@@ -1227,11 +940,11 @@ color:rgb(0,120,120);
                       <item row="0" column="0">
                        <layout class="QVBoxLayout" name="verticalLayout_37">
                         <item>
-                         <widget class="QGroupBox" name="groupBox_PatternImage">
+                         <widget class="QScrollArea" name="waveFormArea">
                           <property name="minimumSize">
                            <size>
-                            <width>661</width>
-                            <height>451</height>
+                            <width>501</width>
+                            <height>431</height>
                            </size>
                           </property>
                           <property name="styleSheet">
@@ -1241,338 +954,22 @@ border-color: rgb(0,150,150);
 color:rgb(0,120,120);
 ;}</string>
                           </property>
-                          <property name="title">
-                           <string/>
+                          <property name="verticalScrollBarPolicy">
+                           <enum>Qt::ScrollBarAlwaysOff</enum>
                           </property>
-                          <layout class="QHBoxLayout" name="horizontalLayout_46">
-                           <item>
-                            <widget class="QGroupBox" name="ptnSetting_groupBox">
-                             <property name="enabled">
-                              <bool>false</bool>
-                             </property>
-                             <property name="sizePolicy">
-                              <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-                               <horstretch>0</horstretch>
-                               <verstretch>0</verstretch>
-                              </sizepolicy>
-                             </property>
-                             <property name="minimumSize">
-                              <size>
-                               <width>131</width>
-                               <height>431</height>
-                              </size>
-                             </property>
-                             <property name="maximumSize">
-                              <size>
-                               <width>131</width>
-                               <height>16777215</height>
-                              </size>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">QGroupBox{ border: 1px solid ;
-background-color: transparent;
-border-color: rgb(0,150,150);
-color:rgb(0,120,120);
-;}</string>
-                             </property>
-                             <property name="title">
-                              <string>Pattern -</string>
-                             </property>
-                             <layout class="QVBoxLayout" name="verticalLayout_38">
-                              <property name="topMargin">
-                               <number>20</number>
-                              </property>
-                              <item>
-                               <widget class="QGroupBox" name="groupBox_PatternIndex">
-                                <property name="minimumSize">
-                                 <size>
-                                  <width>0</width>
-                                  <height>70</height>
-                                 </size>
-                                </property>
-                                <property name="title">
-                                 <string>Index</string>
-                                </property>
-                                <widget class="QLabel" name="PatternIndex">
-                                 <property name="geometry">
-                                  <rect>
-                                   <x>3</x>
-                                   <y>20</y>
-                                   <width>105</width>
-                                   <height>35</height>
-                                  </rect>
-                                 </property>
-                                 <property name="font">
-                                  <font>
-                                   <family>Arial</family>
-                                   <pointsize>11</pointsize>
-                                   <weight>75</weight>
-                                   <bold>true</bold>
-                                  </font>
-                                 </property>
-                                 <property name="styleSheet">
-                                  <string notr="true">QLabel{border:0px;
-color:rgb(0,150,150);}</string>
-                                 </property>
-                                 <property name="text">
-                                  <string/>
-                                 </property>
-                                </widget>
-                               </widget>
-                              </item>
-                              <item>
-                               <widget class="QGroupBox" name="groupBox_Timing">
-                                <property name="sizePolicy">
-                                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                                  <horstretch>0</horstretch>
-                                  <verstretch>0</verstretch>
-                                 </sizepolicy>
-                                </property>
-                                <property name="minimumSize">
-                                 <size>
-                                  <width>0</width>
-                                  <height>160</height>
-                                 </size>
-                                </property>
-                                <property name="title">
-                                 <string>Timing (us)</string>
-                                </property>
-                                <widget class="QLineEdit" name="exposure_lineEdit">
-                                 <property name="geometry">
-                                  <rect>
-                                   <x>13</x>
-                                   <y>50</y>
-                                   <width>90</width>
-                                   <height>30</height>
-                                  </rect>
-                                 </property>
-                                 <property name="font">
-                                  <font>
-                                   <pointsize>10</pointsize>
-                                  </font>
-                                 </property>
-                                 <property name="text">
-                                  <string/>
-                                 </property>
-                                </widget>
-                                <widget class="QLabel" name="label_Exposure">
-                                 <property name="geometry">
-                                  <rect>
-                                   <x>30</x>
-                                   <y>20</y>
-                                   <width>61</width>
-                                   <height>21</height>
-                                  </rect>
-                                 </property>
-                                 <property name="font">
-                                  <font>
-                                   <family>Arial</family>
-                                   <pointsize>10</pointsize>
-                                   <weight>50</weight>
-                                   <bold>false</bold>
-                                  </font>
-                                 </property>
-                                 <property name="styleSheet">
-                                  <string notr="true">QLabel{border:0px}</string>
-                                 </property>
-                                 <property name="text">
-                                  <string>Exposure</string>
-                                 </property>
-                                 <property name="wordWrap">
-                                  <bool>true</bool>
-                                 </property>
-                                </widget>
-                                <widget class="QLabel" name="label_DarkTime">
-                                 <property name="geometry">
-                                  <rect>
-                                   <x>30</x>
-                                   <y>88</y>
-                                   <width>61</width>
-                                   <height>21</height>
-                                  </rect>
-                                 </property>
-                                 <property name="font">
-                                  <font>
-                                   <family>Arial</family>
-                                   <pointsize>10</pointsize>
-                                   <weight>50</weight>
-                                   <bold>false</bold>
-                                  </font>
-                                 </property>
-                                 <property name="styleSheet">
-                                  <string notr="true">QLabel{border:0px}</string>
-                                 </property>
-                                 <property name="text">
-                                  <string>Dark Time</string>
-                                 </property>
-                                </widget>
-                                <widget class="QLineEdit" name="darkPeriod_lineEdit">
-                                 <property name="geometry">
-                                  <rect>
-                                   <x>13</x>
-                                   <y>115</y>
-                                   <width>90</width>
-                                   <height>30</height>
-                                  </rect>
-                                 </property>
-                                 <property name="font">
-                                  <font>
-                                   <pointsize>10</pointsize>
-                                  </font>
-                                 </property>
-                                </widget>
-                               </widget>
-                              </item>
-                              <item>
-                               <widget class="QPushButton" name="UpdateTotalTime">
-                                <property name="enabled">
-                                 <bool>false</bool>
-                                </property>
-                                <property name="sizePolicy">
-                                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                                  <horstretch>0</horstretch>
-                                  <verstretch>0</verstretch>
-                                 </sizepolicy>
-                                </property>
-                                <property name="minimumSize">
-                                 <size>
-                                  <width>0</width>
-                                  <height>35</height>
-                                 </size>
-                                </property>
-                                <property name="font">
-                                 <font>
-                                  <family>Arial</family>
-                                  <pointsize>10</pointsize>
-                                 </font>
-                                </property>
-                                <property name="mouseTracking">
-                                 <bool>true</bool>
-                                </property>
-                                <property name="text">
-                                 <string>Update</string>
-                                </property>
-                                <property name="checkable">
-                                 <bool>false</bool>
-                                </property>
-                               </widget>
-                              </item>
-                              <item>
-                               <spacer name="verticalSpacer_33">
-                                <property name="orientation">
-                                 <enum>Qt::Vertical</enum>
-                                </property>
-                                <property name="sizeHint" stdset="0">
-                                 <size>
-                                  <width>20</width>
-                                  <height>40</height>
-                                 </size>
-                                </property>
-                               </spacer>
-                              </item>
-                              <item>
-                               <widget class="QCheckBox" name="triggerIn_checkBox">
-                                <property name="text">
-                                 <string>Trigger Input</string>
-                                </property>
-                               </widget>
-                              </item>
-                              <item>
-                               <spacer name="verticalSpacer_34">
-                                <property name="orientation">
-                                 <enum>Qt::Vertical</enum>
-                                </property>
-                                <property name="sizeHint" stdset="0">
-                                 <size>
-                                  <width>20</width>
-                                  <height>40</height>
-                                 </size>
-                                </property>
-                               </spacer>
-                              </item>
-                              <item>
-                               <widget class="QLabel" name="label_TrigOut1">
-                                <property name="styleSheet">
-                                 <string notr="true">QLabel{border:0px}</string>
-                                </property>
-                                <property name="lineWidth">
-                                 <number>1</number>
-                                </property>
-                                <property name="text">
-                                 <string>      Trigger Out 1</string>
-                                </property>
-                               </widget>
-                              </item>
-                              <item>
-                               <spacer name="verticalSpacer_35">
-                                <property name="orientation">
-                                 <enum>Qt::Vertical</enum>
-                                </property>
-                                <property name="sizeHint" stdset="0">
-                                 <size>
-                                  <width>20</width>
-                                  <height>40</height>
-                                 </size>
-                                </property>
-                               </spacer>
-                              </item>
-                              <item>
-                               <widget class="QCheckBox" name="triggerOut2_checkBox">
-                                <property name="text">
-                                 <string>Trigger Out 2</string>
-                                </property>
-                               </widget>
-                              </item>
-                              <item>
-                               <spacer name="verticalSpacer_36">
-                                <property name="orientation">
-                                 <enum>Qt::Vertical</enum>
-                                </property>
-                                <property name="sizeHint" stdset="0">
-                                 <size>
-                                  <width>20</width>
-                                  <height>40</height>
-                                 </size>
-                                </property>
-                               </spacer>
-                              </item>
-                             </layout>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QScrollArea" name="waveFormArea">
-                             <property name="minimumSize">
-                              <size>
-                               <width>501</width>
-                               <height>431</height>
-                              </size>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">QGroupBox{ border: 1px solid ;
-background-color: transparent;
-border-color: rgb(0,150,150);
-color:rgb(0,120,120);
-;}</string>
-                             </property>
-                             <property name="verticalScrollBarPolicy">
-                              <enum>Qt::ScrollBarAlwaysOff</enum>
-                             </property>
-                             <property name="widgetResizable">
-                              <bool>true</bool>
-                             </property>
-                             <widget class="QWidget" name="scrollAreaWidgetContents_4">
-                              <property name="geometry">
-                               <rect>
-                                <x>0</x>
-                                <y>0</y>
-                                <width>895</width>
-                                <height>566</height>
-                               </rect>
-                              </property>
-                             </widget>
-                            </widget>
-                           </item>
-                          </layout>
+                          <property name="widgetResizable">
+                           <bool>true</bool>
+                          </property>
+                          <widget class="QWidget" name="scrollAreaWidgetContents_4">
+                           <property name="geometry">
+                            <rect>
+                             <x>0</x>
+                             <y>0</y>
+                             <width>960</width>
+                             <height>586</height>
+                            </rect>
+                           </property>
+                          </widget>
                          </widget>
                         </item>
                        </layout>
@@ -1580,6 +977,22 @@ color:rgb(0,120,120);
                      </layout>
                     </widget>
                    </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer_6">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                     <enum>QSizePolicy::Fixed</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
                   </item>
                  </layout>
                 </widget>
@@ -3196,9 +2609,9 @@ QLabel{border:0px}</string>
                 <property name="geometry">
                  <rect>
                   <x>10</x>
-                  <y>300</y>
+                  <y>320</y>
                   <width>221</width>
-                  <height>311</height>
+                  <height>291</height>
                  </rect>
                 </property>
                 <property name="sizePolicy">
@@ -3487,10 +2900,16 @@ color:rgb(0,120,120);
                 <property name="geometry">
                  <rect>
                   <x>240</x>
-                  <y>20</y>
-                  <width>551</width>
-                  <height>591</height>
+                  <y>10</y>
+                  <width>548</width>
+                  <height>601</height>
                  </rect>
+                </property>
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
                 </property>
                 <property name="styleSheet">
                  <string notr="true">QGroupBox{ border: 1px solid ;
@@ -3502,78 +2921,13 @@ color:rgb(0,120,120);
                 <property name="title">
                  <string>Gcode</string>
                 </property>
-                <widget class="QWidget" name="verticalLayoutWidget">
-                 <property name="geometry">
-                  <rect>
-                   <x>139</x>
-                   <y>10</y>
-                   <width>401</width>
-                   <height>571</height>
-                  </rect>
-                 </property>
-                 <layout class="QVBoxLayout" name="verticalLayout_3">
-                  <item>
-                   <widget class="QTextEdit" name="StartPrintGcode">
-                    <property name="font">
-                     <font>
-                      <family>Arial</family>
-                      <pointsize>10</pointsize>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">border-color: rgb(0,150,150);
-</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QTextEdit" name="EndPrintGcode">
-                    <property name="font">
-                     <font>
-                      <family>Arial</family>
-                      <pointsize>10</pointsize>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">border-color: rgb(0,150,150);</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QTextEdit" name="StartLayerGcode">
-                    <property name="font">
-                     <font>
-                      <family>Arial</family>
-                      <pointsize>10</pointsize>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">border-color: rgb(0,150,150);</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QTextEdit" name="EndLayerGcode">
-                    <property name="font">
-                     <font>
-                      <family>Arial</family>
-                      <pointsize>10</pointsize>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">border-color: rgb(0,150,150);</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
                 <widget class="QWidget" name="verticalLayoutWidget_2">
                  <property name="geometry">
                   <rect>
                    <x>9</x>
                    <y>10</y>
                    <width>121</width>
-                   <height>571</height>
+                   <height>581</height>
                   </rect>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -3626,6 +2980,95 @@ color:rgb(0,120,120);
                     </property>
                     <property name="text">
                      <string>End of the Layer</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+                <widget class="QWidget" name="verticalLayoutWidget">
+                 <property name="geometry">
+                  <rect>
+                   <x>140</x>
+                   <y>10</y>
+                   <width>401</width>
+                   <height>581</height>
+                  </rect>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout">
+                  <item>
+                   <widget class="QTextEdit" name="StartPrintGcode">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Arial</family>
+                      <pointsize>10</pointsize>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">border-color: rgb(0,150,150);
+</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QTextEdit" name="EndPrintGcode">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Arial</family>
+                      <pointsize>10</pointsize>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">border-color: rgb(0,150,150);</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QTextEdit" name="StartLayerGcode">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Arial</family>
+                      <pointsize>10</pointsize>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">border-color: rgb(0,150,150);</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QTextEdit" name="EndLayerGcode">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Arial</family>
+                      <pointsize>10</pointsize>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">border-color: rgb(0,150,150);</string>
                     </property>
                    </widget>
                   </item>
@@ -3819,193 +3262,6 @@ color:rgb(0,120,120);
                  </property>
                 </widget>
                </widget>
-               <widget class="QGroupBox" name="LiftSeqTime">
-                <property name="geometry">
-                 <rect>
-                  <x>800</x>
-                  <y>90</y>
-                  <width>261</width>
-                  <height>181</height>
-                 </rect>
-                </property>
-                <property name="font">
-                 <font>
-                  <family>Arial</family>
-                  <pointsize>9</pointsize>
-                  <weight>75</weight>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QGroupBox{ border: 1px solid ;
-background-color: transparent;
-border-color: rgb(0,150,150);
-color:rgb(0,120,120);
-;}</string>
-                </property>
-                <property name="title">
-                 <string>Lift / Sequence Time</string>
-                </property>
-                <widget class="QLineEdit" name="ZLiftdelay">
-                 <property name="geometry">
-                  <rect>
-                   <x>10</x>
-                   <y>50</y>
-                   <width>111</width>
-                   <height>41</height>
-                  </rect>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <family>Arial</family>
-                   <pointsize>12</pointsize>
-                  </font>
-                 </property>
-                </widget>
-                <widget class="QLabel" name="label_9">
-                 <property name="geometry">
-                  <rect>
-                   <x>20</x>
-                   <y>20</y>
-                   <width>100</width>
-                   <height>20</height>
-                  </rect>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <family>Arial</family>
-                   <pointsize>10</pointsize>
-                  </font>
-                 </property>
-                 <property name="text">
-                  <string>Z Lift Time (ms)</string>
-                 </property>
-                </widget>
-                <widget class="QLineEdit" name="PrintingDelay">
-                 <property name="geometry">
-                  <rect>
-                   <x>140</x>
-                   <y>50</y>
-                   <width>111</width>
-                   <height>41</height>
-                  </rect>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <family>Arial</family>
-                   <pointsize>12</pointsize>
-                  </font>
-                 </property>
-                </widget>
-                <widget class="QLabel" name="label_10">
-                 <property name="geometry">
-                  <rect>
-                   <x>138</x>
-                   <y>20</y>
-                   <width>120</width>
-                   <height>20</height>
-                  </rect>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <family>Arial</family>
-                   <pointsize>10</pointsize>
-                  </font>
-                 </property>
-                 <property name="text">
-                  <string>Printing Delay (ms)</string>
-                 </property>
-                </widget>
-                <widget class="QGroupBox" name="groupBox_2">
-                 <property name="geometry">
-                  <rect>
-                   <x>10</x>
-                   <y>100</y>
-                   <width>241</width>
-                   <height>71</height>
-                  </rect>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <family>Arial</family>
-                   <pointsize>9</pointsize>
-                  </font>
-                 </property>
-                 <property name="title">
-                  <string>Auto Homing</string>
-                 </property>
-                 <widget class="QRadioButton" name="AutoHoming">
-                  <property name="geometry">
-                   <rect>
-                    <x>10</x>
-                    <y>20</y>
-                    <width>100</width>
-                    <height>17</height>
-                   </rect>
-                  </property>
-                  <property name="text">
-                   <string>Auto Homing</string>
-                  </property>
-                  <property name="checked">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                 <widget class="QRadioButton" name="ManualHoming">
-                  <property name="geometry">
-                   <rect>
-                    <x>10</x>
-                    <y>45</y>
-                    <width>100</width>
-                    <height>17</height>
-                   </rect>
-                  </property>
-                  <property name="text">
-                   <string>Manual Homing</string>
-                  </property>
-                 </widget>
-                 <widget class="QLabel" name="HomeDelay">
-                  <property name="enabled">
-                   <bool>false</bool>
-                  </property>
-                  <property name="geometry">
-                   <rect>
-                    <x>130</x>
-                    <y>5</y>
-                    <width>90</width>
-                    <height>18</height>
-                   </rect>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Arial</family>
-                    <pointsize>8</pointsize>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Homing Delay (ms)</string>
-                  </property>
-                 </widget>
-                 <widget class="QLineEdit" name="HomingDelay">
-                  <property name="enabled">
-                   <bool>false</bool>
-                  </property>
-                  <property name="geometry">
-                   <rect>
-                    <x>125</x>
-                    <y>30</y>
-                    <width>100</width>
-                    <height>30</height>
-                   </rect>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Arial</family>
-                    <pointsize>12</pointsize>
-                   </font>
-                  </property>
-                 </widget>
-                </widget>
-               </widget>
                <widget class="QLabel" name="ComPort">
                 <property name="geometry">
                  <rect>
@@ -4175,6 +3431,553 @@ color:rgb(0,120,120);
            </widget>
           </widget>
          </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout_24" stretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetNoConstraint</enum>
+        </property>
+        <item>
+         <widget class="QPushButton" name="connectButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>10</width>
+            <height>48</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Arial</family>
+            <pointsize>11</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#connectButton{
+background-color: transparent;
+border-image: url(:connected.png);
+backgorund: none;
+border: none;
+background-repeat: none;
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="hires.qrc">
+            <normaloff>:/Images/images/connected.png</normaloff>:/Images/images/connected.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>50</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="startPatSequence_Button">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>50</width>
+            <height>60</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#startPatSequence_Button{
+background-color: transparent;
+backgorund: none;
+border: none;
+background-repeat: none;
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="hires.qrc">
+            <normaloff>:/new/prefix1/Icons/my_play.png</normaloff>:/new/prefix1/Icons/my_play.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>40</width>
+            <height>40</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pausePatSequence_Button">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>50</width>
+            <height>60</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#pausePatSequence_Button{
+background-color: transparent;
+backgorund: none;
+border: none;
+background-repeat: none;
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="hires.qrc">
+            <normaloff>:/new/prefix1/Icons/my_pause.png</normaloff>:/new/prefix1/Icons/my_pause.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>40</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="checkable">
+           <bool>false</bool>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="stopPatSequence_Button">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>50</width>
+            <height>60</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#stopPatSequence_Button{
+background-color: transparent;
+border-image: url(:connected.png);
+backgorund: none;
+border: none;
+background-repeat: none;
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="hires.qrc">
+            <normaloff>:/new/prefix1/Icons/my_stop.png</normaloff>:/new/prefix1/Icons/my_stop.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>40</width>
+            <height>40</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_patternMode">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Arial</family>
+            <pointsize>11</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+	color:rgb(0,150,150);
+   }</string>
+          </property>
+          <property name="text">
+           <string>Pattern 
+ Mode</string>
+          </property>
+          <property name="icon">
+           <iconset resource="hires.qrc">
+            <normaloff>:/Images/images/pattern.png</normaloff>:/Images/images/pattern.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>40</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_LEDDriver">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>45</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Arial</family>
+            <pointsize>11</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+	color:rgb(0,150,150);
+   }</string>
+          </property>
+          <property name="text">
+           <string>LED Driver</string>
+          </property>
+          <property name="icon">
+           <iconset resource="hires.qrc">
+            <normaloff>:/Images/images/LEDDriver_icon.png</normaloff>:/Images/images/LEDDriver_icon.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>40</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_ZMachineControl">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Arial</family>
+            <pointsize>11</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+	color:rgb(0,150,150);
+   }</string>
+          </property>
+          <property name="text">
+           <string>Z Control</string>
+          </property>
+          <property name="icon">
+           <iconset resource="hires.qrc">
+            <normaloff>:/Images/images/settings.png</normaloff>:/Images/images/settings.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>40</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>120</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_8">
+          <property name="font">
+           <font>
+            <family>Arial</family>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel{
+	color:rgb(0,150,150);
+   }</string>
+          </property>
+          <property name="text">
+           <string>Time -</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="StartTime">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>70</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Arial</family>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel{
+	color:rgb(0,150,150);
+   }</string>
+          </property>
+          <property name="text">
+           <string>00:00:00</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_12">
+          <property name="font">
+           <font>
+            <family>Arial</family>
+            <pointsize>14</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel{
+	color:rgb(0,150,150);
+   }</string>
+          </property>
+          <property name="text">
+           <string>/</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="TotalTime">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>70</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Arial</family>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel{
+	color:rgb(0,150,150);
+   }</string>
+          </property>
+          <property name="text">
+           <string>00:00:00</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>60</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_16">
+          <property name="font">
+           <font>
+            <family>Arial</family>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel{
+	color:rgb(0,150,150);
+   }</string>
+          </property>
+          <property name="text">
+           <string>Pattern -</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="PatternIndex">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Arial</family>
+            <pointsize>11</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel{border:0px;
+color:rgb(0,150,150);}</string>
+          </property>
+          <property name="text">
+           <string>Empty</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </item>

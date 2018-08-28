@@ -255,140 +255,6 @@ void MainWindow::hideFrames()
 }
 
 /**
- * @brief MainWindow::getVersion
- * gets the Application Software, API Software, Software Config and the Sequence Config versions of DLPC350 firmware
- * displays them in the Version label on the Information page
- */
-void MainWindow::getVersion()
-{
-    char versionStr[255];
-    unsigned int API_ver, App_ver, SWConfig_ver, SeqConfig_ver;
-
-    if (LCR_GetVersion(&App_ver, &API_ver, &SWConfig_ver, &SeqConfig_ver) == 0)
-    {
-        sprintf(versionStr, "%d.%d.%d", (App_ver >> 24), ((App_ver << 8) >> 24), ((App_ver << 16) >> 16));
-        ui->apiVersionLabel->setText(versionStr);
-
-    }
-}
-
-/**
- * @brief MainWindow::getFrmwVersion
- * gets the firmware version and tag information from API
- * sets the Firmware tag label on information Page
- * populates either the "DLP6500" or "DLP9000" radio buttons based on the
- * firmwaretType received from the API
- */
-void MainWindow::getFrmwVersion()
-{
-    char firmwareTag[32];
-    unsigned int firmwareType;
-
-    if(LCR_GetFrmwVersion(&firmwareType,firmwareTag)==0)
-    {
-        ui->firmwareTag_label->setText(QString::fromUtf8(firmwareTag));
-
-        if(!m_dmdDetected)
-        {
-            if(firmwareType == 2) //WQXGA firmware
-            {
-                ui->pDMD_radioButton->setChecked(false);
-            }
-            else if(firmwareType == 1) //1080p firmware
-            {
-                ui->pDMD_radioButton->setChecked(true);
-                on_pDMD_radioButton_clicked();
-            }
-            else if(firmwareType == 0) //Unknown
-                showStatus("Unknown Firmware type detected!");
-
-            m_dmdDetected = true;
-        }
-    }
-}
-
-/**
- * @brief MainWindow::getStatus
- * reads various status indicators from the controller and updates the Status checkboxes accordingly
- */
-void MainWindow::getStatus()
-{
-    unsigned char HWStatus,SysStatus,MainStatus;
-    BootLoaderStaus BLStatus;
-
-    if(LCR_GetStatus(&HWStatus,&SysStatus,&MainStatus)==0)
-    {
-        if(SysStatus & BIT0)
-            ui->internalMemTest_checkBox->setChecked(true);
-        else
-            ui->internalMemTest_checkBox->setChecked(false);
-
-        if(HWStatus & BIT0)
-            ui->internalInit_checkBox->setChecked(true);
-        else
-            ui->internalInit_checkBox->setChecked(false);
-
-        if(HWStatus & BIT1)
-            ui->incompatibleASICorDMD_checkBox->setChecked(true);
-        else
-            ui->incompatibleASICorDMD_checkBox->setChecked(false);
-
-        if(HWStatus & BIT4)
-            ui->slaveReady_checkBox->setChecked(true);
-        else
-            ui->slaveReady_checkBox->setChecked(false);
-
-        if(HWStatus & BIT2)
-            ui->DMDResetWaveformControllerErr_checkBox->setChecked(true);
-        else
-            ui->DMDResetWaveformControllerErr_checkBox->setChecked(false);
-
-        if(HWStatus & BIT3)
-            ui->forcedSwapErr_checkBox->setChecked(true);
-        else
-            ui->forcedSwapErr_checkBox->setChecked(false);
-
-        if(HWStatus & BIT6)
-            ui->seqAbortStatus_checkBox->setChecked(true);
-        else
-            ui->seqAbortStatus_checkBox->setChecked(false);
-
-        if(HWStatus & BIT7)
-            ui->seqErr_checkBox->setChecked(true);
-        else
-            ui->seqErr_checkBox->setChecked(false);
-
-        if(MainStatus & BIT0)
-            ui->DMDParkStatus_checkBox->setChecked(true);
-        else
-            ui->DMDParkStatus_checkBox->setChecked(false);
-
-        if(MainStatus & BIT1)
-            ui->sequencerRunState_checkBox->setChecked(true);
-        else
-            ui->sequencerRunState_checkBox->setChecked(false);
-
-        if(MainStatus & BIT2)
-            ui->videoState_checkBox->setChecked(false);
-        else
-            ui->videoState_checkBox->setChecked(true);
-
-        if(MainStatus & BIT3)
-            ui->extSourceLocked_checkBox->setChecked(true);
-        else
-            ui->extSourceLocked_checkBox->setChecked(false);
-    }
-    else if(LCR_GetBLStatus(&BLStatus) == 0)
-    {
-        //This means the device is in boot mode
-    }
-    else
-    {
-        USB_Close();
-    }
-}
-
-/**
  * handler function for connectButton on Information page and clicked() event
  * Checks for the USB connection and
  * appropriately sets the "Connected" with green and "Disconnected" with Red
@@ -402,46 +268,48 @@ void MainWindow::on_connectButton_clicked()
 
     if(!USB_Connected)
     {
-        USB_Init();
-        getSerialPort();
+       if (USB_IsConnected())
+        {
+            USB_Close();
+            USB_Exit();
+        }
+
+       USB_Init();
+       getSerialPort();
 
         if (USB_Open() != 0 || ui->SerialPort->count() == 0)
         {
-            showError("USB not Connected!!");
+            showStatus("Error:USB not Connected!!");
             return;
         }
         USB_Connected = true;
-        getStatus();
         LCR_SetMode(SLmode);
         emit on_ConnectBoard_clicked();
         emit on_ConnectLED_clicked();
-
-        ui->operatingModes_groupBox->setEnabled(true);
-        ui->status_groupBox->setEnabled(true);
 
         if(LCR_GetMode(&SLmode) == 0)
         {
             if (SLmode == 0)
             {
-                ui->patternMode_radioButton->setChecked(false);
-                ui->patternMemory_radioButton->setChecked(false);
+                //ui->patternMode_radioButton->setChecked(false);
+                //ui->patternMemory_radioButton->setChecked(false);
             }
             else if (SLmode == 1)
             {
-                ui->patternMode_radioButton->setChecked(true);
-                ui->patternMemory_radioButton->setChecked(false);
+                //ui->patternMode_radioButton->setChecked(true);
+                //ui->patternMemory_radioButton->setChecked(false);
                 if(SLModePrev != SLmode)
                     on_patternMode_radioButton_clicked();
             }
             else if (SLmode == 2)
             {
-                ui->patternMode_radioButton->setChecked(false);
-                ui->patternMemory_radioButton->setChecked(false);
+               // ui->patternMode_radioButton->setChecked(false);
+               // ui->patternMemory_radioButton->setChecked(false);
             }
             else if (SLmode == 3)
             {
-                ui->patternMode_radioButton->setChecked(false);
-                ui->patternMemory_radioButton->setChecked(true);
+                //ui->patternMode_radioButton->setChecked(false);
+                //ui->patternMemory_radioButton->setChecked(true);
                 if(SLModePrev != SLmode)
                     on_patternMemory_radioButton_clicked();
             }
@@ -450,8 +318,6 @@ void MainWindow::on_connectButton_clicked()
         if (!m_firstConnect)
         {
             int i = 0;
-            getVersion();
-            getFrmwVersion();
             while (true)
             {
                 char batchFileName[16];
@@ -474,62 +340,13 @@ void MainWindow::on_connectButton_clicked()
         USB_Close();
         USB_Exit();
         emit on_ConnectBoard_clicked();
-
-        ui->operatingModes_groupBox->setEnabled(false);
-        ui->status_groupBox->setEnabled(false);
         emit on_ConnectLED_clicked();
         m_firstConnect = false;
-
-        ui->internalMemTest_checkBox->setChecked(false);
-        ui->internalInit_checkBox->setChecked(false);
-        ui->DMDResetWaveformControllerErr_checkBox->setChecked(false);
-        ui->forcedSwapErr_checkBox->setChecked(false);
-        ui->seqAbortStatus_checkBox->setChecked(false);
-        ui->seqErr_checkBox->setChecked(false);
-        ui->incompatibleASICorDMD_checkBox->setChecked(false);
-        ui->slaveReady_checkBox->setChecked(false);
-        ui->DMDParkStatus_checkBox->setChecked(false);
-        ui->sequencerRunState_checkBox->setChecked(false);
-        ui->videoState_checkBox->setChecked(false);
-        ui->extSourceLocked_checkBox->setChecked(false);
-        ui->firmwareTag_label->setText("xxxx");
-        ui->apiVersionLabel->setText("xx.xx.xx");
 
         m_dmdDetected = false;
         QIcon icon(":/Images/images/connected.png");
         ui->connectButton->setIcon(icon);
     }
-}
-
-/**
- * @brief MainWindow::on_resetDMD_Button_clicked
- *  handler function for resetDMD_Button on Information Page and clicked() event
- *  Send API command to reset the board
- */
-
-void MainWindow::on_resetDMD_Button_clicked()
-{
-    if (LCR_SetPowerMode(0x2) < 0)
-        showError("Unable to reset the board");
-}
-
-/**
- * @brief MainWindow::on_powerOn_radioButton_clicked
- */
-
-void MainWindow::on_powerOn_radioButton_clicked()
-{
-    if (LCR_SetPowerMode(0) < 0)
-        showError("Unable to power on the board");
-}
-
-/**
- * @brief MainWindow::on_standBy_radioButton_clicked()
- */
-void MainWindow::on_standBy_radioButton_clicked()
-{
-    if(LCR_SetPowerMode(0) < 0)
-        showError("Unable to go to stand by");
 }
 
 /**
@@ -584,18 +401,6 @@ void MainWindow::on_patternMemory_radioButton_clicked()
     waveWindow->draw();
     waveWindow->updateVideoPatternMode(false);
     ui->triggerIn_checkBox->setText("Trigger Input");
-}
-
-/**
- * @brief MainWindow::on_pDMD_radioButton_clicked
- */
-
-void MainWindow::on_pDMD_radioButton_clicked()
-{
-    m_ptnWidth = PTN_WIDTH_1080p;
-    m_ptnHeight = PTN_HEIGHT_1080p;
-    waveWindow->setPatternSize(m_ptnWidth, m_ptnHeight);
-    m_dualAsic = false;
 }
 
 /**

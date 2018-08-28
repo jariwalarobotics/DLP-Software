@@ -52,6 +52,8 @@ void MainWindow::on_ConnectBoard_clicked()
 
 void MainWindow::getSerialPort()
 {
+    ui->SerialPort->clear();
+    ui->BoardStatus->clear();
     foreach(const QSerialPortInfo &serialPortInfo, QSerialPortInfo::availablePorts())
     {
         ui->SerialPort->addItem(serialPortInfo.portName());

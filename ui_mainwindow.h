@@ -43,21 +43,6 @@ public:
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
     QGridLayout *gridLayout;
-    QHBoxLayout *horizontalLayout_24;
-    QPushButton *connectButton;
-    QPushButton *startPatSequence_Button;
-    QPushButton *pausePatSequence_Button;
-    QPushButton *stopPatSequence_Button;
-    QSpacerItem *horizontalSpacer_2;
-    QPushButton *pushButton_patternMode;
-    QPushButton *pushButton_LEDDriver;
-    QPushButton *pushButton_ZMachineControl;
-    QSpacerItem *horizontalSpacer_3;
-    QLabel *label_8;
-    QLabel *StartTime;
-    QLabel *label_12;
-    QLabel *TotalTime;
-    QSpacerItem *horizontalSpacer;
     QHBoxLayout *horizontalLayout_25;
     QFrame *frame_common;
     QGroupBox *groupBox;
@@ -66,35 +51,27 @@ public:
     QPushButton *selectAllButton;
     QPushButton *saveButton_patternSettings;
     QPushButton *loadButton_patternSettings;
-    QGroupBox *groupBox_firmware;
-    QHBoxLayout *horizontalLayout_22;
-    QVBoxLayout *verticalLayout_18;
-    QLabel *label_version;
-    QLabel *label_Tag;
-    QVBoxLayout *verticalLayout_19;
-    QLabel *apiVersionLabel;
-    QLabel *firmwareTag_label;
-    QGroupBox *groupBox_ChipSetType;
-    QHBoxLayout *horizontalLayout_14;
-    QRadioButton *pDMD_radioButton;
-    QGroupBox *operatingModes_groupBox;
-    QVBoxLayout *verticalLayout_40;
-    QRadioButton *patternMode_radioButton;
-    QRadioButton *patternMemory_radioButton;
-    QGroupBox *status_groupBox;
-    QVBoxLayout *verticalLayout_5;
-    QCheckBox *internalMemTest_checkBox;
-    QCheckBox *incompatibleASICorDMD_checkBox;
-    QCheckBox *slaveReady_checkBox;
-    QCheckBox *internalInit_checkBox;
-    QCheckBox *DMDResetWaveformControllerErr_checkBox;
-    QCheckBox *forcedSwapErr_checkBox;
-    QCheckBox *seqAbortStatus_checkBox;
-    QCheckBox *seqErr_checkBox;
-    QCheckBox *DMDParkStatus_checkBox;
-    QCheckBox *sequencerRunState_checkBox;
-    QCheckBox *videoState_checkBox;
-    QCheckBox *extSourceLocked_checkBox;
+    QGroupBox *LiftSeqTime;
+    QLineEdit *ZLiftdelay;
+    QLabel *label_9;
+    QLineEdit *PrintingDelay;
+    QLabel *label_10;
+    QLabel *label_13;
+    QPushButton *UpdateTotalTime;
+    QCheckBox *triggerIn_checkBox;
+    QLabel *label_TrigOut1;
+    QCheckBox *triggerOut2_checkBox;
+    QGroupBox *groupBox_2;
+    QRadioButton *AutoHoming;
+    QRadioButton *ManualHoming;
+    QLabel *HomeDelay;
+    QLineEdit *HomingDelay;
+    QLabel *label_DarkTime;
+    QLabel *label_Exposure;
+    QLabel *label_14;
+    QLabel *label_15;
+    QLineEdit *darkPeriod_lineEdit;
+    QLineEdit *exposure_lineEdit;
     QStackedWidget *stackedWidget;
     QWidget *patternModePage;
     QGridLayout *gridLayout_3;
@@ -102,31 +79,14 @@ public:
     QGridLayout *gridLayout_11;
     QGroupBox *groupBox_PatternMode;
     QHBoxLayout *horizontalLayout_26;
+    QSpacerItem *horizontalSpacer_5;
     QStackedWidget *patternMode_stackedWidget;
     QWidget *patternDesignPage;
     QGridLayout *gridLayout_31;
     QVBoxLayout *verticalLayout_37;
-    QGroupBox *groupBox_PatternImage;
-    QHBoxLayout *horizontalLayout_46;
-    QGroupBox *ptnSetting_groupBox;
-    QVBoxLayout *verticalLayout_38;
-    QGroupBox *groupBox_PatternIndex;
-    QLabel *PatternIndex;
-    QGroupBox *groupBox_Timing;
-    QLineEdit *exposure_lineEdit;
-    QLabel *label_Exposure;
-    QLabel *label_DarkTime;
-    QLineEdit *darkPeriod_lineEdit;
-    QPushButton *UpdateTotalTime;
-    QSpacerItem *verticalSpacer_33;
-    QCheckBox *triggerIn_checkBox;
-    QSpacerItem *verticalSpacer_34;
-    QLabel *label_TrigOut1;
-    QSpacerItem *verticalSpacer_35;
-    QCheckBox *triggerOut2_checkBox;
-    QSpacerItem *verticalSpacer_36;
     QScrollArea *waveFormArea;
     QWidget *scrollAreaWidgetContents_4;
+    QSpacerItem *horizontalSpacer_6;
     QWidget *LEDDriverPage;
     QGridLayout *gridLayout_9;
     QFrame *frame_LedDriver;
@@ -215,18 +175,18 @@ public:
     QLabel *label_2;
     QPushButton *Movedown01;
     QGroupBox *Gcode;
-    QWidget *verticalLayoutWidget;
-    QVBoxLayout *verticalLayout_3;
-    QTextEdit *StartPrintGcode;
-    QTextEdit *EndPrintGcode;
-    QTextEdit *StartLayerGcode;
-    QTextEdit *EndLayerGcode;
     QWidget *verticalLayoutWidget_2;
     QVBoxLayout *verticalLayout_4;
     QLabel *label_7;
     QLabel *label_6;
     QLabel *label_5;
     QLabel *label_4;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalLayout;
+    QTextEdit *StartPrintGcode;
+    QTextEdit *EndPrintGcode;
+    QTextEdit *StartLayerGcode;
+    QTextEdit *EndLayerGcode;
     QGroupBox *ManualGcode_GroupBox;
     QPushButton *SendManualGcode;
     QPushButton *ClearManualGcode;
@@ -235,16 +195,6 @@ public:
     QPushButton *MotorConDisable;
     QGroupBox *AutoBed;
     QPushButton *AutoBedLevel;
-    QGroupBox *LiftSeqTime;
-    QLineEdit *ZLiftdelay;
-    QLabel *label_9;
-    QLineEdit *PrintingDelay;
-    QLabel *label_10;
-    QGroupBox *groupBox_2;
-    QRadioButton *AutoHoming;
-    QRadioButton *ManualHoming;
-    QLabel *HomeDelay;
-    QLineEdit *HomingDelay;
     QLabel *ComPort;
     QComboBox *SerialPort;
     QLabel *BoardStatus;
@@ -252,6 +202,24 @@ public:
     QPushButton *SaveMacProfile;
     QPushButton *LoadMacProfile;
     QPlainTextEdit *ProfileName;
+    QHBoxLayout *horizontalLayout_24;
+    QPushButton *connectButton;
+    QPushButton *startPatSequence_Button;
+    QPushButton *pausePatSequence_Button;
+    QPushButton *stopPatSequence_Button;
+    QSpacerItem *horizontalSpacer_2;
+    QPushButton *pushButton_patternMode;
+    QPushButton *pushButton_LEDDriver;
+    QPushButton *pushButton_ZMachineControl;
+    QSpacerItem *horizontalSpacer_3;
+    QLabel *label_8;
+    QLabel *StartTime;
+    QLabel *label_12;
+    QLabel *TotalTime;
+    QSpacerItem *horizontalSpacer_4;
+    QLabel *label_16;
+    QLabel *PatternIndex;
+    QSpacerItem *horizontalSpacer;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -283,233 +251,16 @@ public:
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        horizontalLayout_24 = new QHBoxLayout();
-        horizontalLayout_24->setSpacing(6);
-        horizontalLayout_24->setObjectName(QStringLiteral("horizontalLayout_24"));
-        horizontalLayout_24->setSizeConstraint(QLayout::SetNoConstraint);
-        connectButton = new QPushButton(scrollAreaWidgetContents);
-        connectButton->setObjectName(QStringLiteral("connectButton"));
-        QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(connectButton->sizePolicy().hasHeightForWidth());
-        connectButton->setSizePolicy(sizePolicy);
-        connectButton->setMinimumSize(QSize(10, 48));
-        connectButton->setMaximumSize(QSize(16777215, 16777215));
-        QFont font;
-        font.setFamily(QStringLiteral("Arial"));
-        font.setPointSize(11);
-        font.setBold(true);
-        font.setWeight(75);
-        connectButton->setFont(font);
-        connectButton->setStyleSheet(QLatin1String("#connectButton{\n"
-"background-color: transparent;\n"
-"border-image: url(:connected.png);\n"
-"backgorund: none;\n"
-"border: none;\n"
-"background-repeat: none;\n"
-"}"));
-        QIcon icon1;
-        icon1.addFile(QStringLiteral(":/Images/images/connected.png"), QSize(), QIcon::Normal, QIcon::Off);
-        connectButton->setIcon(icon1);
-        connectButton->setIconSize(QSize(50, 50));
-        connectButton->setCheckable(true);
-        connectButton->setChecked(false);
-
-        horizontalLayout_24->addWidget(connectButton);
-
-        startPatSequence_Button = new QPushButton(scrollAreaWidgetContents);
-        startPatSequence_Button->setObjectName(QStringLiteral("startPatSequence_Button"));
-        sizePolicy.setHeightForWidth(startPatSequence_Button->sizePolicy().hasHeightForWidth());
-        startPatSequence_Button->setSizePolicy(sizePolicy);
-        startPatSequence_Button->setMinimumSize(QSize(50, 60));
-        startPatSequence_Button->setStyleSheet(QLatin1String("#startPatSequence_Button{\n"
-"background-color: transparent;\n"
-"backgorund: none;\n"
-"border: none;\n"
-"background-repeat: none;\n"
-"}"));
-        QIcon icon2;
-        icon2.addFile(QStringLiteral(":/new/prefix1/Icons/my_play.png"), QSize(), QIcon::Normal, QIcon::Off);
-        startPatSequence_Button->setIcon(icon2);
-        startPatSequence_Button->setIconSize(QSize(40, 40));
-
-        horizontalLayout_24->addWidget(startPatSequence_Button);
-
-        pausePatSequence_Button = new QPushButton(scrollAreaWidgetContents);
-        pausePatSequence_Button->setObjectName(QStringLiteral("pausePatSequence_Button"));
-        pausePatSequence_Button->setEnabled(false);
-        sizePolicy.setHeightForWidth(pausePatSequence_Button->sizePolicy().hasHeightForWidth());
-        pausePatSequence_Button->setSizePolicy(sizePolicy);
-        pausePatSequence_Button->setMinimumSize(QSize(50, 60));
-        pausePatSequence_Button->setStyleSheet(QLatin1String("#pausePatSequence_Button{\n"
-"background-color: transparent;\n"
-"backgorund: none;\n"
-"border: none;\n"
-"background-repeat: none;\n"
-"}"));
-        QIcon icon3;
-        icon3.addFile(QStringLiteral(":/new/prefix1/Icons/my_pause.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pausePatSequence_Button->setIcon(icon3);
-        pausePatSequence_Button->setIconSize(QSize(40, 40));
-        pausePatSequence_Button->setCheckable(false);
-        pausePatSequence_Button->setChecked(false);
-
-        horizontalLayout_24->addWidget(pausePatSequence_Button);
-
-        stopPatSequence_Button = new QPushButton(scrollAreaWidgetContents);
-        stopPatSequence_Button->setObjectName(QStringLiteral("stopPatSequence_Button"));
-        stopPatSequence_Button->setEnabled(false);
-        sizePolicy.setHeightForWidth(stopPatSequence_Button->sizePolicy().hasHeightForWidth());
-        stopPatSequence_Button->setSizePolicy(sizePolicy);
-        stopPatSequence_Button->setMinimumSize(QSize(50, 60));
-        stopPatSequence_Button->setStyleSheet(QLatin1String("#stopPatSequence_Button{\n"
-"background-color: transparent;\n"
-"border-image: url(:connected.png);\n"
-"backgorund: none;\n"
-"border: none;\n"
-"background-repeat: none;\n"
-"}"));
-        QIcon icon4;
-        icon4.addFile(QStringLiteral(":/new/prefix1/Icons/my_stop.png"), QSize(), QIcon::Normal, QIcon::Off);
-        stopPatSequence_Button->setIcon(icon4);
-        stopPatSequence_Button->setIconSize(QSize(40, 40));
-
-        horizontalLayout_24->addWidget(stopPatSequence_Button);
-
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
-
-        horizontalLayout_24->addItem(horizontalSpacer_2);
-
-        pushButton_patternMode = new QPushButton(scrollAreaWidgetContents);
-        pushButton_patternMode->setObjectName(QStringLiteral("pushButton_patternMode"));
-        pushButton_patternMode->setEnabled(true);
-        sizePolicy.setHeightForWidth(pushButton_patternMode->sizePolicy().hasHeightForWidth());
-        pushButton_patternMode->setSizePolicy(sizePolicy);
-        pushButton_patternMode->setMinimumSize(QSize(0, 40));
-        pushButton_patternMode->setFont(font);
-        pushButton_patternMode->setStyleSheet(QLatin1String("QPushButton{\n"
-"	color:rgb(0,150,150);\n"
-"   }"));
-        QIcon icon5;
-        icon5.addFile(QStringLiteral(":/Images/images/pattern.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton_patternMode->setIcon(icon5);
-        pushButton_patternMode->setIconSize(QSize(40, 40));
-        pushButton_patternMode->setCheckable(true);
-        pushButton_patternMode->setChecked(true);
-
-        horizontalLayout_24->addWidget(pushButton_patternMode);
-
-        pushButton_LEDDriver = new QPushButton(scrollAreaWidgetContents);
-        pushButton_LEDDriver->setObjectName(QStringLiteral("pushButton_LEDDriver"));
-        sizePolicy.setHeightForWidth(pushButton_LEDDriver->sizePolicy().hasHeightForWidth());
-        pushButton_LEDDriver->setSizePolicy(sizePolicy);
-        pushButton_LEDDriver->setMinimumSize(QSize(0, 45));
-        pushButton_LEDDriver->setFont(font);
-        pushButton_LEDDriver->setStyleSheet(QLatin1String("QPushButton{\n"
-"	color:rgb(0,150,150);\n"
-"   }"));
-        QIcon icon6;
-        icon6.addFile(QStringLiteral(":/Images/images/LEDDriver_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton_LEDDriver->setIcon(icon6);
-        pushButton_LEDDriver->setIconSize(QSize(40, 40));
-        pushButton_LEDDriver->setCheckable(true);
-
-        horizontalLayout_24->addWidget(pushButton_LEDDriver);
-
-        pushButton_ZMachineControl = new QPushButton(scrollAreaWidgetContents);
-        pushButton_ZMachineControl->setObjectName(QStringLiteral("pushButton_ZMachineControl"));
-        sizePolicy.setHeightForWidth(pushButton_ZMachineControl->sizePolicy().hasHeightForWidth());
-        pushButton_ZMachineControl->setSizePolicy(sizePolicy);
-        pushButton_ZMachineControl->setMinimumSize(QSize(0, 0));
-        pushButton_ZMachineControl->setFont(font);
-        pushButton_ZMachineControl->setStyleSheet(QLatin1String("QPushButton{\n"
-"	color:rgb(0,150,150);\n"
-"   }"));
-        QIcon icon7;
-        icon7.addFile(QStringLiteral(":/Images/images/settings.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton_ZMachineControl->setIcon(icon7);
-        pushButton_ZMachineControl->setIconSize(QSize(40, 40));
-        pushButton_ZMachineControl->setCheckable(true);
-
-        horizontalLayout_24->addWidget(pushButton_ZMachineControl);
-
-        horizontalSpacer_3 = new QSpacerItem(120, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
-
-        horizontalLayout_24->addItem(horizontalSpacer_3);
-
-        label_8 = new QLabel(scrollAreaWidgetContents);
-        label_8->setObjectName(QStringLiteral("label_8"));
-        QFont font1;
-        font1.setFamily(QStringLiteral("Arial"));
-        font1.setPointSize(12);
-        font1.setBold(true);
-        font1.setWeight(75);
-        label_8->setFont(font1);
-        label_8->setStyleSheet(QLatin1String("QLabel{\n"
-"	color:rgb(0,150,150);\n"
-"   }"));
-
-        horizontalLayout_24->addWidget(label_8);
-
-        StartTime = new QLabel(scrollAreaWidgetContents);
-        StartTime->setObjectName(QStringLiteral("StartTime"));
-        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(StartTime->sizePolicy().hasHeightForWidth());
-        StartTime->setSizePolicy(sizePolicy1);
-        StartTime->setMinimumSize(QSize(70, 0));
-        StartTime->setFont(font1);
-        StartTime->setStyleSheet(QLatin1String("QLabel{\n"
-"	color:rgb(0,150,150);\n"
-"   }"));
-
-        horizontalLayout_24->addWidget(StartTime);
-
-        label_12 = new QLabel(scrollAreaWidgetContents);
-        label_12->setObjectName(QStringLiteral("label_12"));
-        QFont font2;
-        font2.setFamily(QStringLiteral("Arial"));
-        font2.setPointSize(14);
-        font2.setBold(true);
-        font2.setWeight(75);
-        label_12->setFont(font2);
-        label_12->setStyleSheet(QLatin1String("QLabel{\n"
-"	color:rgb(0,150,150);\n"
-"   }"));
-
-        horizontalLayout_24->addWidget(label_12);
-
-        TotalTime = new QLabel(scrollAreaWidgetContents);
-        TotalTime->setObjectName(QStringLiteral("TotalTime"));
-        sizePolicy1.setHeightForWidth(TotalTime->sizePolicy().hasHeightForWidth());
-        TotalTime->setSizePolicy(sizePolicy1);
-        TotalTime->setMinimumSize(QSize(70, 0));
-        TotalTime->setFont(font1);
-        TotalTime->setStyleSheet(QLatin1String("QLabel{\n"
-"	color:rgb(0,150,150);\n"
-"   }"));
-
-        horizontalLayout_24->addWidget(TotalTime);
-
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_24->addItem(horizontalSpacer);
-
-
-        gridLayout->addLayout(horizontalLayout_24, 0, 0, 1, 1);
-
         horizontalLayout_25 = new QHBoxLayout();
         horizontalLayout_25->setSpacing(6);
         horizontalLayout_25->setObjectName(QStringLiteral("horizontalLayout_25"));
         frame_common = new QFrame(scrollAreaWidgetContents);
         frame_common->setObjectName(QStringLiteral("frame_common"));
-        QSizePolicy sizePolicy2(QSizePolicy::Fixed, QSizePolicy::Expanding);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(frame_common->sizePolicy().hasHeightForWidth());
-        frame_common->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(frame_common->sizePolicy().hasHeightForWidth());
+        frame_common->setSizePolicy(sizePolicy);
         frame_common->setMinimumSize(QSize(245, 581));
         frame_common->setStyleSheet(QLatin1String("QFrame{background-image : url(:/images/img.jpg);\n"
 "border:1px solid black}"));
@@ -517,12 +268,12 @@ public:
         frame_common->setFrameShadow(QFrame::Raised);
         groupBox = new QGroupBox(frame_common);
         groupBox->setObjectName(QStringLiteral("groupBox"));
-        groupBox->setGeometry(QRect(10, 10, 221, 131));
-        QSizePolicy sizePolicy3(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(groupBox->sizePolicy().hasHeightForWidth());
-        groupBox->setSizePolicy(sizePolicy3);
+        groupBox->setGeometry(QRect(10, 10, 221, 111));
+        QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(groupBox->sizePolicy().hasHeightForWidth());
+        groupBox->setSizePolicy(sizePolicy1);
         groupBox->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
@@ -530,261 +281,249 @@ public:
 ";}"));
         addPatternsButton = new QPushButton(groupBox);
         addPatternsButton->setObjectName(QStringLiteral("addPatternsButton"));
-        addPatternsButton->setGeometry(QRect(20, 80, 40, 35));
-        sizePolicy3.setHeightForWidth(addPatternsButton->sizePolicy().hasHeightForWidth());
-        addPatternsButton->setSizePolicy(sizePolicy3);
+        addPatternsButton->setGeometry(QRect(20, 65, 40, 35));
+        sizePolicy1.setHeightForWidth(addPatternsButton->sizePolicy().hasHeightForWidth());
+        addPatternsButton->setSizePolicy(sizePolicy1);
         addPatternsButton->setMinimumSize(QSize(40, 35));
-        QIcon icon8;
-        icon8.addFile(QStringLiteral(":/new/prefix1/Icons/add.png"), QSize(), QIcon::Normal, QIcon::Off);
-        addPatternsButton->setIcon(icon8);
+        QIcon icon1;
+        icon1.addFile(QStringLiteral(":/new/prefix1/Icons/add.png"), QSize(), QIcon::Normal, QIcon::Off);
+        addPatternsButton->setIcon(icon1);
         removePatternsButton = new QPushButton(groupBox);
         removePatternsButton->setObjectName(QStringLiteral("removePatternsButton"));
         removePatternsButton->setEnabled(false);
-        removePatternsButton->setGeometry(QRect(85, 80, 40, 35));
-        sizePolicy3.setHeightForWidth(removePatternsButton->sizePolicy().hasHeightForWidth());
-        removePatternsButton->setSizePolicy(sizePolicy3);
+        removePatternsButton->setGeometry(QRect(85, 65, 40, 35));
+        sizePolicy1.setHeightForWidth(removePatternsButton->sizePolicy().hasHeightForWidth());
+        removePatternsButton->setSizePolicy(sizePolicy1);
         removePatternsButton->setMinimumSize(QSize(40, 35));
-        QIcon icon9;
-        icon9.addFile(QStringLiteral(":/new/prefix1/Icons/delete.png"), QSize(), QIcon::Normal, QIcon::Off);
-        removePatternsButton->setIcon(icon9);
+        QIcon icon2;
+        icon2.addFile(QStringLiteral(":/new/prefix1/Icons/delete.png"), QSize(), QIcon::Normal, QIcon::Off);
+        removePatternsButton->setIcon(icon2);
         selectAllButton = new QPushButton(groupBox);
         selectAllButton->setObjectName(QStringLiteral("selectAllButton"));
         selectAllButton->setEnabled(false);
-        selectAllButton->setGeometry(QRect(150, 80, 40, 35));
-        sizePolicy3.setHeightForWidth(selectAllButton->sizePolicy().hasHeightForWidth());
-        selectAllButton->setSizePolicy(sizePolicy3);
+        selectAllButton->setGeometry(QRect(150, 65, 40, 35));
+        sizePolicy1.setHeightForWidth(selectAllButton->sizePolicy().hasHeightForWidth());
+        selectAllButton->setSizePolicy(sizePolicy1);
         selectAllButton->setMinimumSize(QSize(40, 35));
-        QIcon icon10;
-        icon10.addFile(QStringLiteral(":/new/prefix1/Icons/select.png"), QSize(), QIcon::Normal, QIcon::Off);
-        selectAllButton->setIcon(icon10);
+        QIcon icon3;
+        icon3.addFile(QStringLiteral(":/new/prefix1/Icons/select.png"), QSize(), QIcon::Normal, QIcon::Off);
+        selectAllButton->setIcon(icon3);
         saveButton_patternSettings = new QPushButton(groupBox);
         saveButton_patternSettings->setObjectName(QStringLiteral("saveButton_patternSettings"));
         saveButton_patternSettings->setEnabled(true);
-        saveButton_patternSettings->setGeometry(QRect(10, 20, 75, 35));
-        QSizePolicy sizePolicy4(QSizePolicy::Minimum, QSizePolicy::Fixed);
-        sizePolicy4.setHorizontalStretch(0);
-        sizePolicy4.setVerticalStretch(0);
-        sizePolicy4.setHeightForWidth(saveButton_patternSettings->sizePolicy().hasHeightForWidth());
-        saveButton_patternSettings->setSizePolicy(sizePolicy4);
+        saveButton_patternSettings->setGeometry(QRect(25, 20, 75, 35));
+        QSizePolicy sizePolicy2(QSizePolicy::Minimum, QSizePolicy::Fixed);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(saveButton_patternSettings->sizePolicy().hasHeightForWidth());
+        saveButton_patternSettings->setSizePolicy(sizePolicy2);
         saveButton_patternSettings->setMinimumSize(QSize(70, 35));
         saveButton_patternSettings->setStyleSheet(QLatin1String("QPushButton{\n"
 "	color:rgb(0,150,150);\n"
 "}"));
-        QIcon icon11;
-        icon11.addFile(QStringLiteral(":/new/prefix1/Icons/save.png"), QSize(), QIcon::Normal, QIcon::Off);
-        saveButton_patternSettings->setIcon(icon11);
+        QIcon icon4;
+        icon4.addFile(QStringLiteral(":/new/prefix1/Icons/save.png"), QSize(), QIcon::Normal, QIcon::Off);
+        saveButton_patternSettings->setIcon(icon4);
         loadButton_patternSettings = new QPushButton(groupBox);
         loadButton_patternSettings->setObjectName(QStringLiteral("loadButton_patternSettings"));
-        loadButton_patternSettings->setGeometry(QRect(110, 20, 75, 35));
+        loadButton_patternSettings->setGeometry(QRect(120, 20, 75, 35));
         loadButton_patternSettings->setMinimumSize(QSize(70, 35));
         loadButton_patternSettings->setStyleSheet(QLatin1String("QPushButton{\n"
 "	color:rgb(0,150,150);\n"
 "}"));
-        QIcon icon12;
-        icon12.addFile(QStringLiteral(":/new/prefix1/Icons/load.png"), QSize(), QIcon::Normal, QIcon::Off);
-        loadButton_patternSettings->setIcon(icon12);
-        groupBox_firmware = new QGroupBox(frame_common);
-        groupBox_firmware->setObjectName(QStringLiteral("groupBox_firmware"));
-        groupBox_firmware->setGeometry(QRect(10, 150, 221, 60));
-        sizePolicy3.setHeightForWidth(groupBox_firmware->sizePolicy().hasHeightForWidth());
-        groupBox_firmware->setSizePolicy(sizePolicy3);
-        groupBox_firmware->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
+        QIcon icon5;
+        icon5.addFile(QStringLiteral(":/new/prefix1/Icons/load.png"), QSize(), QIcon::Normal, QIcon::Off);
+        loadButton_patternSettings->setIcon(icon5);
+        LiftSeqTime = new QGroupBox(frame_common);
+        LiftSeqTime->setObjectName(QStringLiteral("LiftSeqTime"));
+        LiftSeqTime->setGeometry(QRect(10, 128, 221, 501));
+        QFont font;
+        font.setFamily(QStringLiteral("Arial"));
+        font.setPointSize(9);
+        font.setBold(true);
+        font.setWeight(75);
+        LiftSeqTime->setFont(font);
+        LiftSeqTime->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
 "color:rgb(0,120,120);\n"
 ";}"));
-        horizontalLayout_22 = new QHBoxLayout(groupBox_firmware);
-        horizontalLayout_22->setSpacing(6);
-        horizontalLayout_22->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_22->setObjectName(QStringLiteral("horizontalLayout_22"));
-        horizontalLayout_22->setContentsMargins(-1, 15, -1, -1);
-        verticalLayout_18 = new QVBoxLayout();
-        verticalLayout_18->setSpacing(6);
-        verticalLayout_18->setObjectName(QStringLiteral("verticalLayout_18"));
-        label_version = new QLabel(groupBox_firmware);
-        label_version->setObjectName(QStringLiteral("label_version"));
-        QSizePolicy sizePolicy5(QSizePolicy::Preferred, QSizePolicy::MinimumExpanding);
-        sizePolicy5.setHorizontalStretch(0);
-        sizePolicy5.setVerticalStretch(0);
-        sizePolicy5.setHeightForWidth(label_version->sizePolicy().hasHeightForWidth());
-        label_version->setSizePolicy(sizePolicy5);
+        ZLiftdelay = new QLineEdit(LiftSeqTime);
+        ZLiftdelay->setObjectName(QStringLiteral("ZLiftdelay"));
+        ZLiftdelay->setGeometry(QRect(115, 155, 95, 35));
+        QFont font1;
+        font1.setFamily(QStringLiteral("Arial"));
+        font1.setPointSize(11);
+        ZLiftdelay->setFont(font1);
+        label_9 = new QLabel(LiftSeqTime);
+        label_9->setObjectName(QStringLiteral("label_9"));
+        label_9->setGeometry(QRect(115, 120, 91, 20));
+        QFont font2;
+        font2.setFamily(QStringLiteral("Arial"));
+        font2.setPointSize(10);
+        label_9->setFont(font2);
+        label_9->setStyleSheet(QLatin1String("QLabel{ border: 0px ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+"color:rgb(0,120,120);\n"
+";}"));
+        PrintingDelay = new QLineEdit(LiftSeqTime);
+        PrintingDelay->setObjectName(QStringLiteral("PrintingDelay"));
+        PrintingDelay->setGeometry(QRect(10, 155, 95, 35));
+        PrintingDelay->setFont(font1);
+        label_10 = new QLabel(LiftSeqTime);
+        label_10->setObjectName(QStringLiteral("label_10"));
+        label_10->setGeometry(QRect(30, 105, 51, 31));
+        label_10->setFont(font2);
+        label_10->setStyleSheet(QLatin1String("QLabel{ border: 0px ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+"color:rgb(0,120,120);\n"
+";}"));
+        label_13 = new QLabel(LiftSeqTime);
+        label_13->setObjectName(QStringLiteral("label_13"));
+        label_13->setGeometry(QRect(10, 125, 101, 31));
+        label_13->setFont(font2);
+        label_13->setStyleSheet(QLatin1String("QLabel{ border: 0px ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+"color:rgb(0,120,120);\n"
+";}"));
+        UpdateTotalTime = new QPushButton(LiftSeqTime);
+        UpdateTotalTime->setObjectName(QStringLiteral("UpdateTotalTime"));
+        UpdateTotalTime->setEnabled(false);
+        UpdateTotalTime->setGeometry(QRect(50, 200, 111, 35));
+        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(UpdateTotalTime->sizePolicy().hasHeightForWidth());
+        UpdateTotalTime->setSizePolicy(sizePolicy3);
+        UpdateTotalTime->setMinimumSize(QSize(0, 35));
+        UpdateTotalTime->setFont(font2);
+        UpdateTotalTime->setMouseTracking(true);
+        UpdateTotalTime->setStyleSheet(QLatin1String("QPushButton{\n"
+"	color:rgb(0,150,150);\n"
+"}"));
+        UpdateTotalTime->setCheckable(false);
+        triggerIn_checkBox = new QCheckBox(LiftSeqTime);
+        triggerIn_checkBox->setObjectName(QStringLiteral("triggerIn_checkBox"));
+        triggerIn_checkBox->setEnabled(true);
+        triggerIn_checkBox->setGeometry(QRect(10, 250, 111, 17));
+        triggerIn_checkBox->setStyleSheet(QLatin1String("QCheckBox{\n"
+"	color:rgb(0,150,150);\n"
+"}"));
+        label_TrigOut1 = new QLabel(LiftSeqTime);
+        label_TrigOut1->setObjectName(QStringLiteral("label_TrigOut1"));
+        label_TrigOut1->setEnabled(true);
+        label_TrigOut1->setGeometry(QRect(10, 280, 111, 13));
+        label_TrigOut1->setStyleSheet(QLatin1String("QLabel{border:0px;\n"
+"	color:rgb(0,150,150);\n"
+"}"));
+        label_TrigOut1->setLineWidth(1);
+        triggerOut2_checkBox = new QCheckBox(LiftSeqTime);
+        triggerOut2_checkBox->setObjectName(QStringLiteral("triggerOut2_checkBox"));
+        triggerOut2_checkBox->setEnabled(true);
+        triggerOut2_checkBox->setGeometry(QRect(10, 310, 111, 17));
+        triggerOut2_checkBox->setStyleSheet(QLatin1String("QCheckBox{\n"
+"	color:rgb(0,150,150);\n"
+"}"));
+        groupBox_2 = new QGroupBox(LiftSeqTime);
+        groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
+        groupBox_2->setGeometry(QRect(10, 340, 201, 151));
         QFont font3;
-        font3.setPointSize(8);
-        label_version->setFont(font3);
-        label_version->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
-
-        verticalLayout_18->addWidget(label_version);
-
-        label_Tag = new QLabel(groupBox_firmware);
-        label_Tag->setObjectName(QStringLiteral("label_Tag"));
-        sizePolicy5.setHeightForWidth(label_Tag->sizePolicy().hasHeightForWidth());
-        label_Tag->setSizePolicy(sizePolicy5);
-        label_Tag->setFont(font3);
-        label_Tag->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
-
-        verticalLayout_18->addWidget(label_Tag);
-
-
-        horizontalLayout_22->addLayout(verticalLayout_18);
-
-        verticalLayout_19 = new QVBoxLayout();
-        verticalLayout_19->setSpacing(6);
-        verticalLayout_19->setObjectName(QStringLiteral("verticalLayout_19"));
-        apiVersionLabel = new QLabel(groupBox_firmware);
-        apiVersionLabel->setObjectName(QStringLiteral("apiVersionLabel"));
-        sizePolicy5.setHeightForWidth(apiVersionLabel->sizePolicy().hasHeightForWidth());
-        apiVersionLabel->setSizePolicy(sizePolicy5);
-        apiVersionLabel->setMinimumSize(QSize(20, 0));
-        apiVersionLabel->setFont(font3);
-        apiVersionLabel->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
-
-        verticalLayout_19->addWidget(apiVersionLabel);
-
-        firmwareTag_label = new QLabel(groupBox_firmware);
-        firmwareTag_label->setObjectName(QStringLiteral("firmwareTag_label"));
-        sizePolicy5.setHeightForWidth(firmwareTag_label->sizePolicy().hasHeightForWidth());
-        firmwareTag_label->setSizePolicy(sizePolicy5);
-        firmwareTag_label->setFont(font3);
-        firmwareTag_label->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
-
-        verticalLayout_19->addWidget(firmwareTag_label);
-
-
-        horizontalLayout_22->addLayout(verticalLayout_19);
-
-        groupBox_ChipSetType = new QGroupBox(frame_common);
-        groupBox_ChipSetType->setObjectName(QStringLiteral("groupBox_ChipSetType"));
-        groupBox_ChipSetType->setGeometry(QRect(10, 220, 221, 43));
-        sizePolicy3.setHeightForWidth(groupBox_ChipSetType->sizePolicy().hasHeightForWidth());
-        groupBox_ChipSetType->setSizePolicy(sizePolicy3);
-        groupBox_ChipSetType->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
+        font3.setFamily(QStringLiteral("Arial"));
+        font3.setPointSize(9);
+        groupBox_2->setFont(font3);
+        AutoHoming = new QRadioButton(groupBox_2);
+        AutoHoming->setObjectName(QStringLiteral("AutoHoming"));
+        AutoHoming->setGeometry(QRect(50, 20, 100, 20));
+        AutoHoming->setFont(font2);
+        AutoHoming->setStyleSheet(QLatin1String("QRadioButton{\n"
+"	color:rgb(0,150,150);\n"
+"}"));
+        AutoHoming->setChecked(true);
+        ManualHoming = new QRadioButton(groupBox_2);
+        ManualHoming->setObjectName(QStringLiteral("ManualHoming"));
+        ManualHoming->setGeometry(QRect(50, 50, 110, 20));
+        ManualHoming->setFont(font3);
+        ManualHoming->setStyleSheet(QLatin1String("QRadioButton{\n"
+"	color:rgb(0,150,150);\n"
+"}"));
+        HomeDelay = new QLabel(groupBox_2);
+        HomeDelay->setObjectName(QStringLiteral("HomeDelay"));
+        HomeDelay->setEnabled(false);
+        HomeDelay->setGeometry(QRect(40, 80, 120, 20));
+        HomeDelay->setFont(font3);
+        HomeDelay->setStyleSheet(QLatin1String("QLabel{ border: 0px ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
 "color:rgb(0,120,120);\n"
 ";}"));
-        horizontalLayout_14 = new QHBoxLayout(groupBox_ChipSetType);
-        horizontalLayout_14->setSpacing(6);
-        horizontalLayout_14->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_14->setObjectName(QStringLiteral("horizontalLayout_14"));
-        horizontalLayout_14->setContentsMargins(-1, 15, -1, -1);
-        pDMD_radioButton = new QRadioButton(groupBox_ChipSetType);
-        pDMD_radioButton->setObjectName(QStringLiteral("pDMD_radioButton"));
-        pDMD_radioButton->setChecked(true);
-
-        horizontalLayout_14->addWidget(pDMD_radioButton);
-
-        operatingModes_groupBox = new QGroupBox(frame_common);
-        operatingModes_groupBox->setObjectName(QStringLiteral("operatingModes_groupBox"));
-        operatingModes_groupBox->setEnabled(false);
-        operatingModes_groupBox->setGeometry(QRect(10, 270, 221, 81));
-        sizePolicy3.setHeightForWidth(operatingModes_groupBox->sizePolicy().hasHeightForWidth());
-        operatingModes_groupBox->setSizePolicy(sizePolicy3);
-        operatingModes_groupBox->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
+        HomingDelay = new QLineEdit(groupBox_2);
+        HomingDelay->setObjectName(QStringLiteral("HomingDelay"));
+        HomingDelay->setEnabled(false);
+        HomingDelay->setGeometry(QRect(40, 110, 100, 30));
+        HomingDelay->setFont(font1);
+        label_DarkTime = new QLabel(LiftSeqTime);
+        label_DarkTime->setObjectName(QStringLiteral("label_DarkTime"));
+        label_DarkTime->setGeometry(QRect(125, 20, 61, 21));
+        QFont font4;
+        font4.setFamily(QStringLiteral("Arial"));
+        font4.setPointSize(10);
+        font4.setBold(false);
+        font4.setWeight(50);
+        label_DarkTime->setFont(font4);
+        label_DarkTime->setStyleSheet(QLatin1String("QLabel{ border: 0px ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
 "color:rgb(0,120,120);\n"
 ";}"));
-        verticalLayout_40 = new QVBoxLayout(operatingModes_groupBox);
-        verticalLayout_40->setSpacing(6);
-        verticalLayout_40->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_40->setObjectName(QStringLiteral("verticalLayout_40"));
-        verticalLayout_40->setContentsMargins(-1, 20, -1, -1);
-        patternMode_radioButton = new QRadioButton(operatingModes_groupBox);
-        patternMode_radioButton->setObjectName(QStringLiteral("patternMode_radioButton"));
-
-        verticalLayout_40->addWidget(patternMode_radioButton);
-
-        patternMemory_radioButton = new QRadioButton(operatingModes_groupBox);
-        patternMemory_radioButton->setObjectName(QStringLiteral("patternMemory_radioButton"));
-
-        verticalLayout_40->addWidget(patternMemory_radioButton);
-
-        status_groupBox = new QGroupBox(frame_common);
-        status_groupBox->setObjectName(QStringLiteral("status_groupBox"));
-        status_groupBox->setEnabled(false);
-        status_groupBox->setGeometry(QRect(10, 360, 221, 271));
-        sizePolicy3.setHeightForWidth(status_groupBox->sizePolicy().hasHeightForWidth());
-        status_groupBox->setSizePolicy(sizePolicy3);
-        status_groupBox->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
+        label_Exposure = new QLabel(LiftSeqTime);
+        label_Exposure->setObjectName(QStringLiteral("label_Exposure"));
+        label_Exposure->setGeometry(QRect(25, 17, 61, 21));
+        label_Exposure->setFont(font4);
+        label_Exposure->setStyleSheet(QLatin1String("QLabel{ border: 0px ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
 "color:rgb(0,120,120);\n"
 ";}"));
-        verticalLayout_5 = new QVBoxLayout(status_groupBox);
-        verticalLayout_5->setSpacing(6);
-        verticalLayout_5->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
-        verticalLayout_5->setContentsMargins(-1, 20, -1, -1);
-        internalMemTest_checkBox = new QCheckBox(status_groupBox);
-        internalMemTest_checkBox->setObjectName(QStringLiteral("internalMemTest_checkBox"));
-
-        verticalLayout_5->addWidget(internalMemTest_checkBox);
-
-        incompatibleASICorDMD_checkBox = new QCheckBox(status_groupBox);
-        incompatibleASICorDMD_checkBox->setObjectName(QStringLiteral("incompatibleASICorDMD_checkBox"));
-
-        verticalLayout_5->addWidget(incompatibleASICorDMD_checkBox);
-
-        slaveReady_checkBox = new QCheckBox(status_groupBox);
-        slaveReady_checkBox->setObjectName(QStringLiteral("slaveReady_checkBox"));
-
-        verticalLayout_5->addWidget(slaveReady_checkBox);
-
-        internalInit_checkBox = new QCheckBox(status_groupBox);
-        internalInit_checkBox->setObjectName(QStringLiteral("internalInit_checkBox"));
-
-        verticalLayout_5->addWidget(internalInit_checkBox);
-
-        DMDResetWaveformControllerErr_checkBox = new QCheckBox(status_groupBox);
-        DMDResetWaveformControllerErr_checkBox->setObjectName(QStringLiteral("DMDResetWaveformControllerErr_checkBox"));
-
-        verticalLayout_5->addWidget(DMDResetWaveformControllerErr_checkBox);
-
-        forcedSwapErr_checkBox = new QCheckBox(status_groupBox);
-        forcedSwapErr_checkBox->setObjectName(QStringLiteral("forcedSwapErr_checkBox"));
-
-        verticalLayout_5->addWidget(forcedSwapErr_checkBox);
-
-        seqAbortStatus_checkBox = new QCheckBox(status_groupBox);
-        seqAbortStatus_checkBox->setObjectName(QStringLiteral("seqAbortStatus_checkBox"));
-
-        verticalLayout_5->addWidget(seqAbortStatus_checkBox);
-
-        seqErr_checkBox = new QCheckBox(status_groupBox);
-        seqErr_checkBox->setObjectName(QStringLiteral("seqErr_checkBox"));
-
-        verticalLayout_5->addWidget(seqErr_checkBox);
-
-        DMDParkStatus_checkBox = new QCheckBox(status_groupBox);
-        DMDParkStatus_checkBox->setObjectName(QStringLiteral("DMDParkStatus_checkBox"));
-
-        verticalLayout_5->addWidget(DMDParkStatus_checkBox);
-
-        sequencerRunState_checkBox = new QCheckBox(status_groupBox);
-        sequencerRunState_checkBox->setObjectName(QStringLiteral("sequencerRunState_checkBox"));
-
-        verticalLayout_5->addWidget(sequencerRunState_checkBox);
-
-        videoState_checkBox = new QCheckBox(status_groupBox);
-        videoState_checkBox->setObjectName(QStringLiteral("videoState_checkBox"));
-
-        verticalLayout_5->addWidget(videoState_checkBox);
-
-        extSourceLocked_checkBox = new QCheckBox(status_groupBox);
-        extSourceLocked_checkBox->setObjectName(QStringLiteral("extSourceLocked_checkBox"));
-
-        verticalLayout_5->addWidget(extSourceLocked_checkBox);
-
+        label_Exposure->setWordWrap(true);
+        label_14 = new QLabel(LiftSeqTime);
+        label_14->setObjectName(QStringLiteral("label_14"));
+        label_14->setGeometry(QRect(25, 32, 61, 31));
+        label_14->setFont(font2);
+        label_14->setStyleSheet(QLatin1String("QLabel{ border: 0px ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+"color:rgb(0,120,120);\n"
+";}"));
+        label_15 = new QLabel(LiftSeqTime);
+        label_15->setObjectName(QStringLiteral("label_15"));
+        label_15->setGeometry(QRect(145, 32, 30, 31));
+        label_15->setFont(font2);
+        label_15->setStyleSheet(QLatin1String("QLabel{ border: 0px ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+"color:rgb(0,120,120);\n"
+";}"));
+        darkPeriod_lineEdit = new QLineEdit(LiftSeqTime);
+        darkPeriod_lineEdit->setObjectName(QStringLiteral("darkPeriod_lineEdit"));
+        darkPeriod_lineEdit->setGeometry(QRect(115, 67, 95, 35));
+        darkPeriod_lineEdit->setFont(font1);
+        exposure_lineEdit = new QLineEdit(LiftSeqTime);
+        exposure_lineEdit->setObjectName(QStringLiteral("exposure_lineEdit"));
+        exposure_lineEdit->setGeometry(QRect(10, 67, 95, 35));
+        exposure_lineEdit->setFont(font1);
 
         horizontalLayout_25->addWidget(frame_common);
 
         stackedWidget = new QStackedWidget(scrollAreaWidgetContents);
         stackedWidget->setObjectName(QStringLiteral("stackedWidget"));
-        QSizePolicy sizePolicy6(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        sizePolicy6.setHorizontalStretch(0);
-        sizePolicy6.setVerticalStretch(0);
-        sizePolicy6.setHeightForWidth(stackedWidget->sizePolicy().hasHeightForWidth());
-        stackedWidget->setSizePolicy(sizePolicy6);
+        QSizePolicy sizePolicy4(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(stackedWidget->sizePolicy().hasHeightForWidth());
+        stackedWidget->setSizePolicy(sizePolicy4);
         stackedWidget->setMinimumSize(QSize(931, 581));
         stackedWidget->setStyleSheet(QStringLiteral("QStackedWidget{background-image : url(:/images/img.jpg);}"));
         patternModePage = new QWidget();
@@ -796,8 +535,8 @@ public:
         gridLayout_3->setContentsMargins(0, 0, 0, 0);
         frame_patternMode = new QFrame(patternModePage);
         frame_patternMode->setObjectName(QStringLiteral("frame_patternMode"));
-        sizePolicy6.setHeightForWidth(frame_patternMode->sizePolicy().hasHeightForWidth());
-        frame_patternMode->setSizePolicy(sizePolicy6);
+        sizePolicy4.setHeightForWidth(frame_patternMode->sizePolicy().hasHeightForWidth());
+        frame_patternMode->setSizePolicy(sizePolicy4);
         frame_patternMode->setMinimumSize(QSize(931, 581));
         frame_patternMode->setStyleSheet(QLatin1String("QFrame{background-image : url(:/images/img.jpg);\n"
 "border:1px solid black}"));
@@ -809,9 +548,14 @@ public:
         gridLayout_11->setObjectName(QStringLiteral("gridLayout_11"));
         groupBox_PatternMode = new QGroupBox(frame_patternMode);
         groupBox_PatternMode->setObjectName(QStringLiteral("groupBox_PatternMode"));
-        sizePolicy6.setHeightForWidth(groupBox_PatternMode->sizePolicy().hasHeightForWidth());
-        groupBox_PatternMode->setSizePolicy(sizePolicy6);
-        groupBox_PatternMode->setFont(font1);
+        sizePolicy4.setHeightForWidth(groupBox_PatternMode->sizePolicy().hasHeightForWidth());
+        groupBox_PatternMode->setSizePolicy(sizePolicy4);
+        QFont font5;
+        font5.setFamily(QStringLiteral("Arial"));
+        font5.setPointSize(12);
+        font5.setBold(true);
+        font5.setWeight(75);
+        groupBox_PatternMode->setFont(font5);
         groupBox_PatternMode->setAutoFillBackground(false);
         groupBox_PatternMode->setStyleSheet(QLatin1String("QGroupBox{ border: 1.5px solid ;\n"
 "background-color: transparent;\n"
@@ -823,6 +567,10 @@ public:
         horizontalLayout_26->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_26->setObjectName(QStringLiteral("horizontalLayout_26"));
         horizontalLayout_26->setContentsMargins(-1, 18, -1, -1);
+        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_26->addItem(horizontalSpacer_5);
+
         patternMode_stackedWidget = new QStackedWidget(groupBox_PatternMode);
         patternMode_stackedWidget->setObjectName(QStringLiteral("patternMode_stackedWidget"));
         patternMode_stackedWidget->setMinimumSize(QSize(794, 514));
@@ -837,139 +585,7 @@ public:
         verticalLayout_37 = new QVBoxLayout();
         verticalLayout_37->setSpacing(6);
         verticalLayout_37->setObjectName(QStringLiteral("verticalLayout_37"));
-        groupBox_PatternImage = new QGroupBox(patternDesignPage);
-        groupBox_PatternImage->setObjectName(QStringLiteral("groupBox_PatternImage"));
-        groupBox_PatternImage->setMinimumSize(QSize(661, 451));
-        groupBox_PatternImage->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
-"background-color: transparent;\n"
-"border-color: rgb(0,150,150);\n"
-"color:rgb(0,120,120);\n"
-";}"));
-        horizontalLayout_46 = new QHBoxLayout(groupBox_PatternImage);
-        horizontalLayout_46->setSpacing(6);
-        horizontalLayout_46->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_46->setObjectName(QStringLiteral("horizontalLayout_46"));
-        ptnSetting_groupBox = new QGroupBox(groupBox_PatternImage);
-        ptnSetting_groupBox->setObjectName(QStringLiteral("ptnSetting_groupBox"));
-        ptnSetting_groupBox->setEnabled(false);
-        QSizePolicy sizePolicy7(QSizePolicy::Fixed, QSizePolicy::Preferred);
-        sizePolicy7.setHorizontalStretch(0);
-        sizePolicy7.setVerticalStretch(0);
-        sizePolicy7.setHeightForWidth(ptnSetting_groupBox->sizePolicy().hasHeightForWidth());
-        ptnSetting_groupBox->setSizePolicy(sizePolicy7);
-        ptnSetting_groupBox->setMinimumSize(QSize(131, 431));
-        ptnSetting_groupBox->setMaximumSize(QSize(131, 16777215));
-        ptnSetting_groupBox->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
-"background-color: transparent;\n"
-"border-color: rgb(0,150,150);\n"
-"color:rgb(0,120,120);\n"
-";}"));
-        verticalLayout_38 = new QVBoxLayout(ptnSetting_groupBox);
-        verticalLayout_38->setSpacing(6);
-        verticalLayout_38->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_38->setObjectName(QStringLiteral("verticalLayout_38"));
-        verticalLayout_38->setContentsMargins(-1, 20, -1, -1);
-        groupBox_PatternIndex = new QGroupBox(ptnSetting_groupBox);
-        groupBox_PatternIndex->setObjectName(QStringLiteral("groupBox_PatternIndex"));
-        groupBox_PatternIndex->setMinimumSize(QSize(0, 70));
-        PatternIndex = new QLabel(groupBox_PatternIndex);
-        PatternIndex->setObjectName(QStringLiteral("PatternIndex"));
-        PatternIndex->setGeometry(QRect(3, 20, 105, 35));
-        PatternIndex->setFont(font);
-        PatternIndex->setStyleSheet(QLatin1String("QLabel{border:0px;\n"
-"color:rgb(0,150,150);}"));
-
-        verticalLayout_38->addWidget(groupBox_PatternIndex);
-
-        groupBox_Timing = new QGroupBox(ptnSetting_groupBox);
-        groupBox_Timing->setObjectName(QStringLiteral("groupBox_Timing"));
-        QSizePolicy sizePolicy8(QSizePolicy::Preferred, QSizePolicy::Fixed);
-        sizePolicy8.setHorizontalStretch(0);
-        sizePolicy8.setVerticalStretch(0);
-        sizePolicy8.setHeightForWidth(groupBox_Timing->sizePolicy().hasHeightForWidth());
-        groupBox_Timing->setSizePolicy(sizePolicy8);
-        groupBox_Timing->setMinimumSize(QSize(0, 160));
-        exposure_lineEdit = new QLineEdit(groupBox_Timing);
-        exposure_lineEdit->setObjectName(QStringLiteral("exposure_lineEdit"));
-        exposure_lineEdit->setGeometry(QRect(13, 50, 90, 30));
-        QFont font4;
-        font4.setPointSize(10);
-        exposure_lineEdit->setFont(font4);
-        label_Exposure = new QLabel(groupBox_Timing);
-        label_Exposure->setObjectName(QStringLiteral("label_Exposure"));
-        label_Exposure->setGeometry(QRect(30, 20, 61, 21));
-        QFont font5;
-        font5.setFamily(QStringLiteral("Arial"));
-        font5.setPointSize(10);
-        font5.setBold(false);
-        font5.setWeight(50);
-        label_Exposure->setFont(font5);
-        label_Exposure->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
-        label_Exposure->setWordWrap(true);
-        label_DarkTime = new QLabel(groupBox_Timing);
-        label_DarkTime->setObjectName(QStringLiteral("label_DarkTime"));
-        label_DarkTime->setGeometry(QRect(30, 88, 61, 21));
-        label_DarkTime->setFont(font5);
-        label_DarkTime->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
-        darkPeriod_lineEdit = new QLineEdit(groupBox_Timing);
-        darkPeriod_lineEdit->setObjectName(QStringLiteral("darkPeriod_lineEdit"));
-        darkPeriod_lineEdit->setGeometry(QRect(13, 115, 90, 30));
-        darkPeriod_lineEdit->setFont(font4);
-
-        verticalLayout_38->addWidget(groupBox_Timing);
-
-        UpdateTotalTime = new QPushButton(ptnSetting_groupBox);
-        UpdateTotalTime->setObjectName(QStringLiteral("UpdateTotalTime"));
-        UpdateTotalTime->setEnabled(false);
-        sizePolicy1.setHeightForWidth(UpdateTotalTime->sizePolicy().hasHeightForWidth());
-        UpdateTotalTime->setSizePolicy(sizePolicy1);
-        UpdateTotalTime->setMinimumSize(QSize(0, 35));
-        QFont font6;
-        font6.setFamily(QStringLiteral("Arial"));
-        font6.setPointSize(10);
-        UpdateTotalTime->setFont(font6);
-        UpdateTotalTime->setMouseTracking(true);
-        UpdateTotalTime->setCheckable(false);
-
-        verticalLayout_38->addWidget(UpdateTotalTime);
-
-        verticalSpacer_33 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_38->addItem(verticalSpacer_33);
-
-        triggerIn_checkBox = new QCheckBox(ptnSetting_groupBox);
-        triggerIn_checkBox->setObjectName(QStringLiteral("triggerIn_checkBox"));
-
-        verticalLayout_38->addWidget(triggerIn_checkBox);
-
-        verticalSpacer_34 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_38->addItem(verticalSpacer_34);
-
-        label_TrigOut1 = new QLabel(ptnSetting_groupBox);
-        label_TrigOut1->setObjectName(QStringLiteral("label_TrigOut1"));
-        label_TrigOut1->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
-        label_TrigOut1->setLineWidth(1);
-
-        verticalLayout_38->addWidget(label_TrigOut1);
-
-        verticalSpacer_35 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_38->addItem(verticalSpacer_35);
-
-        triggerOut2_checkBox = new QCheckBox(ptnSetting_groupBox);
-        triggerOut2_checkBox->setObjectName(QStringLiteral("triggerOut2_checkBox"));
-
-        verticalLayout_38->addWidget(triggerOut2_checkBox);
-
-        verticalSpacer_36 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_38->addItem(verticalSpacer_36);
-
-
-        horizontalLayout_46->addWidget(ptnSetting_groupBox);
-
-        waveFormArea = new QScrollArea(groupBox_PatternImage);
+        waveFormArea = new QScrollArea(patternDesignPage);
         waveFormArea->setObjectName(QStringLiteral("waveFormArea"));
         waveFormArea->setMinimumSize(QSize(501, 431));
         waveFormArea->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
@@ -981,13 +597,10 @@ public:
         waveFormArea->setWidgetResizable(true);
         scrollAreaWidgetContents_4 = new QWidget();
         scrollAreaWidgetContents_4->setObjectName(QStringLiteral("scrollAreaWidgetContents_4"));
-        scrollAreaWidgetContents_4->setGeometry(QRect(0, 0, 895, 566));
+        scrollAreaWidgetContents_4->setGeometry(QRect(0, 0, 960, 586));
         waveFormArea->setWidget(scrollAreaWidgetContents_4);
 
-        horizontalLayout_46->addWidget(waveFormArea);
-
-
-        verticalLayout_37->addWidget(groupBox_PatternImage);
+        verticalLayout_37->addWidget(waveFormArea);
 
 
         gridLayout_31->addLayout(verticalLayout_37, 0, 0, 1, 1);
@@ -995,6 +608,10 @@ public:
         patternMode_stackedWidget->addWidget(patternDesignPage);
 
         horizontalLayout_26->addWidget(patternMode_stackedWidget);
+
+        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_26->addItem(horizontalSpacer_6);
 
 
         gridLayout_11->addWidget(groupBox_PatternMode, 0, 0, 1, 1);
@@ -1012,8 +629,8 @@ public:
         gridLayout_9->setContentsMargins(0, 0, 0, 0);
         frame_LedDriver = new QFrame(LEDDriverPage);
         frame_LedDriver->setObjectName(QStringLiteral("frame_LedDriver"));
-        sizePolicy6.setHeightForWidth(frame_LedDriver->sizePolicy().hasHeightForWidth());
-        frame_LedDriver->setSizePolicy(sizePolicy6);
+        sizePolicy4.setHeightForWidth(frame_LedDriver->sizePolicy().hasHeightForWidth());
+        frame_LedDriver->setSizePolicy(sizePolicy4);
         frame_LedDriver->setStyleSheet(QLatin1String("QFrame{background-image : url(:/images/img.jpg);\n"
 "border:1px solid black}"));
         frame_LedDriver->setFrameShape(QFrame::StyledPanel);
@@ -1021,9 +638,9 @@ public:
         groupBox_LEDDriver = new QGroupBox(frame_LedDriver);
         groupBox_LEDDriver->setObjectName(QStringLiteral("groupBox_LEDDriver"));
         groupBox_LEDDriver->setGeometry(QRect(9, 9, 1081, 621));
-        sizePolicy6.setHeightForWidth(groupBox_LEDDriver->sizePolicy().hasHeightForWidth());
-        groupBox_LEDDriver->setSizePolicy(sizePolicy6);
-        groupBox_LEDDriver->setFont(font1);
+        sizePolicy4.setHeightForWidth(groupBox_LEDDriver->sizePolicy().hasHeightForWidth());
+        groupBox_LEDDriver->setSizePolicy(sizePolicy4);
+        groupBox_LEDDriver->setFont(font5);
         groupBox_LEDDriver->setStyleSheet(QLatin1String("QGroupBox{ border: 1.5px solid ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
@@ -1032,9 +649,9 @@ public:
         groupBox_LEDDriverStatus = new QGroupBox(groupBox_LEDDriver);
         groupBox_LEDDriverStatus->setObjectName(QStringLiteral("groupBox_LEDDriverStatus"));
         groupBox_LEDDriverStatus->setGeometry(QRect(9, 19, 1061, 581));
-        QFont font7;
-        font7.setPointSize(9);
-        groupBox_LEDDriverStatus->setFont(font7);
+        QFont font6;
+        font6.setPointSize(9);
+        groupBox_LEDDriverStatus->setFont(font6);
         groupBox_LEDDriverStatus->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
@@ -1044,12 +661,12 @@ public:
         USBDevicePath_TextEdit->setObjectName(QStringLiteral("USBDevicePath_TextEdit"));
         USBDevicePath_TextEdit->setEnabled(true);
         USBDevicePath_TextEdit->setGeometry(QRect(135, 23, 540, 31));
-        QSizePolicy sizePolicy9(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        sizePolicy9.setHorizontalStretch(50);
-        sizePolicy9.setVerticalStretch(0);
-        sizePolicy9.setHeightForWidth(USBDevicePath_TextEdit->sizePolicy().hasHeightForWidth());
-        USBDevicePath_TextEdit->setSizePolicy(sizePolicy9);
-        USBDevicePath_TextEdit->setFont(font6);
+        QSizePolicy sizePolicy5(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy5.setHorizontalStretch(50);
+        sizePolicy5.setVerticalStretch(0);
+        sizePolicy5.setHeightForWidth(USBDevicePath_TextEdit->sizePolicy().hasHeightForWidth());
+        USBDevicePath_TextEdit->setSizePolicy(sizePolicy5);
+        USBDevicePath_TextEdit->setFont(font2);
         USBDevicePath_TextEdit->setStyleSheet(QLatin1String("QTextEdit{ border: 1px solid ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
@@ -1057,25 +674,22 @@ public:
         USBDevicePath = new QLabel(groupBox_LEDDriverStatus);
         USBDevicePath->setObjectName(QStringLiteral("USBDevicePath"));
         USBDevicePath->setGeometry(QRect(10, 23, 121, 31));
-        QFont font8;
-        font8.setFamily(QStringLiteral("Arial"));
-        font8.setPointSize(11);
-        USBDevicePath->setFont(font8);
+        USBDevicePath->setFont(font1);
         USBDevicePath->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
         label_ReadBuffer = new QLabel(groupBox_LEDDriverStatus);
         label_ReadBuffer->setObjectName(QStringLiteral("label_ReadBuffer"));
         label_ReadBuffer->setGeometry(QRect(10, 65, 85, 31));
-        label_ReadBuffer->setFont(font8);
+        label_ReadBuffer->setFont(font1);
         label_ReadBuffer->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
         pushButton_RestartLEDDriver = new QPushButton(groupBox_LEDDriverStatus);
         pushButton_RestartLEDDriver->setObjectName(QStringLiteral("pushButton_RestartLEDDriver"));
         pushButton_RestartLEDDriver->setGeometry(QRect(915, 65, 130, 31));
-        QFont font9;
-        font9.setFamily(QStringLiteral("Arial"));
-        font9.setPointSize(10);
-        font9.setBold(true);
-        font9.setWeight(75);
-        pushButton_RestartLEDDriver->setFont(font9);
+        QFont font7;
+        font7.setFamily(QStringLiteral("Arial"));
+        font7.setPointSize(10);
+        font7.setBold(true);
+        font7.setWeight(75);
+        pushButton_RestartLEDDriver->setFont(font7);
         pushButton_RestartLEDDriver->setStyleSheet(QLatin1String("QPushButtonl{ border: 1px solid ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
@@ -1085,55 +699,52 @@ public:
         checkBox_InternalInitialization->setObjectName(QStringLiteral("checkBox_InternalInitialization"));
         checkBox_InternalInitialization->setEnabled(false);
         checkBox_InternalInitialization->setGeometry(QRect(10, 110, 130, 20));
-        QFont font10;
-        font10.setFamily(QStringLiteral("Arial"));
-        font10.setPointSize(9);
-        checkBox_InternalInitialization->setFont(font10);
+        checkBox_InternalInitialization->setFont(font3);
         checkBox_LEDTempOK = new QCheckBox(groupBox_LEDDriverStatus);
         checkBox_LEDTempOK->setObjectName(QStringLiteral("checkBox_LEDTempOK"));
         checkBox_LEDTempOK->setEnabled(false);
         checkBox_LEDTempOK->setGeometry(QRect(10, 135, 130, 20));
-        checkBox_LEDTempOK->setFont(font10);
+        checkBox_LEDTempOK->setFont(font3);
         checkBox_DMDTempOK = new QCheckBox(groupBox_LEDDriverStatus);
         checkBox_DMDTempOK->setObjectName(QStringLiteral("checkBox_DMDTempOK"));
         checkBox_DMDTempOK->setEnabled(false);
         checkBox_DMDTempOK->setGeometry(QRect(10, 160, 130, 20));
-        checkBox_DMDTempOK->setFont(font10);
+        checkBox_DMDTempOK->setFont(font3);
         checkBox_BoardTempOK = new QCheckBox(groupBox_LEDDriverStatus);
         checkBox_BoardTempOK->setObjectName(QStringLiteral("checkBox_BoardTempOK"));
         checkBox_BoardTempOK->setEnabled(false);
         checkBox_BoardTempOK->setGeometry(QRect(10, 185, 130, 20));
-        checkBox_BoardTempOK->setFont(font10);
+        checkBox_BoardTempOK->setFont(font3);
         checkBox_HardwareOK = new QCheckBox(groupBox_LEDDriverStatus);
         checkBox_HardwareOK->setObjectName(QStringLiteral("checkBox_HardwareOK"));
         checkBox_HardwareOK->setEnabled(false);
         checkBox_HardwareOK->setGeometry(QRect(10, 208, 130, 20));
-        checkBox_HardwareOK->setFont(font10);
+        checkBox_HardwareOK->setFont(font3);
         checkBox_IntensityCalOK = new QCheckBox(groupBox_LEDDriverStatus);
         checkBox_IntensityCalOK->setObjectName(QStringLiteral("checkBox_IntensityCalOK"));
         checkBox_IntensityCalOK->setEnabled(false);
         checkBox_IntensityCalOK->setGeometry(QRect(10, 233, 150, 20));
-        checkBox_IntensityCalOK->setFont(font10);
+        checkBox_IntensityCalOK->setFont(font3);
         checkBox_WriteProtection = new QCheckBox(groupBox_LEDDriverStatus);
         checkBox_WriteProtection->setObjectName(QStringLiteral("checkBox_WriteProtection"));
         checkBox_WriteProtection->setEnabled(false);
         checkBox_WriteProtection->setGeometry(QRect(10, 258, 130, 20));
-        checkBox_WriteProtection->setFont(font10);
+        checkBox_WriteProtection->setFont(font3);
         checkBox_IntensityModInstall = new QCheckBox(groupBox_LEDDriverStatus);
         checkBox_IntensityModInstall->setObjectName(QStringLiteral("checkBox_IntensityModInstall"));
         checkBox_IntensityModInstall->setEnabled(false);
         checkBox_IntensityModInstall->setGeometry(QRect(10, 282, 150, 20));
-        checkBox_IntensityModInstall->setFont(font10);
+        checkBox_IntensityModInstall->setFont(font3);
         label_DMDTempMax = new QLabel(groupBox_LEDDriverStatus);
         label_DMDTempMax->setObjectName(QStringLiteral("label_DMDTempMax"));
         label_DMDTempMax->setGeometry(QRect(200, 110, 95, 25));
-        label_DMDTempMax->setFont(font10);
+        label_DMDTempMax->setFont(font3);
         label_DMDTempMax->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
         DMDTempMax_text = new QTextBrowser(groupBox_LEDDriverStatus);
         DMDTempMax_text->setObjectName(QStringLiteral("DMDTempMax_text"));
         DMDTempMax_text->setEnabled(false);
         DMDTempMax_text->setGeometry(QRect(300, 110, 75, 25));
-        DMDTempMax_text->setFont(font10);
+        DMDTempMax_text->setFont(font3);
         DMDTempMax_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
@@ -1141,13 +752,13 @@ public:
         label_LEDTempMax = new QLabel(groupBox_LEDDriverStatus);
         label_LEDTempMax->setObjectName(QStringLiteral("label_LEDTempMax"));
         label_LEDTempMax->setGeometry(QRect(200, 146, 90, 25));
-        label_LEDTempMax->setFont(font10);
+        label_LEDTempMax->setFont(font3);
         label_LEDTempMax->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
         LEDTempMax_text = new QTextBrowser(groupBox_LEDDriverStatus);
         LEDTempMax_text->setObjectName(QStringLiteral("LEDTempMax_text"));
         LEDTempMax_text->setEnabled(false);
         LEDTempMax_text->setGeometry(QRect(300, 146, 75, 25));
-        LEDTempMax_text->setFont(font10);
+        LEDTempMax_text->setFont(font3);
         LEDTempMax_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
@@ -1155,13 +766,13 @@ public:
         label_BoardTempMax = new QLabel(groupBox_LEDDriverStatus);
         label_BoardTempMax->setObjectName(QStringLiteral("label_BoardTempMax"));
         label_BoardTempMax->setGeometry(QRect(200, 185, 95, 25));
-        label_BoardTempMax->setFont(font10);
+        label_BoardTempMax->setFont(font3);
         label_BoardTempMax->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
         BoardTempMax_text = new QTextBrowser(groupBox_LEDDriverStatus);
         BoardTempMax_text->setObjectName(QStringLiteral("BoardTempMax_text"));
         BoardTempMax_text->setEnabled(false);
         BoardTempMax_text->setGeometry(QRect(300, 185, 75, 25));
-        BoardTempMax_text->setFont(font10);
+        BoardTempMax_text->setFont(font3);
         BoardTempMax_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
@@ -1169,13 +780,13 @@ public:
         label_LEDCurrentMax = new QLabel(groupBox_LEDDriverStatus);
         label_LEDCurrentMax->setObjectName(QStringLiteral("label_LEDCurrentMax"));
         label_LEDCurrentMax->setGeometry(QRect(200, 220, 100, 25));
-        label_LEDCurrentMax->setFont(font10);
+        label_LEDCurrentMax->setFont(font3);
         label_LEDCurrentMax->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
         LEDCurrentMax_text = new QTextBrowser(groupBox_LEDDriverStatus);
         LEDCurrentMax_text->setObjectName(QStringLiteral("LEDCurrentMax_text"));
         LEDCurrentMax_text->setEnabled(false);
         LEDCurrentMax_text->setGeometry(QRect(300, 220, 75, 25));
-        LEDCurrentMax_text->setFont(font10);
+        LEDCurrentMax_text->setFont(font3);
         LEDCurrentMax_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
@@ -1183,7 +794,7 @@ public:
         label_IntensityOffset = new QLabel(groupBox_LEDDriverStatus);
         label_IntensityOffset->setObjectName(QStringLiteral("label_IntensityOffset"));
         label_IntensityOffset->setGeometry(QRect(200, 260, 90, 25));
-        label_IntensityOffset->setFont(font6);
+        label_IntensityOffset->setFont(font2);
         label_IntensityOffset->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
         Intensity_offset_text = new QTextBrowser(groupBox_LEDDriverStatus);
         Intensity_offset_text->setObjectName(QStringLiteral("Intensity_offset_text"));
@@ -1196,13 +807,13 @@ public:
         label_IntensityGain = new QLabel(groupBox_LEDDriverStatus);
         label_IntensityGain->setObjectName(QStringLiteral("label_IntensityGain"));
         label_IntensityGain->setGeometry(QRect(200, 300, 95, 25));
-        label_IntensityGain->setFont(font6);
+        label_IntensityGain->setFont(font2);
         label_IntensityGain->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
         IntensityGain_text = new QTextBrowser(groupBox_LEDDriverStatus);
         IntensityGain_text->setObjectName(QStringLiteral("IntensityGain_text"));
         IntensityGain_text->setEnabled(false);
         IntensityGain_text->setGeometry(QRect(300, 300, 75, 25));
-        IntensityGain_text->setFont(font10);
+        IntensityGain_text->setFont(font3);
         IntensityGain_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
@@ -1210,13 +821,13 @@ public:
         Label_DMDTemp = new QLabel(groupBox_LEDDriverStatus);
         Label_DMDTemp->setObjectName(QStringLiteral("Label_DMDTemp"));
         Label_DMDTemp->setGeometry(QRect(400, 110, 90, 25));
-        Label_DMDTemp->setFont(font10);
+        Label_DMDTemp->setFont(font3);
         Label_DMDTemp->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
         DMDTemp_text = new QTextBrowser(groupBox_LEDDriverStatus);
         DMDTemp_text->setObjectName(QStringLiteral("DMDTemp_text"));
         DMDTemp_text->setEnabled(false);
         DMDTemp_text->setGeometry(QRect(520, 110, 75, 25));
-        DMDTemp_text->setFont(font10);
+        DMDTemp_text->setFont(font3);
         DMDTemp_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
@@ -1224,13 +835,13 @@ public:
         label_LEDTemp = new QLabel(groupBox_LEDDriverStatus);
         label_LEDTemp->setObjectName(QStringLiteral("label_LEDTemp"));
         label_LEDTemp->setGeometry(QRect(400, 146, 95, 25));
-        label_LEDTemp->setFont(font10);
+        label_LEDTemp->setFont(font3);
         label_LEDTemp->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
         LEDTemp_text = new QTextBrowser(groupBox_LEDDriverStatus);
         LEDTemp_text->setObjectName(QStringLiteral("LEDTemp_text"));
         LEDTemp_text->setEnabled(false);
         LEDTemp_text->setGeometry(QRect(520, 146, 75, 25));
-        LEDTemp_text->setFont(font10);
+        LEDTemp_text->setFont(font3);
         LEDTemp_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
@@ -1238,13 +849,13 @@ public:
         label_BoardTemp = new QLabel(groupBox_LEDDriverStatus);
         label_BoardTemp->setObjectName(QStringLiteral("label_BoardTemp"));
         label_BoardTemp->setGeometry(QRect(400, 185, 95, 25));
-        label_BoardTemp->setFont(font6);
+        label_BoardTemp->setFont(font2);
         label_BoardTemp->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
         BoardTemp_text = new QTextBrowser(groupBox_LEDDriverStatus);
         BoardTemp_text->setObjectName(QStringLiteral("BoardTemp_text"));
         BoardTemp_text->setEnabled(false);
         BoardTemp_text->setGeometry(QRect(520, 185, 75, 25));
-        BoardTemp_text->setFont(font10);
+        BoardTemp_text->setFont(font3);
         BoardTemp_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
@@ -1252,13 +863,13 @@ public:
         label_LEDVoltage = new QLabel(groupBox_LEDDriverStatus);
         label_LEDVoltage->setObjectName(QStringLiteral("label_LEDVoltage"));
         label_LEDVoltage->setGeometry(QRect(400, 220, 95, 25));
-        label_LEDVoltage->setFont(font6);
+        label_LEDVoltage->setFont(font2);
         label_LEDVoltage->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
         LEDVoltage_text = new QTextBrowser(groupBox_LEDDriverStatus);
         LEDVoltage_text->setObjectName(QStringLiteral("LEDVoltage_text"));
         LEDVoltage_text->setEnabled(false);
         LEDVoltage_text->setGeometry(QRect(520, 220, 75, 25));
-        LEDVoltage_text->setFont(font10);
+        LEDVoltage_text->setFont(font3);
         LEDVoltage_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
@@ -1266,7 +877,7 @@ public:
         label_LEDCurrent = new QLabel(groupBox_LEDDriverStatus);
         label_LEDCurrent->setObjectName(QStringLiteral("label_LEDCurrent"));
         label_LEDCurrent->setGeometry(QRect(400, 260, 105, 25));
-        label_LEDCurrent->setFont(font6);
+        label_LEDCurrent->setFont(font2);
         label_LEDCurrent->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
         LEDCurrent_text = new QTextBrowser(groupBox_LEDDriverStatus);
         LEDCurrent_text->setObjectName(QStringLiteral("LEDCurrent_text"));
@@ -1279,13 +890,13 @@ public:
         label_CycleTime = new QLabel(groupBox_LEDDriverStatus);
         label_CycleTime->setObjectName(QStringLiteral("label_CycleTime"));
         label_CycleTime->setGeometry(QRect(400, 300, 95, 25));
-        label_CycleTime->setFont(font6);
+        label_CycleTime->setFont(font2);
         label_CycleTime->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
         CycleTime_Text = new QTextBrowser(groupBox_LEDDriverStatus);
         CycleTime_Text->setObjectName(QStringLiteral("CycleTime_Text"));
         CycleTime_Text->setEnabled(false);
         CycleTime_Text->setGeometry(QRect(520, 300, 75, 25));
-        CycleTime_Text->setFont(font10);
+        CycleTime_Text->setFont(font3);
         CycleTime_Text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
@@ -1293,13 +904,13 @@ public:
         label_IntensityVoltage = new QLabel(groupBox_LEDDriverStatus);
         label_IntensityVoltage->setObjectName(QStringLiteral("label_IntensityVoltage"));
         label_IntensityVoltage->setGeometry(QRect(620, 110, 150, 25));
-        label_IntensityVoltage->setFont(font8);
+        label_IntensityVoltage->setFont(font1);
         label_IntensityVoltage->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
         IntensityVoltage_text = new QTextBrowser(groupBox_LEDDriverStatus);
         IntensityVoltage_text->setObjectName(QStringLiteral("IntensityVoltage_text"));
         IntensityVoltage_text->setEnabled(false);
         IntensityVoltage_text->setGeometry(QRect(770, 110, 150, 25));
-        IntensityVoltage_text->setFont(font10);
+        IntensityVoltage_text->setFont(font3);
         IntensityVoltage_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
@@ -1307,7 +918,7 @@ public:
         label_Intensity = new QLabel(groupBox_LEDDriverStatus);
         label_Intensity->setObjectName(QStringLiteral("label_Intensity"));
         label_Intensity->setGeometry(QRect(620, 146, 120, 25));
-        label_Intensity->setFont(font8);
+        label_Intensity->setFont(font1);
         label_Intensity->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
         Intensity_text = new QTextBrowser(groupBox_LEDDriverStatus);
         Intensity_text->setObjectName(QStringLiteral("Intensity_text"));
@@ -1320,14 +931,14 @@ public:
         label_LEDSerial = new QLabel(groupBox_LEDDriverStatus);
         label_LEDSerial->setObjectName(QStringLiteral("label_LEDSerial"));
         label_LEDSerial->setGeometry(QRect(620, 185, 120, 25));
-        label_LEDSerial->setFont(font6);
+        label_LEDSerial->setFont(font2);
         label_LEDSerial->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
         LEDSerial_text = new QTextBrowser(groupBox_LEDDriverStatus);
         LEDSerial_text->setObjectName(QStringLiteral("LEDSerial_text"));
         LEDSerial_text->setEnabled(false);
         LEDSerial_text->setGeometry(QRect(770, 185, 200, 25));
-        sizePolicy3.setHeightForWidth(LEDSerial_text->sizePolicy().hasHeightForWidth());
-        LEDSerial_text->setSizePolicy(sizePolicy3);
+        sizePolicy1.setHeightForWidth(LEDSerial_text->sizePolicy().hasHeightForWidth());
+        LEDSerial_text->setSizePolicy(sizePolicy1);
         LEDSerial_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
@@ -1335,19 +946,19 @@ public:
         label_LESerial = new QLabel(groupBox_LEDDriverStatus);
         label_LESerial->setObjectName(QStringLiteral("label_LESerial"));
         label_LESerial->setGeometry(QRect(620, 220, 120, 25));
-        QFont font11;
-        font11.setFamily(QStringLiteral("Arial"));
-        font11.setPointSize(10);
-        font11.setItalic(false);
-        label_LESerial->setFont(font11);
+        QFont font8;
+        font8.setFamily(QStringLiteral("Arial"));
+        font8.setPointSize(10);
+        font8.setItalic(false);
+        label_LESerial->setFont(font8);
         label_LESerial->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
         LESerial_text = new QTextBrowser(groupBox_LEDDriverStatus);
         LESerial_text->setObjectName(QStringLiteral("LESerial_text"));
         LESerial_text->setEnabled(false);
         LESerial_text->setGeometry(QRect(770, 220, 200, 25));
-        sizePolicy3.setHeightForWidth(LESerial_text->sizePolicy().hasHeightForWidth());
-        LESerial_text->setSizePolicy(sizePolicy3);
-        LESerial_text->setFont(font10);
+        sizePolicy1.setHeightForWidth(LESerial_text->sizePolicy().hasHeightForWidth());
+        LESerial_text->setSizePolicy(sizePolicy1);
+        LESerial_text->setFont(font3);
         LESerial_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
@@ -1355,12 +966,12 @@ public:
         label_PCBFanSpeed = new QLabel(groupBox_LEDDriverStatus);
         label_PCBFanSpeed->setObjectName(QStringLiteral("label_PCBFanSpeed"));
         label_PCBFanSpeed->setGeometry(QRect(10, 350, 150, 25));
-        label_PCBFanSpeed->setFont(font6);
+        label_PCBFanSpeed->setFont(font2);
         label_PCBFanSpeed->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
         PCBFanSpeed_text = new QTextBrowser(groupBox_LEDDriverStatus);
         PCBFanSpeed_text->setObjectName(QStringLiteral("PCBFanSpeed_text"));
         PCBFanSpeed_text->setGeometry(QRect(160, 350, 95, 25));
-        PCBFanSpeed_text->setFont(font10);
+        PCBFanSpeed_text->setFont(font3);
         PCBFanSpeed_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
@@ -1368,12 +979,12 @@ public:
         label_DMDFanSpeed = new QLabel(groupBox_LEDDriverStatus);
         label_DMDFanSpeed->setObjectName(QStringLiteral("label_DMDFanSpeed"));
         label_DMDFanSpeed->setGeometry(QRect(10, 385, 150, 25));
-        label_DMDFanSpeed->setFont(font6);
+        label_DMDFanSpeed->setFont(font2);
         label_DMDFanSpeed->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
         DMDFanSpeed_text = new QTextBrowser(groupBox_LEDDriverStatus);
         DMDFanSpeed_text->setObjectName(QStringLiteral("DMDFanSpeed_text"));
         DMDFanSpeed_text->setGeometry(QRect(160, 385, 95, 25));
-        DMDFanSpeed_text->setFont(font10);
+        DMDFanSpeed_text->setFont(font3);
         DMDFanSpeed_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
@@ -1381,12 +992,12 @@ public:
         label_LEDFanSpeed = new QLabel(groupBox_LEDDriverStatus);
         label_LEDFanSpeed->setObjectName(QStringLiteral("label_LEDFanSpeed"));
         label_LEDFanSpeed->setGeometry(QRect(10, 420, 150, 25));
-        label_LEDFanSpeed->setFont(font6);
+        label_LEDFanSpeed->setFont(font2);
         label_LEDFanSpeed->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
         LEDFanSpeed_text = new QTextBrowser(groupBox_LEDDriverStatus);
         LEDFanSpeed_text->setObjectName(QStringLiteral("LEDFanSpeed_text"));
         LEDFanSpeed_text->setGeometry(QRect(160, 420, 95, 25));
-        LEDFanSpeed_text->setFont(font10);
+        LEDFanSpeed_text->setFont(font3);
         LEDFanSpeed_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
@@ -1394,53 +1005,48 @@ public:
         label_LEDCurrent2 = new QLabel(groupBox_LEDDriverStatus);
         label_LEDCurrent2->setObjectName(QStringLiteral("label_LEDCurrent2"));
         label_LEDCurrent2->setGeometry(QRect(10, 470, 150, 25));
-        label_LEDCurrent2->setFont(font6);
+        label_LEDCurrent2->setFont(font2);
         label_LEDCurrent2->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
         pushButton_SetLEDCurrent = new QPushButton(groupBox_LEDDriverStatus);
         pushButton_SetLEDCurrent->setObjectName(QStringLiteral("pushButton_SetLEDCurrent"));
         pushButton_SetLEDCurrent->setGeometry(QRect(170, 495, 115, 25));
-        QFont font12;
-        font12.setFamily(QStringLiteral("Arial"));
-        font12.setPointSize(9);
-        font12.setBold(true);
-        font12.setWeight(75);
-        pushButton_SetLEDCurrent->setFont(font12);
+        pushButton_SetLEDCurrent->setFont(font);
         pushButton_LEDPWMON_OFF = new QPushButton(groupBox_LEDDriverStatus);
         pushButton_LEDPWMON_OFF->setObjectName(QStringLiteral("pushButton_LEDPWMON_OFF"));
         pushButton_LEDPWMON_OFF->setGeometry(QRect(10, 530, 150, 30));
-        pushButton_LEDPWMON_OFF->setFont(font9);
+        pushButton_LEDPWMON_OFF->setFont(font7);
         label_Intensity2 = new QLabel(groupBox_LEDDriverStatus);
         label_Intensity2->setObjectName(QStringLiteral("label_Intensity2"));
         label_Intensity2->setGeometry(QRect(330, 470, 150, 25));
-        label_Intensity2->setFont(font8);
+        label_Intensity2->setFont(font1);
         label_Intensity2->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
         pushButton_SetIntensity = new QPushButton(groupBox_LEDDriverStatus);
         pushButton_SetIntensity->setObjectName(QStringLiteral("pushButton_SetIntensity"));
         pushButton_SetIntensity->setGeometry(QRect(495, 495, 115, 25));
-        pushButton_SetIntensity->setFont(font12);
+        pushButton_SetIntensity->setFont(font);
         checkBox_IntensityRegEnable = new QCheckBox(groupBox_LEDDriverStatus);
         checkBox_IntensityRegEnable->setObjectName(QStringLiteral("checkBox_IntensityRegEnable"));
         checkBox_IntensityRegEnable->setGeometry(QRect(420, 350, 160, 25));
-        checkBox_IntensityRegEnable->setFont(font6);
+        checkBox_IntensityRegEnable->setFont(font2);
         checkBox_IntensityRegEnable->setChecked(false);
         pushButton_EnableIntensityReg = new QPushButton(groupBox_LEDDriverStatus);
         pushButton_EnableIntensityReg->setObjectName(QStringLiteral("pushButton_EnableIntensityReg"));
         pushButton_EnableIntensityReg->setGeometry(QRect(410, 380, 175, 25));
-        pushButton_EnableIntensityReg->setFont(font12);
+        pushButton_EnableIntensityReg->setFont(font);
         pushButton_ExTrigger = new QPushButton(groupBox_LEDDriverStatus);
         pushButton_ExTrigger->setObjectName(QStringLiteral("pushButton_ExTrigger"));
         pushButton_ExTrigger->setGeometry(QRect(650, 495, 120, 35));
-        pushButton_ExTrigger->setFont(font9);
+        pushButton_ExTrigger->setFont(font7);
         pushButton_SwTrigger = new QPushButton(groupBox_LEDDriverStatus);
         pushButton_SwTrigger->setObjectName(QStringLiteral("pushButton_SwTrigger"));
         pushButton_SwTrigger->setGeometry(QRect(790, 495, 120, 35));
-        pushButton_SwTrigger->setFont(font9);
+        pushButton_SwTrigger->setFont(font7);
         Text_Readbuffer = new QTextEdit(groupBox_LEDDriverStatus);
         Text_Readbuffer->setObjectName(QStringLiteral("Text_Readbuffer"));
         Text_Readbuffer->setGeometry(QRect(100, 65, 801, 35));
-        sizePolicy9.setHeightForWidth(Text_Readbuffer->sizePolicy().hasHeightForWidth());
-        Text_Readbuffer->setSizePolicy(sizePolicy9);
-        Text_Readbuffer->setFont(font10);
+        sizePolicy5.setHeightForWidth(Text_Readbuffer->sizePolicy().hasHeightForWidth());
+        Text_Readbuffer->setSizePolicy(sizePolicy5);
+        Text_Readbuffer->setFont(font3);
         Text_Readbuffer->setStyleSheet(QLatin1String("QTextEdit{ border: 1px solid ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
@@ -1448,21 +1054,21 @@ public:
         LEDCurrent_lineEdit = new QLineEdit(groupBox_LEDDriverStatus);
         LEDCurrent_lineEdit->setObjectName(QStringLiteral("LEDCurrent_lineEdit"));
         LEDCurrent_lineEdit->setGeometry(QRect(10, 495, 150, 25));
-        LEDCurrent_lineEdit->setFont(font10);
+        LEDCurrent_lineEdit->setFont(font3);
         LEDCurrent_lineEdit->setStyleSheet(QStringLiteral(""));
         Intensity_lineEdit = new QLineEdit(groupBox_LEDDriverStatus);
         Intensity_lineEdit->setObjectName(QStringLiteral("Intensity_lineEdit"));
         Intensity_lineEdit->setGeometry(QRect(330, 495, 150, 25));
-        Intensity_lineEdit->setFont(font10);
+        Intensity_lineEdit->setFont(font3);
         label_LEDDriverStatus = new QLabel(groupBox_LEDDriverStatus);
         label_LEDDriverStatus->setObjectName(QStringLiteral("label_LEDDriverStatus"));
         label_LEDDriverStatus->setGeometry(QRect(795, 23, 240, 31));
-        label_LEDDriverStatus->setFont(font8);
+        label_LEDDriverStatus->setFont(font1);
         label_LEDDriverStatus->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
         label_11 = new QLabel(groupBox_LEDDriverStatus);
         label_11->setObjectName(QStringLiteral("label_11"));
         label_11->setGeometry(QRect(720, 23, 65, 31));
-        label_11->setFont(font8);
+        label_11->setFont(font1);
         label_11->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
 
         gridLayout_9->addWidget(frame_LedDriver, 0, 0, 1, 1);
@@ -1473,8 +1079,8 @@ public:
         frame_ZMavhineControl = new QFrame(ZMachineControl);
         frame_ZMavhineControl->setObjectName(QStringLiteral("frame_ZMavhineControl"));
         frame_ZMavhineControl->setGeometry(QRect(0, 0, 1098, 641));
-        sizePolicy6.setHeightForWidth(frame_ZMavhineControl->sizePolicy().hasHeightForWidth());
-        frame_ZMavhineControl->setSizePolicy(sizePolicy6);
+        sizePolicy4.setHeightForWidth(frame_ZMavhineControl->sizePolicy().hasHeightForWidth());
+        frame_ZMavhineControl->setSizePolicy(sizePolicy4);
         frame_ZMavhineControl->setMinimumSize(QSize(0, 0));
         frame_ZMavhineControl->setStyleSheet(QLatin1String("QFrame{background-image : url(:/images/img.jpg);\n"
 "border:1px solid black}"));
@@ -1486,7 +1092,7 @@ public:
         gridLayout_12->setObjectName(QStringLiteral("gridLayout_12"));
         groupBox_ZMachineControl = new QGroupBox(frame_ZMavhineControl);
         groupBox_ZMachineControl->setObjectName(QStringLiteral("groupBox_ZMachineControl"));
-        groupBox_ZMachineControl->setFont(font1);
+        groupBox_ZMachineControl->setFont(font5);
         groupBox_ZMachineControl->setAutoFillBackground(false);
         groupBox_ZMachineControl->setStyleSheet(QLatin1String("QGroupBox{ border: 1.5px solid ;\n"
 "background-color: transparent;\n"
@@ -1496,11 +1102,11 @@ public:
 "QLabel{border:0px}"));
         PrinterBoard = new QGroupBox(groupBox_ZMachineControl);
         PrinterBoard->setObjectName(QStringLiteral("PrinterBoard"));
-        PrinterBoard->setGeometry(QRect(10, 300, 221, 311));
-        sizePolicy3.setHeightForWidth(PrinterBoard->sizePolicy().hasHeightForWidth());
-        PrinterBoard->setSizePolicy(sizePolicy3);
+        PrinterBoard->setGeometry(QRect(10, 320, 221, 291));
+        sizePolicy1.setHeightForWidth(PrinterBoard->sizePolicy().hasHeightForWidth());
+        PrinterBoard->setSizePolicy(sizePolicy1);
         PrinterBoard->setMinimumSize(QSize(0, 0));
-        PrinterBoard->setFont(font12);
+        PrinterBoard->setFont(font);
         PrinterBoard->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
@@ -1509,103 +1115,68 @@ public:
         Moveup50 = new QPushButton(PrinterBoard);
         Moveup50->setObjectName(QStringLiteral("Moveup50"));
         Moveup50->setGeometry(QRect(10, 110, 95, 30));
-        Moveup50->setFont(font6);
+        Moveup50->setFont(font2);
         AutoHome = new QPushButton(PrinterBoard);
         AutoHome->setObjectName(QStringLiteral("AutoHome"));
         AutoHome->setGeometry(QRect(60, 30, 95, 30));
-        AutoHome->setFont(font6);
+        AutoHome->setFont(font2);
         Movedown1 = new QPushButton(PrinterBoard);
         Movedown1->setObjectName(QStringLiteral("Movedown1"));
         Movedown1->setGeometry(QRect(120, 190, 95, 30));
-        Movedown1->setFont(font6);
+        Movedown1->setFont(font2);
         Movedown100 = new QPushButton(PrinterBoard);
         Movedown100->setObjectName(QStringLiteral("Movedown100"));
         Movedown100->setGeometry(QRect(120, 70, 95, 30));
-        Movedown100->setFont(font6);
+        Movedown100->setFont(font2);
         Moveup100 = new QPushButton(PrinterBoard);
         Moveup100->setObjectName(QStringLiteral("Moveup100"));
         Moveup100->setGeometry(QRect(10, 70, 95, 30));
-        Moveup100->setFont(font6);
+        Moveup100->setFont(font2);
         Moveup1 = new QPushButton(PrinterBoard);
         Moveup1->setObjectName(QStringLiteral("Moveup1"));
         Moveup1->setGeometry(QRect(10, 190, 95, 30));
-        Moveup1->setFont(font6);
+        Moveup1->setFont(font2);
         Moveup01 = new QPushButton(PrinterBoard);
         Moveup01->setObjectName(QStringLiteral("Moveup01"));
         Moveup01->setGeometry(QRect(10, 230, 95, 30));
-        Moveup01->setFont(font6);
+        Moveup01->setFont(font2);
         Movedown10 = new QPushButton(PrinterBoard);
         Movedown10->setObjectName(QStringLiteral("Movedown10"));
         Movedown10->setGeometry(QRect(120, 150, 95, 30));
-        Movedown10->setFont(font6);
+        Movedown10->setFont(font2);
         Moveup10 = new QPushButton(PrinterBoard);
         Moveup10->setObjectName(QStringLiteral("Moveup10"));
         Moveup10->setGeometry(QRect(10, 150, 95, 30));
-        Moveup10->setFont(font6);
+        Moveup10->setFont(font2);
         label = new QLabel(PrinterBoard);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(29, 260, 60, 25));
-        label->setFont(font9);
+        label->setFont(font7);
         Movedown50 = new QPushButton(PrinterBoard);
         Movedown50->setObjectName(QStringLiteral("Movedown50"));
         Movedown50->setGeometry(QRect(120, 110, 95, 30));
-        Movedown50->setFont(font6);
+        Movedown50->setFont(font2);
         label_2 = new QLabel(PrinterBoard);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setGeometry(QRect(127, 260, 80, 25));
-        label_2->setFont(font9);
+        label_2->setFont(font7);
         Movedown01 = new QPushButton(PrinterBoard);
         Movedown01->setObjectName(QStringLiteral("Movedown01"));
         Movedown01->setGeometry(QRect(120, 230, 95, 30));
-        Movedown01->setFont(font6);
+        Movedown01->setFont(font2);
         Gcode = new QGroupBox(groupBox_ZMachineControl);
         Gcode->setObjectName(QStringLiteral("Gcode"));
-        Gcode->setGeometry(QRect(240, 20, 551, 591));
+        Gcode->setGeometry(QRect(240, 10, 548, 601));
+        sizePolicy3.setHeightForWidth(Gcode->sizePolicy().hasHeightForWidth());
+        Gcode->setSizePolicy(sizePolicy3);
         Gcode->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
 "color:rgb(0,120,120);\n"
 ";}"));
-        verticalLayoutWidget = new QWidget(Gcode);
-        verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(139, 10, 401, 571));
-        verticalLayout_3 = new QVBoxLayout(verticalLayoutWidget);
-        verticalLayout_3->setSpacing(6);
-        verticalLayout_3->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
-        verticalLayout_3->setContentsMargins(0, 0, 0, 0);
-        StartPrintGcode = new QTextEdit(verticalLayoutWidget);
-        StartPrintGcode->setObjectName(QStringLiteral("StartPrintGcode"));
-        StartPrintGcode->setFont(font6);
-        StartPrintGcode->setStyleSheet(QLatin1String("border-color: rgb(0,150,150);\n"
-""));
-
-        verticalLayout_3->addWidget(StartPrintGcode);
-
-        EndPrintGcode = new QTextEdit(verticalLayoutWidget);
-        EndPrintGcode->setObjectName(QStringLiteral("EndPrintGcode"));
-        EndPrintGcode->setFont(font6);
-        EndPrintGcode->setStyleSheet(QStringLiteral("border-color: rgb(0,150,150);"));
-
-        verticalLayout_3->addWidget(EndPrintGcode);
-
-        StartLayerGcode = new QTextEdit(verticalLayoutWidget);
-        StartLayerGcode->setObjectName(QStringLiteral("StartLayerGcode"));
-        StartLayerGcode->setFont(font6);
-        StartLayerGcode->setStyleSheet(QStringLiteral("border-color: rgb(0,150,150);"));
-
-        verticalLayout_3->addWidget(StartLayerGcode);
-
-        EndLayerGcode = new QTextEdit(verticalLayoutWidget);
-        EndLayerGcode->setObjectName(QStringLiteral("EndLayerGcode"));
-        EndLayerGcode->setFont(font6);
-        EndLayerGcode->setStyleSheet(QStringLiteral("border-color: rgb(0,150,150);"));
-
-        verticalLayout_3->addWidget(EndLayerGcode);
-
         verticalLayoutWidget_2 = new QWidget(Gcode);
         verticalLayoutWidget_2->setObjectName(QStringLiteral("verticalLayoutWidget_2"));
-        verticalLayoutWidget_2->setGeometry(QRect(9, 10, 121, 571));
+        verticalLayoutWidget_2->setGeometry(QRect(9, 10, 121, 581));
         verticalLayout_4 = new QVBoxLayout(verticalLayoutWidget_2);
         verticalLayout_4->setSpacing(6);
         verticalLayout_4->setContentsMargins(11, 11, 11, 11);
@@ -1613,35 +1184,83 @@ public:
         verticalLayout_4->setContentsMargins(0, 0, 0, 0);
         label_7 = new QLabel(verticalLayoutWidget_2);
         label_7->setObjectName(QStringLiteral("label_7"));
-        QFont font13;
-        font13.setFamily(QStringLiteral("Arial"));
-        font13.setPointSize(12);
-        label_7->setFont(font13);
+        QFont font9;
+        font9.setFamily(QStringLiteral("Arial"));
+        font9.setPointSize(12);
+        label_7->setFont(font9);
 
         verticalLayout_4->addWidget(label_7);
 
         label_6 = new QLabel(verticalLayoutWidget_2);
         label_6->setObjectName(QStringLiteral("label_6"));
-        label_6->setFont(font13);
+        label_6->setFont(font9);
 
         verticalLayout_4->addWidget(label_6);
 
         label_5 = new QLabel(verticalLayoutWidget_2);
         label_5->setObjectName(QStringLiteral("label_5"));
-        label_5->setFont(font13);
+        label_5->setFont(font9);
 
         verticalLayout_4->addWidget(label_5);
 
         label_4 = new QLabel(verticalLayoutWidget_2);
         label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setFont(font13);
+        label_4->setFont(font9);
 
         verticalLayout_4->addWidget(label_4);
+
+        verticalLayoutWidget = new QWidget(Gcode);
+        verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(140, 10, 401, 581));
+        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout->setSpacing(6);
+        verticalLayout->setContentsMargins(11, 11, 11, 11);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        StartPrintGcode = new QTextEdit(verticalLayoutWidget);
+        StartPrintGcode->setObjectName(QStringLiteral("StartPrintGcode"));
+        QSizePolicy sizePolicy6(QSizePolicy::Preferred, QSizePolicy::Expanding);
+        sizePolicy6.setHorizontalStretch(0);
+        sizePolicy6.setVerticalStretch(0);
+        sizePolicy6.setHeightForWidth(StartPrintGcode->sizePolicy().hasHeightForWidth());
+        StartPrintGcode->setSizePolicy(sizePolicy6);
+        StartPrintGcode->setFont(font2);
+        StartPrintGcode->setStyleSheet(QLatin1String("border-color: rgb(0,150,150);\n"
+""));
+
+        verticalLayout->addWidget(StartPrintGcode);
+
+        EndPrintGcode = new QTextEdit(verticalLayoutWidget);
+        EndPrintGcode->setObjectName(QStringLiteral("EndPrintGcode"));
+        sizePolicy6.setHeightForWidth(EndPrintGcode->sizePolicy().hasHeightForWidth());
+        EndPrintGcode->setSizePolicy(sizePolicy6);
+        EndPrintGcode->setFont(font2);
+        EndPrintGcode->setStyleSheet(QStringLiteral("border-color: rgb(0,150,150);"));
+
+        verticalLayout->addWidget(EndPrintGcode);
+
+        StartLayerGcode = new QTextEdit(verticalLayoutWidget);
+        StartLayerGcode->setObjectName(QStringLiteral("StartLayerGcode"));
+        sizePolicy6.setHeightForWidth(StartLayerGcode->sizePolicy().hasHeightForWidth());
+        StartLayerGcode->setSizePolicy(sizePolicy6);
+        StartLayerGcode->setFont(font2);
+        StartLayerGcode->setStyleSheet(QStringLiteral("border-color: rgb(0,150,150);"));
+
+        verticalLayout->addWidget(StartLayerGcode);
+
+        EndLayerGcode = new QTextEdit(verticalLayoutWidget);
+        EndLayerGcode->setObjectName(QStringLiteral("EndLayerGcode"));
+        sizePolicy6.setHeightForWidth(EndLayerGcode->sizePolicy().hasHeightForWidth());
+        EndLayerGcode->setSizePolicy(sizePolicy6);
+        EndLayerGcode->setFont(font2);
+        EndLayerGcode->setStyleSheet(QStringLiteral("border-color: rgb(0,150,150);"));
+
+        verticalLayout->addWidget(EndLayerGcode);
 
         ManualGcode_GroupBox = new QGroupBox(groupBox_ZMachineControl);
         ManualGcode_GroupBox->setObjectName(QStringLiteral("ManualGcode_GroupBox"));
         ManualGcode_GroupBox->setGeometry(QRect(800, 280, 261, 331));
-        ManualGcode_GroupBox->setFont(font12);
+        ManualGcode_GroupBox->setFont(font);
         ManualGcode_GroupBox->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
@@ -1650,20 +1269,20 @@ public:
         SendManualGcode = new QPushButton(ManualGcode_GroupBox);
         SendManualGcode->setObjectName(QStringLiteral("SendManualGcode"));
         SendManualGcode->setGeometry(QRect(20, 280, 95, 35));
-        SendManualGcode->setFont(font9);
+        SendManualGcode->setFont(font7);
         ClearManualGcode = new QPushButton(ManualGcode_GroupBox);
         ClearManualGcode->setObjectName(QStringLiteral("ClearManualGcode"));
         ClearManualGcode->setGeometry(QRect(150, 282, 95, 35));
-        ClearManualGcode->setFont(font9);
+        ClearManualGcode->setFont(font7);
         ManualGcode = new QTextEdit(ManualGcode_GroupBox);
         ManualGcode->setObjectName(QStringLiteral("ManualGcode"));
         ManualGcode->setGeometry(QRect(10, 20, 241, 251));
-        ManualGcode->setFont(font6);
+        ManualGcode->setFont(font2);
         ManualGcode->setStyleSheet(QStringLiteral("border-color: rgb(0,150,150);"));
         MotorControl = new QGroupBox(groupBox_ZMachineControl);
         MotorControl->setObjectName(QStringLiteral("MotorControl"));
         MotorControl->setGeometry(QRect(800, 20, 111, 61));
-        MotorControl->setFont(font12);
+        MotorControl->setFont(font);
         MotorControl->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
@@ -1672,11 +1291,11 @@ public:
         MotorConDisable = new QPushButton(MotorControl);
         MotorConDisable->setObjectName(QStringLiteral("MotorConDisable"));
         MotorConDisable->setGeometry(QRect(10, 20, 85, 30));
-        MotorConDisable->setFont(font9);
+        MotorConDisable->setFont(font7);
         AutoBed = new QGroupBox(groupBox_ZMachineControl);
         AutoBed->setObjectName(QStringLiteral("AutoBed"));
         AutoBed->setGeometry(QRect(920, 20, 141, 61));
-        AutoBed->setFont(font12);
+        AutoBed->setFont(font);
         AutoBed->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
@@ -1685,93 +1304,47 @@ public:
         AutoBedLevel = new QPushButton(AutoBed);
         AutoBedLevel->setObjectName(QStringLiteral("AutoBedLevel"));
         AutoBedLevel->setGeometry(QRect(15, 20, 110, 30));
-        AutoBedLevel->setFont(font9);
-        LiftSeqTime = new QGroupBox(groupBox_ZMachineControl);
-        LiftSeqTime->setObjectName(QStringLiteral("LiftSeqTime"));
-        LiftSeqTime->setGeometry(QRect(800, 90, 261, 181));
-        LiftSeqTime->setFont(font12);
-        LiftSeqTime->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
-"background-color: transparent;\n"
-"border-color: rgb(0,150,150);\n"
-"color:rgb(0,120,120);\n"
-";}"));
-        ZLiftdelay = new QLineEdit(LiftSeqTime);
-        ZLiftdelay->setObjectName(QStringLiteral("ZLiftdelay"));
-        ZLiftdelay->setGeometry(QRect(10, 50, 111, 41));
-        ZLiftdelay->setFont(font13);
-        label_9 = new QLabel(LiftSeqTime);
-        label_9->setObjectName(QStringLiteral("label_9"));
-        label_9->setGeometry(QRect(20, 20, 100, 20));
-        label_9->setFont(font6);
-        PrintingDelay = new QLineEdit(LiftSeqTime);
-        PrintingDelay->setObjectName(QStringLiteral("PrintingDelay"));
-        PrintingDelay->setGeometry(QRect(140, 50, 111, 41));
-        PrintingDelay->setFont(font13);
-        label_10 = new QLabel(LiftSeqTime);
-        label_10->setObjectName(QStringLiteral("label_10"));
-        label_10->setGeometry(QRect(138, 20, 120, 20));
-        label_10->setFont(font6);
-        groupBox_2 = new QGroupBox(LiftSeqTime);
-        groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
-        groupBox_2->setGeometry(QRect(10, 100, 241, 71));
-        groupBox_2->setFont(font10);
-        AutoHoming = new QRadioButton(groupBox_2);
-        AutoHoming->setObjectName(QStringLiteral("AutoHoming"));
-        AutoHoming->setGeometry(QRect(10, 20, 100, 17));
-        AutoHoming->setChecked(true);
-        ManualHoming = new QRadioButton(groupBox_2);
-        ManualHoming->setObjectName(QStringLiteral("ManualHoming"));
-        ManualHoming->setGeometry(QRect(10, 45, 100, 17));
-        HomeDelay = new QLabel(groupBox_2);
-        HomeDelay->setObjectName(QStringLiteral("HomeDelay"));
-        HomeDelay->setEnabled(false);
-        HomeDelay->setGeometry(QRect(130, 5, 90, 18));
-        QFont font14;
-        font14.setFamily(QStringLiteral("Arial"));
-        font14.setPointSize(8);
-        HomeDelay->setFont(font14);
-        HomingDelay = new QLineEdit(groupBox_2);
-        HomingDelay->setObjectName(QStringLiteral("HomingDelay"));
-        HomingDelay->setEnabled(false);
-        HomingDelay->setGeometry(QRect(125, 30, 100, 30));
-        HomingDelay->setFont(font13);
+        AutoBedLevel->setFont(font7);
         ComPort = new QLabel(groupBox_ZMachineControl);
         ComPort->setObjectName(QStringLiteral("ComPort"));
         ComPort->setGeometry(QRect(10, 16, 101, 50));
-        sizePolicy1.setHeightForWidth(ComPort->sizePolicy().hasHeightForWidth());
-        ComPort->setSizePolicy(sizePolicy1);
+        sizePolicy3.setHeightForWidth(ComPort->sizePolicy().hasHeightForWidth());
+        ComPort->setSizePolicy(sizePolicy3);
         ComPort->setMinimumSize(QSize(0, 30));
-        ComPort->setFont(font8);
+        ComPort->setFont(font1);
         ComPort->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
         SerialPort = new QComboBox(groupBox_ZMachineControl);
         SerialPort->setObjectName(QStringLiteral("SerialPort"));
         SerialPort->setEnabled(false);
         SerialPort->setGeometry(QRect(80, 26, 141, 30));
-        sizePolicy8.setHeightForWidth(SerialPort->sizePolicy().hasHeightForWidth());
-        SerialPort->setSizePolicy(sizePolicy8);
+        QSizePolicy sizePolicy7(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy7.setHorizontalStretch(0);
+        sizePolicy7.setVerticalStretch(0);
+        sizePolicy7.setHeightForWidth(SerialPort->sizePolicy().hasHeightForWidth());
+        SerialPort->setSizePolicy(sizePolicy7);
         SerialPort->setMinimumSize(QSize(0, 30));
-        SerialPort->setFont(font6);
+        SerialPort->setFont(font2);
         BoardStatus = new QLabel(groupBox_ZMachineControl);
         BoardStatus->setObjectName(QStringLiteral("BoardStatus"));
         BoardStatus->setGeometry(QRect(50, 60, 115, 31));
-        BoardStatus->setFont(font8);
+        BoardStatus->setFont(font1);
         BoardStatus->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
         label_3 = new QLabel(groupBox_ZMachineControl);
         label_3->setObjectName(QStringLiteral("label_3"));
         label_3->setGeometry(QRect(60, 125, 111, 31));
-        label_3->setFont(font8);
+        label_3->setFont(font1);
         SaveMacProfile = new QPushButton(groupBox_ZMachineControl);
         SaveMacProfile->setObjectName(QStringLiteral("SaveMacProfile"));
         SaveMacProfile->setGeometry(QRect(10, 200, 95, 31));
-        SaveMacProfile->setFont(font6);
+        SaveMacProfile->setFont(font2);
         LoadMacProfile = new QPushButton(groupBox_ZMachineControl);
         LoadMacProfile->setObjectName(QStringLiteral("LoadMacProfile"));
         LoadMacProfile->setGeometry(QRect(136, 200, 95, 31));
-        LoadMacProfile->setFont(font6);
+        LoadMacProfile->setFont(font2);
         ProfileName = new QPlainTextEdit(groupBox_ZMachineControl);
         ProfileName->setObjectName(QStringLiteral("ProfileName"));
         ProfileName->setGeometry(QRect(10, 160, 221, 31));
-        ProfileName->setFont(font8);
+        ProfileName->setFont(font1);
         ProfileName->setStyleSheet(QStringLiteral("border-color: rgb(0,150,150);"));
 
         gridLayout_12->addWidget(groupBox_ZMachineControl, 0, 1, 1, 1);
@@ -1782,6 +1355,239 @@ public:
 
 
         gridLayout->addLayout(horizontalLayout_25, 1, 0, 1, 1);
+
+        horizontalLayout_24 = new QHBoxLayout();
+        horizontalLayout_24->setSpacing(6);
+        horizontalLayout_24->setObjectName(QStringLiteral("horizontalLayout_24"));
+        horizontalLayout_24->setSizeConstraint(QLayout::SetNoConstraint);
+        connectButton = new QPushButton(scrollAreaWidgetContents);
+        connectButton->setObjectName(QStringLiteral("connectButton"));
+        QSizePolicy sizePolicy8(QSizePolicy::Maximum, QSizePolicy::Maximum);
+        sizePolicy8.setHorizontalStretch(0);
+        sizePolicy8.setVerticalStretch(0);
+        sizePolicy8.setHeightForWidth(connectButton->sizePolicy().hasHeightForWidth());
+        connectButton->setSizePolicy(sizePolicy8);
+        connectButton->setMinimumSize(QSize(10, 48));
+        connectButton->setMaximumSize(QSize(16777215, 16777215));
+        QFont font10;
+        font10.setFamily(QStringLiteral("Arial"));
+        font10.setPointSize(11);
+        font10.setBold(true);
+        font10.setWeight(75);
+        connectButton->setFont(font10);
+        connectButton->setStyleSheet(QLatin1String("#connectButton{\n"
+"background-color: transparent;\n"
+"border-image: url(:connected.png);\n"
+"backgorund: none;\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"}"));
+        QIcon icon6;
+        icon6.addFile(QStringLiteral(":/Images/images/connected.png"), QSize(), QIcon::Normal, QIcon::Off);
+        connectButton->setIcon(icon6);
+        connectButton->setIconSize(QSize(50, 50));
+        connectButton->setCheckable(true);
+        connectButton->setChecked(false);
+
+        horizontalLayout_24->addWidget(connectButton);
+
+        startPatSequence_Button = new QPushButton(scrollAreaWidgetContents);
+        startPatSequence_Button->setObjectName(QStringLiteral("startPatSequence_Button"));
+        sizePolicy8.setHeightForWidth(startPatSequence_Button->sizePolicy().hasHeightForWidth());
+        startPatSequence_Button->setSizePolicy(sizePolicy8);
+        startPatSequence_Button->setMinimumSize(QSize(50, 60));
+        startPatSequence_Button->setStyleSheet(QLatin1String("#startPatSequence_Button{\n"
+"background-color: transparent;\n"
+"backgorund: none;\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"}"));
+        QIcon icon7;
+        icon7.addFile(QStringLiteral(":/new/prefix1/Icons/my_play.png"), QSize(), QIcon::Normal, QIcon::Off);
+        startPatSequence_Button->setIcon(icon7);
+        startPatSequence_Button->setIconSize(QSize(40, 40));
+
+        horizontalLayout_24->addWidget(startPatSequence_Button);
+
+        pausePatSequence_Button = new QPushButton(scrollAreaWidgetContents);
+        pausePatSequence_Button->setObjectName(QStringLiteral("pausePatSequence_Button"));
+        pausePatSequence_Button->setEnabled(false);
+        sizePolicy8.setHeightForWidth(pausePatSequence_Button->sizePolicy().hasHeightForWidth());
+        pausePatSequence_Button->setSizePolicy(sizePolicy8);
+        pausePatSequence_Button->setMinimumSize(QSize(50, 60));
+        pausePatSequence_Button->setStyleSheet(QLatin1String("#pausePatSequence_Button{\n"
+"background-color: transparent;\n"
+"backgorund: none;\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"}"));
+        QIcon icon8;
+        icon8.addFile(QStringLiteral(":/new/prefix1/Icons/my_pause.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pausePatSequence_Button->setIcon(icon8);
+        pausePatSequence_Button->setIconSize(QSize(40, 40));
+        pausePatSequence_Button->setCheckable(false);
+        pausePatSequence_Button->setChecked(false);
+
+        horizontalLayout_24->addWidget(pausePatSequence_Button);
+
+        stopPatSequence_Button = new QPushButton(scrollAreaWidgetContents);
+        stopPatSequence_Button->setObjectName(QStringLiteral("stopPatSequence_Button"));
+        stopPatSequence_Button->setEnabled(false);
+        sizePolicy8.setHeightForWidth(stopPatSequence_Button->sizePolicy().hasHeightForWidth());
+        stopPatSequence_Button->setSizePolicy(sizePolicy8);
+        stopPatSequence_Button->setMinimumSize(QSize(50, 60));
+        stopPatSequence_Button->setStyleSheet(QLatin1String("#stopPatSequence_Button{\n"
+"background-color: transparent;\n"
+"border-image: url(:connected.png);\n"
+"backgorund: none;\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"}"));
+        QIcon icon9;
+        icon9.addFile(QStringLiteral(":/new/prefix1/Icons/my_stop.png"), QSize(), QIcon::Normal, QIcon::Off);
+        stopPatSequence_Button->setIcon(icon9);
+        stopPatSequence_Button->setIconSize(QSize(40, 40));
+
+        horizontalLayout_24->addWidget(stopPatSequence_Button);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_24->addItem(horizontalSpacer_2);
+
+        pushButton_patternMode = new QPushButton(scrollAreaWidgetContents);
+        pushButton_patternMode->setObjectName(QStringLiteral("pushButton_patternMode"));
+        pushButton_patternMode->setEnabled(true);
+        sizePolicy8.setHeightForWidth(pushButton_patternMode->sizePolicy().hasHeightForWidth());
+        pushButton_patternMode->setSizePolicy(sizePolicy8);
+        pushButton_patternMode->setMinimumSize(QSize(0, 40));
+        pushButton_patternMode->setFont(font10);
+        pushButton_patternMode->setStyleSheet(QLatin1String("QPushButton{\n"
+"	color:rgb(0,150,150);\n"
+"   }"));
+        QIcon icon10;
+        icon10.addFile(QStringLiteral(":/Images/images/pattern.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_patternMode->setIcon(icon10);
+        pushButton_patternMode->setIconSize(QSize(40, 40));
+        pushButton_patternMode->setCheckable(true);
+        pushButton_patternMode->setChecked(true);
+
+        horizontalLayout_24->addWidget(pushButton_patternMode);
+
+        pushButton_LEDDriver = new QPushButton(scrollAreaWidgetContents);
+        pushButton_LEDDriver->setObjectName(QStringLiteral("pushButton_LEDDriver"));
+        sizePolicy8.setHeightForWidth(pushButton_LEDDriver->sizePolicy().hasHeightForWidth());
+        pushButton_LEDDriver->setSizePolicy(sizePolicy8);
+        pushButton_LEDDriver->setMinimumSize(QSize(0, 45));
+        pushButton_LEDDriver->setFont(font10);
+        pushButton_LEDDriver->setStyleSheet(QLatin1String("QPushButton{\n"
+"	color:rgb(0,150,150);\n"
+"   }"));
+        QIcon icon11;
+        icon11.addFile(QStringLiteral(":/Images/images/LEDDriver_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_LEDDriver->setIcon(icon11);
+        pushButton_LEDDriver->setIconSize(QSize(40, 40));
+        pushButton_LEDDriver->setCheckable(true);
+
+        horizontalLayout_24->addWidget(pushButton_LEDDriver);
+
+        pushButton_ZMachineControl = new QPushButton(scrollAreaWidgetContents);
+        pushButton_ZMachineControl->setObjectName(QStringLiteral("pushButton_ZMachineControl"));
+        sizePolicy8.setHeightForWidth(pushButton_ZMachineControl->sizePolicy().hasHeightForWidth());
+        pushButton_ZMachineControl->setSizePolicy(sizePolicy8);
+        pushButton_ZMachineControl->setMinimumSize(QSize(0, 0));
+        pushButton_ZMachineControl->setFont(font10);
+        pushButton_ZMachineControl->setStyleSheet(QLatin1String("QPushButton{\n"
+"	color:rgb(0,150,150);\n"
+"   }"));
+        QIcon icon12;
+        icon12.addFile(QStringLiteral(":/Images/images/settings.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_ZMachineControl->setIcon(icon12);
+        pushButton_ZMachineControl->setIconSize(QSize(40, 40));
+        pushButton_ZMachineControl->setCheckable(true);
+
+        horizontalLayout_24->addWidget(pushButton_ZMachineControl);
+
+        horizontalSpacer_3 = new QSpacerItem(120, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_24->addItem(horizontalSpacer_3);
+
+        label_8 = new QLabel(scrollAreaWidgetContents);
+        label_8->setObjectName(QStringLiteral("label_8"));
+        label_8->setFont(font5);
+        label_8->setStyleSheet(QLatin1String("QLabel{\n"
+"	color:rgb(0,150,150);\n"
+"   }"));
+
+        horizontalLayout_24->addWidget(label_8);
+
+        StartTime = new QLabel(scrollAreaWidgetContents);
+        StartTime->setObjectName(QStringLiteral("StartTime"));
+        sizePolicy3.setHeightForWidth(StartTime->sizePolicy().hasHeightForWidth());
+        StartTime->setSizePolicy(sizePolicy3);
+        StartTime->setMinimumSize(QSize(70, 0));
+        StartTime->setFont(font5);
+        StartTime->setStyleSheet(QLatin1String("QLabel{\n"
+"	color:rgb(0,150,150);\n"
+"   }"));
+
+        horizontalLayout_24->addWidget(StartTime);
+
+        label_12 = new QLabel(scrollAreaWidgetContents);
+        label_12->setObjectName(QStringLiteral("label_12"));
+        QFont font11;
+        font11.setFamily(QStringLiteral("Arial"));
+        font11.setPointSize(14);
+        font11.setBold(true);
+        font11.setWeight(75);
+        label_12->setFont(font11);
+        label_12->setStyleSheet(QLatin1String("QLabel{\n"
+"	color:rgb(0,150,150);\n"
+"   }"));
+
+        horizontalLayout_24->addWidget(label_12);
+
+        TotalTime = new QLabel(scrollAreaWidgetContents);
+        TotalTime->setObjectName(QStringLiteral("TotalTime"));
+        sizePolicy3.setHeightForWidth(TotalTime->sizePolicy().hasHeightForWidth());
+        TotalTime->setSizePolicy(sizePolicy3);
+        TotalTime->setMinimumSize(QSize(70, 0));
+        TotalTime->setFont(font5);
+        TotalTime->setStyleSheet(QLatin1String("QLabel{\n"
+"	color:rgb(0,150,150);\n"
+"   }"));
+
+        horizontalLayout_24->addWidget(TotalTime);
+
+        horizontalSpacer_4 = new QSpacerItem(60, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_24->addItem(horizontalSpacer_4);
+
+        label_16 = new QLabel(scrollAreaWidgetContents);
+        label_16->setObjectName(QStringLiteral("label_16"));
+        label_16->setFont(font5);
+        label_16->setStyleSheet(QLatin1String("QLabel{\n"
+"	color:rgb(0,150,150);\n"
+"   }"));
+
+        horizontalLayout_24->addWidget(label_16);
+
+        PatternIndex = new QLabel(scrollAreaWidgetContents);
+        PatternIndex->setObjectName(QStringLiteral("PatternIndex"));
+        sizePolicy3.setHeightForWidth(PatternIndex->sizePolicy().hasHeightForWidth());
+        PatternIndex->setSizePolicy(sizePolicy3);
+        PatternIndex->setMinimumSize(QSize(100, 0));
+        PatternIndex->setFont(font10);
+        PatternIndex->setStyleSheet(QLatin1String("QLabel{border:0px;\n"
+"color:rgb(0,150,150);}"));
+
+        horizontalLayout_24->addWidget(PatternIndex);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_24->addItem(horizontalSpacer);
+
+
+        gridLayout->addLayout(horizontalLayout_24, 0, 0, 1, 1);
 
         scrollArea->setWidget(scrollAreaWidgetContents);
         MainWindow->setCentralWidget(centralWidget);
@@ -1804,18 +1610,6 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "DLPJGroup", nullptr));
-        connectButton->setText(QString());
-        startPatSequence_Button->setText(QString());
-        pausePatSequence_Button->setText(QString());
-        stopPatSequence_Button->setText(QString());
-        pushButton_patternMode->setText(QApplication::translate("MainWindow", "Pattern \n"
-" Mode", nullptr));
-        pushButton_LEDDriver->setText(QApplication::translate("MainWindow", "LED Driver", nullptr));
-        pushButton_ZMachineControl->setText(QApplication::translate("MainWindow", "Z Control", nullptr));
-        label_8->setText(QApplication::translate("MainWindow", "Time -", nullptr));
-        StartTime->setText(QApplication::translate("MainWindow", "00:00:00", nullptr));
-        label_12->setText(QApplication::translate("MainWindow", "/", nullptr));
-        TotalTime->setText(QApplication::translate("MainWindow", "00:00:00", nullptr));
         groupBox->setTitle(QApplication::translate("MainWindow", "Pattern Menu", nullptr));
 #ifndef QT_NO_TOOLTIP
         addPatternsButton->setToolTip(QApplication::translate("MainWindow", "Add Pattern", nullptr));
@@ -1837,42 +1631,24 @@ public:
         loadButton_patternSettings->setToolTip(QApplication::translate("MainWindow", "Load settings from a file", nullptr));
 #endif // QT_NO_TOOLTIP
         loadButton_patternSettings->setText(QApplication::translate("MainWindow", "Load", nullptr));
-        groupBox_firmware->setTitle(QApplication::translate("MainWindow", "Firmware", nullptr));
-        label_version->setText(QApplication::translate("MainWindow", "Version:", nullptr));
-        label_Tag->setText(QApplication::translate("MainWindow", "Tag : ", nullptr));
-        apiVersionLabel->setText(QApplication::translate("MainWindow", "xx.xx.xx", nullptr));
-        firmwareTag_label->setText(QApplication::translate("MainWindow", "xxxx", nullptr));
-        groupBox_ChipSetType->setTitle(QApplication::translate("MainWindow", "Chipset Type", nullptr));
-        pDMD_radioButton->setText(QApplication::translate("MainWindow", "DLP6500", nullptr));
-        operatingModes_groupBox->setTitle(QApplication::translate("MainWindow", "Operating Mode", nullptr));
-        patternMode_radioButton->setText(QApplication::translate("MainWindow", "Pre-stored Pattern Mode", nullptr));
-        patternMemory_radioButton->setText(QApplication::translate("MainWindow", "Pattern On-The-Fly Mode", nullptr));
-        status_groupBox->setTitle(QApplication::translate("MainWindow", "Status", nullptr));
-        internalMemTest_checkBox->setText(QApplication::translate("MainWindow", "Internal Memory Test Passed", nullptr));
-        incompatibleASICorDMD_checkBox->setText(QApplication::translate("MainWindow", "Controller/DMD Incompatible", nullptr));
-        slaveReady_checkBox->setText(QApplication::translate("MainWindow", "Slave Present and Ready (DLP9000)", nullptr));
-        internalInit_checkBox->setText(QApplication::translate("MainWindow", "Internal Initialization Complete ", nullptr));
-        DMDResetWaveformControllerErr_checkBox->setText(QApplication::translate("MainWindow", "DMD Reset Waveform Controller Error ", nullptr));
-        forcedSwapErr_checkBox->setText(QApplication::translate("MainWindow", "Forced Swap Error ", nullptr));
-        seqAbortStatus_checkBox->setText(QApplication::translate("MainWindow", "Sequencer Abort Status Flag Error", nullptr));
-        seqErr_checkBox->setText(QApplication::translate("MainWindow", "Sequencer Error ", nullptr));
-        DMDParkStatus_checkBox->setText(QApplication::translate("MainWindow", "DMD Micromirrors Parked", nullptr));
-        sequencerRunState_checkBox->setText(QApplication::translate("MainWindow", "Sequencer Running", nullptr));
-        videoState_checkBox->setText(QApplication::translate("MainWindow", "Video Running", nullptr));
-        extSourceLocked_checkBox->setText(QApplication::translate("MainWindow", "Locked to External Source", nullptr));
-        groupBox_PatternMode->setTitle(QApplication::translate("MainWindow", "Pattern Mode", nullptr));
-        groupBox_PatternImage->setTitle(QString());
-        ptnSetting_groupBox->setTitle(QApplication::translate("MainWindow", "Pattern -", nullptr));
-        groupBox_PatternIndex->setTitle(QApplication::translate("MainWindow", "Index", nullptr));
-        PatternIndex->setText(QString());
-        groupBox_Timing->setTitle(QApplication::translate("MainWindow", "Timing (us)", nullptr));
-        exposure_lineEdit->setText(QString());
-        label_Exposure->setText(QApplication::translate("MainWindow", "Exposure", nullptr));
-        label_DarkTime->setText(QApplication::translate("MainWindow", "Dark Time", nullptr));
+        LiftSeqTime->setTitle(QApplication::translate("MainWindow", "Lift / Sequence Time", nullptr));
+        label_9->setText(QApplication::translate("MainWindow", "Z Lift Time (ms)", nullptr));
+        label_10->setText(QApplication::translate("MainWindow", "Printing", nullptr));
+        label_13->setText(QApplication::translate("MainWindow", "Start Delay (ms)", nullptr));
         UpdateTotalTime->setText(QApplication::translate("MainWindow", "Update", nullptr));
         triggerIn_checkBox->setText(QApplication::translate("MainWindow", "Trigger Input", nullptr));
         label_TrigOut1->setText(QApplication::translate("MainWindow", "      Trigger Out 1", nullptr));
         triggerOut2_checkBox->setText(QApplication::translate("MainWindow", "Trigger Out 2", nullptr));
+        groupBox_2->setTitle(QApplication::translate("MainWindow", "Auto Homing", nullptr));
+        AutoHoming->setText(QApplication::translate("MainWindow", "Auto Homing", nullptr));
+        ManualHoming->setText(QApplication::translate("MainWindow", "Manual Homing", nullptr));
+        HomeDelay->setText(QApplication::translate("MainWindow", "Homing Delay (ms)", nullptr));
+        label_DarkTime->setText(QApplication::translate("MainWindow", "Dark Time", nullptr));
+        label_Exposure->setText(QApplication::translate("MainWindow", "Exposure", nullptr));
+        label_14->setText(QApplication::translate("MainWindow", "Time (us)", nullptr));
+        label_15->setText(QApplication::translate("MainWindow", "(us)", nullptr));
+        exposure_lineEdit->setText(QString());
+        groupBox_PatternMode->setTitle(QApplication::translate("MainWindow", "Pattern Mode", nullptr));
         groupBox_LEDDriver->setTitle(QApplication::translate("MainWindow", "LED Driver", nullptr));
         groupBox_LEDDriverStatus->setTitle(QApplication::translate("MainWindow", "Status", nullptr));
         USBDevicePath->setText(QApplication::translate("MainWindow", "USB Device path", nullptr));
@@ -1943,18 +1719,25 @@ public:
         MotorConDisable->setText(QApplication::translate("MainWindow", "Disable", nullptr));
         AutoBed->setTitle(QApplication::translate("MainWindow", "AutoBed Level", nullptr));
         AutoBedLevel->setText(QApplication::translate("MainWindow", "AutoBed Level", nullptr));
-        LiftSeqTime->setTitle(QApplication::translate("MainWindow", "Lift / Sequence Time", nullptr));
-        label_9->setText(QApplication::translate("MainWindow", "Z Lift Time (ms)", nullptr));
-        label_10->setText(QApplication::translate("MainWindow", "Printing Delay (ms)", nullptr));
-        groupBox_2->setTitle(QApplication::translate("MainWindow", "Auto Homing", nullptr));
-        AutoHoming->setText(QApplication::translate("MainWindow", "Auto Homing", nullptr));
-        ManualHoming->setText(QApplication::translate("MainWindow", "Manual Homing", nullptr));
-        HomeDelay->setText(QApplication::translate("MainWindow", "Homing Delay (ms)", nullptr));
         ComPort->setText(QApplication::translate("MainWindow", "Com Port", nullptr));
         BoardStatus->setText(QString());
         label_3->setText(QApplication::translate("MainWindow", "Machine Profile", nullptr));
         SaveMacProfile->setText(QApplication::translate("MainWindow", "Save Profile", nullptr));
         LoadMacProfile->setText(QApplication::translate("MainWindow", "Load Profile", nullptr));
+        connectButton->setText(QString());
+        startPatSequence_Button->setText(QString());
+        pausePatSequence_Button->setText(QString());
+        stopPatSequence_Button->setText(QString());
+        pushButton_patternMode->setText(QApplication::translate("MainWindow", "Pattern \n"
+" Mode", nullptr));
+        pushButton_LEDDriver->setText(QApplication::translate("MainWindow", "LED Driver", nullptr));
+        pushButton_ZMachineControl->setText(QApplication::translate("MainWindow", "Z Control", nullptr));
+        label_8->setText(QApplication::translate("MainWindow", "Time -", nullptr));
+        StartTime->setText(QApplication::translate("MainWindow", "00:00:00", nullptr));
+        label_12->setText(QApplication::translate("MainWindow", "/", nullptr));
+        TotalTime->setText(QApplication::translate("MainWindow", "00:00:00", nullptr));
+        label_16->setText(QApplication::translate("MainWindow", "Pattern -", nullptr));
+        PatternIndex->setText(QApplication::translate("MainWindow", "Empty", nullptr));
     } // retranslateUi
 
 };

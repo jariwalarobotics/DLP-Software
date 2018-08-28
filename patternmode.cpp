@@ -394,7 +394,7 @@ void MainWindow::on_loadButton_patternSettings_clicked()
         waveWindow->updatePatternList(m_elements);
         waveWindow->draw();
         ui->selectAllButton->setEnabled(true);
-        ui->ptnSetting_groupBox->setEnabled(true);
+        //ui->ptnSetting_groupBox->setEnabled(true);
         ui->removePatternsButton->setEnabled(true);
         on_patternSelect(m_elements.size()-1,m_elements);
     }
@@ -507,7 +507,7 @@ void MainWindow::on_addPatternsButton_clicked()
         waveWindow->updatePatternList(m_elements);
         waveWindow->draw();
         ui->selectAllButton->setEnabled(true);
-        ui->ptnSetting_groupBox->setEnabled(true);
+        //ui->ptnSetting_groupBox->setEnabled(true);
         ui->removePatternsButton->setEnabled(true);
         on_patternSelect(0,m_elements);
     }
@@ -538,6 +538,10 @@ void MainWindow::on_removePatternsButton_clicked()
     if (!m_elements.size())
     {
         ui->selectAllButton->setEnabled(false);
+    }
+    if (m_elements.size() <= 0)
+    {
+        ui->PatternIndex->setText("Empty");
     }
 }
 
@@ -660,7 +664,6 @@ void MainWindow::on_patternSelect(int index, QList<PatternElement> patElem)
     m_elements = patElem;
     if (index < 0)
     {
-        ui->ptnSetting_groupBox->setEnabled(false);
         ui->removePatternsButton->setEnabled(false);
         if (m_elements.size() <= 0)
         {
@@ -672,7 +675,6 @@ void MainWindow::on_patternSelect(int index, QList<PatternElement> patElem)
         return;
     }
 
-    ui->ptnSetting_groupBox->setEnabled(true);
     QString lenght = QString::number(m_elements.size() - 1);
     ui->PatternIndex->setText(QString::number(index)+ " / " + lenght);
     ui->triggerIn_checkBox->setChecked(m_elements[index].trigIn);
@@ -948,7 +950,7 @@ void MainWindow::uploadSingleImageSeq()
         return;
     }
 
-    if (ui->patternMemory_radioButton->isChecked() && m_patternImageChange)
+    if (m_patternImageChange)
     {
         if(updateSinglePatternMemory(1, false) == 0)
         {

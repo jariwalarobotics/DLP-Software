@@ -10,8 +10,8 @@
 static const int MIN_WAVEFORMWINDOW_SIZE=431;
 static const int PATTERN_GAP = 16;
 static const int WAVE_HEIGHT = 0;
-static const int PTN_IMG_HEIGHT = 537;
-static const int PTN_IMG_WIDTH = 8850;
+static const int PTN_IMG_HEIGHT = 550;
+static const int PTN_IMG_WIDTH = 9650;
 static const int ELEMENT_GAP = 20;
 static const int TRIGGER_WIDTH = 0;
 static const int PTN_NUM_WIN_HEIGHT = 20;
