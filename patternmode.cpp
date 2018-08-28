@@ -478,7 +478,7 @@ void MainWindow::on_addPatternsButton_clicked()
        {
            pattern.bits = 8;
            pattern.color = PatternElement::RED;
-           pattern.exposure = 4000000;
+           pattern.exposure = 4000;
            pattern.darkPeriod = 0;
            pattern.trigIn = false;
            pattern.trigOut2 = true;
@@ -587,7 +587,7 @@ void MainWindow::on_startPatSequence_Button_clicked()
     ExposureTime = ui->exposure_lineEdit->text().toInt();
     DarkTime = ui->darkPeriod_lineEdit->text().toInt();
 
-    delay = ((ExposureTime + DarkTime) / 1000) + 500;
+    delay = (ExposureTime + DarkTime) + 500;
     ui->stopPatSequence_Button->setEnabled(true);
     ui->pausePatSequence_Button->setEnabled(true);
     ui->startPatSequence_Button->setEnabled(false);
@@ -742,8 +742,8 @@ void MainWindow::on_exposure_lineEdit_editingFinished()
 
     for (int i = 0; i < m_elements.size(); i++)
     {
-        if (!m_elements[i].selected)
-            continue;
+        //if (!m_elements[i].selected)
+           // continue;
         int exposure = ui->exposure_lineEdit->text().toInt();
         int minExp = GetMinExposure(m_elements[i].bits);
         if (exposure < minExp)
@@ -772,8 +772,8 @@ void MainWindow::on_darkPeriod_lineEdit_editingFinished()
 
     for (int i = 0; i < m_elements.size(); i++)
     {
-        if (!m_elements[i].selected)
-            continue;
+        //if (!m_elements[i].selected)
+            //continue;
         int darkPeriod = ui->darkPeriod_lineEdit->text().toInt();
 
         int minDarktime = GetMinDarktime(m_elements[i].bits);
@@ -840,8 +840,8 @@ void MainWindow::SendPatSequence()
         PatternElement AutoPatSeq;
         AutoPatSeq.bits = m_elements[PatCount].bits;
         AutoPatSeq.color = m_elements[PatCount].color;
-        AutoPatSeq.exposure = m_elements[PatCount].exposure;
-        AutoPatSeq.darkPeriod = m_elements[PatCount].darkPeriod;
+        AutoPatSeq.exposure = m_elements[PatCount].exposure * 1000;
+        AutoPatSeq.darkPeriod = m_elements[PatCount].darkPeriod * 1000;
         AutoPatSeq.trigIn = m_elements[PatCount].trigIn;
         AutoPatSeq.trigOut2 = m_elements[PatCount].trigOut2;
 
@@ -980,9 +980,9 @@ void MainWindow::on_UpdateTotalTime_clicked()
     }
 
     ExposureTime = ui->exposure_lineEdit->text().toInt();
-    int TotalExposureTime = (ExposureTime / 1000) * m_elements.size();
+    int TotalExposureTime = ExposureTime * m_elements.size();
     DarkTime = ui->darkPeriod_lineEdit->text().toInt();
-    int TotalDarkTime = (DarkTime / 1000) * m_elements.size();
+    int TotalDarkTime = DarkTime * m_elements.size();
 
     PrintingDelay = ui->PrintingDelay->text().toInt();
     ZLiftDelay = ui->ZLiftdelay->text().toInt();

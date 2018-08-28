@@ -10,7 +10,7 @@
 static const int MIN_WAVEFORMWINDOW_SIZE=431;
 static const int PATTERN_GAP = 16;
 static const int WAVE_HEIGHT = 0;
-static const int PTN_IMG_HEIGHT = 550;
+static const int PTN_IMG_HEIGHT = 543;
 static const int PTN_IMG_WIDTH = 9650;
 static const int ELEMENT_GAP = 20;
 static const int TRIGGER_WIDTH = 0;
@@ -122,13 +122,8 @@ WaveFormWindow::WaveFormWindow(QWidget *parent) :
 void WaveFormWindow::draw(void)
 {
     int totalWidth;
-    if (Auto_m_elements.size() > 0)
-    {
-        totalWidth = PTN_IMG_WIDTH * m_scale * Auto_m_elements.size();
-    } else
-    {
-        totalWidth = PTN_IMG_WIDTH * m_scale * m_elements.size() + PATTERN_GAP * m_elements.size();
-    }
+    totalWidth = PTN_IMG_WIDTH * m_scale * m_elements.size() + PATTERN_GAP * m_elements.size();
+
     setMinimumSize(totalWidth, TOTAL_HEIGHT);
     update();
 }
