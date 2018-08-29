@@ -282,10 +282,16 @@ void MainWindow::on_connectButton_clicked()
             showStatus("Error:USB not Connected!!");
             return;
         }
+        emit on_ConnectLED_clicked();
+        if (LEDConnected1 == false)
+        {
+            showStatus("Error:USB not Connected!!");
+            return;
+        }
+        emit on_ConnectBoard_clicked();
+
         USB_Connected = true;
         LCR_SetMode(SLmode);
-        emit on_ConnectBoard_clicked();
-        emit on_ConnectLED_clicked();
 
         if(LCR_GetMode(&SLmode) == 0)
         {

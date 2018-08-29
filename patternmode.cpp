@@ -667,7 +667,7 @@ void MainWindow::on_patternSelect(int index, QList<PatternElement> patElem)
         ui->removePatternsButton->setEnabled(false);
         if (m_elements.size() <= 0)
         {
-            ui->PatternIndex->setText("");
+            ui->PatternIndex->setText("Empty");
         }else
         {
             on_patternSelect(0, m_elements);
