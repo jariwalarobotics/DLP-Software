@@ -893,7 +893,7 @@ color:rgb(0,120,120);
                     </property>
                     <property name="sizeHint" stdset="0">
                      <size>
-                      <width>40</width>
+                      <width>80</width>
                       <height>20</height>
                      </size>
                     </property>
@@ -930,7 +930,29 @@ color:rgb(0,120,120);
                       <item row="0" column="0">
                        <layout class="QVBoxLayout" name="verticalLayout_37">
                         <item>
+                         <spacer name="verticalSpacer">
+                          <property name="orientation">
+                           <enum>Qt::Vertical</enum>
+                          </property>
+                          <property name="sizeType">
+                           <enum>QSizePolicy::Fixed</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>10</width>
+                            <height>10</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item>
                          <widget class="QScrollArea" name="waveFormArea">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
                           <property name="minimumSize">
                            <size>
                             <width>501</width>
@@ -955,12 +977,28 @@ color:rgb(0,120,120);
                             <rect>
                              <x>0</x>
                              <y>0</y>
-                             <width>960</width>
-                             <height>586</height>
+                             <width>880</width>
+                             <height>554</height>
                             </rect>
                            </property>
                           </widget>
                          </widget>
+                        </item>
+                        <item>
+                         <spacer name="verticalSpacer_2">
+                          <property name="orientation">
+                           <enum>Qt::Vertical</enum>
+                          </property>
+                          <property name="sizeType">
+                           <enum>QSizePolicy::Fixed</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>20</width>
+                            <height>10</height>
+                           </size>
+                          </property>
+                         </spacer>
                         </item>
                        </layout>
                       </item>
@@ -978,7 +1016,7 @@ color:rgb(0,120,120);
                     </property>
                     <property name="sizeHint" stdset="0">
                      <size>
-                      <width>40</width>
+                      <width>80</width>
                       <height>20</height>
                      </size>
                     </property>
@@ -3413,6 +3451,44 @@ color:rgb(0,120,120);
                 </property>
                 <property name="styleSheet">
                  <string notr="true">border-color: rgb(0,150,150);</string>
+                </property>
+               </widget>
+               <widget class="QPushButton" name="CalGrayValue">
+                <property name="geometry">
+                 <rect>
+                  <x>805</x>
+                  <y>100</y>
+                  <width>130</width>
+                  <height>35</height>
+                 </rect>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Arial</family>
+                  <pointsize>9</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Calculate Gray Values</string>
+                </property>
+               </widget>
+               <widget class="QLabel" name="TotalCount">
+                <property name="geometry">
+                 <rect>
+                  <x>960</x>
+                  <y>100</y>
+                  <width>100</width>
+                  <height>35</height>
+                 </rect>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Arial</family>
+                  <pointsize>9</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string/>
                 </property>
                </widget>
               </widget>

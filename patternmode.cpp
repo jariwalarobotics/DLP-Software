@@ -7,6 +7,7 @@
 #include <QMessageBox>
 #include <QTextStream>
 #include <QCollator>
+#include <QVector>
 #include <QTime>
 #include <QTimer>
 #include <QThread>
@@ -500,7 +501,6 @@ void MainWindow::on_addPatternsButton_clicked()
        numPatAdded++;
        m_patternImageChange = true;
     }
-
 
     if (m_elements.size() > 0)
     {
@@ -999,6 +999,55 @@ void MainWindow::on_UpdateTotalTime_clicked()
                             .arg(s, 2, 10, QChar('0'));
     ui->TotalTime->setText(diff);
 
+}
+
+void MainWindow::on_CalGrayValue_clicked()
+{
+    if (m_elements.size() <= 0)
+    {
+        showStatus("Error:No pattern sequence to Count");
+        return;
+    }
+
+    QImage image;
+    //QVector <QVector<int> > TotalimageGrayValues;
+    //QVector<QVector<unsigned int>> TotalimageGrayValues;
+    QStringList Countlist;
+
+    int Images = m_elements.size();
+    int columns = 1920;
+    int rows = 1080;
+    int default_val = 0;
+    QVector < QVector < QVector< int > > > ImageGrayValues(Images,
+                                              QVector < QVector <int > > (columns,
+                                                                         QVector < int > (rows, default_val)));
+    for (int i = 0; i < m_elements.size(); i++)
+    {
+        image.load(m_elements[i].name);
+        int GrayCount = 0;
+        //QList<qint8> ImageGrayValues;
+        //QVector<int> ImageGrayValues;
+        for (int j=0; j<image.width(); j++)
+        {
+           for (int k=0; k<image.height(); k++)
+           {
+               int Intensity = qGray(image.pixel(j,k));
+               if (Intensity != 0)
+               {
+                   GrayCount = GrayCount + 1;
+               }
+               ImageGrayValues[i][j][k] = Intensity;    
+               //ImageGrayValues.push_back(Intensity);
+           }
+        }
+        //QString temp = QString::number(GrayCount);
+        Countlist.append(QString::number(i)+ " - " + QString::number(GrayCount));
+        //TotalimageGrayValues.push_back(ImageGrayValues);
+    }
+
+    int count = ImageGrayValues.size();
+    QString str = QString::number(count);
+    ui->TotalCount->setText(str);
 }
 
 

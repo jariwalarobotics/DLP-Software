@@ -83,8 +83,10 @@ public:
     QWidget *patternDesignPage;
     QGridLayout *gridLayout_31;
     QVBoxLayout *verticalLayout_37;
+    QSpacerItem *verticalSpacer;
     QScrollArea *waveFormArea;
     QWidget *scrollAreaWidgetContents_4;
+    QSpacerItem *verticalSpacer_2;
     QSpacerItem *horizontalSpacer_6;
     QWidget *LEDDriverPage;
     QGridLayout *gridLayout_9;
@@ -201,6 +203,8 @@ public:
     QPushButton *SaveMacProfile;
     QPushButton *LoadMacProfile;
     QPlainTextEdit *ProfileName;
+    QPushButton *CalGrayValue;
+    QLabel *TotalCount;
     QHBoxLayout *horizontalLayout_24;
     QPushButton *connectButton;
     QPushButton *startPatSequence_Button;
@@ -563,7 +567,7 @@ public:
         horizontalLayout_26->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_26->setObjectName(QStringLiteral("horizontalLayout_26"));
         horizontalLayout_26->setContentsMargins(-1, 18, -1, -1);
-        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+        horizontalSpacer_5 = new QSpacerItem(80, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
         horizontalLayout_26->addItem(horizontalSpacer_5);
 
@@ -581,8 +585,14 @@ public:
         verticalLayout_37 = new QVBoxLayout();
         verticalLayout_37->setSpacing(6);
         verticalLayout_37->setObjectName(QStringLiteral("verticalLayout_37"));
+        verticalSpacer = new QSpacerItem(10, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_37->addItem(verticalSpacer);
+
         waveFormArea = new QScrollArea(patternDesignPage);
         waveFormArea->setObjectName(QStringLiteral("waveFormArea"));
+        sizePolicy4.setHeightForWidth(waveFormArea->sizePolicy().hasHeightForWidth());
+        waveFormArea->setSizePolicy(sizePolicy4);
         waveFormArea->setMinimumSize(QSize(501, 431));
         waveFormArea->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
 "background-color: transparent;\n"
@@ -593,10 +603,14 @@ public:
         waveFormArea->setWidgetResizable(true);
         scrollAreaWidgetContents_4 = new QWidget();
         scrollAreaWidgetContents_4->setObjectName(QStringLiteral("scrollAreaWidgetContents_4"));
-        scrollAreaWidgetContents_4->setGeometry(QRect(0, 0, 960, 586));
+        scrollAreaWidgetContents_4->setGeometry(QRect(0, 0, 880, 554));
         waveFormArea->setWidget(scrollAreaWidgetContents_4);
 
         verticalLayout_37->addWidget(waveFormArea);
+
+        verticalSpacer_2 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_37->addItem(verticalSpacer_2);
 
 
         gridLayout_31->addLayout(verticalLayout_37, 0, 0, 1, 1);
@@ -605,7 +619,7 @@ public:
 
         horizontalLayout_26->addWidget(patternMode_stackedWidget);
 
-        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+        horizontalSpacer_6 = new QSpacerItem(80, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
         horizontalLayout_26->addItem(horizontalSpacer_6);
 
@@ -1347,6 +1361,14 @@ public:
         ProfileName->setGeometry(QRect(10, 160, 221, 31));
         ProfileName->setFont(font2);
         ProfileName->setStyleSheet(QStringLiteral("border-color: rgb(0,150,150);"));
+        CalGrayValue = new QPushButton(groupBox_ZMachineControl);
+        CalGrayValue->setObjectName(QStringLiteral("CalGrayValue"));
+        CalGrayValue->setGeometry(QRect(805, 100, 130, 35));
+        CalGrayValue->setFont(font);
+        TotalCount = new QLabel(groupBox_ZMachineControl);
+        TotalCount->setObjectName(QStringLiteral("TotalCount"));
+        TotalCount->setGeometry(QRect(960, 100, 100, 35));
+        TotalCount->setFont(font);
 
         gridLayout_12->addWidget(groupBox_ZMachineControl, 0, 1, 1, 1);
 
@@ -1727,6 +1749,8 @@ public:
         label_3->setText(QApplication::translate("MainWindow", "Machine Profile", nullptr));
         SaveMacProfile->setText(QApplication::translate("MainWindow", "Save Profile", nullptr));
         LoadMacProfile->setText(QApplication::translate("MainWindow", "Load Profile", nullptr));
+        CalGrayValue->setText(QApplication::translate("MainWindow", "Calculate Gray Values", nullptr));
+        TotalCount->setText(QString());
 #ifndef QT_NO_TOOLTIP
         connectButton->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
