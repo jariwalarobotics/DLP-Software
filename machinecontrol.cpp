@@ -18,7 +18,6 @@ void MainWindow::on_ConnectBoard_clicked()
     //QSerialPort serial;
     if (!BoardConnected)
     {
-        BoardConnected = true;
         arduino->setPortName(usbport);
         arduino->open(QIODevice::ReadWrite);
         arduino->setBaudRate(QSerialPort::Baud115200);
@@ -32,7 +31,11 @@ void MainWindow::on_ConnectBoard_clicked()
             arduino->write("M105\n");
             ui->SerialPort->setEnabled(false);
             ui->BoardStatus->setText("Com port open!!");
+            BoardConnected = true;
             QObject::connect(arduino, SIGNAL(readyRead()), this, SLOT(serialdataRead()));
+        } else {
+            ui->BoardStatus->setText("Com port denied");
+            return;
         }
     }
     else
@@ -218,8 +221,13 @@ void MainWindow::on_SaveMacProfile_clicked()
     settings.setValue("PtnProfilePath",m_ptnProfilePath);
 
     QTextStream out(&settingsFile);
+    QString str = QFileInfo(filename).fileName();
 
-    out << "Machine Profile Name:" + ui->ProfileName->toPlainText() << "," << "\n";
+    if (!ui->ProfileName->toPlainText().isEmpty())
+    {
+        out << "Machine Profile Name:" + str << "," << "\n";
+        ui->ProfileName->setText(str);
+    }
 
     if (!ui->StartPrintGcode->toPlainText().isEmpty())
     {
@@ -249,6 +257,21 @@ void MainWindow::on_SaveMacProfile_clicked()
     if (!ui->PrintingDelay->text().isEmpty())
     {
         out << "Printing Delay:" + ui->PrintingDelay->text() << "," << "\n";
+    }
+
+    if (!ui->Intensity_lineEdit->text().isEmpty())
+    {
+        out << "Intensity:" + ui->Intensity_lineEdit->text() << "," << "\n";
+    }
+
+    if (!ui->exposure_lineEdit->text().isEmpty())
+    {
+        out << "Exposure Time:" + ui->exposure_lineEdit->text() << "," << "\n";
+    }
+
+    if (!ui->darkPeriod_lineEdit->text().isEmpty())
+    {
+        out << "Dark Time:" + ui->darkPeriod_lineEdit->text() << "," << "\n";
     }
 
     if (ui->AutoHoming->isChecked())
@@ -338,6 +361,18 @@ void MainWindow::on_LoadMacProfile_clicked()
            if (Strbuffer[0] == "Printing Delay")
            {
                ui->PrintingDelay->setText(Strbuffer[1]);
+           }
+           if (Strbuffer[0] == "Intensity")
+           {
+               ui->Intensity_lineEdit->setText(Strbuffer[1]);
+           }
+           if (Strbuffer[0] == "Exposure Time")
+           {
+               ui->exposure_lineEdit->setText(Strbuffer[1]);
+           }
+           if (Strbuffer[0] == "Dark Time")
+           {
+               ui->darkPeriod_lineEdit->setText(Strbuffer[1]);
            }
            if (Strbuffer[0] == "Auto Homing")
            {

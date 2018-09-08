@@ -51,7 +51,6 @@ public:
     int counter = 0;
     BOOL WaitforEndstopHit = false;
 
-
     bool loadDll();
 
     int AHid_Init()
@@ -228,7 +227,7 @@ private slots:
 
     void on_UpdateTotalTime_clicked();
 
-    void on_CalGrayValue_clicked();
+    //void on_CalGrayValue_clicked();
 
 private:
 

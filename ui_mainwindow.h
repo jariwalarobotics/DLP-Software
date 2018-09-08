@@ -21,7 +21,6 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QScrollArea>
@@ -61,11 +60,12 @@ public:
     QCheckBox *triggerIn_checkBox;
     QLabel *label_TrigOut1;
     QCheckBox *triggerOut2_checkBox;
-    QLabel *label_DarkTime;
     QLabel *label_Exposure;
     QLabel *label_14;
     QLineEdit *darkPeriod_lineEdit;
     QLineEdit *exposure_lineEdit;
+    QLabel *label_17;
+    QLabel *label_Exposure_2;
     QGroupBox *groupBox_2;
     QRadioButton *AutoHoming;
     QRadioButton *ManualHoming;
@@ -202,9 +202,7 @@ public:
     QLabel *label_3;
     QPushButton *SaveMacProfile;
     QPushButton *LoadMacProfile;
-    QPlainTextEdit *ProfileName;
-    QPushButton *CalGrayValue;
-    QLabel *TotalCount;
+    QTextBrowser *ProfileName;
     QHBoxLayout *horizontalLayout_24;
     QPushButton *connectButton;
     QPushButton *startPatSequence_Button;
@@ -398,7 +396,7 @@ public:
 ";}"));
         UpdateTotalTime = new QPushButton(LiftSeqTime);
         UpdateTotalTime->setObjectName(QStringLiteral("UpdateTotalTime"));
-        UpdateTotalTime->setEnabled(false);
+        UpdateTotalTime->setEnabled(true);
         UpdateTotalTime->setGeometry(QRect(50, 200, 111, 35));
         QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy3.setHorizontalStretch(0);
@@ -434,23 +432,14 @@ public:
         triggerOut2_checkBox->setStyleSheet(QLatin1String("QCheckBox{\n"
 "	color:rgb(0,150,150);\n"
 "}"));
-        label_DarkTime = new QLabel(LiftSeqTime);
-        label_DarkTime->setObjectName(QStringLiteral("label_DarkTime"));
-        label_DarkTime->setGeometry(QRect(125, 35, 61, 21));
+        label_Exposure = new QLabel(LiftSeqTime);
+        label_Exposure->setObjectName(QStringLiteral("label_Exposure"));
+        label_Exposure->setGeometry(QRect(25, 11, 61, 40));
         QFont font4;
         font4.setFamily(QStringLiteral("Arial"));
         font4.setPointSize(10);
         font4.setBold(false);
         font4.setWeight(50);
-        label_DarkTime->setFont(font4);
-        label_DarkTime->setStyleSheet(QLatin1String("QLabel{ border: 0px ;\n"
-"background-color: transparent;\n"
-"border-color: rgb(0,150,150);\n"
-"color:rgb(0,120,120);\n"
-";}"));
-        label_Exposure = new QLabel(LiftSeqTime);
-        label_Exposure->setObjectName(QStringLiteral("label_Exposure"));
-        label_Exposure->setGeometry(QRect(25, 11, 61, 40));
         label_Exposure->setFont(font4);
         label_Exposure->setStyleSheet(QLatin1String("QLabel{ border: 0px ;\n"
 "background-color: transparent;\n"
@@ -475,6 +464,25 @@ public:
         exposure_lineEdit->setObjectName(QStringLiteral("exposure_lineEdit"));
         exposure_lineEdit->setGeometry(QRect(10, 67, 95, 35));
         exposure_lineEdit->setFont(font2);
+        label_17 = new QLabel(LiftSeqTime);
+        label_17->setObjectName(QStringLiteral("label_17"));
+        label_17->setGeometry(QRect(140, 25, 61, 50));
+        label_17->setFont(font3);
+        label_17->setStyleSheet(QLatin1String("QLabel{ border: 0px ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+"color:rgb(0,120,120);\n"
+";}"));
+        label_Exposure_2 = new QLabel(LiftSeqTime);
+        label_Exposure_2->setObjectName(QStringLiteral("label_Exposure_2"));
+        label_Exposure_2->setGeometry(QRect(140, 10, 61, 40));
+        label_Exposure_2->setFont(font4);
+        label_Exposure_2->setStyleSheet(QLatin1String("QLabel{ border: 0px ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+"color:rgb(0,120,120);\n"
+";}"));
+        label_Exposure_2->setWordWrap(true);
         groupBox_2 = new QGroupBox(frame_common);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
         groupBox_2->setGeometry(QRect(10, 480, 221, 151));
@@ -1287,7 +1295,7 @@ public:
         SendManualGcode->setFont(font7);
         ClearManualGcode = new QPushButton(ManualGcode_GroupBox);
         ClearManualGcode->setObjectName(QStringLiteral("ClearManualGcode"));
-        ClearManualGcode->setGeometry(QRect(150, 282, 95, 35));
+        ClearManualGcode->setGeometry(QRect(150, 280, 95, 35));
         ClearManualGcode->setFont(font7);
         ManualGcode = new QTextEdit(ManualGcode_GroupBox);
         ManualGcode->setObjectName(QStringLiteral("ManualGcode"));
@@ -1341,7 +1349,7 @@ public:
         SerialPort->setFont(font3);
         BoardStatus = new QLabel(groupBox_ZMachineControl);
         BoardStatus->setObjectName(QStringLiteral("BoardStatus"));
-        BoardStatus->setGeometry(QRect(50, 60, 115, 31));
+        BoardStatus->setGeometry(QRect(10, 60, 211, 31));
         BoardStatus->setFont(font2);
         BoardStatus->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
         label_3 = new QLabel(groupBox_ZMachineControl);
@@ -1356,19 +1364,11 @@ public:
         LoadMacProfile->setObjectName(QStringLiteral("LoadMacProfile"));
         LoadMacProfile->setGeometry(QRect(136, 200, 95, 31));
         LoadMacProfile->setFont(font3);
-        ProfileName = new QPlainTextEdit(groupBox_ZMachineControl);
+        ProfileName = new QTextBrowser(groupBox_ZMachineControl);
         ProfileName->setObjectName(QStringLiteral("ProfileName"));
         ProfileName->setGeometry(QRect(10, 160, 221, 31));
         ProfileName->setFont(font2);
         ProfileName->setStyleSheet(QStringLiteral("border-color: rgb(0,150,150);"));
-        CalGrayValue = new QPushButton(groupBox_ZMachineControl);
-        CalGrayValue->setObjectName(QStringLiteral("CalGrayValue"));
-        CalGrayValue->setGeometry(QRect(805, 100, 130, 35));
-        CalGrayValue->setFont(font);
-        TotalCount = new QLabel(groupBox_ZMachineControl);
-        TotalCount->setObjectName(QStringLiteral("TotalCount"));
-        TotalCount->setGeometry(QRect(960, 100, 100, 35));
-        TotalCount->setFont(font);
 
         gridLayout_12->addWidget(groupBox_ZMachineControl, 0, 1, 1, 1);
 
@@ -1662,13 +1662,14 @@ public:
         triggerIn_checkBox->setText(QApplication::translate("MainWindow", "Trigger Input", nullptr));
         label_TrigOut1->setText(QApplication::translate("MainWindow", "      Trigger Out 1", nullptr));
         triggerOut2_checkBox->setText(QApplication::translate("MainWindow", "Trigger Out 2", nullptr));
-        label_DarkTime->setText(QApplication::translate("MainWindow", "Dark Time", nullptr));
         label_Exposure->setText(QApplication::translate("MainWindow", "Exposure", nullptr));
         label_14->setText(QApplication::translate("MainWindow", "Time", nullptr));
 #ifndef QT_NO_TOOLTIP
         exposure_lineEdit->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
         exposure_lineEdit->setText(QString());
+        label_17->setText(QApplication::translate("MainWindow", "Lift Time", nullptr));
+        label_Exposure_2->setText(QApplication::translate("MainWindow", "Before Z", nullptr));
         groupBox_2->setTitle(QApplication::translate("MainWindow", "Auto Homing", nullptr));
         AutoHoming->setText(QApplication::translate("MainWindow", "Auto Homing", nullptr));
         ManualHoming->setText(QApplication::translate("MainWindow", "Manual Homing", nullptr));
@@ -1749,8 +1750,6 @@ public:
         label_3->setText(QApplication::translate("MainWindow", "Machine Profile", nullptr));
         SaveMacProfile->setText(QApplication::translate("MainWindow", "Save Profile", nullptr));
         LoadMacProfile->setText(QApplication::translate("MainWindow", "Load Profile", nullptr));
-        CalGrayValue->setText(QApplication::translate("MainWindow", "Calculate Gray Values", nullptr));
-        TotalCount->setText(QString());
 #ifndef QT_NO_TOOLTIP
         connectButton->setToolTip(QString());
 #endif // QT_NO_TOOLTIP

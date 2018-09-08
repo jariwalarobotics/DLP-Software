@@ -8,6 +8,7 @@
 #include <QTextStream>
 #include <QCollator>
 #include <QVector>
+#include <QBitArray>
 #include <QTime>
 #include <QTimer>
 #include <QThread>
@@ -569,10 +570,10 @@ void MainWindow::on_startPatSequence_Button_clicked()
 
     if (ui->ManualHoming->isChecked())
     {
-        ZAxisMovement(cmd);
+        //ZAxisMovement(cmd);
         int homingDelay = ui->HomingDelay->text().toInt();
-        mStartTime = QDateTime::currentDateTime();
         AutoSendPatSeq->start(homingDelay + PrintingDelay);
+        mStartTime = QDateTime::currentDateTime();
     } else {
         if (cmd.contains("G28"))
         {
@@ -591,6 +592,7 @@ void MainWindow::on_startPatSequence_Button_clicked()
     ui->stopPatSequence_Button->setEnabled(true);
     ui->pausePatSequence_Button->setEnabled(true);
     ui->startPatSequence_Button->setEnabled(false);
+    ui->UpdateTotalTime->setEnabled(false);
 }
 
 /**
@@ -608,6 +610,7 @@ void MainWindow::on_pausePatSequence_Button_clicked()
         mResumeSessionTime = mSessionTime;
         if (LCR_PatternDisplay(0x1) < 0)
             showError("Unable to pause pattern display");
+        ui->UpdateTotalTime->setEnabled(true);
     }
     else
     {
@@ -615,6 +618,7 @@ void MainWindow::on_pausePatSequence_Button_clicked()
         ui->pausePatSequence_Button->setIcon(icon);
         mStartTime = QDateTime::currentDateTime();
         AutoSendPatSeq->start(2000);
+        ui->UpdateTotalTime->setEnabled(false);
     }
 }
 
@@ -627,6 +631,9 @@ void MainWindow::on_stopPatSequence_Button_clicked()
     ui->startPatSequence_Button->setEnabled(true);
     ui->pausePatSequence_Button->setEnabled(false);
     ui->stopPatSequence_Button->setEnabled(false);
+    ui->UpdateTotalTime->setEnabled(true);
+    QIcon icon(":/new/prefix1/Icons/my_pause.png");
+    ui->pausePatSequence_Button->setIcon(icon);
     waveWindow->ClearElements();
     waveWindow->updatePatternList(m_elements);
     on_patternSelect(0,m_elements);
@@ -638,7 +645,15 @@ void MainWindow::on_stopPatSequence_Button_clicked()
 
     PatCount = 0;
 
-    QThread::msleep(delay - DarkTime);
+    if (AutoSendPatSeq->isActive())
+    {
+        QThread::msleep(delay - DarkTime);
+        AutoSendPatSeq->stop();
+    } else {
+        QThread::msleep(0);
+        AutoSendPatSeq->stop();
+    }
+
     if (LCR_PatternDisplay(0x0) < 0)
         showError("Unable to stop pattern display");
 }
@@ -681,7 +696,6 @@ void MainWindow::on_patternSelect(int index, QList<PatternElement> patElem)
     ui->triggerOut2_checkBox->setChecked(m_elements[index].trigOut2);
     ui->exposure_lineEdit->setText(QString::number(m_elements[index].exposure));
     ui->darkPeriod_lineEdit->setText(QString::number(m_elements[index].darkPeriod));
-    ui->UpdateTotalTime->setEnabled(true);
     ui->removePatternsButton->setEnabled(true);
 
     return;
@@ -745,11 +759,11 @@ void MainWindow::on_exposure_lineEdit_editingFinished()
         //if (!m_elements[i].selected)
            // continue;
         int exposure = ui->exposure_lineEdit->text().toInt();
-        int minExp = GetMinExposure(m_elements[i].bits);
-        if (exposure < minExp)
+        //int minExp = GetMinExposure(m_elements[i].bits);
+        if (exposure < 500)
         {
             char errMsg[255];
-            sprintf(errMsg, "Exposure value should be greater than %d us\n", minExp);
+            sprintf(errMsg, "Exposure value should be greater than %d ms\n", 500);
             showStatus(errMsg);
             return;
         }
@@ -776,11 +790,11 @@ void MainWindow::on_darkPeriod_lineEdit_editingFinished()
             //continue;
         int darkPeriod = ui->darkPeriod_lineEdit->text().toInt();
 
-        int minDarktime = GetMinDarktime(m_elements[i].bits);
+        int minDarktime = 0;
         if ((darkPeriod) && (darkPeriod < minDarktime))
         {
             char errMsg[255];
-            sprintf(errMsg, "Error: Dark time should be greater than %d us\n", minDarktime);
+            sprintf(errMsg, "Error: Dark time should be greater than %d ms\n", minDarktime);
             showStatus(errMsg);
             return;
         }
@@ -868,6 +882,7 @@ void MainWindow::SendPatSequence()
         ui->startPatSequence_Button->setEnabled(true);
         ui->pausePatSequence_Button->setEnabled(false);
         ui->stopPatSequence_Button->setEnabled(false);
+        ui->UpdateTotalTime->setEnabled(true);
         waveWindow->ClearElements();
         waveWindow->updatePatternList(m_elements);
         on_patternSelect(0,m_elements);
@@ -975,17 +990,38 @@ void MainWindow::on_UpdateTotalTime_clicked()
 {
     if (m_elements.size() <= 0)
     {
-        showStatus("Error:No pattern sequence to Count");
+        showStatus("Error: No pattern sequence to Count");
         return;
     }
 
+    bool changed = false;
+
+    for (int i = 0; i < m_elements.size(); i++)
+    {
+        int exposure = ui->exposure_lineEdit->text().toInt();
+        int darkPeriod = ui->darkPeriod_lineEdit->text().toInt();
+
+        m_elements[i].exposure = exposure;
+        m_elements[i].darkPeriod = darkPeriod;
+        changed = true;
+    }
+    if (changed)
+    {
+        waveWindow->updatePatternList(m_elements);
+        waveWindow->draw();
+    }
+
+    ZLiftDelay = ui->ZLiftdelay->text().toInt();
+    PrintingDelay = ui->PrintingDelay->text().toInt();
+
     ExposureTime = ui->exposure_lineEdit->text().toInt();
-    int TotalExposureTime = ExposureTime * m_elements.size();
     DarkTime = ui->darkPeriod_lineEdit->text().toInt();
+
+    delay = (ExposureTime + DarkTime) + 500;
+
+    int TotalExposureTime = ExposureTime * m_elements.size();
     int TotalDarkTime = DarkTime * m_elements.size();
 
-    PrintingDelay = ui->PrintingDelay->text().toInt();
-    ZLiftDelay = ui->ZLiftdelay->text().toInt();
     int TotalDelay = ZLiftDelay * (m_elements.size() + 1);
 
     int Totaltime = (PrintingDelay + TotalExposureTime + TotalDarkTime + TotalDelay);
@@ -998,56 +1034,120 @@ void MainWindow::on_UpdateTotalTime_clicked()
                             .arg(m, 2, 10, QChar('0'))
                             .arg(s, 2, 10, QChar('0'));
     ui->TotalTime->setText(diff);
-
 }
 
+/*
 void MainWindow::on_CalGrayValue_clicked()
 {
     if (m_elements.size() <= 0)
     {
-        showStatus("Error:No pattern sequence to Count");
+        showStatus("Error: No pattern sequence to Count");
         return;
     }
 
-    QImage image;
-    //QVector <QVector<int> > TotalimageGrayValues;
-    //QVector<QVector<unsigned int>> TotalimageGrayValues;
-    QStringList Countlist;
+    const QPixmap pixmap(m_elements[0].name);
 
-    int Images = m_elements.size();
-    int columns = 1920;
-    int rows = 1080;
-    int default_val = 0;
-    QVector < QVector < QVector< int > > > ImageGrayValues(Images,
-                                              QVector < QVector <int > > (columns,
-                                                                         QVector < int > (rows, default_val)));
-    for (int i = 0; i < m_elements.size(); i++)
-    {
-        image.load(m_elements[i].name);
-        int GrayCount = 0;
-        //QList<qint8> ImageGrayValues;
-        //QVector<int> ImageGrayValues;
-        for (int j=0; j<image.width(); j++)
-        {
-           for (int k=0; k<image.height(); k++)
-           {
-               int Intensity = qGray(image.pixel(j,k));
-               if (Intensity != 0)
-               {
-                   GrayCount = GrayCount + 1;
-               }
-               ImageGrayValues[i][j][k] = Intensity;    
-               //ImageGrayValues.push_back(Intensity);
-           }
+    const QImage image = pixmap.toImage();
+    const int width = image.width();
+    const int height = image.height();
+    //QBitArray bitArray(width*height);
+    QVector<QVector<int>> matrix(height, QVector<int>(width, 0));
+    int GrayCount = 0;
+
+    for (int h=0; h<height; h++) {
+        for (int w=0; w<width; w++) {
+            //bitArray[h*width+w] = qGray(image.pixel(w,h));// > 254 ? 0 : 1;
+            matrix[h][w] = qGray(image.pixel(w,h)) > 254 ? 1 : 0;
+            if (matrix[h][w] == 1)
+                GrayCount++;
         }
-        //QString temp = QString::number(GrayCount);
-        Countlist.append(QString::number(i)+ " - " + QString::number(GrayCount));
-        //TotalimageGrayValues.push_back(ImageGrayValues);
     }
 
-    int count = ImageGrayValues.size();
-    QString str = QString::number(count);
-    ui->TotalCount->setText(str);
-}
+    if (GrayCount > 19794)
+    {
+        QImage monoImage(width, height, QImage::Format_Mono);
+
+        for (int i = 0; i < height; i++)
+        {
+            for (int j = 0; j < width; j++)
+            {
+                int tempheight = i;
+                int tempwidth = j;
+                int pixel = matrix[i][j];
+                if (pixel == 1)
+                {
+                    while (matrix[i][tempwidth] == 1)
+                    {
+                        //tempheight++;
+                        tempwidth++;
+                    }
+                    while (matrix[tempheight][j] == 1)
+                    {
+                        tempheight++;
+                    }
+                }
+            }
+        }
+
+*/
+
+
+      /*  for (int i = 0; i < height; i++)
+        {
+            for (int j = 0; j < width; j++ )
+            {
+                int tempheight = i + 160;
+                if (tempheight > height)
+                    tempheight = height;
+                int tempwidth = j + 160;
+                if (tempwidth > width)
+                    tempwidth = width;
+                int tempGrayCount = 0;
+                for (int h = i; h < tempheight; h++) {
+                    for (int w = j; w < tempwidth; w++) {
+                        int pixel = matrix[h][w];
+                        if ( pixel == 1)
+                        {
+                            tempGrayCount = tempGrayCount + 1;
+                        }
+                        if (tempGrayCount >= 20000) {
+                            for (int x = i; x < tempheight; x++) {
+                                for (int y = j; y < tempwidth; y++) {
+                                 monoImage.setPixel(y, x, 0);
+                                }
+                            }
+                        } else {
+                            monoImage.setPixel(w, h, pixel);
+                        }
+                    }
+                }
+                j = j + 159;
+            }
+            i = i + 159;
+        } */
+
+     /*   for (int h=0; h<height; h++) {
+            for (int w=0; w<width; w++) {
+                int pixel = matrix[h][w];
+                if ( pixel == 1)
+                {
+                    if ( h == 0 && w == 0)
+                    {
+
+
+                    } else {
+
+                    }
+
+                }
+
+                monoImage.setPixel(w, h, matrix[h][w]);
+            }
+        }  */
+
+    //    QString str3 = m_ptnImagePath + "/1_5" + ".bmp";
+    //    monoImage.save(str3);
+   // }
+//}
 
 

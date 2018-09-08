@@ -279,16 +279,16 @@ void MainWindow::on_connectButton_clicked()
 
         if (USB_Open() != 0 || ui->SerialPort->count() == 0)
         {
-            showStatus("Error:USB not Connected!!");
+            showStatus("Error: USB not Connected!!");
             return;
         }
         emit on_ConnectLED_clicked();
-        if (LEDConnected1 == false)
+        emit on_ConnectBoard_clicked();
+        if (LEDConnected1 == false || BoardConnected == false)
         {
-            showStatus("Error:USB not Connected!!");
+            showStatus("Error: Access Driver is Denied!!");
             return;
         }
-        emit on_ConnectBoard_clicked();
 
         USB_Connected = true;
         LCR_SetMode(SLmode);
@@ -445,15 +445,15 @@ void MainWindow::timerEvent(QTimerEvent *)
 {
     if (AutoSendPatSeq->isActive())
     {
-        mSessionTime = mStartTime.msecsTo(QDateTime::currentDateTime());
-        qint64 time =  mSessionTime + mResumeSessionTime;;
-        unsigned int h = time / 1000 / 60 / 60;
-        unsigned int m = (time / 1000 / 60) - (h * 60);
-        unsigned int s = (time / 1000) - ((m + (h * 60))* 60); //<<<<<<<<<<<<<<<<<<<<<<
-        const QString diff = QString("%1:%2:%3")
-                                .arg(h, 2, 10, QChar('0'))
-                                .arg(m, 2, 10, QChar('0'))
-                                .arg(s, 2, 10, QChar('0'));
-        ui->StartTime->setText(diff);
+            mSessionTime = mStartTime.msecsTo(QDateTime::currentDateTime());
+            qint64 time =  mSessionTime + mResumeSessionTime;;
+            unsigned int h = time / 1000 / 60 / 60;
+            unsigned int m = (time / 1000 / 60) - (h * 60);
+            unsigned int s = (time / 1000) - ((m + (h * 60))* 60); //<<<<<<<<<<<<<<<<<<<<<<
+            const QString diff = QString("%1:%2:%3")
+                                    .arg(h, 2, 10, QChar('0'))
+                                    .arg(m, 2, 10, QChar('0'))
+                                    .arg(s, 2, 10, QChar('0'));
+            ui->StartTime->setText(diff);
     }
 }
