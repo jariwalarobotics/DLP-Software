@@ -91,7 +91,9 @@ public:
     QWidget *LEDDriverPage;
     QGridLayout *gridLayout_9;
     QFrame *frame_LedDriver;
+    QHBoxLayout *horizontalLayout;
     QGroupBox *groupBox_LEDDriver;
+    QHBoxLayout *horizontalLayout_2;
     QGroupBox *groupBox_LEDDriverStatus;
     QTextEdit *USBDevicePath_TextEdit;
     QLabel *USBDevicePath;
@@ -158,6 +160,7 @@ public:
     QLabel *label_LEDDriverStatus;
     QLabel *label_11;
     QWidget *ZMachineControl;
+    QGridLayout *gridLayout_2;
     QFrame *frame_ZMavhineControl;
     QGridLayout *gridLayout_12;
     QGroupBox *groupBox_ZMachineControl;
@@ -228,7 +231,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(1388, 764);
+        MainWindow->resize(1383, 773);
         QIcon icon;
         icon.addFile(QStringLiteral(":/new/prefix1/Icons/logo.png"), QSize(), QIcon::Normal, QIcon::Off);
         MainWindow->setWindowIcon(icon);
@@ -653,9 +656,12 @@ public:
 "border:1px solid black}"));
         frame_LedDriver->setFrameShape(QFrame::StyledPanel);
         frame_LedDriver->setFrameShadow(QFrame::Raised);
+        horizontalLayout = new QHBoxLayout(frame_LedDriver);
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         groupBox_LEDDriver = new QGroupBox(frame_LedDriver);
         groupBox_LEDDriver->setObjectName(QStringLiteral("groupBox_LEDDriver"));
-        groupBox_LEDDriver->setGeometry(QRect(9, 9, 1081, 621));
         sizePolicy4.setHeightForWidth(groupBox_LEDDriver->sizePolicy().hasHeightForWidth());
         groupBox_LEDDriver->setSizePolicy(sizePolicy4);
         groupBox_LEDDriver->setFont(font5);
@@ -664,9 +670,12 @@ public:
 "border-color: rgb(0,150,150);\n"
 "color:rgb(0,120,120);\n"
 ";}"));
+        horizontalLayout_2 = new QHBoxLayout(groupBox_LEDDriver);
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         groupBox_LEDDriverStatus = new QGroupBox(groupBox_LEDDriver);
         groupBox_LEDDriverStatus->setObjectName(QStringLiteral("groupBox_LEDDriverStatus"));
-        groupBox_LEDDriverStatus->setGeometry(QRect(9, 19, 1061, 581));
         QFont font6;
         font6.setPointSize(9);
         groupBox_LEDDriverStatus->setFont(font6);
@@ -1094,14 +1103,24 @@ public:
         label_11->setFont(font2);
         label_11->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
 
+        horizontalLayout_2->addWidget(groupBox_LEDDriverStatus);
+
+
+        horizontalLayout->addWidget(groupBox_LEDDriver);
+
+
         gridLayout_9->addWidget(frame_LedDriver, 0, 0, 1, 1);
 
         stackedWidget->addWidget(LEDDriverPage);
         ZMachineControl = new QWidget();
         ZMachineControl->setObjectName(QStringLiteral("ZMachineControl"));
+        gridLayout_2 = new QGridLayout(ZMachineControl);
+        gridLayout_2->setSpacing(6);
+        gridLayout_2->setContentsMargins(11, 11, 11, 11);
+        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
+        gridLayout_2->setContentsMargins(0, 0, 0, 0);
         frame_ZMavhineControl = new QFrame(ZMachineControl);
         frame_ZMavhineControl->setObjectName(QStringLiteral("frame_ZMavhineControl"));
-        frame_ZMavhineControl->setGeometry(QRect(0, 0, 1098, 641));
         sizePolicy4.setHeightForWidth(frame_ZMavhineControl->sizePolicy().hasHeightForWidth());
         frame_ZMavhineControl->setSizePolicy(sizePolicy4);
         frame_ZMavhineControl->setMinimumSize(QSize(0, 0));
@@ -1371,6 +1390,9 @@ public:
         ProfileName->setStyleSheet(QStringLiteral("border-color: rgb(0,150,150);"));
 
         gridLayout_12->addWidget(groupBox_ZMachineControl, 0, 1, 1, 1);
+
+
+        gridLayout_2->addWidget(frame_ZMavhineControl, 0, 0, 1, 1);
 
         stackedWidget->addWidget(ZMachineControl);
 
