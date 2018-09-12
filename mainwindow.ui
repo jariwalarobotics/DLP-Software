@@ -128,56 +128,47 @@ color:rgb(0,120,120);
               <property name="leftMargin">
                <number>5</number>
               </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
               <property name="rightMargin">
                <number>5</number>
               </property>
               <property name="bottomMargin">
-               <number>9</number>
+               <number>0</number>
               </property>
               <item row="1" column="0">
-               <layout class="QHBoxLayout" name="horizontalLayout_3">
-                <property name="bottomMargin">
-                 <number>0</number>
+               <spacer name="verticalSpacer_3">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
                 </property>
-                <item>
-                 <widget class="QPushButton" name="loadButton_patternSettings">
-                  <property name="minimumSize">
-                   <size>
-                    <width>70</width>
-                    <height>35</height>
-                   </size>
-                  </property>
-                  <property name="toolTip">
-                   <string>Load settings from a file</string>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton{
-	color:rgb(0,150,150);
-}</string>
-                  </property>
-                  <property name="text">
-                   <string>Load</string>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="hires.qrc">
-                    <normaloff>:/new/prefix1/Icons/load.png</normaloff>:/new/prefix1/Icons/load.png</iconset>
-                  </property>
-                 </widget>
-                </item>
-                <item>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Fixed</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>5</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="0" column="0">
+               <layout class="QGridLayout" name="gridLayout_40">
+                <item row="2" column="1">
                  <widget class="QPushButton" name="saveButton_patternSettings">
                   <property name="enabled">
                    <bool>true</bool>
                   </property>
                   <property name="sizePolicy">
-                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
                   </property>
                   <property name="minimumSize">
                    <size>
-                    <width>70</width>
+                    <width>90</width>
                     <height>35</height>
                    </size>
                   </property>
@@ -198,31 +189,8 @@ color:rgb(0,120,120);
                   </property>
                  </widget>
                 </item>
-               </layout>
-              </item>
-              <item row="0" column="0">
-               <spacer name="verticalSpacer_3">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="sizeType">
-                 <enum>QSizePolicy::Fixed</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>5</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item row="2" column="0">
-               <layout class="QHBoxLayout" name="horizontalLayout_5">
-                <item>
-                 <widget class="QPushButton" name="removePatternsButton">
-                  <property name="enabled">
-                   <bool>false</bool>
-                  </property>
+                <item row="2" column="0">
+                 <widget class="QPushButton" name="loadButton_patternSettings">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -231,76 +199,130 @@ color:rgb(0,120,120);
                   </property>
                   <property name="minimumSize">
                    <size>
-                    <width>40</width>
+                    <width>90</width>
                     <height>35</height>
                    </size>
                   </property>
                   <property name="toolTip">
-                   <string>Delete Pattern</string>
+                   <string>Load settings from a file</string>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+	color:rgb(0,150,150);
+}</string>
                   </property>
                   <property name="text">
-                   <string/>
+                   <string>Load</string>
                   </property>
                   <property name="icon">
                    <iconset resource="hires.qrc">
-                    <normaloff>:/new/prefix1/Icons/delete.png</normaloff>:/new/prefix1/Icons/delete.png</iconset>
+                    <normaloff>:/new/prefix1/Icons/load.png</normaloff>:/new/prefix1/Icons/load.png</iconset>
                   </property>
                  </widget>
                 </item>
-                <item>
-                 <widget class="QPushButton" name="selectAllButton">
-                  <property name="enabled">
-                   <bool>false</bool>
+                <item row="0" column="0" colspan="2">
+                 <spacer name="verticalSpacer_26">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
                   </property>
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
+                  <property name="sizeType">
+                   <enum>QSizePolicy::Fixed</enum>
                   </property>
-                  <property name="minimumSize">
+                  <property name="sizeHint" stdset="0">
                    <size>
-                    <width>40</width>
-                    <height>35</height>
+                    <width>20</width>
+                    <height>10</height>
                    </size>
                   </property>
-                  <property name="toolTip">
-                   <string>Select All Patterns</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="hires.qrc">
-                    <normaloff>:/new/prefix1/Icons/select.png</normaloff>:/new/prefix1/Icons/select.png</iconset>
-                  </property>
-                 </widget>
+                 </spacer>
                 </item>
-                <item>
-                 <widget class="QPushButton" name="addPatternsButton">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>40</width>
-                    <height>35</height>
-                   </size>
-                  </property>
-                  <property name="toolTip">
-                   <string>Add Pattern</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="hires.qrc">
-                    <normaloff>:/new/prefix1/Icons/add.png</normaloff>:/new/prefix1/Icons/add.png</iconset>
-                  </property>
-                 </widget>
+                <item row="1" column="0" colspan="2">
+                 <layout class="QHBoxLayout" name="horizontalLayout_5">
+                  <item>
+                   <widget class="QPushButton" name="addPatternsButton">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>40</width>
+                      <height>35</height>
+                     </size>
+                    </property>
+                    <property name="toolTip">
+                     <string>Add Pattern</string>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="hires.qrc">
+                      <normaloff>:/new/prefix1/Icons/add.png</normaloff>:/new/prefix1/Icons/add.png</iconset>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="removePatternsButton">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>40</width>
+                      <height>35</height>
+                     </size>
+                    </property>
+                    <property name="toolTip">
+                     <string>Delete Pattern</string>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="hires.qrc">
+                      <normaloff>:/new/prefix1/Icons/delete.png</normaloff>:/new/prefix1/Icons/delete.png</iconset>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="selectAllButton">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>40</width>
+                      <height>35</height>
+                     </size>
+                    </property>
+                    <property name="toolTip">
+                     <string>Select All Patterns</string>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="hires.qrc">
+                      <normaloff>:/new/prefix1/Icons/select.png</normaloff>:/new/prefix1/Icons/select.png</iconset>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
                 </item>
                </layout>
               </item>
@@ -729,10 +751,16 @@ color:rgb(0,120,120);
                    <bool>false</bool>
                   </property>
                   <property name="sizePolicy">
-                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>31</height>
+                   </size>
                   </property>
                   <property name="font">
                    <font>

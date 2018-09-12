@@ -47,14 +47,15 @@ public:
     QVBoxLayout *verticalLayout_2;
     QGroupBox *groupBox;
     QGridLayout *gridLayout_5;
-    QHBoxLayout *horizontalLayout_3;
-    QPushButton *loadButton_patternSettings;
-    QPushButton *saveButton_patternSettings;
     QSpacerItem *verticalSpacer_3;
+    QGridLayout *gridLayout_40;
+    QPushButton *saveButton_patternSettings;
+    QPushButton *loadButton_patternSettings;
+    QSpacerItem *verticalSpacer_26;
     QHBoxLayout *horizontalLayout_5;
+    QPushButton *addPatternsButton;
     QPushButton *removePatternsButton;
     QPushButton *selectAllButton;
-    QPushButton *addPatternsButton;
     QGroupBox *LiftSeqTime;
     QGridLayout *gridLayout_4;
     QGridLayout *gridLayout_7;
@@ -307,91 +308,93 @@ public:
         gridLayout_5->setSpacing(6);
         gridLayout_5->setContentsMargins(11, 11, 11, 11);
         gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
-        gridLayout_5->setContentsMargins(5, -1, 5, 9);
-        horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setSpacing(6);
-        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-        horizontalLayout_3->setContentsMargins(-1, -1, -1, 0);
-        loadButton_patternSettings = new QPushButton(groupBox);
-        loadButton_patternSettings->setObjectName(QStringLiteral("loadButton_patternSettings"));
-        loadButton_patternSettings->setMinimumSize(QSize(70, 35));
-        loadButton_patternSettings->setStyleSheet(QLatin1String("QPushButton{\n"
-"	color:rgb(0,150,150);\n"
-"}"));
-        QIcon icon1;
-        icon1.addFile(QStringLiteral(":/new/prefix1/Icons/load.png"), QSize(), QIcon::Normal, QIcon::Off);
-        loadButton_patternSettings->setIcon(icon1);
+        gridLayout_5->setContentsMargins(5, 0, 5, 0);
+        verticalSpacer_3 = new QSpacerItem(20, 5, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
-        horizontalLayout_3->addWidget(loadButton_patternSettings);
+        gridLayout_5->addItem(verticalSpacer_3, 1, 0, 1, 1);
 
+        gridLayout_40 = new QGridLayout();
+        gridLayout_40->setSpacing(6);
+        gridLayout_40->setObjectName(QStringLiteral("gridLayout_40"));
         saveButton_patternSettings = new QPushButton(groupBox);
         saveButton_patternSettings->setObjectName(QStringLiteral("saveButton_patternSettings"));
         saveButton_patternSettings->setEnabled(true);
-        QSizePolicy sizePolicy2(QSizePolicy::Minimum, QSizePolicy::Fixed);
+        QSizePolicy sizePolicy2(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy2.setHorizontalStretch(0);
         sizePolicy2.setVerticalStretch(0);
         sizePolicy2.setHeightForWidth(saveButton_patternSettings->sizePolicy().hasHeightForWidth());
         saveButton_patternSettings->setSizePolicy(sizePolicy2);
-        saveButton_patternSettings->setMinimumSize(QSize(70, 35));
+        saveButton_patternSettings->setMinimumSize(QSize(90, 35));
         saveButton_patternSettings->setStyleSheet(QLatin1String("QPushButton{\n"
 "	color:rgb(0,150,150);\n"
 "}"));
+        QIcon icon1;
+        icon1.addFile(QStringLiteral(":/new/prefix1/Icons/save.png"), QSize(), QIcon::Normal, QIcon::Off);
+        saveButton_patternSettings->setIcon(icon1);
+
+        gridLayout_40->addWidget(saveButton_patternSettings, 2, 1, 1, 1);
+
+        loadButton_patternSettings = new QPushButton(groupBox);
+        loadButton_patternSettings->setObjectName(QStringLiteral("loadButton_patternSettings"));
+        sizePolicy2.setHeightForWidth(loadButton_patternSettings->sizePolicy().hasHeightForWidth());
+        loadButton_patternSettings->setSizePolicy(sizePolicy2);
+        loadButton_patternSettings->setMinimumSize(QSize(90, 35));
+        loadButton_patternSettings->setStyleSheet(QLatin1String("QPushButton{\n"
+"	color:rgb(0,150,150);\n"
+"}"));
         QIcon icon2;
-        icon2.addFile(QStringLiteral(":/new/prefix1/Icons/save.png"), QSize(), QIcon::Normal, QIcon::Off);
-        saveButton_patternSettings->setIcon(icon2);
+        icon2.addFile(QStringLiteral(":/new/prefix1/Icons/load.png"), QSize(), QIcon::Normal, QIcon::Off);
+        loadButton_patternSettings->setIcon(icon2);
 
-        horizontalLayout_3->addWidget(saveButton_patternSettings);
+        gridLayout_40->addWidget(loadButton_patternSettings, 2, 0, 1, 1);
 
+        verticalSpacer_26 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
-        gridLayout_5->addLayout(horizontalLayout_3, 1, 0, 1, 1);
-
-        verticalSpacer_3 = new QSpacerItem(20, 5, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        gridLayout_5->addItem(verticalSpacer_3, 0, 0, 1, 1);
+        gridLayout_40->addItem(verticalSpacer_26, 0, 0, 1, 2);
 
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setSpacing(6);
         horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
+        addPatternsButton = new QPushButton(groupBox);
+        addPatternsButton->setObjectName(QStringLiteral("addPatternsButton"));
+        sizePolicy2.setHeightForWidth(addPatternsButton->sizePolicy().hasHeightForWidth());
+        addPatternsButton->setSizePolicy(sizePolicy2);
+        addPatternsButton->setMinimumSize(QSize(40, 35));
+        QIcon icon3;
+        icon3.addFile(QStringLiteral(":/new/prefix1/Icons/add.png"), QSize(), QIcon::Normal, QIcon::Off);
+        addPatternsButton->setIcon(icon3);
+
+        horizontalLayout_5->addWidget(addPatternsButton);
+
         removePatternsButton = new QPushButton(groupBox);
         removePatternsButton->setObjectName(QStringLiteral("removePatternsButton"));
         removePatternsButton->setEnabled(false);
-        QSizePolicy sizePolicy3(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(removePatternsButton->sizePolicy().hasHeightForWidth());
-        removePatternsButton->setSizePolicy(sizePolicy3);
+        sizePolicy2.setHeightForWidth(removePatternsButton->sizePolicy().hasHeightForWidth());
+        removePatternsButton->setSizePolicy(sizePolicy2);
         removePatternsButton->setMinimumSize(QSize(40, 35));
-        QIcon icon3;
-        icon3.addFile(QStringLiteral(":/new/prefix1/Icons/delete.png"), QSize(), QIcon::Normal, QIcon::Off);
-        removePatternsButton->setIcon(icon3);
+        QIcon icon4;
+        icon4.addFile(QStringLiteral(":/new/prefix1/Icons/delete.png"), QSize(), QIcon::Normal, QIcon::Off);
+        removePatternsButton->setIcon(icon4);
 
         horizontalLayout_5->addWidget(removePatternsButton);
 
         selectAllButton = new QPushButton(groupBox);
         selectAllButton->setObjectName(QStringLiteral("selectAllButton"));
         selectAllButton->setEnabled(false);
-        sizePolicy3.setHeightForWidth(selectAllButton->sizePolicy().hasHeightForWidth());
-        selectAllButton->setSizePolicy(sizePolicy3);
+        sizePolicy2.setHeightForWidth(selectAllButton->sizePolicy().hasHeightForWidth());
+        selectAllButton->setSizePolicy(sizePolicy2);
         selectAllButton->setMinimumSize(QSize(40, 35));
-        QIcon icon4;
-        icon4.addFile(QStringLiteral(":/new/prefix1/Icons/select.png"), QSize(), QIcon::Normal, QIcon::Off);
-        selectAllButton->setIcon(icon4);
+        QIcon icon5;
+        icon5.addFile(QStringLiteral(":/new/prefix1/Icons/select.png"), QSize(), QIcon::Normal, QIcon::Off);
+        selectAllButton->setIcon(icon5);
 
         horizontalLayout_5->addWidget(selectAllButton);
 
-        addPatternsButton = new QPushButton(groupBox);
-        addPatternsButton->setObjectName(QStringLiteral("addPatternsButton"));
-        sizePolicy3.setHeightForWidth(addPatternsButton->sizePolicy().hasHeightForWidth());
-        addPatternsButton->setSizePolicy(sizePolicy3);
-        addPatternsButton->setMinimumSize(QSize(40, 35));
-        QIcon icon5;
-        icon5.addFile(QStringLiteral(":/new/prefix1/Icons/add.png"), QSize(), QIcon::Normal, QIcon::Off);
-        addPatternsButton->setIcon(icon5);
 
-        horizontalLayout_5->addWidget(addPatternsButton);
+        gridLayout_40->addLayout(horizontalLayout_5, 1, 0, 1, 2);
 
 
-        gridLayout_5->addLayout(horizontalLayout_5, 2, 0, 1, 1);
+        gridLayout_5->addLayout(gridLayout_40, 0, 0, 1, 1);
 
 
         verticalLayout_2->addWidget(groupBox);
@@ -503,8 +506,8 @@ public:
 
         darkPeriod_lineEdit = new QLineEdit(LiftSeqTime);
         darkPeriod_lineEdit->setObjectName(QStringLiteral("darkPeriod_lineEdit"));
-        sizePolicy3.setHeightForWidth(darkPeriod_lineEdit->sizePolicy().hasHeightForWidth());
-        darkPeriod_lineEdit->setSizePolicy(sizePolicy3);
+        sizePolicy2.setHeightForWidth(darkPeriod_lineEdit->sizePolicy().hasHeightForWidth());
+        darkPeriod_lineEdit->setSizePolicy(sizePolicy2);
         darkPeriod_lineEdit->setMinimumSize(QSize(0, 35));
         QFont font4;
         font4.setFamily(QStringLiteral("Arial"));
@@ -527,8 +530,8 @@ public:
 
         exposure_lineEdit = new QLineEdit(LiftSeqTime);
         exposure_lineEdit->setObjectName(QStringLiteral("exposure_lineEdit"));
-        sizePolicy3.setHeightForWidth(exposure_lineEdit->sizePolicy().hasHeightForWidth());
-        exposure_lineEdit->setSizePolicy(sizePolicy3);
+        sizePolicy2.setHeightForWidth(exposure_lineEdit->sizePolicy().hasHeightForWidth());
+        exposure_lineEdit->setSizePolicy(sizePolicy2);
         exposure_lineEdit->setMinimumSize(QSize(0, 35));
         exposure_lineEdit->setFont(font4);
 
@@ -553,8 +556,8 @@ public:
 
         ZLiftdelay = new QLineEdit(LiftSeqTime);
         ZLiftdelay->setObjectName(QStringLiteral("ZLiftdelay"));
-        sizePolicy3.setHeightForWidth(ZLiftdelay->sizePolicy().hasHeightForWidth());
-        ZLiftdelay->setSizePolicy(sizePolicy3);
+        sizePolicy2.setHeightForWidth(ZLiftdelay->sizePolicy().hasHeightForWidth());
+        ZLiftdelay->setSizePolicy(sizePolicy2);
         ZLiftdelay->setMinimumSize(QSize(0, 35));
         ZLiftdelay->setFont(font4);
 
@@ -573,8 +576,8 @@ public:
 
         PrintingDelay = new QLineEdit(LiftSeqTime);
         PrintingDelay->setObjectName(QStringLiteral("PrintingDelay"));
-        sizePolicy3.setHeightForWidth(PrintingDelay->sizePolicy().hasHeightForWidth());
-        PrintingDelay->setSizePolicy(sizePolicy3);
+        sizePolicy2.setHeightForWidth(PrintingDelay->sizePolicy().hasHeightForWidth());
+        PrintingDelay->setSizePolicy(sizePolicy2);
         PrintingDelay->setMinimumSize(QSize(0, 35));
         PrintingDelay->setFont(font4);
 
@@ -616,8 +619,12 @@ public:
         HomingDelay = new QLineEdit(groupBox_2);
         HomingDelay->setObjectName(QStringLiteral("HomingDelay"));
         HomingDelay->setEnabled(false);
-        sizePolicy1.setHeightForWidth(HomingDelay->sizePolicy().hasHeightForWidth());
-        HomingDelay->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(HomingDelay->sizePolicy().hasHeightForWidth());
+        HomingDelay->setSizePolicy(sizePolicy3);
+        HomingDelay->setMinimumSize(QSize(0, 31));
         HomingDelay->setFont(font4);
 
         gridLayout_16->addWidget(HomingDelay, 4, 0, 1, 1);
@@ -1095,8 +1102,8 @@ public:
         LEDSerial_text->setObjectName(QStringLiteral("LEDSerial_text"));
         LEDSerial_text->setEnabled(false);
         LEDSerial_text->setGeometry(QRect(770, 185, 200, 25));
-        sizePolicy3.setHeightForWidth(LEDSerial_text->sizePolicy().hasHeightForWidth());
-        LEDSerial_text->setSizePolicy(sizePolicy3);
+        sizePolicy2.setHeightForWidth(LEDSerial_text->sizePolicy().hasHeightForWidth());
+        LEDSerial_text->setSizePolicy(sizePolicy2);
         LEDSerial_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
 "background-color: transparent;\n"
 "border-color: rgb(0,150,150);\n"
@@ -1114,8 +1121,8 @@ public:
         LESerial_text->setObjectName(QStringLiteral("LESerial_text"));
         LESerial_text->setEnabled(false);
         LESerial_text->setGeometry(QRect(770, 220, 200, 25));
-        sizePolicy3.setHeightForWidth(LESerial_text->sizePolicy().hasHeightForWidth());
-        LESerial_text->setSizePolicy(sizePolicy3);
+        sizePolicy2.setHeightForWidth(LESerial_text->sizePolicy().hasHeightForWidth());
+        LESerial_text->setSizePolicy(sizePolicy2);
         LESerial_text->setFont(font);
         LESerial_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
 "background-color: transparent;\n"
@@ -1276,8 +1283,8 @@ public:
         PrinterBoard = new QGroupBox(groupBox_ZMachineControl);
         PrinterBoard->setObjectName(QStringLiteral("PrinterBoard"));
         PrinterBoard->setGeometry(QRect(10, 320, 221, 291));
-        sizePolicy3.setHeightForWidth(PrinterBoard->sizePolicy().hasHeightForWidth());
-        PrinterBoard->setSizePolicy(sizePolicy3);
+        sizePolicy2.setHeightForWidth(PrinterBoard->sizePolicy().hasHeightForWidth());
+        PrinterBoard->setSizePolicy(sizePolicy2);
         PrinterBoard->setMinimumSize(QSize(0, 0));
         PrinterBoard->setFont(font9);
         PrinterBoard->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
@@ -1490,11 +1497,8 @@ public:
         SerialPort->setObjectName(QStringLiteral("SerialPort"));
         SerialPort->setEnabled(false);
         SerialPort->setGeometry(QRect(80, 26, 141, 30));
-        QSizePolicy sizePolicy7(QSizePolicy::Preferred, QSizePolicy::Fixed);
-        sizePolicy7.setHorizontalStretch(0);
-        sizePolicy7.setVerticalStretch(0);
-        sizePolicy7.setHeightForWidth(SerialPort->sizePolicy().hasHeightForWidth());
-        SerialPort->setSizePolicy(sizePolicy7);
+        sizePolicy3.setHeightForWidth(SerialPort->sizePolicy().hasHeightForWidth());
+        SerialPort->setSizePolicy(sizePolicy3);
         SerialPort->setMinimumSize(QSize(0, 30));
         SerialPort->setFont(font2);
         BoardStatus = new QLabel(groupBox_ZMachineControl);
@@ -1538,11 +1542,11 @@ public:
         horizontalLayout_24->setSizeConstraint(QLayout::SetNoConstraint);
         connectButton = new QPushButton(scrollAreaWidgetContents);
         connectButton->setObjectName(QStringLiteral("connectButton"));
-        QSizePolicy sizePolicy8(QSizePolicy::Maximum, QSizePolicy::Maximum);
-        sizePolicy8.setHorizontalStretch(0);
-        sizePolicy8.setVerticalStretch(0);
-        sizePolicy8.setHeightForWidth(connectButton->sizePolicy().hasHeightForWidth());
-        connectButton->setSizePolicy(sizePolicy8);
+        QSizePolicy sizePolicy7(QSizePolicy::Maximum, QSizePolicy::Maximum);
+        sizePolicy7.setHorizontalStretch(0);
+        sizePolicy7.setVerticalStretch(0);
+        sizePolicy7.setHeightForWidth(connectButton->sizePolicy().hasHeightForWidth());
+        connectButton->setSizePolicy(sizePolicy7);
         connectButton->setMinimumSize(QSize(10, 48));
         connectButton->setMaximumSize(QSize(16777215, 16777215));
         QFont font11;
@@ -1569,8 +1573,8 @@ public:
 
         startPatSequence_Button = new QPushButton(scrollAreaWidgetContents);
         startPatSequence_Button->setObjectName(QStringLiteral("startPatSequence_Button"));
-        sizePolicy8.setHeightForWidth(startPatSequence_Button->sizePolicy().hasHeightForWidth());
-        startPatSequence_Button->setSizePolicy(sizePolicy8);
+        sizePolicy7.setHeightForWidth(startPatSequence_Button->sizePolicy().hasHeightForWidth());
+        startPatSequence_Button->setSizePolicy(sizePolicy7);
         startPatSequence_Button->setMinimumSize(QSize(50, 60));
         startPatSequence_Button->setStyleSheet(QLatin1String("#startPatSequence_Button{\n"
 "background-color: transparent;\n"
@@ -1588,8 +1592,8 @@ public:
         pausePatSequence_Button = new QPushButton(scrollAreaWidgetContents);
         pausePatSequence_Button->setObjectName(QStringLiteral("pausePatSequence_Button"));
         pausePatSequence_Button->setEnabled(false);
-        sizePolicy8.setHeightForWidth(pausePatSequence_Button->sizePolicy().hasHeightForWidth());
-        pausePatSequence_Button->setSizePolicy(sizePolicy8);
+        sizePolicy7.setHeightForWidth(pausePatSequence_Button->sizePolicy().hasHeightForWidth());
+        pausePatSequence_Button->setSizePolicy(sizePolicy7);
         pausePatSequence_Button->setMinimumSize(QSize(50, 60));
         pausePatSequence_Button->setStyleSheet(QLatin1String("#pausePatSequence_Button{\n"
 "background-color: transparent;\n"
@@ -1609,8 +1613,8 @@ public:
         stopPatSequence_Button = new QPushButton(scrollAreaWidgetContents);
         stopPatSequence_Button->setObjectName(QStringLiteral("stopPatSequence_Button"));
         stopPatSequence_Button->setEnabled(false);
-        sizePolicy8.setHeightForWidth(stopPatSequence_Button->sizePolicy().hasHeightForWidth());
-        stopPatSequence_Button->setSizePolicy(sizePolicy8);
+        sizePolicy7.setHeightForWidth(stopPatSequence_Button->sizePolicy().hasHeightForWidth());
+        stopPatSequence_Button->setSizePolicy(sizePolicy7);
         stopPatSequence_Button->setMinimumSize(QSize(50, 60));
         stopPatSequence_Button->setStyleSheet(QLatin1String("#stopPatSequence_Button{\n"
 "background-color: transparent;\n"
@@ -1633,8 +1637,8 @@ public:
         pushButton_patternMode = new QPushButton(scrollAreaWidgetContents);
         pushButton_patternMode->setObjectName(QStringLiteral("pushButton_patternMode"));
         pushButton_patternMode->setEnabled(true);
-        sizePolicy8.setHeightForWidth(pushButton_patternMode->sizePolicy().hasHeightForWidth());
-        pushButton_patternMode->setSizePolicy(sizePolicy8);
+        sizePolicy7.setHeightForWidth(pushButton_patternMode->sizePolicy().hasHeightForWidth());
+        pushButton_patternMode->setSizePolicy(sizePolicy7);
         pushButton_patternMode->setMinimumSize(QSize(0, 40));
         pushButton_patternMode->setFont(font11);
         pushButton_patternMode->setStyleSheet(QLatin1String("QPushButton{\n"
@@ -1651,8 +1655,8 @@ public:
 
         pushButton_LEDDriver = new QPushButton(scrollAreaWidgetContents);
         pushButton_LEDDriver->setObjectName(QStringLiteral("pushButton_LEDDriver"));
-        sizePolicy8.setHeightForWidth(pushButton_LEDDriver->sizePolicy().hasHeightForWidth());
-        pushButton_LEDDriver->setSizePolicy(sizePolicy8);
+        sizePolicy7.setHeightForWidth(pushButton_LEDDriver->sizePolicy().hasHeightForWidth());
+        pushButton_LEDDriver->setSizePolicy(sizePolicy7);
         pushButton_LEDDriver->setMinimumSize(QSize(0, 45));
         pushButton_LEDDriver->setFont(font11);
         pushButton_LEDDriver->setStyleSheet(QLatin1String("QPushButton{\n"
@@ -1668,8 +1672,8 @@ public:
 
         pushButton_ZMachineControl = new QPushButton(scrollAreaWidgetContents);
         pushButton_ZMachineControl->setObjectName(QStringLiteral("pushButton_ZMachineControl"));
-        sizePolicy8.setHeightForWidth(pushButton_ZMachineControl->sizePolicy().hasHeightForWidth());
-        pushButton_ZMachineControl->setSizePolicy(sizePolicy8);
+        sizePolicy7.setHeightForWidth(pushButton_ZMachineControl->sizePolicy().hasHeightForWidth());
+        pushButton_ZMachineControl->setSizePolicy(sizePolicy7);
         pushButton_ZMachineControl->setMinimumSize(QSize(0, 0));
         pushButton_ZMachineControl->setFont(font11);
         pushButton_ZMachineControl->setStyleSheet(QLatin1String("QPushButton{\n"
@@ -1788,13 +1792,17 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "DLPJGroup", nullptr));
         groupBox->setTitle(QApplication::translate("MainWindow", "Pattern Menu", nullptr));
 #ifndef QT_NO_TOOLTIP
+        saveButton_patternSettings->setToolTip(QApplication::translate("MainWindow", "Save settings to a file", nullptr));
+#endif // QT_NO_TOOLTIP
+        saveButton_patternSettings->setText(QApplication::translate("MainWindow", "Save", nullptr));
+#ifndef QT_NO_TOOLTIP
         loadButton_patternSettings->setToolTip(QApplication::translate("MainWindow", "Load settings from a file", nullptr));
 #endif // QT_NO_TOOLTIP
         loadButton_patternSettings->setText(QApplication::translate("MainWindow", "Load", nullptr));
 #ifndef QT_NO_TOOLTIP
-        saveButton_patternSettings->setToolTip(QApplication::translate("MainWindow", "Save settings to a file", nullptr));
+        addPatternsButton->setToolTip(QApplication::translate("MainWindow", "Add Pattern", nullptr));
 #endif // QT_NO_TOOLTIP
-        saveButton_patternSettings->setText(QApplication::translate("MainWindow", "Save", nullptr));
+        addPatternsButton->setText(QString());
 #ifndef QT_NO_TOOLTIP
         removePatternsButton->setToolTip(QApplication::translate("MainWindow", "Delete Pattern", nullptr));
 #endif // QT_NO_TOOLTIP
@@ -1803,10 +1811,6 @@ public:
         selectAllButton->setToolTip(QApplication::translate("MainWindow", "Select All Patterns", nullptr));
 #endif // QT_NO_TOOLTIP
         selectAllButton->setText(QString());
-#ifndef QT_NO_TOOLTIP
-        addPatternsButton->setToolTip(QApplication::translate("MainWindow", "Add Pattern", nullptr));
-#endif // QT_NO_TOOLTIP
-        addPatternsButton->setText(QString());
         LiftSeqTime->setTitle(QApplication::translate("MainWindow", "Lift / Sequence Time (ms)", nullptr));
         triggerIn_checkBox->setText(QApplication::translate("MainWindow", "Trigger Input", nullptr));
         UpdateTotalTime->setText(QApplication::translate("MainWindow", "Update", nullptr));
