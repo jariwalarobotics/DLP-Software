@@ -77,6 +77,8 @@ MainWindow::MainWindow(QWidget *parent) :
     m_ptnImagePath = settings.value("PtnImagePath", "").toString();
     m_ptnSettingPath = settings.value("PtnSettingPath", "").toString();
     m_ptnProfilePath = settings.value("PtnProfilePath", "").toString();
+    m_Buadrate = settings.value("Buadrate", "").toString();
+    ui->Baudrate->setCurrentText(m_Buadrate);
 
     m_patternImageChange = false;
     m_ptnWidth = PTN_WIDTH_1080p;
@@ -125,6 +127,7 @@ MainWindow::~MainWindow()
     settings.value("PtnImagePath", m_ptnImagePath);
     settings.value("PtnSettingPath", m_ptnSettingPath);
     settings.value("PtnProfilePath", m_ptnProfilePath);
+    settings.value("Buadrate", m_Buadrate);
     delete ui;
 
 }
@@ -268,7 +271,7 @@ void MainWindow::on_connectButton_clicked()
 
     if(!USB_Connected)
     {
-       if (USB_IsConnected())
+        if (USB_IsConnected())
         {
             USB_Close();
             USB_Exit();

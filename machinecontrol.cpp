@@ -15,12 +15,27 @@ void MainWindow::on_ConnectBoard_clicked()
         return;
     }
     QString usbport = ui->SerialPort->currentText();
-    //QSerialPort serial;
+    m_Buadrate = ui->Baudrate->currentText();
+    settings.setValue("Buadrate",m_Buadrate);
+
     if (!BoardConnected)
     {
         arduino->setPortName(usbport);
         arduino->open(QIODevice::ReadWrite);
-        arduino->setBaudRate(QSerialPort::Baud115200);
+        switch (m_Buadrate.toInt()) {
+        case 9600:
+            arduino->setBaudRate(QSerialPort::Baud9600);
+            break;
+        case 57600:
+            arduino->setBaudRate(QSerialPort::Baud57600);
+            break;
+        case 115200:
+            arduino->setBaudRate(QSerialPort::Baud115200);
+            break;
+        case 250000:
+            arduino->setBaudRate(250000);
+            break;
+        }
         arduino->setDataBits(QSerialPort::Data8);
         arduino->setParity(QSerialPort::NoParity);
         arduino->setStopBits(QSerialPort::OneStop);
@@ -194,11 +209,6 @@ void MainWindow::on_AutoBedLevel_clicked()
 
 void MainWindow::on_SaveMacProfile_clicked()
 {
-    if (ui->ProfileName->toPlainText().isEmpty())
-    {
-        showError("Please Enter Machine profile Name");
-        return;
-    }
     QString filename;
 
     filename = QFileDialog::getSaveFileName(this, QString("Enter name of profile"),
@@ -269,9 +279,9 @@ void MainWindow::on_SaveMacProfile_clicked()
         out << "Exposure Time:" + ui->exposure_lineEdit->text() << "," << "\n";
     }
 
-    if (!ui->darkPeriod_lineEdit->text().isEmpty())
+    if (!ui->BeforeZTime_lineEdit->text().isEmpty())
     {
-        out << "Dark Time:" + ui->darkPeriod_lineEdit->text() << "," << "\n";
+        out << "Before Z Time:" + ui->BeforeZTime_lineEdit->text() << "," << "\n";
     }
 
     if (ui->AutoHoming->isChecked())
@@ -311,6 +321,21 @@ void MainWindow::on_LoadMacProfile_clicked()
         showStatus("Unable to open the Machine Profile file\n");
         return;
     }
+
+    ui->ProfileName->setPlainText(NULL);
+    ui->StartPrintGcode->setPlainText(NULL);
+    ui->EndPrintGcode->setPlainText(NULL);
+    ui->StartLayerGcode->setPlainText(NULL);
+    ui->EndLayerGcode->setPlainText(NULL);
+    ui->ZLiftdelay->setText(NULL);
+    ui->PrintingDelay->setText(NULL);
+    ui->Intensity_lineEdit->setText(NULL);
+    ui->exposure_lineEdit->setText(NULL);
+    ui->BeforeZTime_lineEdit->setText(NULL);
+    ui->AutoHoming->setChecked(false);
+    ui->ManualHoming->setChecked(false);
+    ui->HomingDelay->setEnabled(false);
+    ui->HomingDelay->setText(NULL);
 
     QDir dir = QFileInfo(settingsFile).absoluteDir();
     m_ptnProfilePath = dir.absolutePath();
@@ -370,9 +395,9 @@ void MainWindow::on_LoadMacProfile_clicked()
            {
                ui->exposure_lineEdit->setText(Strbuffer[1]);
            }
-           if (Strbuffer[0] == "Dark Time")
+           if (Strbuffer[0] == "Before Z Time")
            {
-               ui->darkPeriod_lineEdit->setText(Strbuffer[1]);
+               ui->BeforeZTime_lineEdit->setText(Strbuffer[1]);
            }
            if (Strbuffer[0] == "Auto Homing")
            {
@@ -408,8 +433,3 @@ void MainWindow::on_LoadMacProfile_clicked()
        }
     }
 }
-
-
-
-
-

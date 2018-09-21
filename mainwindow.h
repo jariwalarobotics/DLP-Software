@@ -46,7 +46,7 @@ public:
     int delay;
     int ZLiftDelay = 0;
     int ExposureTime = 0;
-    int DarkTime = 0;
+    int BeforeZTime = 0;
     int PrintingDelay = 0;
     int counter = 0;
     BOOL WaitforEndstopHit = false;
@@ -142,7 +142,7 @@ private slots:
     void on_saveButton_patternSettings_clicked();
     void on_loadButton_patternSettings_clicked();
     void on_exposure_lineEdit_editingFinished();
-    void on_darkPeriod_lineEdit_editingFinished();
+    void on_BeforeZTime_lineEdit_editingFinished();
 
     void on_startPatSequence_Button_clicked();
     void on_stopPatSequence_Button_clicked();
@@ -249,6 +249,7 @@ private:
     QString m_ptnImagePath;
     QString m_ptnSettingPath;
     QString m_ptnProfilePath;
+    QString m_Buadrate;
 
     bool m_dualAsic;
     uint32 m_ptnWidth, m_ptnHeight;

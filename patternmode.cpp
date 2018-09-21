@@ -236,7 +236,7 @@ void MainWindow::on_saveButton_patternSettings_clicked()
             out << m_elements[i].splashImageBitPos << ",";
             out << m_elements[i].bits <<",";
             out << m_elements[i].exposure <<",";
-            out << m_elements[i].darkPeriod <<",";
+            out << m_elements[i].beforeZTime <<",";
             out << m_elements[i].color <<",";
             out << m_elements[i].trigIn <<",";
             out << m_elements[i].trigOut2 <<"\n";
@@ -256,7 +256,7 @@ void MainWindow::on_saveButton_patternSettings_clicked()
             out << relPath << ",";
             out << m_elements[i].bits <<",";
             out << m_elements[i].exposure <<",";
-            out << m_elements[i].darkPeriod <<",";
+            out << m_elements[i].beforeZTime <<",";
             out << m_elements[i].color <<",";
             out << m_elements[i].trigIn <<",";
             out << m_elements[i].trigOut2 <<"\n";
@@ -332,7 +332,7 @@ void MainWindow::on_loadButton_patternSettings_clicked()
             pattern.bits = (list.size() >= 2)?list[1].toInt():1;
             pattern.splashImageBitPos = (list.size() >= 1)?list[0].toInt():0x1;
             pattern.exposure  = (list.size() >= 3)?list[2].toInt():GetMinExposure(1);
-            pattern.darkPeriod  = (list.size() >= 4)?list[3].toInt():0;
+            pattern.beforeZTime  = (list.size() >= 4)?list[3].toInt():0;
             pattern.color  = (list.size() >= 5)?PatternElement::Color(list[4].toInt()):PatternElement::RED ;
             pattern.trigIn = (list.size() >= 6)?list[5].toInt():false;
             pattern.trigOut2 = (list.size() >= 7)?list[6].toInt():true;
@@ -381,7 +381,7 @@ void MainWindow::on_loadButton_patternSettings_clicked()
             pattern.name = pFileStr;
             pattern.bits = (list.size() >= 2)?list[1].toInt():1;
             pattern.exposure  = (list.size() >= 3)?list[2].toInt():GetMinExposure(1);
-            pattern.darkPeriod  = (list.size() >= 4)?list[3].toInt():0;
+            pattern.beforeZTime  = (list.size() >= 4)?list[3].toInt():0;
             pattern.color  = (list.size() >= 5)?PatternElement::Color(list[4].toInt()):PatternElement::RED ;
             pattern.trigIn = (list.size() >= 6)?list[5].toInt():false;
             pattern.trigOut2 = (list.size() >= 7)?list[6].toInt():true;
@@ -478,10 +478,18 @@ void MainWindow::on_addPatternsButton_clicked()
 
        if(m_elements.size()==0)
        {
+           if (ui->exposure_lineEdit->text().isEmpty() || ui->BeforeZTime_lineEdit->text().isEmpty())
+           {
+               ExposureTime = 4000;
+               BeforeZTime = 0;
+           } else {
+               ExposureTime = ui->exposure_lineEdit->text().toInt();
+               BeforeZTime = ui->BeforeZTime_lineEdit->text().toInt();
+           }
            pattern.bits = 8;
            pattern.color = PatternElement::RED;
-           pattern.exposure = 4000;
-           pattern.darkPeriod = 0;
+           pattern.exposure = ExposureTime;
+           pattern.beforeZTime = BeforeZTime;
            pattern.trigIn = false;
            pattern.trigOut2 = true;
        }
@@ -490,7 +498,7 @@ void MainWindow::on_addPatternsButton_clicked()
            pattern.bits = m_elements[m_elements.size()-1].bits;
            pattern.color = m_elements[m_elements.size()-1].color;
            pattern.exposure = m_elements[m_elements.size()-1].exposure;
-           pattern.darkPeriod = m_elements[m_elements.size()-1].darkPeriod;
+           pattern.beforeZTime = m_elements[m_elements.size()-1].beforeZTime;
            pattern.trigIn = m_elements[m_elements.size()-1].trigIn;
            pattern.trigOut2 = m_elements[m_elements.size()-1].trigOut2;
        }
@@ -586,9 +594,9 @@ void MainWindow::on_startPatSequence_Button_clicked()
     }
 
     ExposureTime = ui->exposure_lineEdit->text().toInt();
-    DarkTime = ui->darkPeriod_lineEdit->text().toInt();
+    BeforeZTime = ui->BeforeZTime_lineEdit->text().toInt();
 
-    delay = (ExposureTime + DarkTime) + 500;
+    delay = (ExposureTime + BeforeZTime) + 500;
     ui->stopPatSequence_Button->setEnabled(true);
     ui->pausePatSequence_Button->setEnabled(true);
     ui->startPatSequence_Button->setEnabled(false);
@@ -602,7 +610,7 @@ void MainWindow::on_pausePatSequence_Button_clicked()
 {
     if (AutoSendPatSeq->isActive())
     {
-        QThread::msleep(delay - DarkTime);
+        QThread::msleep(delay - BeforeZTime);
         QIcon icon(":/new/prefix1/Icons/my_resume.png");
         ui->pausePatSequence_Button->setIcon(icon);
         Auto_m_elements.clear();
@@ -647,7 +655,7 @@ void MainWindow::on_stopPatSequence_Button_clicked()
 
     if (AutoSendPatSeq->isActive())
     {
-        QThread::msleep(delay - DarkTime);
+        QThread::msleep(delay - BeforeZTime);
         AutoSendPatSeq->stop();
     } else {
         QThread::msleep(0);
@@ -695,7 +703,7 @@ void MainWindow::on_patternSelect(int index, QList<PatternElement> patElem)
     ui->triggerIn_checkBox->setChecked(m_elements[index].trigIn);
     ui->triggerOut2_checkBox->setChecked(m_elements[index].trigOut2);
     ui->exposure_lineEdit->setText(QString::number(m_elements[index].exposure));
-    ui->darkPeriod_lineEdit->setText(QString::number(m_elements[index].darkPeriod));
+    ui->BeforeZTime_lineEdit->setText(QString::number(m_elements[index].beforeZTime));
     ui->removePatternsButton->setEnabled(true);
 
     return;
@@ -780,7 +788,7 @@ void MainWindow::on_exposure_lineEdit_editingFinished()
 /**
  * @brief MainWindow::on_darkPeriod_lineEdit_editingFinished
  */
-void MainWindow::on_darkPeriod_lineEdit_editingFinished()
+void MainWindow::on_BeforeZTime_lineEdit_editingFinished()
 {
     bool changed = false;
 
@@ -788,17 +796,17 @@ void MainWindow::on_darkPeriod_lineEdit_editingFinished()
     {
         //if (!m_elements[i].selected)
             //continue;
-        int darkPeriod = ui->darkPeriod_lineEdit->text().toInt();
+        int beforeZLifttime = ui->BeforeZTime_lineEdit->text().toInt();
 
         int minDarktime = 0;
-        if ((darkPeriod) && (darkPeriod < minDarktime))
+        if ((beforeZLifttime) && (beforeZLifttime < minDarktime))
         {
             char errMsg[255];
             sprintf(errMsg, "Error: Dark time should be greater than %d ms\n", minDarktime);
             showStatus(errMsg);
             return;
         }
-        m_elements[i].darkPeriod = darkPeriod;
+        m_elements[i].beforeZTime = beforeZLifttime;
         changed = true;
     }
 
@@ -855,7 +863,7 @@ void MainWindow::SendPatSequence()
         AutoPatSeq.bits = m_elements[PatCount].bits;
         AutoPatSeq.color = m_elements[PatCount].color;
         AutoPatSeq.exposure = m_elements[PatCount].exposure * 1000;
-        AutoPatSeq.darkPeriod = m_elements[PatCount].darkPeriod * 1000;
+        AutoPatSeq.beforeZTime = m_elements[PatCount].beforeZTime * 1000;
         AutoPatSeq.trigIn = m_elements[PatCount].trigIn;
         AutoPatSeq.trigOut2 = m_elements[PatCount].trigOut2;
 
@@ -944,7 +952,7 @@ void MainWindow::uploadSingleImageSeq()
 
     for (int i = 0; i < Auto_m_elements.size(); i++)
     {
-        if(LCR_AddToPatLut(i, Auto_m_elements[i].exposure, true, Auto_m_elements[i].bits, Auto_m_elements[i].color, Auto_m_elements[i].trigIn, Auto_m_elements[i].darkPeriod, Auto_m_elements[i].trigOut2, Auto_m_elements[i].splashImageIndex, Auto_m_elements[i].splashImageBitPos)<0)
+        if(LCR_AddToPatLut(i, Auto_m_elements[i].exposure, true, Auto_m_elements[i].bits, Auto_m_elements[i].color, Auto_m_elements[i].trigIn, Auto_m_elements[i].beforeZTime, Auto_m_elements[i].trigOut2, Auto_m_elements[i].splashImageIndex, Auto_m_elements[i].splashImageBitPos)<0)
         {
             sprintf(errStr,"Unable to add pattern number %d to the LUT",i);
             showError(QString::fromLocal8Bit(errStr));
@@ -999,10 +1007,10 @@ void MainWindow::on_UpdateTotalTime_clicked()
     for (int i = 0; i < m_elements.size(); i++)
     {
         int exposure = ui->exposure_lineEdit->text().toInt();
-        int darkPeriod = ui->darkPeriod_lineEdit->text().toInt();
+        int beforeZlifttime = ui->BeforeZTime_lineEdit->text().toInt();
 
         m_elements[i].exposure = exposure;
-        m_elements[i].darkPeriod = darkPeriod;
+        m_elements[i].beforeZTime = beforeZlifttime;
         changed = true;
     }
     if (changed)
@@ -1015,12 +1023,12 @@ void MainWindow::on_UpdateTotalTime_clicked()
     PrintingDelay = ui->PrintingDelay->text().toInt();
 
     ExposureTime = ui->exposure_lineEdit->text().toInt();
-    DarkTime = ui->darkPeriod_lineEdit->text().toInt();
+    BeforeZTime = ui->BeforeZTime_lineEdit->text().toInt();
 
-    delay = (ExposureTime + DarkTime) + 500;
+    delay = (ExposureTime + BeforeZTime) + 500;
 
     int TotalExposureTime = ExposureTime * m_elements.size();
-    int TotalDarkTime = DarkTime * m_elements.size();
+    int TotalDarkTime = BeforeZTime * m_elements.size();
 
     int TotalDelay = ZLiftDelay * (m_elements.size() + 1);
 
@@ -1089,10 +1097,10 @@ void MainWindow::on_CalGrayValue_clicked()
             }
         }
 
+
 */
 
-
-      /*  for (int i = 0; i < height; i++)
+       /* for (int i = 0; i < height; i++)
         {
             for (int j = 0; j < width; j++ )
             {
@@ -1145,9 +1153,9 @@ void MainWindow::on_CalGrayValue_clicked()
             }
         }  */
 
-    //    QString str3 = m_ptnImagePath + "/1_5" + ".bmp";
-    //    monoImage.save(str3);
-   // }
+       // QString str3 = m_ptnImagePath + "/1_5" + ".bmp";
+       // monoImage.save(str3);
+    //}
 //}
 
 

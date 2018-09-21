@@ -214,7 +214,7 @@ void WaveFormWindow::paintEvent(QPaintEvent *)
             if (i)
             {
                 PatternElement *ePrev = &m_elements[i - 1];
-                if (ePrev->darkPeriod)
+                if (ePrev->beforeZTime)
                     insertDark = true;
             }
 

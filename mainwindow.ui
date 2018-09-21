@@ -503,7 +503,7 @@ color:rgb(0,120,120);
                  </widget>
                 </item>
                 <item row="1" column="1">
-                 <widget class="QLineEdit" name="darkPeriod_lineEdit">
+                 <widget class="QLineEdit" name="BeforeZTime_lineEdit">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                     <horstretch>0</horstretch>
@@ -3069,22 +3069,6 @@ color:rgb(0,120,120);
                           <layout class="QVBoxLayout" name="verticalLayout_3">
                            <item>
                             <layout class="QGridLayout" name="gridLayout_37">
-                             <item row="2" column="0">
-                              <spacer name="verticalSpacer_4">
-                               <property name="orientation">
-                                <enum>Qt::Vertical</enum>
-                               </property>
-                               <property name="sizeType">
-                                <enum>QSizePolicy::Fixed</enum>
-                               </property>
-                               <property name="sizeHint" stdset="0">
-                                <size>
-                                 <width>10</width>
-                                 <height>10</height>
-                                </size>
-                               </property>
-                              </spacer>
-                             </item>
                              <item row="0" column="0" colspan="2">
                               <spacer name="verticalSpacer_25">
                                <property name="orientation">
@@ -3100,34 +3084,6 @@ color:rgb(0,120,120);
                                 </size>
                                </property>
                               </spacer>
-                             </item>
-                             <item row="3" column="0" colspan="2">
-                              <widget class="QLabel" name="BoardStatus">
-                               <property name="minimumSize">
-                                <size>
-                                 <width>0</width>
-                                 <height>30</height>
-                                </size>
-                               </property>
-                               <property name="maximumSize">
-                                <size>
-                                 <width>16777215</width>
-                                 <height>30</height>
-                                </size>
-                               </property>
-                               <property name="font">
-                                <font>
-                                 <family>Arial</family>
-                                 <pointsize>11</pointsize>
-                                </font>
-                               </property>
-                               <property name="styleSheet">
-                                <string notr="true">QLabel{border:0px}</string>
-                               </property>
-                               <property name="text">
-                                <string/>
-                               </property>
-                              </widget>
                              </item>
                              <item row="1" column="1">
                               <widget class="QComboBox" name="SerialPort">
@@ -3188,7 +3144,119 @@ color:rgb(0,120,120);
                                </property>
                               </widget>
                              </item>
-                             <item row="4" column="0">
+                             <item row="5" column="0">
+                              <widget class="QLabel" name="label_5">
+                               <property name="font">
+                                <font>
+                                 <family>Arial</family>
+                                 <pointsize>11</pointsize>
+                                </font>
+                               </property>
+                               <property name="text">
+                                <string>Baud Rate</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="6" column="0" colspan="2">
+                              <widget class="QLabel" name="BoardStatus">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>0</width>
+                                 <height>30</height>
+                                </size>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>16777215</width>
+                                 <height>30</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <family>Arial</family>
+                                 <pointsize>11</pointsize>
+                                </font>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">QLabel{border:0px}</string>
+                               </property>
+                               <property name="text">
+                                <string/>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="5" column="1">
+                              <widget class="QComboBox" name="Baudrate">
+                               <property name="sizePolicy">
+                                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                 <horstretch>0</horstretch>
+                                 <verstretch>0</verstretch>
+                                </sizepolicy>
+                               </property>
+                               <property name="minimumSize">
+                                <size>
+                                 <width>0</width>
+                                 <height>30</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <family>Arial</family>
+                                 <pointsize>11</pointsize>
+                                </font>
+                               </property>
+                               <property name="currentIndex">
+                                <number>-1</number>
+                               </property>
+                               <item>
+                                <property name="text">
+                                 <string>9600</string>
+                                </property>
+                               </item>
+                               <item>
+                                <property name="text">
+                                 <string>56000</string>
+                                </property>
+                               </item>
+                               <item>
+                                <property name="text">
+                                 <string>76800</string>
+                                </property>
+                               </item>
+                               <item>
+                                <property name="text">
+                                 <string>115200</string>
+                                </property>
+                               </item>
+                               <item>
+                                <property name="text">
+                                 <string>250000</string>
+                                </property>
+                               </item>
+                               <item>
+                                <property name="text">
+                                 <string>256000</string>
+                                </property>
+                               </item>
+                              </widget>
+                             </item>
+                             <item row="7" column="0">
+                              <spacer name="verticalSpacer_4">
+                               <property name="orientation">
+                                <enum>Qt::Vertical</enum>
+                               </property>
+                               <property name="sizeType">
+                                <enum>QSizePolicy::Fixed</enum>
+                               </property>
+                               <property name="sizeHint" stdset="0">
+                                <size>
+                                 <width>10</width>
+                                 <height>10</height>
+                                </size>
+                               </property>
+                              </spacer>
+                             </item>
+                             <item row="2" column="0">
                               <spacer name="verticalSpacer_5">
                                <property name="orientation">
                                 <enum>Qt::Vertical</enum>
@@ -3198,8 +3266,8 @@ color:rgb(0,120,120);
                                </property>
                                <property name="sizeHint" stdset="0">
                                 <size>
-                                 <width>20</width>
-                                 <height>20</height>
+                                 <width>10</width>
+                                 <height>10</height>
                                 </size>
                                </property>
                               </spacer>

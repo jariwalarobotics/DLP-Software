@@ -62,7 +62,7 @@ public:
     QLabel *label_Exposure;
     QLineEdit *exposure_lineEdit;
     QLabel *label_Exposure_2;
-    QLineEdit *darkPeriod_lineEdit;
+    QLineEdit *BeforeZTime_lineEdit;
     QGridLayout *gridLayout_7;
     QPushButton *UpdateTotalTime;
     QCheckBox *triggerIn_checkBox;
@@ -197,11 +197,13 @@ public:
     QGroupBox *groupBox_3;
     QVBoxLayout *verticalLayout_3;
     QGridLayout *gridLayout_37;
-    QSpacerItem *verticalSpacer_4;
     QSpacerItem *verticalSpacer_25;
-    QLabel *BoardStatus;
     QComboBox *SerialPort;
     QLabel *ComPort;
+    QLabel *label_5;
+    QLabel *BoardStatus;
+    QComboBox *Baudrate;
+    QSpacerItem *verticalSpacer_4;
     QSpacerItem *verticalSpacer_5;
     QGridLayout *gridLayout_38;
     QPushButton *LoadMacProfile;
@@ -508,15 +510,15 @@ public:
 
         gridLayout_39->addWidget(label_Exposure_2, 1, 0, 1, 1);
 
-        darkPeriod_lineEdit = new QLineEdit(LiftSeqTime);
-        darkPeriod_lineEdit->setObjectName(QStringLiteral("darkPeriod_lineEdit"));
-        sizePolicy2.setHeightForWidth(darkPeriod_lineEdit->sizePolicy().hasHeightForWidth());
-        darkPeriod_lineEdit->setSizePolicy(sizePolicy2);
-        darkPeriod_lineEdit->setMinimumSize(QSize(0, 0));
-        darkPeriod_lineEdit->setMaximumSize(QSize(16777215, 35));
-        darkPeriod_lineEdit->setFont(font3);
+        BeforeZTime_lineEdit = new QLineEdit(LiftSeqTime);
+        BeforeZTime_lineEdit->setObjectName(QStringLiteral("BeforeZTime_lineEdit"));
+        sizePolicy2.setHeightForWidth(BeforeZTime_lineEdit->sizePolicy().hasHeightForWidth());
+        BeforeZTime_lineEdit->setSizePolicy(sizePolicy2);
+        BeforeZTime_lineEdit->setMinimumSize(QSize(0, 0));
+        BeforeZTime_lineEdit->setMaximumSize(QSize(16777215, 35));
+        BeforeZTime_lineEdit->setFont(font3);
 
-        gridLayout_39->addWidget(darkPeriod_lineEdit, 1, 1, 1, 1);
+        gridLayout_39->addWidget(BeforeZTime_lineEdit, 1, 1, 1, 1);
 
 
         gridLayout_4->addLayout(gridLayout_39, 0, 0, 1, 1);
@@ -1666,22 +1668,9 @@ public:
         gridLayout_37 = new QGridLayout();
         gridLayout_37->setSpacing(6);
         gridLayout_37->setObjectName(QStringLiteral("gridLayout_37"));
-        verticalSpacer_4 = new QSpacerItem(10, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        gridLayout_37->addItem(verticalSpacer_4, 2, 0, 1, 1);
-
         verticalSpacer_25 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
         gridLayout_37->addItem(verticalSpacer_25, 0, 0, 1, 2);
-
-        BoardStatus = new QLabel(groupBox_3);
-        BoardStatus->setObjectName(QStringLiteral("BoardStatus"));
-        BoardStatus->setMinimumSize(QSize(0, 30));
-        BoardStatus->setMaximumSize(QSize(16777215, 30));
-        BoardStatus->setFont(font3);
-        BoardStatus->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
-
-        gridLayout_37->addWidget(BoardStatus, 3, 0, 1, 2);
 
         SerialPort = new QComboBox(groupBox_3);
         SerialPort->setObjectName(QStringLiteral("SerialPort"));
@@ -1704,9 +1693,43 @@ public:
 
         gridLayout_37->addWidget(ComPort, 1, 0, 1, 1);
 
-        verticalSpacer_5 = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Fixed);
+        label_5 = new QLabel(groupBox_3);
+        label_5->setObjectName(QStringLiteral("label_5"));
+        label_5->setFont(font3);
 
-        gridLayout_37->addItem(verticalSpacer_5, 4, 0, 1, 1);
+        gridLayout_37->addWidget(label_5, 5, 0, 1, 1);
+
+        BoardStatus = new QLabel(groupBox_3);
+        BoardStatus->setObjectName(QStringLiteral("BoardStatus"));
+        BoardStatus->setMinimumSize(QSize(0, 30));
+        BoardStatus->setMaximumSize(QSize(16777215, 30));
+        BoardStatus->setFont(font3);
+        BoardStatus->setStyleSheet(QStringLiteral("QLabel{border:0px}"));
+
+        gridLayout_37->addWidget(BoardStatus, 6, 0, 1, 2);
+
+        Baudrate = new QComboBox(groupBox_3);
+        Baudrate->addItem(QString());
+        Baudrate->addItem(QString());
+        Baudrate->addItem(QString());
+        Baudrate->addItem(QString());
+        Baudrate->addItem(QString());
+        Baudrate->addItem(QString());
+        Baudrate->setObjectName(QStringLiteral("Baudrate"));
+        sizePolicy2.setHeightForWidth(Baudrate->sizePolicy().hasHeightForWidth());
+        Baudrate->setSizePolicy(sizePolicy2);
+        Baudrate->setMinimumSize(QSize(0, 30));
+        Baudrate->setFont(font3);
+
+        gridLayout_37->addWidget(Baudrate, 5, 1, 1, 1);
+
+        verticalSpacer_4 = new QSpacerItem(10, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        gridLayout_37->addItem(verticalSpacer_4, 7, 0, 1, 1);
+
+        verticalSpacer_5 = new QSpacerItem(10, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        gridLayout_37->addItem(verticalSpacer_5, 2, 0, 1, 1);
 
 
         verticalLayout_3->addLayout(gridLayout_37);
@@ -2366,6 +2389,7 @@ public:
 
         stackedWidget->setCurrentIndex(0);
         patternMode_stackedWidget->setCurrentIndex(0);
+        Baudrate->setCurrentIndex(-1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -2457,8 +2481,16 @@ public:
         pushButton_ExTrigger->setText(QApplication::translate("MainWindow", "EXT Trigger", nullptr));
         groupBox_ZMachineControl->setTitle(QApplication::translate("MainWindow", "Z Machine Control", nullptr));
         groupBox_3->setTitle(QApplication::translate("MainWindow", "Machine Settings", nullptr));
-        BoardStatus->setText(QString());
         ComPort->setText(QApplication::translate("MainWindow", "Com Port", nullptr));
+        label_5->setText(QApplication::translate("MainWindow", "Baud Rate", nullptr));
+        BoardStatus->setText(QString());
+        Baudrate->setItemText(0, QApplication::translate("MainWindow", "9600", nullptr));
+        Baudrate->setItemText(1, QApplication::translate("MainWindow", "56000", nullptr));
+        Baudrate->setItemText(2, QApplication::translate("MainWindow", "76800", nullptr));
+        Baudrate->setItemText(3, QApplication::translate("MainWindow", "115200", nullptr));
+        Baudrate->setItemText(4, QApplication::translate("MainWindow", "250000", nullptr));
+        Baudrate->setItemText(5, QApplication::translate("MainWindow", "256000", nullptr));
+
         LoadMacProfile->setText(QApplication::translate("MainWindow", "Load Profile", nullptr));
         label_21->setText(QApplication::translate("MainWindow", "Machine Profile", nullptr));
         SaveMacProfile->setText(QApplication::translate("MainWindow", "Save Profile", nullptr));

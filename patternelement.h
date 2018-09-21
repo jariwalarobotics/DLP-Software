@@ -18,7 +18,7 @@ struct PatternElement
 
     QString name;
     int exposure;
-    int darkPeriod;
+    int beforeZTime;
     Color color;
     int bits;
     int splashImageIndex;
