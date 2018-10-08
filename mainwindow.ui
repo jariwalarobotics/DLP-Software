@@ -2453,6 +2453,207 @@ border-color: rgb(0,150,150);
                   </item>
                   <item>
                    <layout class="QGridLayout" name="gridLayout_14">
+                    <item row="1" column="6">
+                     <widget class="QLineEdit" name="BaseLayerIntensity">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>180</width>
+                        <height>0</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>Arial</family>
+                        <pointsize>11</pointsize>
+                       </font>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="6">
+                     <widget class="QLineEdit" name="BaseLayerCount">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>Arial</family>
+                        <pointsize>11</pointsize>
+                       </font>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="3">
+                     <widget class="QPushButton" name="pushButton_SetIntensity">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>35</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>35</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>Arial</family>
+                        <pointsize>9</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Manually Set Intensity</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="5">
+                     <widget class="QLabel" name="label_7">
+                      <property name="font">
+                       <font>
+                        <family>Arial</family>
+                        <pointsize>11</pointsize>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QLabel{Border:0px}</string>
+                      </property>
+                      <property name="text">
+                       <string>Base Layer Intensity uW/cm2</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="3">
+                     <widget class="QLineEdit" name="Intensity_lineEdit">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>180</width>
+                        <height>0</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>35</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>Arial</family>
+                        <pointsize>11</pointsize>
+                       </font>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="3">
+                     <widget class="QLabel" name="label_Intensity2">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>25</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>Arial</family>
+                        <pointsize>11</pointsize>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QLabel{Border:0px}</string>
+                      </property>
+                      <property name="text">
+                       <string>Intensity uW/cm2</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="5">
+                     <widget class="QLabel" name="label_6">
+                      <property name="font">
+                       <font>
+                        <family>Arial</family>
+                        <pointsize>11</pointsize>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QLabel{Border:0px}</string>
+                      </property>
+                      <property name="text">
+                       <string>Number of Base Layer</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="2">
+                     <spacer name="horizontalSpacer_12">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>5</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item row="1" column="0">
+                     <widget class="QLabel" name="label_DMDFanSpeed">
+                      <property name="font">
+                       <font>
+                        <family>Arial</family>
+                        <pointsize>10</pointsize>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QLabel{Border:0px}</string>
+                      </property>
+                      <property name="text">
+                       <string>DMD FAN Speed [1/min]</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="0">
+                     <widget class="QLabel" name="label_LEDFanSpeed">
+                      <property name="font">
+                       <font>
+                        <family>Arial</family>
+                        <pointsize>10</pointsize>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QLabel{Border:0px}</string>
+                      </property>
+                      <property name="text">
+                       <string>LED FAN Speed [1/min]</string>
+                      </property>
+                     </widget>
+                    </item>
                     <item row="0" column="0">
                      <widget class="QLabel" name="label_PCBFanSpeed">
                       <property name="font">
@@ -2469,8 +2670,8 @@ border-color: rgb(0,150,150);
                       </property>
                      </widget>
                     </item>
-                    <item row="0" column="1">
-                     <widget class="QTextBrowser" name="PCBFanSpeed_text">
+                    <item row="2" column="1">
+                     <widget class="QTextBrowser" name="LEDFanSpeed_text">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                         <horstretch>0</horstretch>
@@ -2525,8 +2726,8 @@ border-color: rgb(0,150,150);
                       </property>
                      </widget>
                     </item>
-                    <item row="2" column="1">
-                     <widget class="QTextBrowser" name="LEDFanSpeed_text">
+                    <item row="0" column="1">
+                     <widget class="QTextBrowser" name="PCBFanSpeed_text">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                         <horstretch>0</horstretch>
@@ -2553,99 +2754,14 @@ border-color: rgb(0,150,150);
                       </property>
                      </widget>
                     </item>
-                    <item row="2" column="0">
-                     <widget class="QLabel" name="label_LEDFanSpeed">
-                      <property name="font">
-                       <font>
-                        <family>Arial</family>
-                        <pointsize>10</pointsize>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">QLabel{Border:0px}</string>
-                      </property>
-                      <property name="text">
-                       <string>LED FAN Speed [1/min]</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="2" column="3">
-                     <widget class="QPushButton" name="pushButton_EnableIntensityReg">
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>30</height>
-                       </size>
-                      </property>
-                      <property name="font">
-                       <font>
-                        <family>Arial</family>
-                        <pointsize>9</pointsize>
-                        <weight>75</weight>
-                        <bold>true</bold>
-                       </font>
-                      </property>
-                      <property name="text">
-                       <string>Enable Intensity Regulation</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="1" column="0">
-                     <widget class="QLabel" name="label_DMDFanSpeed">
-                      <property name="font">
-                       <font>
-                        <family>Arial</family>
-                        <pointsize>10</pointsize>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">QLabel{Border:0px}</string>
-                      </property>
-                      <property name="text">
-                       <string>DMD FAN Speed [1/min]</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="1" column="3">
-                     <widget class="QCheckBox" name="checkBox_IntensityRegEnable">
-                      <property name="font">
-                       <font>
-                        <family>Arial</family>
-                        <pointsize>10</pointsize>
-                       </font>
-                      </property>
-                      <property name="text">
-                       <string>Intensity Reg. Enable?</string>
-                      </property>
-                      <property name="checked">
-                       <bool>false</bool>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="1" column="4">
+                    <item row="0" column="4">
                      <spacer name="horizontalSpacer_11">
                       <property name="orientation">
                        <enum>Qt::Horizontal</enum>
                       </property>
-                      <property name="sizeType">
-                       <enum>QSizePolicy::Preferred</enum>
-                      </property>
                       <property name="sizeHint" stdset="0">
                        <size>
-                        <width>450</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
-                    <item row="2" column="2">
-                     <spacer name="horizontalSpacer_12">
-                      <property name="orientation">
-                       <enum>Qt::Horizontal</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>5</width>
+                        <width>40</width>
                         <height>20</height>
                        </size>
                       </property>
@@ -2659,7 +2775,7 @@ border-color: rgb(0,150,150);
                      <enum>Qt::Vertical</enum>
                     </property>
                     <property name="sizeType">
-                     <enum>QSizePolicy::Fixed</enum>
+                     <enum>QSizePolicy::Expanding</enum>
                     </property>
                     <property name="sizeHint" stdset="0">
                      <size>
@@ -2717,34 +2833,6 @@ border-color: rgb(0,150,150);
                       </property>
                      </widget>
                     </item>
-                    <item row="1" column="3">
-                     <widget class="QLineEdit" name="Intensity_lineEdit">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="minimumSize">
-                       <size>
-                        <width>180</width>
-                        <height>0</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>35</height>
-                       </size>
-                      </property>
-                      <property name="font">
-                       <font>
-                        <family>Arial</family>
-                        <pointsize>11</pointsize>
-                       </font>
-                      </property>
-                     </widget>
-                    </item>
                     <item row="3" column="0">
                      <widget class="QPushButton" name="pushButton_LEDPWMON_OFF">
                       <property name="sizePolicy">
@@ -2787,39 +2875,6 @@ border-color: rgb(0,150,150);
                        </size>
                       </property>
                      </spacer>
-                    </item>
-                    <item row="1" column="4">
-                     <widget class="QPushButton" name="pushButton_SetIntensity">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="minimumSize">
-                       <size>
-                        <width>0</width>
-                        <height>35</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>35</height>
-                       </size>
-                      </property>
-                      <property name="font">
-                       <font>
-                        <family>Arial</family>
-                        <pointsize>9</pointsize>
-                        <weight>75</weight>
-                        <bold>true</bold>
-                       </font>
-                      </property>
-                      <property name="text">
-                       <string>Set Intensity</string>
-                      </property>
-                     </widget>
                     </item>
                     <item row="1" column="0">
                      <widget class="QLineEdit" name="LEDCurrent_lineEdit">
@@ -2867,31 +2922,6 @@ border-color: rgb(0,150,150);
                        </size>
                       </property>
                      </spacer>
-                    </item>
-                    <item row="0" column="3">
-                     <widget class="QLabel" name="label_Intensity2">
-                      <property name="minimumSize">
-                       <size>
-                        <width>0</width>
-                        <height>25</height>
-                       </size>
-                      </property>
-                      <property name="font">
-                       <font>
-                        <family>Arial</family>
-                        <pointsize>11</pointsize>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">QLabel{Border:0px}</string>
-                      </property>
-                      <property name="text">
-                       <string>Intensity uW/cm2</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignCenter</set>
-                      </property>
-                     </widget>
                     </item>
                     <item row="3" column="6">
                      <widget class="QPushButton" name="pushButton_SwTrigger">
@@ -2944,6 +2974,61 @@ border-color: rgb(0,150,150);
                       </property>
                       <property name="text">
                        <string>EXT Trigger</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="3">
+                     <widget class="QCheckBox" name="checkBox_IntensityRegEnable">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>Arial</family>
+                        <pointsize>10</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Intensity Reg. Enable?</string>
+                      </property>
+                      <property name="checked">
+                       <bool>false</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="3">
+                     <widget class="QPushButton" name="pushButton_EnableIntensityReg">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>0</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>30</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>Arial</family>
+                        <pointsize>9</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Enable Intensity Regulation</string>
                       </property>
                      </widget>
                     </item>
@@ -4058,7 +4143,83 @@ color:rgb(0,120,120);
                          </widget>
                         </item>
                         <item>
+                         <layout class="QHBoxLayout" name="horizontalLayout_2">
+                          <item>
+                           <widget class="QLabel" name="label_11">
+                            <property name="minimumSize">
+                             <size>
+                              <width>0</width>
+                              <height>25</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>Arial</family>
+                              <pointsize>11</pointsize>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>Image Process Loop</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QLineEdit" name="ImageProcessLoop">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="minimumSize">
+                             <size>
+                              <width>0</width>
+                              <height>25</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>Arial</family>
+                              <pointsize>11</pointsize>
+                             </font>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="CalGrayValue">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>30</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Arial</family>
+                            <pointsize>11</pointsize>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>Calculate Gray Value</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
                          <widget class="QGroupBox" name="ManualGcode_GroupBox">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
                           <property name="maximumSize">
                            <size>
                             <width>16777215</width>

@@ -162,29 +162,33 @@ public:
     QLabel *label_LEDTemp;
     QSpacerItem *verticalSpacer_6;
     QGridLayout *gridLayout_14;
-    QLabel *label_PCBFanSpeed;
-    QTextBrowser *PCBFanSpeed_text;
-    QTextBrowser *DMDFanSpeed_text;
-    QTextBrowser *LEDFanSpeed_text;
-    QLabel *label_LEDFanSpeed;
-    QPushButton *pushButton_EnableIntensityReg;
-    QLabel *label_DMDFanSpeed;
-    QCheckBox *checkBox_IntensityRegEnable;
-    QSpacerItem *horizontalSpacer_11;
+    QLineEdit *BaseLayerIntensity;
+    QLineEdit *BaseLayerCount;
+    QPushButton *pushButton_SetIntensity;
+    QLabel *label_7;
+    QLineEdit *Intensity_lineEdit;
+    QLabel *label_Intensity2;
+    QLabel *label_6;
     QSpacerItem *horizontalSpacer_12;
+    QLabel *label_DMDFanSpeed;
+    QLabel *label_LEDFanSpeed;
+    QLabel *label_PCBFanSpeed;
+    QTextBrowser *LEDFanSpeed_text;
+    QTextBrowser *DMDFanSpeed_text;
+    QTextBrowser *PCBFanSpeed_text;
+    QSpacerItem *horizontalSpacer_11;
     QSpacerItem *verticalSpacer_7;
     QGridLayout *gridLayout_15;
     QLabel *label_LEDCurrent2;
     QPushButton *pushButton_SetLEDCurrent;
-    QLineEdit *Intensity_lineEdit;
     QPushButton *pushButton_LEDPWMON_OFF;
     QSpacerItem *horizontalSpacer_14;
-    QPushButton *pushButton_SetIntensity;
     QLineEdit *LEDCurrent_lineEdit;
     QSpacerItem *horizontalSpacer_13;
-    QLabel *label_Intensity2;
     QPushButton *pushButton_SwTrigger;
     QPushButton *pushButton_ExTrigger;
+    QCheckBox *checkBox_IntensityRegEnable;
+    QPushButton *pushButton_EnableIntensityReg;
     QWidget *ZMachineControl;
     QGridLayout *gridLayout_2;
     QFrame *frame_ZMavhineControl;
@@ -247,6 +251,10 @@ public:
     QGroupBox *AutoBed;
     QVBoxLayout *verticalLayout_9;
     QPushButton *AutoBedLevel;
+    QHBoxLayout *horizontalLayout_2;
+    QLabel *label_11;
+    QLineEdit *ImageProcessLoop;
+    QPushButton *CalGrayValue;
     QGroupBox *ManualGcode_GroupBox;
     QVBoxLayout *verticalLayout_10;
     QTextEdit *ManualGcode;
@@ -1403,38 +1411,95 @@ public:
         gridLayout_14 = new QGridLayout();
         gridLayout_14->setSpacing(6);
         gridLayout_14->setObjectName(QStringLiteral("gridLayout_14"));
+        BaseLayerIntensity = new QLineEdit(groupBox_LEDDriver);
+        BaseLayerIntensity->setObjectName(QStringLiteral("BaseLayerIntensity"));
+        sizePolicy2.setHeightForWidth(BaseLayerIntensity->sizePolicy().hasHeightForWidth());
+        BaseLayerIntensity->setSizePolicy(sizePolicy2);
+        BaseLayerIntensity->setMinimumSize(QSize(180, 0));
+        BaseLayerIntensity->setFont(font3);
+
+        gridLayout_14->addWidget(BaseLayerIntensity, 1, 6, 1, 1);
+
+        BaseLayerCount = new QLineEdit(groupBox_LEDDriver);
+        BaseLayerCount->setObjectName(QStringLiteral("BaseLayerCount"));
+        sizePolicy2.setHeightForWidth(BaseLayerCount->sizePolicy().hasHeightForWidth());
+        BaseLayerCount->setSizePolicy(sizePolicy2);
+        BaseLayerCount->setFont(font3);
+
+        gridLayout_14->addWidget(BaseLayerCount, 0, 6, 1, 1);
+
+        pushButton_SetIntensity = new QPushButton(groupBox_LEDDriver);
+        pushButton_SetIntensity->setObjectName(QStringLiteral("pushButton_SetIntensity"));
+        sizePolicy2.setHeightForWidth(pushButton_SetIntensity->sizePolicy().hasHeightForWidth());
+        pushButton_SetIntensity->setSizePolicy(sizePolicy2);
+        pushButton_SetIntensity->setMinimumSize(QSize(0, 35));
+        pushButton_SetIntensity->setMaximumSize(QSize(16777215, 35));
+        QFont font8;
+        font8.setFamily(QStringLiteral("Arial"));
+        font8.setPointSize(9);
+        font8.setBold(true);
+        font8.setWeight(75);
+        pushButton_SetIntensity->setFont(font8);
+
+        gridLayout_14->addWidget(pushButton_SetIntensity, 2, 3, 1, 1);
+
+        label_7 = new QLabel(groupBox_LEDDriver);
+        label_7->setObjectName(QStringLiteral("label_7"));
+        label_7->setFont(font3);
+        label_7->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
+
+        gridLayout_14->addWidget(label_7, 1, 5, 1, 1);
+
+        Intensity_lineEdit = new QLineEdit(groupBox_LEDDriver);
+        Intensity_lineEdit->setObjectName(QStringLiteral("Intensity_lineEdit"));
+        sizePolicy2.setHeightForWidth(Intensity_lineEdit->sizePolicy().hasHeightForWidth());
+        Intensity_lineEdit->setSizePolicy(sizePolicy2);
+        Intensity_lineEdit->setMinimumSize(QSize(180, 0));
+        Intensity_lineEdit->setMaximumSize(QSize(16777215, 35));
+        Intensity_lineEdit->setFont(font3);
+
+        gridLayout_14->addWidget(Intensity_lineEdit, 1, 3, 1, 1);
+
+        label_Intensity2 = new QLabel(groupBox_LEDDriver);
+        label_Intensity2->setObjectName(QStringLiteral("label_Intensity2"));
+        label_Intensity2->setMinimumSize(QSize(0, 25));
+        label_Intensity2->setFont(font3);
+        label_Intensity2->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
+        label_Intensity2->setAlignment(Qt::AlignCenter);
+
+        gridLayout_14->addWidget(label_Intensity2, 0, 3, 1, 1);
+
+        label_6 = new QLabel(groupBox_LEDDriver);
+        label_6->setObjectName(QStringLiteral("label_6"));
+        label_6->setFont(font3);
+        label_6->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
+
+        gridLayout_14->addWidget(label_6, 0, 5, 1, 1);
+
+        horizontalSpacer_12 = new QSpacerItem(5, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_14->addItem(horizontalSpacer_12, 2, 2, 1, 1);
+
+        label_DMDFanSpeed = new QLabel(groupBox_LEDDriver);
+        label_DMDFanSpeed->setObjectName(QStringLiteral("label_DMDFanSpeed"));
+        label_DMDFanSpeed->setFont(font4);
+        label_DMDFanSpeed->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
+
+        gridLayout_14->addWidget(label_DMDFanSpeed, 1, 0, 1, 1);
+
+        label_LEDFanSpeed = new QLabel(groupBox_LEDDriver);
+        label_LEDFanSpeed->setObjectName(QStringLiteral("label_LEDFanSpeed"));
+        label_LEDFanSpeed->setFont(font4);
+        label_LEDFanSpeed->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
+
+        gridLayout_14->addWidget(label_LEDFanSpeed, 2, 0, 1, 1);
+
         label_PCBFanSpeed = new QLabel(groupBox_LEDDriver);
         label_PCBFanSpeed->setObjectName(QStringLiteral("label_PCBFanSpeed"));
         label_PCBFanSpeed->setFont(font4);
         label_PCBFanSpeed->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
 
         gridLayout_14->addWidget(label_PCBFanSpeed, 0, 0, 1, 1);
-
-        PCBFanSpeed_text = new QTextBrowser(groupBox_LEDDriver);
-        PCBFanSpeed_text->setObjectName(QStringLiteral("PCBFanSpeed_text"));
-        sizePolicy2.setHeightForWidth(PCBFanSpeed_text->sizePolicy().hasHeightForWidth());
-        PCBFanSpeed_text->setSizePolicy(sizePolicy2);
-        PCBFanSpeed_text->setMaximumSize(QSize(200, 30));
-        PCBFanSpeed_text->setFont(font);
-        PCBFanSpeed_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
-"background-color: transparent;\n"
-"border-color: rgb(0,150,150);\n"
-";}"));
-
-        gridLayout_14->addWidget(PCBFanSpeed_text, 0, 1, 1, 1);
-
-        DMDFanSpeed_text = new QTextBrowser(groupBox_LEDDriver);
-        DMDFanSpeed_text->setObjectName(QStringLiteral("DMDFanSpeed_text"));
-        sizePolicy2.setHeightForWidth(DMDFanSpeed_text->sizePolicy().hasHeightForWidth());
-        DMDFanSpeed_text->setSizePolicy(sizePolicy2);
-        DMDFanSpeed_text->setMaximumSize(QSize(200, 30));
-        DMDFanSpeed_text->setFont(font);
-        DMDFanSpeed_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
-"background-color: transparent;\n"
-"border-color: rgb(0,150,150);\n"
-";}"));
-
-        gridLayout_14->addWidget(DMDFanSpeed_text, 1, 1, 1, 1);
 
         LEDFanSpeed_text = new QTextBrowser(groupBox_LEDDriver);
         LEDFanSpeed_text->setObjectName(QStringLiteral("LEDFanSpeed_text"));
@@ -1449,51 +1514,40 @@ public:
 
         gridLayout_14->addWidget(LEDFanSpeed_text, 2, 1, 1, 1);
 
-        label_LEDFanSpeed = new QLabel(groupBox_LEDDriver);
-        label_LEDFanSpeed->setObjectName(QStringLiteral("label_LEDFanSpeed"));
-        label_LEDFanSpeed->setFont(font4);
-        label_LEDFanSpeed->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
+        DMDFanSpeed_text = new QTextBrowser(groupBox_LEDDriver);
+        DMDFanSpeed_text->setObjectName(QStringLiteral("DMDFanSpeed_text"));
+        sizePolicy2.setHeightForWidth(DMDFanSpeed_text->sizePolicy().hasHeightForWidth());
+        DMDFanSpeed_text->setSizePolicy(sizePolicy2);
+        DMDFanSpeed_text->setMaximumSize(QSize(200, 30));
+        DMDFanSpeed_text->setFont(font);
+        DMDFanSpeed_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+";}"));
 
-        gridLayout_14->addWidget(label_LEDFanSpeed, 2, 0, 1, 1);
+        gridLayout_14->addWidget(DMDFanSpeed_text, 1, 1, 1, 1);
 
-        pushButton_EnableIntensityReg = new QPushButton(groupBox_LEDDriver);
-        pushButton_EnableIntensityReg->setObjectName(QStringLiteral("pushButton_EnableIntensityReg"));
-        pushButton_EnableIntensityReg->setMaximumSize(QSize(16777215, 30));
-        QFont font8;
-        font8.setFamily(QStringLiteral("Arial"));
-        font8.setPointSize(9);
-        font8.setBold(true);
-        font8.setWeight(75);
-        pushButton_EnableIntensityReg->setFont(font8);
+        PCBFanSpeed_text = new QTextBrowser(groupBox_LEDDriver);
+        PCBFanSpeed_text->setObjectName(QStringLiteral("PCBFanSpeed_text"));
+        sizePolicy2.setHeightForWidth(PCBFanSpeed_text->sizePolicy().hasHeightForWidth());
+        PCBFanSpeed_text->setSizePolicy(sizePolicy2);
+        PCBFanSpeed_text->setMaximumSize(QSize(200, 30));
+        PCBFanSpeed_text->setFont(font);
+        PCBFanSpeed_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+";}"));
 
-        gridLayout_14->addWidget(pushButton_EnableIntensityReg, 2, 3, 1, 1);
+        gridLayout_14->addWidget(PCBFanSpeed_text, 0, 1, 1, 1);
 
-        label_DMDFanSpeed = new QLabel(groupBox_LEDDriver);
-        label_DMDFanSpeed->setObjectName(QStringLiteral("label_DMDFanSpeed"));
-        label_DMDFanSpeed->setFont(font4);
-        label_DMDFanSpeed->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
+        horizontalSpacer_11 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout_14->addWidget(label_DMDFanSpeed, 1, 0, 1, 1);
-
-        checkBox_IntensityRegEnable = new QCheckBox(groupBox_LEDDriver);
-        checkBox_IntensityRegEnable->setObjectName(QStringLiteral("checkBox_IntensityRegEnable"));
-        checkBox_IntensityRegEnable->setFont(font4);
-        checkBox_IntensityRegEnable->setChecked(false);
-
-        gridLayout_14->addWidget(checkBox_IntensityRegEnable, 1, 3, 1, 1);
-
-        horizontalSpacer_11 = new QSpacerItem(450, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
-
-        gridLayout_14->addItem(horizontalSpacer_11, 1, 4, 1, 1);
-
-        horizontalSpacer_12 = new QSpacerItem(5, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_14->addItem(horizontalSpacer_12, 2, 2, 1, 1);
+        gridLayout_14->addItem(horizontalSpacer_11, 0, 4, 1, 1);
 
 
         verticalLayout_17->addLayout(gridLayout_14);
 
-        verticalSpacer_7 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
+        verticalSpacer_7 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout_17->addItem(verticalSpacer_7);
 
@@ -1520,16 +1574,6 @@ public:
 
         gridLayout_15->addWidget(pushButton_SetLEDCurrent, 1, 1, 1, 1);
 
-        Intensity_lineEdit = new QLineEdit(groupBox_LEDDriver);
-        Intensity_lineEdit->setObjectName(QStringLiteral("Intensity_lineEdit"));
-        sizePolicy2.setHeightForWidth(Intensity_lineEdit->sizePolicy().hasHeightForWidth());
-        Intensity_lineEdit->setSizePolicy(sizePolicy2);
-        Intensity_lineEdit->setMinimumSize(QSize(180, 0));
-        Intensity_lineEdit->setMaximumSize(QSize(16777215, 35));
-        Intensity_lineEdit->setFont(font3);
-
-        gridLayout_15->addWidget(Intensity_lineEdit, 1, 3, 1, 1);
-
         pushButton_LEDPWMON_OFF = new QPushButton(groupBox_LEDDriver);
         pushButton_LEDPWMON_OFF->setObjectName(QStringLiteral("pushButton_LEDPWMON_OFF"));
         sizePolicy2.setHeightForWidth(pushButton_LEDPWMON_OFF->sizePolicy().hasHeightForWidth());
@@ -1542,16 +1586,6 @@ public:
         horizontalSpacer_14 = new QSpacerItem(20, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
 
         gridLayout_15->addItem(horizontalSpacer_14, 1, 5, 1, 1);
-
-        pushButton_SetIntensity = new QPushButton(groupBox_LEDDriver);
-        pushButton_SetIntensity->setObjectName(QStringLiteral("pushButton_SetIntensity"));
-        sizePolicy2.setHeightForWidth(pushButton_SetIntensity->sizePolicy().hasHeightForWidth());
-        pushButton_SetIntensity->setSizePolicy(sizePolicy2);
-        pushButton_SetIntensity->setMinimumSize(QSize(0, 35));
-        pushButton_SetIntensity->setMaximumSize(QSize(16777215, 35));
-        pushButton_SetIntensity->setFont(font8);
-
-        gridLayout_15->addWidget(pushButton_SetIntensity, 1, 4, 1, 1);
 
         LEDCurrent_lineEdit = new QLineEdit(groupBox_LEDDriver);
         LEDCurrent_lineEdit->setObjectName(QStringLiteral("LEDCurrent_lineEdit"));
@@ -1567,15 +1601,6 @@ public:
         horizontalSpacer_13 = new QSpacerItem(20, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
 
         gridLayout_15->addItem(horizontalSpacer_13, 1, 2, 1, 1);
-
-        label_Intensity2 = new QLabel(groupBox_LEDDriver);
-        label_Intensity2->setObjectName(QStringLiteral("label_Intensity2"));
-        label_Intensity2->setMinimumSize(QSize(0, 25));
-        label_Intensity2->setFont(font3);
-        label_Intensity2->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
-        label_Intensity2->setAlignment(Qt::AlignCenter);
-
-        gridLayout_15->addWidget(label_Intensity2, 0, 3, 1, 1);
 
         pushButton_SwTrigger = new QPushButton(groupBox_LEDDriver);
         pushButton_SwTrigger->setObjectName(QStringLiteral("pushButton_SwTrigger"));
@@ -1594,6 +1619,25 @@ public:
         pushButton_ExTrigger->setFont(font6);
 
         gridLayout_15->addWidget(pushButton_ExTrigger, 3, 7, 1, 1);
+
+        checkBox_IntensityRegEnable = new QCheckBox(groupBox_LEDDriver);
+        checkBox_IntensityRegEnable->setObjectName(QStringLiteral("checkBox_IntensityRegEnable"));
+        sizePolicy2.setHeightForWidth(checkBox_IntensityRegEnable->sizePolicy().hasHeightForWidth());
+        checkBox_IntensityRegEnable->setSizePolicy(sizePolicy2);
+        checkBox_IntensityRegEnable->setFont(font4);
+        checkBox_IntensityRegEnable->setChecked(false);
+
+        gridLayout_15->addWidget(checkBox_IntensityRegEnable, 0, 3, 1, 1);
+
+        pushButton_EnableIntensityReg = new QPushButton(groupBox_LEDDriver);
+        pushButton_EnableIntensityReg->setObjectName(QStringLiteral("pushButton_EnableIntensityReg"));
+        sizePolicy2.setHeightForWidth(pushButton_EnableIntensityReg->sizePolicy().hasHeightForWidth());
+        pushButton_EnableIntensityReg->setSizePolicy(sizePolicy2);
+        pushButton_EnableIntensityReg->setMinimumSize(QSize(0, 0));
+        pushButton_EnableIntensityReg->setMaximumSize(QSize(16777215, 30));
+        pushButton_EnableIntensityReg->setFont(font8);
+
+        gridLayout_15->addWidget(pushButton_EnableIntensityReg, 1, 3, 1, 1);
 
 
         verticalLayout_17->addLayout(gridLayout_15);
@@ -2076,8 +2120,41 @@ public:
 
         verticalLayout_5->addWidget(AutoBed);
 
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        label_11 = new QLabel(groupBox_ZMachineControl);
+        label_11->setObjectName(QStringLiteral("label_11"));
+        label_11->setMinimumSize(QSize(0, 25));
+        label_11->setFont(font3);
+
+        horizontalLayout_2->addWidget(label_11);
+
+        ImageProcessLoop = new QLineEdit(groupBox_ZMachineControl);
+        ImageProcessLoop->setObjectName(QStringLiteral("ImageProcessLoop"));
+        sizePolicy2.setHeightForWidth(ImageProcessLoop->sizePolicy().hasHeightForWidth());
+        ImageProcessLoop->setSizePolicy(sizePolicy2);
+        ImageProcessLoop->setMinimumSize(QSize(0, 25));
+        ImageProcessLoop->setFont(font3);
+
+        horizontalLayout_2->addWidget(ImageProcessLoop);
+
+
+        verticalLayout_5->addLayout(horizontalLayout_2);
+
+        CalGrayValue = new QPushButton(groupBox_ZMachineControl);
+        CalGrayValue->setObjectName(QStringLiteral("CalGrayValue"));
+        sizePolicy2.setHeightForWidth(CalGrayValue->sizePolicy().hasHeightForWidth());
+        CalGrayValue->setSizePolicy(sizePolicy2);
+        CalGrayValue->setMinimumSize(QSize(0, 30));
+        CalGrayValue->setFont(font3);
+
+        verticalLayout_5->addWidget(CalGrayValue);
+
         ManualGcode_GroupBox = new QGroupBox(groupBox_ZMachineControl);
         ManualGcode_GroupBox->setObjectName(QStringLiteral("ManualGcode_GroupBox"));
+        sizePolicy2.setHeightForWidth(ManualGcode_GroupBox->sizePolicy().hasHeightForWidth());
+        ManualGcode_GroupBox->setSizePolicy(sizePolicy2);
         ManualGcode_GroupBox->setMaximumSize(QSize(16777215, 16777215));
         ManualGcode_GroupBox->setFont(font1);
         ManualGcode_GroupBox->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
@@ -2467,18 +2544,20 @@ public:
         Label_DMDTemp->setText(QApplication::translate("MainWindow", "DMD Temp [\302\260C]", nullptr));
         label_IntensityVoltage->setText(QApplication::translate("MainWindow", "Intensity Voltage [mV]", nullptr));
         label_LEDTemp->setText(QApplication::translate("MainWindow", "LED Temp [\302\260C]", nullptr));
-        label_PCBFanSpeed->setText(QApplication::translate("MainWindow", "PCB FAN Speed [1/min]", nullptr));
-        label_LEDFanSpeed->setText(QApplication::translate("MainWindow", "LED FAN Speed [1/min]", nullptr));
-        pushButton_EnableIntensityReg->setText(QApplication::translate("MainWindow", "Enable Intensity Regulation", nullptr));
+        pushButton_SetIntensity->setText(QApplication::translate("MainWindow", "Manually Set Intensity", nullptr));
+        label_7->setText(QApplication::translate("MainWindow", "Base Layer Intensity uW/cm2", nullptr));
+        label_Intensity2->setText(QApplication::translate("MainWindow", "Intensity uW/cm2", nullptr));
+        label_6->setText(QApplication::translate("MainWindow", "Number of Base Layer", nullptr));
         label_DMDFanSpeed->setText(QApplication::translate("MainWindow", "DMD FAN Speed [1/min]", nullptr));
-        checkBox_IntensityRegEnable->setText(QApplication::translate("MainWindow", "Intensity Reg. Enable?", nullptr));
+        label_LEDFanSpeed->setText(QApplication::translate("MainWindow", "LED FAN Speed [1/min]", nullptr));
+        label_PCBFanSpeed->setText(QApplication::translate("MainWindow", "PCB FAN Speed [1/min]", nullptr));
         label_LEDCurrent2->setText(QApplication::translate("MainWindow", "LED Current [mA]", nullptr));
         pushButton_SetLEDCurrent->setText(QApplication::translate("MainWindow", "Set LED Current", nullptr));
         pushButton_LEDPWMON_OFF->setText(QApplication::translate("MainWindow", "LED PWM OFF", nullptr));
-        pushButton_SetIntensity->setText(QApplication::translate("MainWindow", "Set Intensity", nullptr));
-        label_Intensity2->setText(QApplication::translate("MainWindow", "Intensity uW/cm2", nullptr));
         pushButton_SwTrigger->setText(QApplication::translate("MainWindow", "SW Trigger", nullptr));
         pushButton_ExTrigger->setText(QApplication::translate("MainWindow", "EXT Trigger", nullptr));
+        checkBox_IntensityRegEnable->setText(QApplication::translate("MainWindow", "Intensity Reg. Enable?", nullptr));
+        pushButton_EnableIntensityReg->setText(QApplication::translate("MainWindow", "Enable Intensity Regulation", nullptr));
         groupBox_ZMachineControl->setTitle(QApplication::translate("MainWindow", "Z Machine Control", nullptr));
         groupBox_3->setTitle(QApplication::translate("MainWindow", "Machine Settings", nullptr));
         ComPort->setText(QApplication::translate("MainWindow", "Com Port", nullptr));
@@ -2517,6 +2596,8 @@ public:
         MotorConDisable->setText(QApplication::translate("MainWindow", "Disable", nullptr));
         AutoBed->setTitle(QApplication::translate("MainWindow", "AutoBed Level", nullptr));
         AutoBedLevel->setText(QApplication::translate("MainWindow", "AutoBed Level", nullptr));
+        label_11->setText(QApplication::translate("MainWindow", "Image Process Loop", nullptr));
+        CalGrayValue->setText(QApplication::translate("MainWindow", "Calculate Gray Value", nullptr));
         ManualGcode_GroupBox->setTitle(QApplication::translate("MainWindow", "Manual Gcode Command", nullptr));
         SendManualGcode->setText(QApplication::translate("MainWindow", "Send", nullptr));
         ClearManualGcode->setText(QApplication::translate("MainWindow", "Clear", nullptr));

@@ -227,7 +227,7 @@ private slots:
 
     void on_UpdateTotalTime_clicked();
 
-    //void on_CalGrayValue_clicked();
+    void on_CalGrayValue_clicked();
 
 private:
 

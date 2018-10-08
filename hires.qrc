@@ -26,6 +26,7 @@
         <file>images/connected.png</file>
         <file>images/disconnected.png</file>
         <file>images/my_pause.png</file>
+        <file>images/jgr.jpg</file>
     </qresource>
     <qresource prefix="/new/prefix1">
         <file>Icons/add.ico</file>

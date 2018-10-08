@@ -1044,118 +1044,192 @@ void MainWindow::on_UpdateTotalTime_clicked()
     ui->TotalTime->setText(diff);
 }
 
-/*
+
 void MainWindow::on_CalGrayValue_clicked()
 {
-    if (m_elements.size() <= 0)
-    {
-        showStatus("Error: No pattern sequence to Count");
-        return;
-    }
-
-    const QPixmap pixmap(m_elements[0].name);
-
-    const QImage image = pixmap.toImage();
-    const int width = image.width();
-    const int height = image.height();
-    //QBitArray bitArray(width*height);
-    QVector<QVector<int>> matrix(height, QVector<int>(width, 0));
-    int GrayCount = 0;
-
-    for (int h=0; h<height; h++) {
-        for (int w=0; w<width; w++) {
-            //bitArray[h*width+w] = qGray(image.pixel(w,h));// > 254 ? 0 : 1;
-            matrix[h][w] = qGray(image.pixel(w,h)) > 254 ? 1 : 0;
-            if (matrix[h][w] == 1)
-                GrayCount++;
-        }
-    }
-
-    if (GrayCount > 19794)
-    {
-        QImage monoImage(width, height, QImage::Format_Mono);
-
-        for (int i = 0; i < height; i++)
+ /*   if (m_elements.size() <= 0)
         {
-            for (int j = 0; j < width; j++)
-            {
-                int tempheight = i;
-                int tempwidth = j;
-                int pixel = matrix[i][j];
-                if (pixel == 1)
-                {
-                    while (matrix[i][tempwidth] == 1)
-                    {
-                        //tempheight++;
-                        tempwidth++;
-                    }
-                    while (matrix[tempheight][j] == 1)
-                    {
-                        tempheight++;
-                    }
-                }
-            }
+            showStatus("Error: No pattern sequence to Count");
+            return;
         }
 
+        const QPixmap pixmap(m_elements[0].name);
 
-*/
+        const QImage image = pixmap.toImage();
+        const int width = image.width();
+        const int height = image.height();
+        //QBitArray bitArray(width*height);
+        QVector<QVector<int>> matrix(height, QVector<int>(width, 0));
+        int GrayCount = 0;
 
-       /* for (int i = 0; i < height; i++)
-        {
-            for (int j = 0; j < width; j++ )
-            {
-                int tempheight = i + 160;
-                if (tempheight > height)
-                    tempheight = height;
-                int tempwidth = j + 160;
-                if (tempwidth > width)
-                    tempwidth = width;
-                int tempGrayCount = 0;
-                for (int h = i; h < tempheight; h++) {
-                    for (int w = j; w < tempwidth; w++) {
-                        int pixel = matrix[h][w];
-                        if ( pixel == 1)
-                        {
-                            tempGrayCount = tempGrayCount + 1;
-                        }
-                        if (tempGrayCount >= 20000) {
-                            for (int x = i; x < tempheight; x++) {
-                                for (int y = j; y < tempwidth; y++) {
-                                 monoImage.setPixel(y, x, 0);
-                                }
-                            }
-                        } else {
-                            monoImage.setPixel(w, h, pixel);
-                        }
-                    }
-                }
-                j = j + 159;
-            }
-            i = i + 159;
-        } */
-
-     /*   for (int h=0; h<height; h++) {
+        for (int h=0; h<height; h++) {
             for (int w=0; w<width; w++) {
-                int pixel = matrix[h][w];
-                if ( pixel == 1)
-                {
-                    if ( h == 0 && w == 0)
-                    {
-
-
-                    } else {
-
-                    }
-
-                }
-
-                monoImage.setPixel(w, h, matrix[h][w]);
+                //bitArray[h*width+w] = qGray(image.pixel(w,h));// > 254 ? 0 : 1;
+                matrix[h][w] = qGray(image.pixel(w,h)) > 254 ? 1 : 0;
+                if (matrix[h][w] == 1)
+                    GrayCount++;
             }
-        }  */
+        }
+
+        QImage monoImage(width, height, QImage::Format_Mono);
+        int y = ui->ImageProcessLoop->text().toInt();
+        if (ui->ImageProcessLoop->text().isEmpty())
+        {
+            showStatus("Please Enter value for Image Process Loop!!");
+            return;
+        }
+
+        if (y == 0)
+        {
+            for (int i=0; i<height; i++)
+            {
+                for (int j=0; j<width; j++)
+                {
+                    monoImage.setPixel(j,i,matrix[i][j]);
+                }
+            }
+        }
+
+        for (int x=0; x<y; x++)
+        {
+            QStringList RowData;
+            QStringList ColumnData;
+            QList<int> RowGrayCount;
+            QList<int> ColumnGrayCount;
+
+            for (int i=0; i<height; i++)
+            {
+                for (int j=0; j<width; j++)
+                {
+                    int RowCount = 0;
+                    int tempwidth = j;
+                    if (matrix[i][j] == 1)
+                    {
+                        while (matrix[i][j] != 0)
+                        {
+                            RowCount = RowCount + 1;
+                            j++;
+                        }
+                        RowData.append(QString::number(i) + "," + QString::number(tempwidth)
+                                            + "," + QString::number(j) +"," + ":" + QString::number(RowCount));
+                    }
+                }
+            }
+
+            for (int i=0; i<RowData.size(); i++)
+            {
+                QString Str = RowData.at(i);
+                int loc = Str.indexOf(":",0,Qt::CaseInsensitive);
+                Str.remove(0, loc + 1);
+                RowGrayCount.append(Str.toInt());
+            }
+
+            int RowMax = *std::max_element(RowGrayCount.begin(), RowGrayCount.end());
+            int RowMaxIndex = RowGrayCount.indexOf(RowMax,0);
+
+            QString LargeRowData = RowData.at(RowMaxIndex);
+            QStringList Strbuffer = LargeRowData.split(QRegExp("[,]"),QString::SkipEmptyParts);
+            QString Row = Strbuffer[0];
+            QString RowStart = Strbuffer[1];
+            QString RowEnd = Strbuffer[2];
+
+            for (int i=RowStart.toInt(); i<RowEnd.toInt(); i++)
+            {
+                int tempColumn = Row.toInt();
+                int StartColumn = 0;
+                int MaxCount = 0;
+                if (matrix[tempColumn][i] == 1)
+                {
+                    while (matrix[tempColumn][i] != 0)
+                    {
+                        tempColumn--;
+                    }
+                    tempColumn = tempColumn + 1;
+                    StartColumn = tempColumn;
+                    while (matrix[tempColumn][i] != 0)
+                    {
+                        MaxCount = MaxCount + 1;
+                        tempColumn++;
+                    }
+                    ColumnData.append(QString::number(i) + "," + QString::number(StartColumn)+ ","
+                                      + QString::number(tempColumn) + "," + ":" + QString::number(MaxCount));
+                 }
+            }
+
+            for (int i=0; i<ColumnData.size(); i++)
+            {
+                QString Str = ColumnData.at(i);
+                int loc = Str.indexOf(":",0,Qt::CaseInsensitive);
+                Str.remove(0, loc + 1);
+                ColumnGrayCount.append(Str.toInt());
+            }
+
+            int Columnmax = *std::max_element(ColumnGrayCount.begin(), ColumnGrayCount.end());
+            int ColumnMaxIndex = ColumnGrayCount.indexOf(Columnmax,0);
+
+            QString LargeColumnData = ColumnData.at(ColumnMaxIndex);
+            QStringList Strbuffer2 = LargeColumnData.split(QRegExp("[,]"),QString::SkipEmptyParts);
+            //QString Column = Strbuffer2[0];
+            QString ColumnStart = Strbuffer2[1];
+            QString ColumnEnd = Strbuffer2[2];
+
+            for (int i=0; i<height; i++)
+            {
+                for (int j=0; j<width; j++)
+                {
+                    if (i >= ColumnStart.toInt() && i <= ColumnEnd.toInt())
+                    {
+                        if (j >= RowStart.toInt() && j <= RowEnd.toInt())
+                        {
+                            monoImage.setPixel(j,i,0);
+                            matrix[i][j] = 0;
+                        } else {
+                            monoImage.setPixel(j,i,matrix[i][j]);
+                        }
+                    } else {
+                        monoImage.setPixel(j,i,matrix[i][j]);
+                    }
+                }
+            }  */
+
+         /*   for (int i=0; i<height; i++)
+            {
+                for (int j=0; j<width; j++)
+                {
+                    int tempheight = i + 160;
+                    if (tempheight > height)
+                        tempheight = height;
+                    int tempwidth = j + 160;
+                    if (tempwidth > width)
+                        tempwidth = width;
+                    int tempGrayCount = 0;
+                    for (int h=i; h<tempheight; h++) {
+                        for (int w=j; w<tempwidth; w++) {
+                            int pixel = matrix[h][w];
+                            if ( pixel == 1)
+                            {
+                                tempGrayCount = tempGrayCount + 1;
+                            }
+                            if (tempGrayCount >= 20000) {
+                                for (int x=i; x<tempheight; x++) {
+                                    for (int y=j; y<tempwidth; y++) {
+                                     monoImage.setPixel(y, x, 0);
+                                    }
+                                }
+                            } else {
+                                monoImage.setPixel(w, h, pixel);
+                            }
+                        }
+                    }
+                    j = j + 159;
+                }
+                i = i + 159;
+            }  */
+       // }
 
        // QString str3 = m_ptnImagePath + "/1_5" + ".bmp";
        // monoImage.save(str3);
-    //}
-//}
+       // showStatus("Done!!!");
+}
 
 
