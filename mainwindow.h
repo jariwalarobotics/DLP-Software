@@ -48,6 +48,7 @@ public:
     int ExposureTime = 0;
     int BeforeZTime = 0;
     int PrintingDelay = 0;
+    int Intensity = 0;
     int counter = 0;
     BOOL WaitforEndstopHit = false;
 
@@ -174,6 +175,8 @@ private slots:
     void on_pushButton_LEDPWMON_OFF_clicked();
 
     void on_pushButton_SetIntensity_clicked();
+
+    void SetLayerIntensity(int Intensity);
 
     void on_pushButton_SwTrigger_clicked();
 

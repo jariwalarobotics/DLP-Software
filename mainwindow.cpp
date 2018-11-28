@@ -111,6 +111,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     updateMinExposure();
     startTimer(0);
+
+    if (!m_ptnProfilePath.isEmpty()) {
+        on_LoadMacProfile_clicked();
+    }
 }
 
 MainWindow::~MainWindow()

@@ -858,6 +858,15 @@ void MainWindow::SendPatSequence()
         QString cmd = ui->StartLayerGcode->toPlainText();
         ZAxisMovement(cmd);
 
+        if (PatCount >= ui->BaseLayerCount->text()) {
+            Intensity = ui->BaseLayerIntensity->text().toInt();
+        } else if (PatCount >= ui->MidLayerCount->text()) {
+            Intensity = ui->MidLayerIntensity->text().toInt();
+        } else {
+            Intensity = ui->Intensity_lineEdit->text().toInt();
+        }
+        SetLayerIntensity(Intensity);
+
         PatternElement AutoPatSeq;
         AutoPatSeq.bits = m_elements[PatCount].bits;
         AutoPatSeq.color = m_elements[PatCount].color;

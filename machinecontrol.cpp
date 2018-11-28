@@ -274,6 +274,26 @@ void MainWindow::on_SaveMacProfile_clicked()
         out << "Intensity:" + ui->Intensity_lineEdit->text() << "," << "\n";
     }
 
+    if (!ui->BaseLayerCount->text().isEmpty())
+    {
+        out << "Base Layer Count:" + ui->BaseLayerCount->text() << "," << "\n";
+    }
+
+    if (!ui->BaseLayerIntensity->text().isEmpty())
+    {
+        out << "Base Intensity:" + ui->BaseLayerIntensity->text() << "," << "\n";
+    }
+
+    if (!ui->MidLayerCount->text().isEmpty())
+    {
+        out << "Mid Layer Count:" + ui->MidLayerCount->text() << "," << "\n";
+    }
+
+    if (!ui->MidLayerIntensity->text().isEmpty())
+    {
+        out << "Mid Intensity:" + ui->MidLayerIntensity->text() << "," << "\n";
+    }
+
     if (!ui->exposure_lineEdit->text().isEmpty())
     {
         out << "Exposure Time:" + ui->exposure_lineEdit->text() << "," << "\n";
@@ -307,10 +327,14 @@ void MainWindow::on_LoadMacProfile_clicked()
 
     //char dispStr[255];
 
-    fileName = QFileDialog::getOpenFileName(this,
-                                            QString("Choose Profile File"),
-                                            m_ptnProfilePath,
-                                            tr("Settings File(*.fff)"));
+    if (ui->ProfileName->toPlainText().isEmpty()) {
+        fileName = m_ptnProfilePath + "/default.fff";
+    } else {
+        fileName = QFileDialog::getOpenFileName(this,
+                                                QString("Choose Profile File"),
+                                                m_ptnProfilePath,
+                                                tr("Settings File(*.fff)"));
+    }
 
     if(fileName.isEmpty())
         return;
@@ -330,6 +354,10 @@ void MainWindow::on_LoadMacProfile_clicked()
     ui->ZLiftdelay->setText(NULL);
     ui->PrintingDelay->setText(NULL);
     ui->Intensity_lineEdit->setText(NULL);
+    ui->BaseLayerCount->setText(NULL);
+    ui->BaseLayerIntensity->setText(NULL);
+    ui->MidLayerCount->setText(NULL);
+    ui->MidLayerIntensity->setText(NULL);
     ui->exposure_lineEdit->setText(NULL);
     ui->BeforeZTime_lineEdit->setText(NULL);
     ui->AutoHoming->setChecked(false);
@@ -390,6 +418,22 @@ void MainWindow::on_LoadMacProfile_clicked()
            if (Strbuffer[0] == "Intensity")
            {
                ui->Intensity_lineEdit->setText(Strbuffer[1]);
+           }
+           if (Strbuffer[0] == "Base Layer Count")
+           {
+               ui->BaseLayerCount->setText(Strbuffer[1]);
+           }
+           if (Strbuffer[0] == "Base Intensity")
+           {
+               ui->BaseLayerIntensity->setText(Strbuffer[1]);
+           }
+           if (Strbuffer[0] == "Mid Layer Count")
+           {
+               ui->MidLayerCount->setText(Strbuffer[1]);
+           }
+           if (Strbuffer[0] == "Mid Intensity")
+           {
+               ui->MidLayerIntensity->setText(Strbuffer[1]);
            }
            if (Strbuffer[0] == "Exposure Time")
            {

@@ -141,6 +141,47 @@ void MainWindow::on_pushButton_EnableIntensityReg_clicked()
     _write1 = AHid_Write(_pipe1, buffer, _repSize1, &written);
 }
 
+void MainWindow::SetLayerIntensity(int Intensity)
+{
+    if (!LEDConnected1)
+    {
+        showStatus("Error: Please connect LED Engine!!");
+        return;
+    }
+    unsigned char buffer[0x40] = {0};
+    unsigned int written = 0;
+    int number = Intensity;
+
+    if (number > 18000)
+    {
+        showStatus("Error: Enter value below 18000!!");
+        return;
+    }
+    QByteArray bits;
+    QString data = bits.setNum(number,16);
+
+    QByteArray bytes = QByteArray::fromHex(data.toUtf8());
+    QByteArray bytes22;
+
+    int j = bytes.length()-1;
+    for (int i = 0; i<bytes.length();i++)
+    {
+        bytes22[j] = bytes[i];
+        j = j-1;
+    }
+    buffer[0] = 0;
+    buffer[1] = 1;
+    buffer[2] = 6;
+    buffer[3] = 0;
+    buffer[4] = 4;
+    buffer[5] = 0x1a;
+    buffer[6] = bytes22[3];
+    buffer[7] = bytes22[2];
+    buffer[8] = bytes22[1];
+    buffer[9] = bytes22[0];
+    _write1 = AHid_Write(_pipe1, buffer, _repSize1, &written);
+}
+
 void MainWindow::on_pushButton_SetIntensity_clicked()
 {
     if (!LEDConnected1)
