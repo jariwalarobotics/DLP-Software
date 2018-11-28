@@ -223,6 +223,7 @@ release/qrc_hires.cpp: hires.qrc \
 		images/img1.jpg \
 		images/connected.png \
 		images/LCR6500.jpg \
+		images/jgr.jpg \
 		images/LCR9000.jpg \
 		images/settings.png \
 		images/pattern.png \
@@ -364,6 +365,8 @@ release/moc_mainwindow.cpp: C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/Q
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qtextcursor.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qtextformat.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qpen.h \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/QDateTime \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/qdatetime.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QTableWidget \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qtablewidget.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qtableview.h \
@@ -680,6 +683,8 @@ release/main.o: main.cpp mainwindow.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qtextcursor.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qtextformat.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qpen.h \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/QDateTime \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/qdatetime.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QTableWidget \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qtablewidget.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qtableview.h \
@@ -722,7 +727,12 @@ release/main.o: main.cpp mainwindow.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qinputmethod.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QMessageBox \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qmessagebox.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qdialog.h
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qdialog.h \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/Qsplashscreen \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qsplashscreen.h \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/QTimer \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/qtimer.h \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/qbasictimer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o main.cpp
 
 release/mainwindow.o: mainwindow.cpp C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QFileDialog \
@@ -930,13 +940,6 @@ release/mainwindow.o: mainwindow.cpp C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/Qt
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QLabel \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qlabel.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QLineEdit \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QPlainTextEdit \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qplaintextedit.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qabstracttextdocumentlayout.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qtextlayout.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qglyphrun.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qrawfont.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qfontdatabase.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QPushButton \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qpushbutton.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QRadioButton \
@@ -1309,6 +1312,8 @@ release/patternmode.o: patternmode.cpp mainwindow.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qtextcursor.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qtextformat.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qpen.h \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/QDateTime \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/qdatetime.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QTableWidget \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qtablewidget.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qtableview.h \
@@ -1370,13 +1375,6 @@ release/patternmode.o: patternmode.cpp mainwindow.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qlabel.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QLineEdit \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qlineedit.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QPlainTextEdit \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qplaintextedit.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qabstracttextdocumentlayout.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qtextlayout.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qglyphrun.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qrawfont.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qfontdatabase.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QPushButton \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qpushbutton.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QRadioButton \
@@ -1406,8 +1404,12 @@ release/patternmode.o: patternmode.cpp mainwindow.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QMessageBox \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qmessagebox.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/QTextStream \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/QCollator \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/qcollator.h \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/QVector \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/QBitArray \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/qbitarray.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/QTime \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/qdatetime.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/QTimer \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/qtimer.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/qbasictimer.h \
@@ -1537,6 +1539,8 @@ release/leddriver.o: leddriver.cpp mainwindow.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qtextcursor.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qtextformat.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qpen.h \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/QDateTime \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/qdatetime.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QTableWidget \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qtablewidget.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qtableview.h \
@@ -1598,13 +1602,6 @@ release/leddriver.o: leddriver.cpp mainwindow.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qlabel.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QLineEdit \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qlineedit.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QPlainTextEdit \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qplaintextedit.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qabstracttextdocumentlayout.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qtextlayout.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qglyphrun.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qrawfont.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qfontdatabase.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QPushButton \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qpushbutton.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QRadioButton \
@@ -1756,6 +1753,8 @@ release/machinecontrol.o: machinecontrol.cpp mainwindow.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qtextcursor.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qtextformat.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qpen.h \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/QDateTime \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/qdatetime.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QTableWidget \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qtablewidget.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qtableview.h \
@@ -1817,13 +1816,6 @@ release/machinecontrol.o: machinecontrol.cpp mainwindow.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qlabel.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QLineEdit \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qlineedit.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QPlainTextEdit \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qplaintextedit.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qabstracttextdocumentlayout.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qtextlayout.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qglyphrun.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qrawfont.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qfontdatabase.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QPushButton \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qpushbutton.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QRadioButton \

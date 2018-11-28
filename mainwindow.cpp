@@ -255,6 +255,7 @@ void MainWindow::hideFrames()
     ui->pushButton_LEDDriver->setChecked(false);
     ui->pushButton_patternMode->setChecked(false);
     ui->pushButton_ZMachineControl->setChecked(false);
+    ui->pushButton_slc->setChecked(false);
 }
 
 /**
@@ -459,4 +460,12 @@ void MainWindow::timerEvent(QTimerEvent *)
                                     .arg(s, 2, 10, QChar('0'));
             ui->StartTime->setText(diff);
     }
+}
+
+void MainWindow::on_pushButton_slc_clicked()
+{
+    hideFrames();
+
+    ui->stackedWidget->setCurrentIndex(3);
+    ui->pushButton_slc->setChecked(true);
 }

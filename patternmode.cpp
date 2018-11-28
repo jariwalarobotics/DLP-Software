@@ -109,7 +109,6 @@ int MainWindow::updateSinglePatternMemory(int totalSplashImages, BOOL firmware)
 int MainWindow::uploadPatternToEVM(bool master, int splashImageCount, int splash_size, uint08* splash_block)
 {
     int origSize = splash_size;
-
     LCR_InitPatternMemLoad(master, splashImageCount, splash_size);
 
     //QProgressDialog imgDataDownload("Image data download", "Abort", 0, splash_size, this);
@@ -1044,10 +1043,79 @@ void MainWindow::on_UpdateTotalTime_clicked()
     ui->TotalTime->setText(diff);
 }
 
+void MainWindow::on_PixelShifting_clicked()
+{
+/*    if (m_elements.size() <= 0)
+    {
+        showStatus("Error: No pattern sequence to Count");
+        return;
+    }
+
+    const QPixmap pixmap(m_elements[0].name);
+
+    const QImage image = pixmap.toImage();
+    const int width = image.width();
+    const int height = image.height();
+
+    QVector<QVector<int>> matrix(height, QVector<int>(width,0));
+
+    for (int h=0; h<height; h++) {
+        for (int w=0; w<width; w++) {
+            matrix[h][w] = qGray(image.pixel(w,h)) > 254 ? 1 : 0;
+        }
+    }
+
+    QImage RightShift(width, height, QImage::Format_Mono);
+    //QImage RightShift(width, height, QImage::Format_RGB32);
+    QImage RightDownShift(width, height, QImage::Format_Mono);
+    QImage LeftDownShift(width, height, QImage::Format_Mono);
+    //QImage LeftUpShift(width, height, QImage::Format_Mono);
+
+    for (int i=0; i<height; i++) {
+        for (int j=0; j<width; j++) {
+            if (j > 480) {
+                //int temp = matrix[i][j-480];
+                //RightShift.setPixel(j,i, QColor(temp,temp,temp).rgb());
+                RightShift.setPixel(j,i,matrix[i][j - 480]);
+            } else {
+                RightShift.setPixel(j,i,0);
+                //RightShift.setPixel( j,i, QColor(141, 141, 141).rgb());
+            }
+        }
+    }
+    QString rightshift = m_ptnImagePath + "/RightShift" + ".bmp";
+    RightShift.save(rightshift);
+
+    for (int i=0; i<height; i++) {
+        for (int j=0; j<width; j++) {
+            if (j > 480 && i > 270) {
+                RightDownShift.setPixel(j,i,matrix[i - 270][j - 480]);
+            } else {
+                RightDownShift.setPixel(j,i,0);
+            }
+        }
+    }
+    QString rightdownshift = m_ptnImagePath + "/RightDownShift" + ".bmp";
+    RightDownShift.save(rightdownshift);
+
+    for (int i=0; i<height; i++) {
+        for (int j=0; j<width; j++) {
+            if (i > 270) {
+                LeftDownShift.setPixel(j,i,matrix[i - 270][j]);
+            } else {
+                LeftDownShift.setPixel(j,i,0);
+            }
+        }
+    }
+    QString leftdownshift = m_ptnImagePath + "/LeftDownShift" + ".bmp";
+    LeftDownShift.save(leftdownshift);
+
+    showStatus("Done!!!");  */
+}
 
 void MainWindow::on_CalGrayValue_clicked()
 {
- /*   if (m_elements.size() <= 0)
+/*      if (m_elements.size() <= 0)
         {
             showStatus("Error: No pattern sequence to Count");
             return;
@@ -1190,7 +1258,7 @@ void MainWindow::on_CalGrayValue_clicked()
                         monoImage.setPixel(j,i,matrix[i][j]);
                     }
                 }
-            }  */
+            }
 
          /*   for (int i=0; i<height; i++)
             {
@@ -1225,11 +1293,11 @@ void MainWindow::on_CalGrayValue_clicked()
                 }
                 i = i + 159;
             }  */
-       // }
+        //}
 
-       // QString str3 = m_ptnImagePath + "/1_5" + ".bmp";
-       // monoImage.save(str3);
-       // showStatus("Done!!!");
+        //QString str3 = m_ptnImagePath + "/1_5" + ".bmp";
+        //monoImage.save(str3);
+        //showStatus("Done!!!");
 }
 
 

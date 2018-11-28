@@ -229,6 +229,10 @@ private slots:
 
     void on_CalGrayValue_clicked();
 
+    void on_pushButton_slc_clicked();
+
+    void on_PixelShifting_clicked();
+
 private:
 
     void timerEvent(QTimerEvent *);
