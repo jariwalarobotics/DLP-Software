@@ -905,6 +905,7 @@ void MainWindow::SendPatSequence()
         waveWindow->draw();
         AutoSendPatSeq->stop();
         WaitforEndstopHit = false;
+        ZLiftComplete = false;
         mResumeSessionTime = 0;
         showStatus("Pattern sequence completed!!");
         ui->StartTime->setText("00:00:00");
@@ -919,6 +920,12 @@ void MainWindow::SendPatSequence()
     QString cmd = ui->EndLayerGcode->toPlainText();
     ZAxisMovement(cmd);
     Auto_m_elements.clear();
+    while (!ZLiftComplete == true) {
+        int loop = 0;
+        loop++;
+    }
+    ZLiftComplete = false;
+    //AutoSendPatSeq->setInterval(0);
     AutoSendPatSeq->setInterval(delay + ZLiftDelay);
     PatCount = PatCount + 1;
 }

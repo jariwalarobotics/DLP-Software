@@ -16,6 +16,7 @@ INPUT(
 ./debug\patternmode.o
 ./debug\leddriver.o
 ./debug\machinecontrol.o
+./debug\slcfilecontrol.o
 ./debug\qrc_hires.o
 ./debug\moc_mainwindow.o
 ./debug\moc_waveformwindow.o

@@ -40,7 +40,8 @@ SOURCES += \
     HiresLib/usb.c \
     patternmode.cpp \
     leddriver.cpp \
-    machinecontrol.cpp
+    machinecontrol.cpp \
+    slcfilecontrol.cpp
 
 HEADERS += \
         mainwindow.h \

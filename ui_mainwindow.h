@@ -254,11 +254,6 @@ public:
     QGroupBox *AutoBed;
     QVBoxLayout *verticalLayout_9;
     QPushButton *AutoBedLevel;
-    QHBoxLayout *horizontalLayout_2;
-    QLabel *label_11;
-    QLineEdit *ImageProcessLoop;
-    QPushButton *CalGrayValue;
-    QPushButton *PixelShifting;
     QGroupBox *ManualGcode_GroupBox;
     QVBoxLayout *verticalLayout_10;
     QTextEdit *ManualGcode;
@@ -283,7 +278,6 @@ public:
     QPushButton *pushButton_patternMode;
     QPushButton *pushButton_LEDDriver;
     QPushButton *pushButton_ZMachineControl;
-    QPushButton *pushButton_slc;
     QSpacerItem *horizontalSpacer_3;
     QLabel *label_8;
     QLabel *StartTime;
@@ -2162,49 +2156,6 @@ public:
 
         verticalLayout_5->addWidget(AutoBed);
 
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setSpacing(6);
-        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        label_11 = new QLabel(groupBox_ZMachineControl);
-        label_11->setObjectName(QStringLiteral("label_11"));
-        label_11->setMinimumSize(QSize(0, 25));
-        label_11->setFont(font3);
-
-        horizontalLayout_2->addWidget(label_11);
-
-        ImageProcessLoop = new QLineEdit(groupBox_ZMachineControl);
-        ImageProcessLoop->setObjectName(QStringLiteral("ImageProcessLoop"));
-        sizePolicy2.setHeightForWidth(ImageProcessLoop->sizePolicy().hasHeightForWidth());
-        ImageProcessLoop->setSizePolicy(sizePolicy2);
-        ImageProcessLoop->setMinimumSize(QSize(0, 25));
-        ImageProcessLoop->setFont(font3);
-
-        horizontalLayout_2->addWidget(ImageProcessLoop);
-
-
-        verticalLayout_5->addLayout(horizontalLayout_2);
-
-        CalGrayValue = new QPushButton(groupBox_ZMachineControl);
-        CalGrayValue->setObjectName(QStringLiteral("CalGrayValue"));
-        sizePolicy2.setHeightForWidth(CalGrayValue->sizePolicy().hasHeightForWidth());
-        CalGrayValue->setSizePolicy(sizePolicy2);
-        CalGrayValue->setMinimumSize(QSize(0, 30));
-        CalGrayValue->setFont(font3);
-
-        verticalLayout_5->addWidget(CalGrayValue);
-
-        PixelShifting = new QPushButton(groupBox_ZMachineControl);
-        PixelShifting->setObjectName(QStringLiteral("PixelShifting"));
-        QSizePolicy sizePolicy9(QSizePolicy::Minimum, QSizePolicy::Fixed);
-        sizePolicy9.setHorizontalStretch(0);
-        sizePolicy9.setVerticalStretch(30);
-        sizePolicy9.setHeightForWidth(PixelShifting->sizePolicy().hasHeightForWidth());
-        PixelShifting->setSizePolicy(sizePolicy9);
-        PixelShifting->setMinimumSize(QSize(0, 30));
-        PixelShifting->setFont(font3);
-
-        verticalLayout_5->addWidget(PixelShifting);
-
         ManualGcode_GroupBox = new QGroupBox(groupBox_ZMachineControl);
         ManualGcode_GroupBox->setObjectName(QStringLiteral("ManualGcode_GroupBox"));
         sizePolicy2.setHeightForWidth(ManualGcode_GroupBox->sizePolicy().hasHeightForWidth());
@@ -2351,11 +2302,11 @@ public:
         horizontalLayout_24->setSizeConstraint(QLayout::SetNoConstraint);
         connectButton = new QPushButton(scrollAreaWidgetContents);
         connectButton->setObjectName(QStringLiteral("connectButton"));
-        QSizePolicy sizePolicy10(QSizePolicy::Maximum, QSizePolicy::Maximum);
-        sizePolicy10.setHorizontalStretch(0);
-        sizePolicy10.setVerticalStretch(0);
-        sizePolicy10.setHeightForWidth(connectButton->sizePolicy().hasHeightForWidth());
-        connectButton->setSizePolicy(sizePolicy10);
+        QSizePolicy sizePolicy9(QSizePolicy::Maximum, QSizePolicy::Maximum);
+        sizePolicy9.setHorizontalStretch(0);
+        sizePolicy9.setVerticalStretch(0);
+        sizePolicy9.setHeightForWidth(connectButton->sizePolicy().hasHeightForWidth());
+        connectButton->setSizePolicy(sizePolicy9);
         connectButton->setMinimumSize(QSize(10, 48));
         connectButton->setMaximumSize(QSize(16777215, 16777215));
         connectButton->setFont(font10);
@@ -2377,8 +2328,8 @@ public:
 
         startPatSequence_Button = new QPushButton(scrollAreaWidgetContents);
         startPatSequence_Button->setObjectName(QStringLiteral("startPatSequence_Button"));
-        sizePolicy10.setHeightForWidth(startPatSequence_Button->sizePolicy().hasHeightForWidth());
-        startPatSequence_Button->setSizePolicy(sizePolicy10);
+        sizePolicy9.setHeightForWidth(startPatSequence_Button->sizePolicy().hasHeightForWidth());
+        startPatSequence_Button->setSizePolicy(sizePolicy9);
         startPatSequence_Button->setMinimumSize(QSize(50, 60));
         startPatSequence_Button->setStyleSheet(QLatin1String("#startPatSequence_Button{\n"
 "background-color: transparent;\n"
@@ -2396,8 +2347,8 @@ public:
         pausePatSequence_Button = new QPushButton(scrollAreaWidgetContents);
         pausePatSequence_Button->setObjectName(QStringLiteral("pausePatSequence_Button"));
         pausePatSequence_Button->setEnabled(false);
-        sizePolicy10.setHeightForWidth(pausePatSequence_Button->sizePolicy().hasHeightForWidth());
-        pausePatSequence_Button->setSizePolicy(sizePolicy10);
+        sizePolicy9.setHeightForWidth(pausePatSequence_Button->sizePolicy().hasHeightForWidth());
+        pausePatSequence_Button->setSizePolicy(sizePolicy9);
         pausePatSequence_Button->setMinimumSize(QSize(50, 60));
         pausePatSequence_Button->setStyleSheet(QLatin1String("#pausePatSequence_Button{\n"
 "background-color: transparent;\n"
@@ -2417,8 +2368,8 @@ public:
         stopPatSequence_Button = new QPushButton(scrollAreaWidgetContents);
         stopPatSequence_Button->setObjectName(QStringLiteral("stopPatSequence_Button"));
         stopPatSequence_Button->setEnabled(false);
-        sizePolicy10.setHeightForWidth(stopPatSequence_Button->sizePolicy().hasHeightForWidth());
-        stopPatSequence_Button->setSizePolicy(sizePolicy10);
+        sizePolicy9.setHeightForWidth(stopPatSequence_Button->sizePolicy().hasHeightForWidth());
+        stopPatSequence_Button->setSizePolicy(sizePolicy9);
         stopPatSequence_Button->setMinimumSize(QSize(50, 60));
         stopPatSequence_Button->setStyleSheet(QLatin1String("#stopPatSequence_Button{\n"
 "background-color: transparent;\n"
@@ -2441,8 +2392,8 @@ public:
         pushButton_patternMode = new QPushButton(scrollAreaWidgetContents);
         pushButton_patternMode->setObjectName(QStringLiteral("pushButton_patternMode"));
         pushButton_patternMode->setEnabled(true);
-        sizePolicy10.setHeightForWidth(pushButton_patternMode->sizePolicy().hasHeightForWidth());
-        pushButton_patternMode->setSizePolicy(sizePolicy10);
+        sizePolicy9.setHeightForWidth(pushButton_patternMode->sizePolicy().hasHeightForWidth());
+        pushButton_patternMode->setSizePolicy(sizePolicy9);
         pushButton_patternMode->setMinimumSize(QSize(0, 40));
         pushButton_patternMode->setFont(font10);
         pushButton_patternMode->setStyleSheet(QLatin1String("QPushButton{\n"
@@ -2459,8 +2410,8 @@ public:
 
         pushButton_LEDDriver = new QPushButton(scrollAreaWidgetContents);
         pushButton_LEDDriver->setObjectName(QStringLiteral("pushButton_LEDDriver"));
-        sizePolicy10.setHeightForWidth(pushButton_LEDDriver->sizePolicy().hasHeightForWidth());
-        pushButton_LEDDriver->setSizePolicy(sizePolicy10);
+        sizePolicy9.setHeightForWidth(pushButton_LEDDriver->sizePolicy().hasHeightForWidth());
+        pushButton_LEDDriver->setSizePolicy(sizePolicy9);
         pushButton_LEDDriver->setMinimumSize(QSize(0, 45));
         pushButton_LEDDriver->setFont(font10);
         pushButton_LEDDriver->setStyleSheet(QLatin1String("QPushButton{\n"
@@ -2476,8 +2427,8 @@ public:
 
         pushButton_ZMachineControl = new QPushButton(scrollAreaWidgetContents);
         pushButton_ZMachineControl->setObjectName(QStringLiteral("pushButton_ZMachineControl"));
-        sizePolicy10.setHeightForWidth(pushButton_ZMachineControl->sizePolicy().hasHeightForWidth());
-        pushButton_ZMachineControl->setSizePolicy(sizePolicy10);
+        sizePolicy9.setHeightForWidth(pushButton_ZMachineControl->sizePolicy().hasHeightForWidth());
+        pushButton_ZMachineControl->setSizePolicy(sizePolicy9);
         pushButton_ZMachineControl->setMinimumSize(QSize(0, 0));
         pushButton_ZMachineControl->setFont(font10);
         pushButton_ZMachineControl->setStyleSheet(QLatin1String("QPushButton{\n"
@@ -2490,18 +2441,6 @@ public:
         pushButton_ZMachineControl->setCheckable(true);
 
         horizontalLayout_24->addWidget(pushButton_ZMachineControl);
-
-        pushButton_slc = new QPushButton(scrollAreaWidgetContents);
-        pushButton_slc->setObjectName(QStringLiteral("pushButton_slc"));
-        sizePolicy10.setHeightForWidth(pushButton_slc->sizePolicy().hasHeightForWidth());
-        pushButton_slc->setSizePolicy(sizePolicy10);
-        pushButton_slc->setMinimumSize(QSize(0, 45));
-        pushButton_slc->setFont(font10);
-        pushButton_slc->setStyleSheet(QLatin1String("QPushButton{\n"
-"	color:rgb(0,150,150);\n"
-"   }"));
-
-        horizontalLayout_24->addWidget(pushButton_slc);
 
         horizontalSpacer_3 = new QSpacerItem(120, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
@@ -2730,9 +2669,6 @@ public:
         MotorConDisable->setText(QApplication::translate("MainWindow", "Disable", nullptr));
         AutoBed->setTitle(QApplication::translate("MainWindow", "AutoBed Level", nullptr));
         AutoBedLevel->setText(QApplication::translate("MainWindow", "AutoBed Level", nullptr));
-        label_11->setText(QApplication::translate("MainWindow", "Image Process Loop", nullptr));
-        CalGrayValue->setText(QApplication::translate("MainWindow", "Calculate Gray Value", nullptr));
-        PixelShifting->setText(QApplication::translate("MainWindow", "Pixel Shifting", nullptr));
         ManualGcode_GroupBox->setTitle(QApplication::translate("MainWindow", "Manual Gcode Command", nullptr));
         SendManualGcode->setText(QApplication::translate("MainWindow", "Send", nullptr));
         ClearManualGcode->setText(QApplication::translate("MainWindow", "Clear", nullptr));
@@ -2750,7 +2686,6 @@ public:
 " Mode", nullptr));
         pushButton_LEDDriver->setText(QApplication::translate("MainWindow", "LED Driver", nullptr));
         pushButton_ZMachineControl->setText(QApplication::translate("MainWindow", "Z Control", nullptr));
-        pushButton_slc->setText(QApplication::translate("MainWindow", "SLC ", nullptr));
         label_8->setText(QApplication::translate("MainWindow", "Time -", nullptr));
         StartTime->setText(QApplication::translate("MainWindow", "00:00:00", nullptr));
         label_12->setText(QApplication::translate("MainWindow", "/", nullptr));

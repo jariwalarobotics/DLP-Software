@@ -16,6 +16,7 @@ INPUT(
 ./release\patternmode.o
 ./release\leddriver.o
 ./release\machinecontrol.o
+./release\slcfilecontrol.o
 ./release\qrc_hires.o
 ./release\moc_mainwindow.o
 ./release\moc_waveformwindow.o

@@ -175,6 +175,9 @@ void MainWindow::serialdataRead()
                 AutoSendPatSeq->start(PrintingDelay);
                 mStartTime = QDateTime::currentDateTime();
             }
+            if (myString.startsWith("Lift Complete")) {
+                ZLiftComplete = true;
+            }
         }
    }
 }

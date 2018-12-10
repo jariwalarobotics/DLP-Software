@@ -24,6 +24,51 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+  /*  struct BOUNDARIES
+    {
+        int numVertices = 0;
+        int numGaps = 0;
+        QVector<QVector<float>> VertexList;
+    };
+
+    struct LAYERS
+    {
+        float minZ = 0;
+        int numBoundaries = 0;
+        BOUNDARIES boundaries;
+    };
+
+    struct ENTRY
+    {
+        float minZLevel = 0;
+        float layerThick = 0;
+        float lineWidthComp = 0;
+        float reserved = 0;
+    };
+
+    struct SAMPLINGTBL
+    {
+        int size;
+        ENTRY entry;
+        SAMPLINGTBL()
+        {
+            size = 0;
+        }
+    };
+
+    struct SLC
+    {
+        char header;
+        uint8 reserved;
+        SAMPLINGTBL samplingTbl;
+        LAYERS layers;
+        SLC()
+        {
+            header = '0';
+            reserved = 0;
+        }
+    };
+*/
 
     BOOL BoardConnected = false;
     BOOL USB_Connected = false;
@@ -51,6 +96,7 @@ public:
     int Intensity = 0;
     int counter = 0;
     BOOL WaitforEndstopHit = false;
+    BOOL ZLiftComplete = false;
 
     bool loadDll();
 
@@ -236,6 +282,8 @@ private slots:
 
     void on_PixelShifting_clicked();
 
+    void on_LoadSlcFile_clicked();
+
 private:
 
     void timerEvent(QTimerEvent *);
@@ -253,6 +301,7 @@ private:
 
     QList<PatternElement> m_elements;
     QList<PatternElement> Auto_m_elements;
+   // QList<SLC> m_slc;
     QString m_ptnImagePath;
     QString m_ptnSettingPath;
     QString m_ptnProfilePath;
