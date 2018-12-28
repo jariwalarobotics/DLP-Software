@@ -176,7 +176,7 @@ void MainWindow::serialdataRead()
                 mStartTime = QDateTime::currentDateTime();
             }
             if (myString.startsWith("Lift Complete")) {
-                ZLiftComplete = true;
+                //ZLiftComplete = true;
             }
         }
    }

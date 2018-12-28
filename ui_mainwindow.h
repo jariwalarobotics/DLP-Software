@@ -109,13 +109,13 @@ public:
     QGroupBox *groupBox_LEDDriver;
     QVBoxLayout *verticalLayout_17;
     QGridLayout *gridLayout_8;
+    QTextEdit *USBDevicePath_TextEdit;
     QLabel *label_ReadBuffer;
     QLabel *USBDevicePath;
     QPushButton *pushButton_RestartLEDDriver;
     QTextEdit *Text_Readbuffer;
-    QTextEdit *USBDevicePath_TextEdit;
-    QLabel *label_14;
     QLabel *label_LEDDriverStatus;
+    QLabel *label_14;
     QGridLayout *gridLayout_13;
     QVBoxLayout *verticalLayout_11;
     QCheckBox *checkBox_InternalInitialization;
@@ -294,7 +294,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(1394, 794);
+        MainWindow->resize(1310, 768);
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -307,7 +307,7 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         scrollArea = new QScrollArea(centralWidget);
         scrollArea->setObjectName(QStringLiteral("scrollArea"));
-        scrollArea->setGeometry(QRect(0, 0, 1381, 761));
+        scrollArea->setGeometry(QRect(0, 0, 1300, 735));
         scrollArea->setAutoFillBackground(true);
         scrollArea->setStyleSheet(QStringLiteral("QScrollArea{background-image : url(:/images/img.jpg);}"));
         scrollArea->setFrameShape(QFrame::StyledPanel);
@@ -318,7 +318,13 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1362, 767));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1298, 730));
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(scrollAreaWidgetContents->sizePolicy().hasHeightForWidth());
+        scrollAreaWidgetContents->setSizePolicy(sizePolicy1);
+        scrollAreaWidgetContents->setMaximumSize(QSize(16777215, 730));
         gridLayout = new QGridLayout(scrollAreaWidgetContents);
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
@@ -328,11 +334,11 @@ public:
         horizontalLayout_25->setObjectName(QStringLiteral("horizontalLayout_25"));
         frame_common = new QFrame(scrollAreaWidgetContents);
         frame_common->setObjectName(QStringLiteral("frame_common"));
-        QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Preferred);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(frame_common->sizePolicy().hasHeightForWidth());
-        frame_common->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy2(QSizePolicy::Fixed, QSizePolicy::Expanding);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(frame_common->sizePolicy().hasHeightForWidth());
+        frame_common->setSizePolicy(sizePolicy2);
         frame_common->setMinimumSize(QSize(0, 0));
         frame_common->setStyleSheet(QLatin1String("QFrame{background-image : url(:/images/img.jpg);\n"
 "border:1px solid black}"));
@@ -345,11 +351,8 @@ public:
         verticalLayout_2->setContentsMargins(5, -1, 5, -1);
         groupBox = new QGroupBox(frame_common);
         groupBox->setObjectName(QStringLiteral("groupBox"));
-        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(groupBox->sizePolicy().hasHeightForWidth());
-        groupBox->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(groupBox->sizePolicy().hasHeightForWidth());
+        groupBox->setSizePolicy(sizePolicy1);
         groupBox->setMinimumSize(QSize(0, 120));
         groupBox->setMaximumSize(QSize(16777215, 120));
         QFont font;
@@ -458,8 +461,8 @@ public:
 
         LiftSeqTime = new QGroupBox(frame_common);
         LiftSeqTime->setObjectName(QStringLiteral("LiftSeqTime"));
-        sizePolicy2.setHeightForWidth(LiftSeqTime->sizePolicy().hasHeightForWidth());
-        LiftSeqTime->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(LiftSeqTime->sizePolicy().hasHeightForWidth());
+        LiftSeqTime->setSizePolicy(sizePolicy1);
         LiftSeqTime->setMinimumSize(QSize(225, 350));
         LiftSeqTime->setMaximumSize(QSize(16777215, 350));
         QFont font1;
@@ -501,8 +504,8 @@ public:
 
         exposure_lineEdit = new QLineEdit(LiftSeqTime);
         exposure_lineEdit->setObjectName(QStringLiteral("exposure_lineEdit"));
-        sizePolicy2.setHeightForWidth(exposure_lineEdit->sizePolicy().hasHeightForWidth());
-        exposure_lineEdit->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(exposure_lineEdit->sizePolicy().hasHeightForWidth());
+        exposure_lineEdit->setSizePolicy(sizePolicy1);
         exposure_lineEdit->setMinimumSize(QSize(0, 35));
         exposure_lineEdit->setMaximumSize(QSize(16777215, 35));
         QFont font3;
@@ -528,8 +531,8 @@ public:
 
         BeforeZTime_lineEdit = new QLineEdit(LiftSeqTime);
         BeforeZTime_lineEdit->setObjectName(QStringLiteral("BeforeZTime_lineEdit"));
-        sizePolicy2.setHeightForWidth(BeforeZTime_lineEdit->sizePolicy().hasHeightForWidth());
-        BeforeZTime_lineEdit->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(BeforeZTime_lineEdit->sizePolicy().hasHeightForWidth());
+        BeforeZTime_lineEdit->setSizePolicy(sizePolicy1);
         BeforeZTime_lineEdit->setMinimumSize(QSize(0, 0));
         BeforeZTime_lineEdit->setMaximumSize(QSize(16777215, 35));
         BeforeZTime_lineEdit->setFont(font3);
@@ -545,8 +548,8 @@ public:
         UpdateTotalTime = new QPushButton(LiftSeqTime);
         UpdateTotalTime->setObjectName(QStringLiteral("UpdateTotalTime"));
         UpdateTotalTime->setEnabled(true);
-        sizePolicy2.setHeightForWidth(UpdateTotalTime->sizePolicy().hasHeightForWidth());
-        UpdateTotalTime->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(UpdateTotalTime->sizePolicy().hasHeightForWidth());
+        UpdateTotalTime->setSizePolicy(sizePolicy1);
         UpdateTotalTime->setMinimumSize(QSize(125, 35));
         UpdateTotalTime->setMaximumSize(QSize(95, 16777215));
         QFont font4;
@@ -564,8 +567,8 @@ public:
         triggerIn_checkBox = new QCheckBox(LiftSeqTime);
         triggerIn_checkBox->setObjectName(QStringLiteral("triggerIn_checkBox"));
         triggerIn_checkBox->setEnabled(true);
-        sizePolicy2.setHeightForWidth(triggerIn_checkBox->sizePolicy().hasHeightForWidth());
-        triggerIn_checkBox->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(triggerIn_checkBox->sizePolicy().hasHeightForWidth());
+        triggerIn_checkBox->setSizePolicy(sizePolicy1);
         triggerIn_checkBox->setStyleSheet(QLatin1String("QCheckBox{\n"
 "	color:rgb(0,150,150);\n"
 "}"));
@@ -575,8 +578,8 @@ public:
         triggerOut2_checkBox = new QCheckBox(LiftSeqTime);
         triggerOut2_checkBox->setObjectName(QStringLiteral("triggerOut2_checkBox"));
         triggerOut2_checkBox->setEnabled(true);
-        sizePolicy2.setHeightForWidth(triggerOut2_checkBox->sizePolicy().hasHeightForWidth());
-        triggerOut2_checkBox->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(triggerOut2_checkBox->sizePolicy().hasHeightForWidth());
+        triggerOut2_checkBox->setSizePolicy(sizePolicy1);
         triggerOut2_checkBox->setStyleSheet(QLatin1String("QCheckBox{\n"
 "	color:rgb(0,150,150);\n"
 "}"));
@@ -617,8 +620,8 @@ public:
 
         PrintingDelay = new QLineEdit(LiftSeqTime);
         PrintingDelay->setObjectName(QStringLiteral("PrintingDelay"));
-        sizePolicy2.setHeightForWidth(PrintingDelay->sizePolicy().hasHeightForWidth());
-        PrintingDelay->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(PrintingDelay->sizePolicy().hasHeightForWidth());
+        PrintingDelay->setSizePolicy(sizePolicy1);
         PrintingDelay->setMinimumSize(QSize(0, 0));
         PrintingDelay->setMaximumSize(QSize(16777215, 35));
         PrintingDelay->setFont(font3);
@@ -638,8 +641,8 @@ public:
 
         ZLiftdelay = new QLineEdit(LiftSeqTime);
         ZLiftdelay->setObjectName(QStringLiteral("ZLiftdelay"));
-        sizePolicy2.setHeightForWidth(ZLiftdelay->sizePolicy().hasHeightForWidth());
-        ZLiftdelay->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(ZLiftdelay->sizePolicy().hasHeightForWidth());
+        ZLiftdelay->setSizePolicy(sizePolicy1);
         ZLiftdelay->setMinimumSize(QSize(0, 0));
         ZLiftdelay->setMaximumSize(QSize(16777215, 35));
         ZLiftdelay->setFont(font3);
@@ -695,8 +698,8 @@ public:
 
         ManualHoming = new QRadioButton(groupBox_2);
         ManualHoming->setObjectName(QStringLiteral("ManualHoming"));
-        sizePolicy2.setHeightForWidth(ManualHoming->sizePolicy().hasHeightForWidth());
-        ManualHoming->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(ManualHoming->sizePolicy().hasHeightForWidth());
+        ManualHoming->setSizePolicy(sizePolicy1);
         ManualHoming->setFont(font);
         ManualHoming->setStyleSheet(QLatin1String("QRadioButton{\n"
 "	color:rgb(0,150,150);\n"
@@ -706,8 +709,8 @@ public:
 
         AutoHoming = new QRadioButton(groupBox_2);
         AutoHoming->setObjectName(QStringLiteral("AutoHoming"));
-        sizePolicy2.setHeightForWidth(AutoHoming->sizePolicy().hasHeightForWidth());
-        AutoHoming->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(AutoHoming->sizePolicy().hasHeightForWidth());
+        AutoHoming->setSizePolicy(sizePolicy1);
         AutoHoming->setFont(font4);
         AutoHoming->setStyleSheet(QLatin1String("QRadioButton{\n"
 "	color:rgb(0,150,150);\n"
@@ -743,8 +746,8 @@ public:
 
         stackedWidget = new QStackedWidget(scrollAreaWidgetContents);
         stackedWidget->setObjectName(QStringLiteral("stackedWidget"));
-        sizePolicy.setHeightForWidth(stackedWidget->sizePolicy().hasHeightForWidth());
-        stackedWidget->setSizePolicy(sizePolicy);
+        sizePolicy3.setHeightForWidth(stackedWidget->sizePolicy().hasHeightForWidth());
+        stackedWidget->setSizePolicy(sizePolicy3);
         stackedWidget->setMinimumSize(QSize(931, 581));
         stackedWidget->setStyleSheet(QStringLiteral("QStackedWidget{background-image : url(:/images/img.jpg);}"));
         patternModePage = new QWidget();
@@ -756,8 +759,11 @@ public:
         gridLayout_3->setContentsMargins(0, 0, 0, 0);
         frame_patternMode = new QFrame(patternModePage);
         frame_patternMode->setObjectName(QStringLiteral("frame_patternMode"));
-        sizePolicy2.setHeightForWidth(frame_patternMode->sizePolicy().hasHeightForWidth());
-        frame_patternMode->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy5(QSizePolicy::Preferred, QSizePolicy::Expanding);
+        sizePolicy5.setHorizontalStretch(0);
+        sizePolicy5.setVerticalStretch(0);
+        sizePolicy5.setHeightForWidth(frame_patternMode->sizePolicy().hasHeightForWidth());
+        frame_patternMode->setSizePolicy(sizePolicy5);
         frame_patternMode->setMinimumSize(QSize(931, 581));
         frame_patternMode->setStyleSheet(QLatin1String("QFrame{background-image : url(:/images/img.jpg);\n"
 "border:1px solid black}"));
@@ -788,7 +794,7 @@ public:
         horizontalLayout_26->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_26->setObjectName(QStringLiteral("horizontalLayout_26"));
         horizontalLayout_26->setContentsMargins(-1, 18, -1, -1);
-        horizontalSpacer_5 = new QSpacerItem(80, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+        horizontalSpacer_5 = new QSpacerItem(50, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
         horizontalLayout_26->addItem(horizontalSpacer_5);
 
@@ -824,7 +830,7 @@ public:
         waveFormArea->setWidgetResizable(true);
         scrollAreaWidgetContents_4 = new QWidget();
         scrollAreaWidgetContents_4->setObjectName(QStringLiteral("scrollAreaWidgetContents_4"));
-        scrollAreaWidgetContents_4->setGeometry(QRect(0, 0, 837, 592));
+        scrollAreaWidgetContents_4->setGeometry(QRect(0, 0, 833, 555));
         waveFormArea->setWidget(scrollAreaWidgetContents_4);
 
         verticalLayout_37->addWidget(waveFormArea);
@@ -840,7 +846,7 @@ public:
 
         horizontalLayout_26->addWidget(patternMode_stackedWidget);
 
-        horizontalSpacer_6 = new QSpacerItem(80, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+        horizontalSpacer_6 = new QSpacerItem(50, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
         horizontalLayout_26->addItem(horizontalSpacer_6);
 
@@ -860,8 +866,8 @@ public:
         gridLayout_9->setContentsMargins(0, 0, 0, 0);
         frame_LedDriver = new QFrame(LEDDriverPage);
         frame_LedDriver->setObjectName(QStringLiteral("frame_LedDriver"));
-        sizePolicy2.setHeightForWidth(frame_LedDriver->sizePolicy().hasHeightForWidth());
-        frame_LedDriver->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(frame_LedDriver->sizePolicy().hasHeightForWidth());
+        frame_LedDriver->setSizePolicy(sizePolicy1);
         frame_LedDriver->setStyleSheet(QLatin1String("QFrame{background-image : url(:/images/img.jpg);\n"
 "border:1px solid black}"));
         frame_LedDriver->setFrameShape(QFrame::StyledPanel);
@@ -890,21 +896,36 @@ public:
         gridLayout_8->setObjectName(QStringLiteral("gridLayout_8"));
         gridLayout_8->setHorizontalSpacing(6);
         gridLayout_8->setContentsMargins(-1, -1, -1, 0);
+        USBDevicePath_TextEdit = new QTextEdit(groupBox_LEDDriver);
+        USBDevicePath_TextEdit->setObjectName(QStringLiteral("USBDevicePath_TextEdit"));
+        USBDevicePath_TextEdit->setEnabled(true);
+        sizePolicy1.setHeightForWidth(USBDevicePath_TextEdit->sizePolicy().hasHeightForWidth());
+        USBDevicePath_TextEdit->setSizePolicy(sizePolicy1);
+        USBDevicePath_TextEdit->setMinimumSize(QSize(550, 0));
+        USBDevicePath_TextEdit->setMaximumSize(QSize(550, 30));
+        USBDevicePath_TextEdit->setFont(font);
+        USBDevicePath_TextEdit->setStyleSheet(QLatin1String("QTextEdit{ border: 1px solid ;\n"
+"background-color: transparent;\n"
+"border-color: rgb(0,150,150);\n"
+";}"));
+
+        gridLayout_8->addWidget(USBDevicePath_TextEdit, 0, 1, 1, 1);
+
         label_ReadBuffer = new QLabel(groupBox_LEDDriver);
         label_ReadBuffer->setObjectName(QStringLiteral("label_ReadBuffer"));
-        label_ReadBuffer->setMaximumSize(QSize(16777215, 35));
-        label_ReadBuffer->setFont(font3);
+        label_ReadBuffer->setMaximumSize(QSize(85, 35));
+        label_ReadBuffer->setFont(font4);
         label_ReadBuffer->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
 
         gridLayout_8->addWidget(label_ReadBuffer, 2, 0, 1, 1);
 
         USBDevicePath = new QLabel(groupBox_LEDDriver);
         USBDevicePath->setObjectName(QStringLiteral("USBDevicePath"));
-        sizePolicy2.setHeightForWidth(USBDevicePath->sizePolicy().hasHeightForWidth());
-        USBDevicePath->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(USBDevicePath->sizePolicy().hasHeightForWidth());
+        USBDevicePath->setSizePolicy(sizePolicy1);
         USBDevicePath->setMinimumSize(QSize(0, 30));
         USBDevicePath->setMaximumSize(QSize(16777215, 30));
-        USBDevicePath->setFont(font3);
+        USBDevicePath->setFont(font4);
         USBDevicePath->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
 
         gridLayout_8->addWidget(USBDevicePath, 0, 0, 1, 1);
@@ -928,13 +949,13 @@ public:
 
         Text_Readbuffer = new QTextEdit(groupBox_LEDDriver);
         Text_Readbuffer->setObjectName(QStringLiteral("Text_Readbuffer"));
-        QSizePolicy sizePolicy5(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy5.setHorizontalStretch(50);
-        sizePolicy5.setVerticalStretch(0);
-        sizePolicy5.setHeightForWidth(Text_Readbuffer->sizePolicy().hasHeightForWidth());
-        Text_Readbuffer->setSizePolicy(sizePolicy5);
-        Text_Readbuffer->setMinimumSize(QSize(755, 0));
-        Text_Readbuffer->setMaximumSize(QSize(1060, 35));
+        QSizePolicy sizePolicy6(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy6.setHorizontalStretch(50);
+        sizePolicy6.setVerticalStretch(0);
+        sizePolicy6.setHeightForWidth(Text_Readbuffer->sizePolicy().hasHeightForWidth());
+        Text_Readbuffer->setSizePolicy(sizePolicy6);
+        Text_Readbuffer->setMinimumSize(QSize(690, 0));
+        Text_Readbuffer->setMaximumSize(QSize(990, 35));
         Text_Readbuffer->setFont(font);
         Text_Readbuffer->setStyleSheet(QLatin1String("QTextEdit{ border: 1px solid ;\n"
 "background-color: transparent;\n"
@@ -943,42 +964,27 @@ public:
 
         gridLayout_8->addWidget(Text_Readbuffer, 2, 1, 1, 3);
 
-        USBDevicePath_TextEdit = new QTextEdit(groupBox_LEDDriver);
-        USBDevicePath_TextEdit->setObjectName(QStringLiteral("USBDevicePath_TextEdit"));
-        USBDevicePath_TextEdit->setEnabled(true);
-        sizePolicy2.setHeightForWidth(USBDevicePath_TextEdit->sizePolicy().hasHeightForWidth());
-        USBDevicePath_TextEdit->setSizePolicy(sizePolicy2);
-        USBDevicePath_TextEdit->setMinimumSize(QSize(550, 0));
-        USBDevicePath_TextEdit->setMaximumSize(QSize(550, 30));
-        USBDevicePath_TextEdit->setFont(font4);
-        USBDevicePath_TextEdit->setStyleSheet(QLatin1String("QTextEdit{ border: 1px solid ;\n"
-"background-color: transparent;\n"
-"border-color: rgb(0,150,150);\n"
-";}"));
+        label_LEDDriverStatus = new QLabel(groupBox_LEDDriver);
+        label_LEDDriverStatus->setObjectName(QStringLiteral("label_LEDDriverStatus"));
+        QSizePolicy sizePolicy7(QSizePolicy::Expanding, QSizePolicy::Preferred);
+        sizePolicy7.setHorizontalStretch(0);
+        sizePolicy7.setVerticalStretch(0);
+        sizePolicy7.setHeightForWidth(label_LEDDriverStatus->sizePolicy().hasHeightForWidth());
+        label_LEDDriverStatus->setSizePolicy(sizePolicy7);
+        label_LEDDriverStatus->setMinimumSize(QSize(180, 0));
+        label_LEDDriverStatus->setMaximumSize(QSize(235, 16777215));
+        label_LEDDriverStatus->setFont(font4);
+        label_LEDDriverStatus->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
 
-        gridLayout_8->addWidget(USBDevicePath_TextEdit, 0, 1, 1, 1);
+        gridLayout_8->addWidget(label_LEDDriverStatus, 0, 3, 1, 3);
 
         label_14 = new QLabel(groupBox_LEDDriver);
         label_14->setObjectName(QStringLiteral("label_14"));
         label_14->setMaximumSize(QSize(150, 16777215));
-        label_14->setFont(font3);
+        label_14->setFont(font4);
         label_14->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
 
         gridLayout_8->addWidget(label_14, 0, 2, 1, 1);
-
-        label_LEDDriverStatus = new QLabel(groupBox_LEDDriver);
-        label_LEDDriverStatus->setObjectName(QStringLiteral("label_LEDDriverStatus"));
-        QSizePolicy sizePolicy6(QSizePolicy::Expanding, QSizePolicy::Preferred);
-        sizePolicy6.setHorizontalStretch(0);
-        sizePolicy6.setVerticalStretch(0);
-        sizePolicy6.setHeightForWidth(label_LEDDriverStatus->sizePolicy().hasHeightForWidth());
-        label_LEDDriverStatus->setSizePolicy(sizePolicy6);
-        label_LEDDriverStatus->setMinimumSize(QSize(180, 0));
-        label_LEDDriverStatus->setMaximumSize(QSize(235, 16777215));
-        label_LEDDriverStatus->setFont(font3);
-        label_LEDDriverStatus->setStyleSheet(QStringLiteral("QLabel{Border:0px}"));
-
-        gridLayout_8->addWidget(label_LEDDriverStatus, 0, 3, 1, 3);
 
 
         verticalLayout_17->addLayout(gridLayout_8);
@@ -992,8 +998,8 @@ public:
         checkBox_InternalInitialization = new QCheckBox(groupBox_LEDDriver);
         checkBox_InternalInitialization->setObjectName(QStringLiteral("checkBox_InternalInitialization"));
         checkBox_InternalInitialization->setEnabled(false);
-        sizePolicy2.setHeightForWidth(checkBox_InternalInitialization->sizePolicy().hasHeightForWidth());
-        checkBox_InternalInitialization->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(checkBox_InternalInitialization->sizePolicy().hasHeightForWidth());
+        checkBox_InternalInitialization->setSizePolicy(sizePolicy1);
         checkBox_InternalInitialization->setFont(font);
 
         verticalLayout_11->addWidget(checkBox_InternalInitialization);
@@ -1001,8 +1007,8 @@ public:
         checkBox_LEDTempOK = new QCheckBox(groupBox_LEDDriver);
         checkBox_LEDTempOK->setObjectName(QStringLiteral("checkBox_LEDTempOK"));
         checkBox_LEDTempOK->setEnabled(false);
-        sizePolicy2.setHeightForWidth(checkBox_LEDTempOK->sizePolicy().hasHeightForWidth());
-        checkBox_LEDTempOK->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(checkBox_LEDTempOK->sizePolicy().hasHeightForWidth());
+        checkBox_LEDTempOK->setSizePolicy(sizePolicy1);
         checkBox_LEDTempOK->setFont(font);
 
         verticalLayout_11->addWidget(checkBox_LEDTempOK);
@@ -1010,8 +1016,8 @@ public:
         checkBox_DMDTempOK = new QCheckBox(groupBox_LEDDriver);
         checkBox_DMDTempOK->setObjectName(QStringLiteral("checkBox_DMDTempOK"));
         checkBox_DMDTempOK->setEnabled(false);
-        sizePolicy2.setHeightForWidth(checkBox_DMDTempOK->sizePolicy().hasHeightForWidth());
-        checkBox_DMDTempOK->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(checkBox_DMDTempOK->sizePolicy().hasHeightForWidth());
+        checkBox_DMDTempOK->setSizePolicy(sizePolicy1);
         checkBox_DMDTempOK->setFont(font);
 
         verticalLayout_11->addWidget(checkBox_DMDTempOK);
@@ -1019,8 +1025,8 @@ public:
         checkBox_BoardTempOK = new QCheckBox(groupBox_LEDDriver);
         checkBox_BoardTempOK->setObjectName(QStringLiteral("checkBox_BoardTempOK"));
         checkBox_BoardTempOK->setEnabled(false);
-        sizePolicy2.setHeightForWidth(checkBox_BoardTempOK->sizePolicy().hasHeightForWidth());
-        checkBox_BoardTempOK->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(checkBox_BoardTempOK->sizePolicy().hasHeightForWidth());
+        checkBox_BoardTempOK->setSizePolicy(sizePolicy1);
         checkBox_BoardTempOK->setFont(font);
 
         verticalLayout_11->addWidget(checkBox_BoardTempOK);
@@ -1028,8 +1034,8 @@ public:
         checkBox_HardwareOK = new QCheckBox(groupBox_LEDDriver);
         checkBox_HardwareOK->setObjectName(QStringLiteral("checkBox_HardwareOK"));
         checkBox_HardwareOK->setEnabled(false);
-        sizePolicy2.setHeightForWidth(checkBox_HardwareOK->sizePolicy().hasHeightForWidth());
-        checkBox_HardwareOK->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(checkBox_HardwareOK->sizePolicy().hasHeightForWidth());
+        checkBox_HardwareOK->setSizePolicy(sizePolicy1);
         checkBox_HardwareOK->setFont(font);
 
         verticalLayout_11->addWidget(checkBox_HardwareOK);
@@ -1037,8 +1043,8 @@ public:
         checkBox_IntensityCalOK = new QCheckBox(groupBox_LEDDriver);
         checkBox_IntensityCalOK->setObjectName(QStringLiteral("checkBox_IntensityCalOK"));
         checkBox_IntensityCalOK->setEnabled(false);
-        sizePolicy2.setHeightForWidth(checkBox_IntensityCalOK->sizePolicy().hasHeightForWidth());
-        checkBox_IntensityCalOK->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(checkBox_IntensityCalOK->sizePolicy().hasHeightForWidth());
+        checkBox_IntensityCalOK->setSizePolicy(sizePolicy1);
         checkBox_IntensityCalOK->setFont(font);
 
         verticalLayout_11->addWidget(checkBox_IntensityCalOK);
@@ -1046,8 +1052,8 @@ public:
         checkBox_WriteProtection = new QCheckBox(groupBox_LEDDriver);
         checkBox_WriteProtection->setObjectName(QStringLiteral("checkBox_WriteProtection"));
         checkBox_WriteProtection->setEnabled(false);
-        sizePolicy2.setHeightForWidth(checkBox_WriteProtection->sizePolicy().hasHeightForWidth());
-        checkBox_WriteProtection->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(checkBox_WriteProtection->sizePolicy().hasHeightForWidth());
+        checkBox_WriteProtection->setSizePolicy(sizePolicy1);
         checkBox_WriteProtection->setFont(font);
 
         verticalLayout_11->addWidget(checkBox_WriteProtection);
@@ -1055,8 +1061,8 @@ public:
         checkBox_IntensityModInstall = new QCheckBox(groupBox_LEDDriver);
         checkBox_IntensityModInstall->setObjectName(QStringLiteral("checkBox_IntensityModInstall"));
         checkBox_IntensityModInstall->setEnabled(false);
-        sizePolicy2.setHeightForWidth(checkBox_IntensityModInstall->sizePolicy().hasHeightForWidth());
-        checkBox_IntensityModInstall->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(checkBox_IntensityModInstall->sizePolicy().hasHeightForWidth());
+        checkBox_IntensityModInstall->setSizePolicy(sizePolicy1);
         checkBox_IntensityModInstall->setMinimumSize(QSize(170, 0));
         checkBox_IntensityModInstall->setFont(font);
 
@@ -1082,8 +1088,8 @@ public:
         LEDCurrent_text = new QTextBrowser(groupBox_LEDDriver);
         LEDCurrent_text->setObjectName(QStringLiteral("LEDCurrent_text"));
         LEDCurrent_text->setEnabled(false);
-        sizePolicy2.setHeightForWidth(LEDCurrent_text->sizePolicy().hasHeightForWidth());
-        LEDCurrent_text->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(LEDCurrent_text->sizePolicy().hasHeightForWidth());
+        LEDCurrent_text->setSizePolicy(sizePolicy1);
         LEDCurrent_text->setMaximumSize(QSize(200, 35));
         LEDCurrent_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
 "background-color: transparent;\n"
@@ -1137,8 +1143,8 @@ public:
         LEDTempMax_text = new QTextBrowser(groupBox_LEDDriver);
         LEDTempMax_text->setObjectName(QStringLiteral("LEDTempMax_text"));
         LEDTempMax_text->setEnabled(false);
-        sizePolicy2.setHeightForWidth(LEDTempMax_text->sizePolicy().hasHeightForWidth());
-        LEDTempMax_text->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(LEDTempMax_text->sizePolicy().hasHeightForWidth());
+        LEDTempMax_text->setSizePolicy(sizePolicy1);
         LEDTempMax_text->setMaximumSize(QSize(200, 35));
         LEDTempMax_text->setFont(font);
         LEDTempMax_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
@@ -1151,8 +1157,8 @@ public:
         DMDTempMax_text = new QTextBrowser(groupBox_LEDDriver);
         DMDTempMax_text->setObjectName(QStringLiteral("DMDTempMax_text"));
         DMDTempMax_text->setEnabled(false);
-        sizePolicy2.setHeightForWidth(DMDTempMax_text->sizePolicy().hasHeightForWidth());
-        DMDTempMax_text->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(DMDTempMax_text->sizePolicy().hasHeightForWidth());
+        DMDTempMax_text->setSizePolicy(sizePolicy1);
         DMDTempMax_text->setMaximumSize(QSize(200, 35));
         DMDTempMax_text->setFont(font);
         DMDTempMax_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
@@ -1165,8 +1171,8 @@ public:
         Intensity_offset_text = new QTextBrowser(groupBox_LEDDriver);
         Intensity_offset_text->setObjectName(QStringLiteral("Intensity_offset_text"));
         Intensity_offset_text->setEnabled(false);
-        sizePolicy2.setHeightForWidth(Intensity_offset_text->sizePolicy().hasHeightForWidth());
-        Intensity_offset_text->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(Intensity_offset_text->sizePolicy().hasHeightForWidth());
+        Intensity_offset_text->setSizePolicy(sizePolicy1);
         Intensity_offset_text->setMaximumSize(QSize(200, 35));
         Intensity_offset_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
 "background-color: transparent;\n"
@@ -1178,8 +1184,8 @@ public:
         BoardTempMax_text = new QTextBrowser(groupBox_LEDDriver);
         BoardTempMax_text->setObjectName(QStringLiteral("BoardTempMax_text"));
         BoardTempMax_text->setEnabled(false);
-        sizePolicy2.setHeightForWidth(BoardTempMax_text->sizePolicy().hasHeightForWidth());
-        BoardTempMax_text->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(BoardTempMax_text->sizePolicy().hasHeightForWidth());
+        BoardTempMax_text->setSizePolicy(sizePolicy1);
         BoardTempMax_text->setMaximumSize(QSize(200, 35));
         BoardTempMax_text->setFont(font);
         BoardTempMax_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
@@ -1192,8 +1198,8 @@ public:
         LEDCurrentMax_text = new QTextBrowser(groupBox_LEDDriver);
         LEDCurrentMax_text->setObjectName(QStringLiteral("LEDCurrentMax_text"));
         LEDCurrentMax_text->setEnabled(false);
-        sizePolicy2.setHeightForWidth(LEDCurrentMax_text->sizePolicy().hasHeightForWidth());
-        LEDCurrentMax_text->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(LEDCurrentMax_text->sizePolicy().hasHeightForWidth());
+        LEDCurrentMax_text->setSizePolicy(sizePolicy1);
         LEDCurrentMax_text->setMaximumSize(QSize(200, 35));
         LEDCurrentMax_text->setFont(font);
         LEDCurrentMax_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
@@ -1213,8 +1219,8 @@ public:
         IntensityGain_text = new QTextBrowser(groupBox_LEDDriver);
         IntensityGain_text->setObjectName(QStringLiteral("IntensityGain_text"));
         IntensityGain_text->setEnabled(false);
-        sizePolicy2.setHeightForWidth(IntensityGain_text->sizePolicy().hasHeightForWidth());
-        IntensityGain_text->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(IntensityGain_text->sizePolicy().hasHeightForWidth());
+        IntensityGain_text->setSizePolicy(sizePolicy1);
         IntensityGain_text->setMaximumSize(QSize(200, 35));
         IntensityGain_text->setFont(font);
         IntensityGain_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
@@ -1231,8 +1237,8 @@ public:
         LEDTemp_text = new QTextBrowser(groupBox_LEDDriver);
         LEDTemp_text->setObjectName(QStringLiteral("LEDTemp_text"));
         LEDTemp_text->setEnabled(false);
-        sizePolicy2.setHeightForWidth(LEDTemp_text->sizePolicy().hasHeightForWidth());
-        LEDTemp_text->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(LEDTemp_text->sizePolicy().hasHeightForWidth());
+        LEDTemp_text->setSizePolicy(sizePolicy1);
         LEDTemp_text->setMaximumSize(QSize(200, 35));
         LEDTemp_text->setFont(font);
         LEDTemp_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
@@ -1252,8 +1258,8 @@ public:
         Intensity_text = new QTextBrowser(groupBox_LEDDriver);
         Intensity_text->setObjectName(QStringLiteral("Intensity_text"));
         Intensity_text->setEnabled(false);
-        sizePolicy2.setHeightForWidth(Intensity_text->sizePolicy().hasHeightForWidth());
-        Intensity_text->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(Intensity_text->sizePolicy().hasHeightForWidth());
+        Intensity_text->setSizePolicy(sizePolicy1);
         Intensity_text->setMaximumSize(QSize(16777215, 35));
         Intensity_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
 "background-color: transparent;\n"
@@ -1276,8 +1282,8 @@ public:
         CycleTime_Text = new QTextBrowser(groupBox_LEDDriver);
         CycleTime_Text->setObjectName(QStringLiteral("CycleTime_Text"));
         CycleTime_Text->setEnabled(false);
-        sizePolicy2.setHeightForWidth(CycleTime_Text->sizePolicy().hasHeightForWidth());
-        CycleTime_Text->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(CycleTime_Text->sizePolicy().hasHeightForWidth());
+        CycleTime_Text->setSizePolicy(sizePolicy1);
         CycleTime_Text->setMaximumSize(QSize(200, 35));
         CycleTime_Text->setFont(font);
         CycleTime_Text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
@@ -1290,8 +1296,8 @@ public:
         LESerial_text = new QTextBrowser(groupBox_LEDDriver);
         LESerial_text->setObjectName(QStringLiteral("LESerial_text"));
         LESerial_text->setEnabled(false);
-        sizePolicy2.setHeightForWidth(LESerial_text->sizePolicy().hasHeightForWidth());
-        LESerial_text->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(LESerial_text->sizePolicy().hasHeightForWidth());
+        LESerial_text->setSizePolicy(sizePolicy1);
         LESerial_text->setMaximumSize(QSize(16777215, 35));
         LESerial_text->setFont(font);
         LESerial_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
@@ -1304,8 +1310,8 @@ public:
         LEDSerial_text = new QTextBrowser(groupBox_LEDDriver);
         LEDSerial_text->setObjectName(QStringLiteral("LEDSerial_text"));
         LEDSerial_text->setEnabled(false);
-        sizePolicy2.setHeightForWidth(LEDSerial_text->sizePolicy().hasHeightForWidth());
-        LEDSerial_text->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(LEDSerial_text->sizePolicy().hasHeightForWidth());
+        LEDSerial_text->setSizePolicy(sizePolicy1);
         LEDSerial_text->setMaximumSize(QSize(16777215, 35));
         LEDSerial_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
 "background-color: transparent;\n"
@@ -1324,8 +1330,8 @@ public:
         IntensityVoltage_text = new QTextBrowser(groupBox_LEDDriver);
         IntensityVoltage_text->setObjectName(QStringLiteral("IntensityVoltage_text"));
         IntensityVoltage_text->setEnabled(false);
-        sizePolicy2.setHeightForWidth(IntensityVoltage_text->sizePolicy().hasHeightForWidth());
-        IntensityVoltage_text->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(IntensityVoltage_text->sizePolicy().hasHeightForWidth());
+        IntensityVoltage_text->setSizePolicy(sizePolicy1);
         IntensityVoltage_text->setMaximumSize(QSize(16777215, 35));
         IntensityVoltage_text->setFont(font);
         IntensityVoltage_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
@@ -1356,8 +1362,8 @@ public:
         BoardTemp_text = new QTextBrowser(groupBox_LEDDriver);
         BoardTemp_text->setObjectName(QStringLiteral("BoardTemp_text"));
         BoardTemp_text->setEnabled(false);
-        sizePolicy2.setHeightForWidth(BoardTemp_text->sizePolicy().hasHeightForWidth());
-        BoardTemp_text->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(BoardTemp_text->sizePolicy().hasHeightForWidth());
+        BoardTemp_text->setSizePolicy(sizePolicy1);
         BoardTemp_text->setMaximumSize(QSize(200, 35));
         BoardTemp_text->setFont(font);
         BoardTemp_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
@@ -1370,8 +1376,8 @@ public:
         LEDVoltage_text = new QTextBrowser(groupBox_LEDDriver);
         LEDVoltage_text->setObjectName(QStringLiteral("LEDVoltage_text"));
         LEDVoltage_text->setEnabled(false);
-        sizePolicy2.setHeightForWidth(LEDVoltage_text->sizePolicy().hasHeightForWidth());
-        LEDVoltage_text->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(LEDVoltage_text->sizePolicy().hasHeightForWidth());
+        LEDVoltage_text->setSizePolicy(sizePolicy1);
         LEDVoltage_text->setMaximumSize(QSize(200, 35));
         LEDVoltage_text->setFont(font);
         LEDVoltage_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
@@ -1391,8 +1397,8 @@ public:
         DMDTemp_text = new QTextBrowser(groupBox_LEDDriver);
         DMDTemp_text->setObjectName(QStringLiteral("DMDTemp_text"));
         DMDTemp_text->setEnabled(false);
-        sizePolicy2.setHeightForWidth(DMDTemp_text->sizePolicy().hasHeightForWidth());
-        DMDTemp_text->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(DMDTemp_text->sizePolicy().hasHeightForWidth());
+        DMDTemp_text->setSizePolicy(sizePolicy1);
         DMDTemp_text->setMaximumSize(QSize(200, 35));
         DMDTemp_text->setFont(font);
         DMDTemp_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
@@ -1421,8 +1427,8 @@ public:
         gridLayout_14->setObjectName(QStringLiteral("gridLayout_14"));
         MidLayerCount = new QLineEdit(groupBox_LEDDriver);
         MidLayerCount->setObjectName(QStringLiteral("MidLayerCount"));
-        sizePolicy2.setHeightForWidth(MidLayerCount->sizePolicy().hasHeightForWidth());
-        MidLayerCount->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(MidLayerCount->sizePolicy().hasHeightForWidth());
+        MidLayerCount->setSizePolicy(sizePolicy1);
         MidLayerCount->setFont(font3);
 
         gridLayout_14->addWidget(MidLayerCount, 0, 7, 1, 1);
@@ -1436,8 +1442,8 @@ public:
 
         BaseLayerIntensity = new QLineEdit(groupBox_LEDDriver);
         BaseLayerIntensity->setObjectName(QStringLiteral("BaseLayerIntensity"));
-        sizePolicy2.setHeightForWidth(BaseLayerIntensity->sizePolicy().hasHeightForWidth());
-        BaseLayerIntensity->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(BaseLayerIntensity->sizePolicy().hasHeightForWidth());
+        BaseLayerIntensity->setSizePolicy(sizePolicy1);
         BaseLayerIntensity->setMinimumSize(QSize(150, 0));
         BaseLayerIntensity->setFont(font3);
 
@@ -1445,16 +1451,16 @@ public:
 
         BaseLayerCount = new QLineEdit(groupBox_LEDDriver);
         BaseLayerCount->setObjectName(QStringLiteral("BaseLayerCount"));
-        sizePolicy2.setHeightForWidth(BaseLayerCount->sizePolicy().hasHeightForWidth());
-        BaseLayerCount->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(BaseLayerCount->sizePolicy().hasHeightForWidth());
+        BaseLayerCount->setSizePolicy(sizePolicy1);
         BaseLayerCount->setFont(font3);
 
         gridLayout_14->addWidget(BaseLayerCount, 0, 5, 1, 1);
 
         pushButton_SetIntensity = new QPushButton(groupBox_LEDDriver);
         pushButton_SetIntensity->setObjectName(QStringLiteral("pushButton_SetIntensity"));
-        sizePolicy2.setHeightForWidth(pushButton_SetIntensity->sizePolicy().hasHeightForWidth());
-        pushButton_SetIntensity->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(pushButton_SetIntensity->sizePolicy().hasHeightForWidth());
+        pushButton_SetIntensity->setSizePolicy(sizePolicy1);
         pushButton_SetIntensity->setMinimumSize(QSize(0, 35));
         pushButton_SetIntensity->setMaximumSize(QSize(16777215, 35));
         QFont font8;
@@ -1475,8 +1481,8 @@ public:
 
         Intensity_lineEdit = new QLineEdit(groupBox_LEDDriver);
         Intensity_lineEdit->setObjectName(QStringLiteral("Intensity_lineEdit"));
-        sizePolicy2.setHeightForWidth(Intensity_lineEdit->sizePolicy().hasHeightForWidth());
-        Intensity_lineEdit->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(Intensity_lineEdit->sizePolicy().hasHeightForWidth());
+        Intensity_lineEdit->setSizePolicy(sizePolicy1);
         Intensity_lineEdit->setMinimumSize(QSize(150, 0));
         Intensity_lineEdit->setMaximumSize(QSize(16777215, 35));
         Intensity_lineEdit->setFont(font3);
@@ -1526,8 +1532,8 @@ public:
 
         LEDFanSpeed_text = new QTextBrowser(groupBox_LEDDriver);
         LEDFanSpeed_text->setObjectName(QStringLiteral("LEDFanSpeed_text"));
-        sizePolicy2.setHeightForWidth(LEDFanSpeed_text->sizePolicy().hasHeightForWidth());
-        LEDFanSpeed_text->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(LEDFanSpeed_text->sizePolicy().hasHeightForWidth());
+        LEDFanSpeed_text->setSizePolicy(sizePolicy1);
         LEDFanSpeed_text->setMaximumSize(QSize(200, 30));
         LEDFanSpeed_text->setFont(font);
         LEDFanSpeed_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
@@ -1539,8 +1545,8 @@ public:
 
         DMDFanSpeed_text = new QTextBrowser(groupBox_LEDDriver);
         DMDFanSpeed_text->setObjectName(QStringLiteral("DMDFanSpeed_text"));
-        sizePolicy2.setHeightForWidth(DMDFanSpeed_text->sizePolicy().hasHeightForWidth());
-        DMDFanSpeed_text->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(DMDFanSpeed_text->sizePolicy().hasHeightForWidth());
+        DMDFanSpeed_text->setSizePolicy(sizePolicy1);
         DMDFanSpeed_text->setMaximumSize(QSize(200, 30));
         DMDFanSpeed_text->setFont(font);
         DMDFanSpeed_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
@@ -1552,8 +1558,8 @@ public:
 
         PCBFanSpeed_text = new QTextBrowser(groupBox_LEDDriver);
         PCBFanSpeed_text->setObjectName(QStringLiteral("PCBFanSpeed_text"));
-        sizePolicy2.setHeightForWidth(PCBFanSpeed_text->sizePolicy().hasHeightForWidth());
-        PCBFanSpeed_text->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(PCBFanSpeed_text->sizePolicy().hasHeightForWidth());
+        PCBFanSpeed_text->setSizePolicy(sizePolicy1);
         PCBFanSpeed_text->setMaximumSize(QSize(200, 30));
         PCBFanSpeed_text->setFont(font);
         PCBFanSpeed_text->setStyleSheet(QLatin1String("QTextBrowser{ border: 1px solid ;\n"
@@ -1572,8 +1578,8 @@ public:
 
         MidLayerIntensity = new QLineEdit(groupBox_LEDDriver);
         MidLayerIntensity->setObjectName(QStringLiteral("MidLayerIntensity"));
-        sizePolicy2.setHeightForWidth(MidLayerIntensity->sizePolicy().hasHeightForWidth());
-        MidLayerIntensity->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(MidLayerIntensity->sizePolicy().hasHeightForWidth());
+        MidLayerIntensity->setSizePolicy(sizePolicy1);
         MidLayerIntensity->setMinimumSize(QSize(150, 0));
         MidLayerIntensity->setFont(font3);
 
@@ -1600,11 +1606,11 @@ public:
 
         pushButton_SetLEDCurrent = new QPushButton(groupBox_LEDDriver);
         pushButton_SetLEDCurrent->setObjectName(QStringLiteral("pushButton_SetLEDCurrent"));
-        QSizePolicy sizePolicy7(QSizePolicy::Minimum, QSizePolicy::Preferred);
-        sizePolicy7.setHorizontalStretch(0);
-        sizePolicy7.setVerticalStretch(0);
-        sizePolicy7.setHeightForWidth(pushButton_SetLEDCurrent->sizePolicy().hasHeightForWidth());
-        pushButton_SetLEDCurrent->setSizePolicy(sizePolicy7);
+        QSizePolicy sizePolicy8(QSizePolicy::Minimum, QSizePolicy::Preferred);
+        sizePolicy8.setHorizontalStretch(0);
+        sizePolicy8.setVerticalStretch(0);
+        sizePolicy8.setHeightForWidth(pushButton_SetLEDCurrent->sizePolicy().hasHeightForWidth());
+        pushButton_SetLEDCurrent->setSizePolicy(sizePolicy8);
         pushButton_SetLEDCurrent->setMaximumSize(QSize(16777215, 45));
         pushButton_SetLEDCurrent->setFont(font8);
 
@@ -1612,8 +1618,8 @@ public:
 
         pushButton_LEDPWMON_OFF = new QPushButton(groupBox_LEDDriver);
         pushButton_LEDPWMON_OFF->setObjectName(QStringLiteral("pushButton_LEDPWMON_OFF"));
-        sizePolicy2.setHeightForWidth(pushButton_LEDPWMON_OFF->sizePolicy().hasHeightForWidth());
-        pushButton_LEDPWMON_OFF->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(pushButton_LEDPWMON_OFF->sizePolicy().hasHeightForWidth());
+        pushButton_LEDPWMON_OFF->setSizePolicy(sizePolicy1);
         pushButton_LEDPWMON_OFF->setMinimumSize(QSize(0, 35));
         pushButton_LEDPWMON_OFF->setFont(font6);
 
@@ -1625,8 +1631,8 @@ public:
 
         LEDCurrent_lineEdit = new QLineEdit(groupBox_LEDDriver);
         LEDCurrent_lineEdit->setObjectName(QStringLiteral("LEDCurrent_lineEdit"));
-        sizePolicy2.setHeightForWidth(LEDCurrent_lineEdit->sizePolicy().hasHeightForWidth());
-        LEDCurrent_lineEdit->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(LEDCurrent_lineEdit->sizePolicy().hasHeightForWidth());
+        LEDCurrent_lineEdit->setSizePolicy(sizePolicy1);
         LEDCurrent_lineEdit->setMinimumSize(QSize(180, 0));
         LEDCurrent_lineEdit->setMaximumSize(QSize(150, 35));
         LEDCurrent_lineEdit->setFont(font3);
@@ -1640,8 +1646,8 @@ public:
 
         pushButton_SwTrigger = new QPushButton(groupBox_LEDDriver);
         pushButton_SwTrigger->setObjectName(QStringLiteral("pushButton_SwTrigger"));
-        sizePolicy2.setHeightForWidth(pushButton_SwTrigger->sizePolicy().hasHeightForWidth());
-        pushButton_SwTrigger->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(pushButton_SwTrigger->sizePolicy().hasHeightForWidth());
+        pushButton_SwTrigger->setSizePolicy(sizePolicy1);
         pushButton_SwTrigger->setMaximumSize(QSize(16777215, 35));
         pushButton_SwTrigger->setFont(font6);
 
@@ -1649,8 +1655,8 @@ public:
 
         pushButton_ExTrigger = new QPushButton(groupBox_LEDDriver);
         pushButton_ExTrigger->setObjectName(QStringLiteral("pushButton_ExTrigger"));
-        sizePolicy2.setHeightForWidth(pushButton_ExTrigger->sizePolicy().hasHeightForWidth());
-        pushButton_ExTrigger->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(pushButton_ExTrigger->sizePolicy().hasHeightForWidth());
+        pushButton_ExTrigger->setSizePolicy(sizePolicy1);
         pushButton_ExTrigger->setMaximumSize(QSize(16777215, 35));
         pushButton_ExTrigger->setFont(font6);
 
@@ -1658,8 +1664,8 @@ public:
 
         checkBox_IntensityRegEnable = new QCheckBox(groupBox_LEDDriver);
         checkBox_IntensityRegEnable->setObjectName(QStringLiteral("checkBox_IntensityRegEnable"));
-        sizePolicy2.setHeightForWidth(checkBox_IntensityRegEnable->sizePolicy().hasHeightForWidth());
-        checkBox_IntensityRegEnable->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(checkBox_IntensityRegEnable->sizePolicy().hasHeightForWidth());
+        checkBox_IntensityRegEnable->setSizePolicy(sizePolicy1);
         checkBox_IntensityRegEnable->setFont(font4);
         checkBox_IntensityRegEnable->setChecked(false);
 
@@ -1667,8 +1673,8 @@ public:
 
         pushButton_EnableIntensityReg = new QPushButton(groupBox_LEDDriver);
         pushButton_EnableIntensityReg->setObjectName(QStringLiteral("pushButton_EnableIntensityReg"));
-        sizePolicy2.setHeightForWidth(pushButton_EnableIntensityReg->sizePolicy().hasHeightForWidth());
-        pushButton_EnableIntensityReg->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(pushButton_EnableIntensityReg->sizePolicy().hasHeightForWidth());
+        pushButton_EnableIntensityReg->setSizePolicy(sizePolicy1);
         pushButton_EnableIntensityReg->setMinimumSize(QSize(0, 35));
         pushButton_EnableIntensityReg->setMaximumSize(QSize(16777215, 45));
         pushButton_EnableIntensityReg->setFont(font8);
@@ -1694,8 +1700,8 @@ public:
         gridLayout_2->setContentsMargins(0, 0, 0, 0);
         frame_ZMavhineControl = new QFrame(ZMachineControl);
         frame_ZMavhineControl->setObjectName(QStringLiteral("frame_ZMavhineControl"));
-        sizePolicy2.setHeightForWidth(frame_ZMavhineControl->sizePolicy().hasHeightForWidth());
-        frame_ZMavhineControl->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(frame_ZMavhineControl->sizePolicy().hasHeightForWidth());
+        frame_ZMavhineControl->setSizePolicy(sizePolicy1);
         frame_ZMavhineControl->setMinimumSize(QSize(0, 0));
         frame_ZMavhineControl->setStyleSheet(QLatin1String("QFrame{background-image : url(:/images/img.jpg);\n"
 "border:1px solid black}"));
@@ -1764,8 +1770,8 @@ public:
 
         ComPort = new QLabel(groupBox_3);
         ComPort->setObjectName(QStringLiteral("ComPort"));
-        sizePolicy2.setHeightForWidth(ComPort->sizePolicy().hasHeightForWidth());
-        ComPort->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(ComPort->sizePolicy().hasHeightForWidth());
+        ComPort->setSizePolicy(sizePolicy1);
         ComPort->setMinimumSize(QSize(80, 30));
         ComPort->setMaximumSize(QSize(80, 16777215));
         ComPort->setFont(font3);
@@ -1796,8 +1802,8 @@ public:
         Baudrate->addItem(QString());
         Baudrate->addItem(QString());
         Baudrate->setObjectName(QStringLiteral("Baudrate"));
-        sizePolicy2.setHeightForWidth(Baudrate->sizePolicy().hasHeightForWidth());
-        Baudrate->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(Baudrate->sizePolicy().hasHeightForWidth());
+        Baudrate->setSizePolicy(sizePolicy1);
         Baudrate->setMinimumSize(QSize(0, 30));
         Baudrate->setFont(font3);
 
@@ -1819,8 +1825,8 @@ public:
         gridLayout_38->setObjectName(QStringLiteral("gridLayout_38"));
         LoadMacProfile = new QPushButton(groupBox_3);
         LoadMacProfile->setObjectName(QStringLiteral("LoadMacProfile"));
-        sizePolicy2.setHeightForWidth(LoadMacProfile->sizePolicy().hasHeightForWidth());
-        LoadMacProfile->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(LoadMacProfile->sizePolicy().hasHeightForWidth());
+        LoadMacProfile->setSizePolicy(sizePolicy1);
         LoadMacProfile->setMinimumSize(QSize(95, 0));
         LoadMacProfile->setMaximumSize(QSize(105, 16777215));
         LoadMacProfile->setFont(font4);
@@ -1845,8 +1851,8 @@ public:
 
         SaveMacProfile = new QPushButton(groupBox_3);
         SaveMacProfile->setObjectName(QStringLiteral("SaveMacProfile"));
-        sizePolicy2.setHeightForWidth(SaveMacProfile->sizePolicy().hasHeightForWidth());
-        SaveMacProfile->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(SaveMacProfile->sizePolicy().hasHeightForWidth());
+        SaveMacProfile->setSizePolicy(sizePolicy1);
         SaveMacProfile->setMinimumSize(QSize(95, 35));
         SaveMacProfile->setMaximumSize(QSize(115, 16777215));
         SaveMacProfile->setFont(font4);
@@ -1988,8 +1994,8 @@ public:
 
         groupBox_5 = new QGroupBox(groupBox_ZMachineControl);
         groupBox_5->setObjectName(QStringLiteral("groupBox_5"));
-        sizePolicy2.setHeightForWidth(groupBox_5->sizePolicy().hasHeightForWidth());
-        groupBox_5->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(groupBox_5->sizePolicy().hasHeightForWidth());
+        groupBox_5->setSizePolicy(sizePolicy1);
         groupBox_5->setMinimumSize(QSize(0, 0));
         groupBox_5->setMaximumSize(QSize(16777215, 16777215));
         groupBox_5->setFont(font);
@@ -2010,8 +2016,8 @@ public:
         verticalLayout_12->setObjectName(QStringLiteral("verticalLayout_12"));
         label = new QLabel(groupBox_5);
         label->setObjectName(QStringLiteral("label"));
-        sizePolicy2.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
-        label->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
+        label->setSizePolicy(sizePolicy1);
         QFont font9;
         font9.setFamily(QStringLiteral("Arial"));
         font9.setPointSize(12);
@@ -2021,16 +2027,16 @@ public:
 
         label_2 = new QLabel(groupBox_5);
         label_2->setObjectName(QStringLiteral("label_2"));
-        sizePolicy2.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
-        label_2->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
+        label_2->setSizePolicy(sizePolicy1);
         label_2->setFont(font9);
 
         verticalLayout_12->addWidget(label_2);
 
         label_3 = new QLabel(groupBox_5);
         label_3->setObjectName(QStringLiteral("label_3"));
-        sizePolicy2.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
-        label_3->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
+        label_3->setSizePolicy(sizePolicy1);
         label_3->setFont(font9);
 
         verticalLayout_12->addWidget(label_3);
@@ -2067,11 +2073,11 @@ public:
 
         StartLayerGcode = new QTextEdit(groupBox_5);
         StartLayerGcode->setObjectName(QStringLiteral("StartLayerGcode"));
-        QSizePolicy sizePolicy8(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        sizePolicy8.setHorizontalStretch(0);
-        sizePolicy8.setVerticalStretch(140);
-        sizePolicy8.setHeightForWidth(StartLayerGcode->sizePolicy().hasHeightForWidth());
-        StartLayerGcode->setSizePolicy(sizePolicy8);
+        QSizePolicy sizePolicy9(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy9.setHorizontalStretch(0);
+        sizePolicy9.setVerticalStretch(140);
+        sizePolicy9.setHeightForWidth(StartLayerGcode->sizePolicy().hasHeightForWidth());
+        StartLayerGcode->setSizePolicy(sizePolicy9);
         StartLayerGcode->setMinimumSize(QSize(350, 0));
         StartLayerGcode->setMaximumSize(QSize(16777215, 140));
         StartLayerGcode->setFont(font3);
@@ -2102,8 +2108,8 @@ public:
         verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
         MotorControl = new QGroupBox(groupBox_ZMachineControl);
         MotorControl->setObjectName(QStringLiteral("MotorControl"));
-        sizePolicy2.setHeightForWidth(MotorControl->sizePolicy().hasHeightForWidth());
-        MotorControl->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(MotorControl->sizePolicy().hasHeightForWidth());
+        MotorControl->setSizePolicy(sizePolicy1);
         MotorControl->setMinimumSize(QSize(0, 70));
         MotorControl->setMaximumSize(QSize(16777215, 16777215));
         MotorControl->setFont(font);
@@ -2118,8 +2124,8 @@ public:
         verticalLayout_6->setObjectName(QStringLiteral("verticalLayout_6"));
         MotorConDisable = new QPushButton(MotorControl);
         MotorConDisable->setObjectName(QStringLiteral("MotorConDisable"));
-        sizePolicy2.setHeightForWidth(MotorConDisable->sizePolicy().hasHeightForWidth());
-        MotorConDisable->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(MotorConDisable->sizePolicy().hasHeightForWidth());
+        MotorConDisable->setSizePolicy(sizePolicy1);
         MotorConDisable->setMaximumSize(QSize(115, 35));
         MotorConDisable->setFont(font6);
 
@@ -2146,8 +2152,8 @@ public:
         verticalLayout_9->setObjectName(QStringLiteral("verticalLayout_9"));
         AutoBedLevel = new QPushButton(AutoBed);
         AutoBedLevel->setObjectName(QStringLiteral("AutoBedLevel"));
-        sizePolicy2.setHeightForWidth(AutoBedLevel->sizePolicy().hasHeightForWidth());
-        AutoBedLevel->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(AutoBedLevel->sizePolicy().hasHeightForWidth());
+        AutoBedLevel->setSizePolicy(sizePolicy1);
         AutoBedLevel->setMaximumSize(QSize(115, 35));
         AutoBedLevel->setFont(font6);
 
@@ -2158,8 +2164,8 @@ public:
 
         ManualGcode_GroupBox = new QGroupBox(groupBox_ZMachineControl);
         ManualGcode_GroupBox->setObjectName(QStringLiteral("ManualGcode_GroupBox"));
-        sizePolicy2.setHeightForWidth(ManualGcode_GroupBox->sizePolicy().hasHeightForWidth());
-        ManualGcode_GroupBox->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(ManualGcode_GroupBox->sizePolicy().hasHeightForWidth());
+        ManualGcode_GroupBox->setSizePolicy(sizePolicy1);
         ManualGcode_GroupBox->setMaximumSize(QSize(16777215, 16777215));
         ManualGcode_GroupBox->setFont(font1);
         ManualGcode_GroupBox->setStyleSheet(QLatin1String("QGroupBox{ border: 1px solid ;\n"
@@ -2221,8 +2227,8 @@ public:
         stackedWidget->addWidget(ZMachineControl);
         SLCFileControl = new QWidget();
         SLCFileControl->setObjectName(QStringLiteral("SLCFileControl"));
-        sizePolicy2.setHeightForWidth(SLCFileControl->sizePolicy().hasHeightForWidth());
-        SLCFileControl->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(SLCFileControl->sizePolicy().hasHeightForWidth());
+        SLCFileControl->setSizePolicy(sizePolicy1);
         gridLayout_18 = new QGridLayout(SLCFileControl);
         gridLayout_18->setSpacing(6);
         gridLayout_18->setContentsMargins(11, 11, 11, 11);
@@ -2230,8 +2236,8 @@ public:
         gridLayout_18->setContentsMargins(0, 0, 0, 0);
         frame_SCLFileControl = new QFrame(SLCFileControl);
         frame_SCLFileControl->setObjectName(QStringLiteral("frame_SCLFileControl"));
-        sizePolicy2.setHeightForWidth(frame_SCLFileControl->sizePolicy().hasHeightForWidth());
-        frame_SCLFileControl->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(frame_SCLFileControl->sizePolicy().hasHeightForWidth());
+        frame_SCLFileControl->setSizePolicy(sizePolicy1);
         frame_SCLFileControl->setMinimumSize(QSize(0, 0));
         frame_SCLFileControl->setStyleSheet(QLatin1String("QFrame{background-image : url(:/images/img.jpg);\n"
 "border:1px solid black}"));
@@ -2262,8 +2268,11 @@ public:
         verticalLayout_8->setObjectName(QStringLiteral("verticalLayout_8"));
         groupBox_4 = new QGroupBox(groupBox_SLCFileConrol);
         groupBox_4->setObjectName(QStringLiteral("groupBox_4"));
-        sizePolicy1.setHeightForWidth(groupBox_4->sizePolicy().hasHeightForWidth());
-        groupBox_4->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy10(QSizePolicy::Fixed, QSizePolicy::Preferred);
+        sizePolicy10.setHorizontalStretch(0);
+        sizePolicy10.setVerticalStretch(0);
+        sizePolicy10.setHeightForWidth(groupBox_4->sizePolicy().hasHeightForWidth());
+        groupBox_4->setSizePolicy(sizePolicy10);
         groupBox_4->setMinimumSize(QSize(0, 0));
         groupBox_4->setMaximumSize(QSize(160, 16777215));
         LoadSlcFile = new QPushButton(groupBox_4);
@@ -2302,11 +2311,11 @@ public:
         horizontalLayout_24->setSizeConstraint(QLayout::SetNoConstraint);
         connectButton = new QPushButton(scrollAreaWidgetContents);
         connectButton->setObjectName(QStringLiteral("connectButton"));
-        QSizePolicy sizePolicy9(QSizePolicy::Maximum, QSizePolicy::Maximum);
-        sizePolicy9.setHorizontalStretch(0);
-        sizePolicy9.setVerticalStretch(0);
-        sizePolicy9.setHeightForWidth(connectButton->sizePolicy().hasHeightForWidth());
-        connectButton->setSizePolicy(sizePolicy9);
+        QSizePolicy sizePolicy11(QSizePolicy::Maximum, QSizePolicy::Maximum);
+        sizePolicy11.setHorizontalStretch(0);
+        sizePolicy11.setVerticalStretch(0);
+        sizePolicy11.setHeightForWidth(connectButton->sizePolicy().hasHeightForWidth());
+        connectButton->setSizePolicy(sizePolicy11);
         connectButton->setMinimumSize(QSize(10, 48));
         connectButton->setMaximumSize(QSize(16777215, 16777215));
         connectButton->setFont(font10);
@@ -2328,8 +2337,8 @@ public:
 
         startPatSequence_Button = new QPushButton(scrollAreaWidgetContents);
         startPatSequence_Button->setObjectName(QStringLiteral("startPatSequence_Button"));
-        sizePolicy9.setHeightForWidth(startPatSequence_Button->sizePolicy().hasHeightForWidth());
-        startPatSequence_Button->setSizePolicy(sizePolicy9);
+        sizePolicy11.setHeightForWidth(startPatSequence_Button->sizePolicy().hasHeightForWidth());
+        startPatSequence_Button->setSizePolicy(sizePolicy11);
         startPatSequence_Button->setMinimumSize(QSize(50, 60));
         startPatSequence_Button->setStyleSheet(QLatin1String("#startPatSequence_Button{\n"
 "background-color: transparent;\n"
@@ -2347,8 +2356,8 @@ public:
         pausePatSequence_Button = new QPushButton(scrollAreaWidgetContents);
         pausePatSequence_Button->setObjectName(QStringLiteral("pausePatSequence_Button"));
         pausePatSequence_Button->setEnabled(false);
-        sizePolicy9.setHeightForWidth(pausePatSequence_Button->sizePolicy().hasHeightForWidth());
-        pausePatSequence_Button->setSizePolicy(sizePolicy9);
+        sizePolicy11.setHeightForWidth(pausePatSequence_Button->sizePolicy().hasHeightForWidth());
+        pausePatSequence_Button->setSizePolicy(sizePolicy11);
         pausePatSequence_Button->setMinimumSize(QSize(50, 60));
         pausePatSequence_Button->setStyleSheet(QLatin1String("#pausePatSequence_Button{\n"
 "background-color: transparent;\n"
@@ -2368,8 +2377,8 @@ public:
         stopPatSequence_Button = new QPushButton(scrollAreaWidgetContents);
         stopPatSequence_Button->setObjectName(QStringLiteral("stopPatSequence_Button"));
         stopPatSequence_Button->setEnabled(false);
-        sizePolicy9.setHeightForWidth(stopPatSequence_Button->sizePolicy().hasHeightForWidth());
-        stopPatSequence_Button->setSizePolicy(sizePolicy9);
+        sizePolicy11.setHeightForWidth(stopPatSequence_Button->sizePolicy().hasHeightForWidth());
+        stopPatSequence_Button->setSizePolicy(sizePolicy11);
         stopPatSequence_Button->setMinimumSize(QSize(50, 60));
         stopPatSequence_Button->setStyleSheet(QLatin1String("#stopPatSequence_Button{\n"
 "background-color: transparent;\n"
@@ -2392,8 +2401,8 @@ public:
         pushButton_patternMode = new QPushButton(scrollAreaWidgetContents);
         pushButton_patternMode->setObjectName(QStringLiteral("pushButton_patternMode"));
         pushButton_patternMode->setEnabled(true);
-        sizePolicy9.setHeightForWidth(pushButton_patternMode->sizePolicy().hasHeightForWidth());
-        pushButton_patternMode->setSizePolicy(sizePolicy9);
+        sizePolicy11.setHeightForWidth(pushButton_patternMode->sizePolicy().hasHeightForWidth());
+        pushButton_patternMode->setSizePolicy(sizePolicy11);
         pushButton_patternMode->setMinimumSize(QSize(0, 40));
         pushButton_patternMode->setFont(font10);
         pushButton_patternMode->setStyleSheet(QLatin1String("QPushButton{\n"
@@ -2410,8 +2419,8 @@ public:
 
         pushButton_LEDDriver = new QPushButton(scrollAreaWidgetContents);
         pushButton_LEDDriver->setObjectName(QStringLiteral("pushButton_LEDDriver"));
-        sizePolicy9.setHeightForWidth(pushButton_LEDDriver->sizePolicy().hasHeightForWidth());
-        pushButton_LEDDriver->setSizePolicy(sizePolicy9);
+        sizePolicy11.setHeightForWidth(pushButton_LEDDriver->sizePolicy().hasHeightForWidth());
+        pushButton_LEDDriver->setSizePolicy(sizePolicy11);
         pushButton_LEDDriver->setMinimumSize(QSize(0, 45));
         pushButton_LEDDriver->setFont(font10);
         pushButton_LEDDriver->setStyleSheet(QLatin1String("QPushButton{\n"
@@ -2427,8 +2436,8 @@ public:
 
         pushButton_ZMachineControl = new QPushButton(scrollAreaWidgetContents);
         pushButton_ZMachineControl->setObjectName(QStringLiteral("pushButton_ZMachineControl"));
-        sizePolicy9.setHeightForWidth(pushButton_ZMachineControl->sizePolicy().hasHeightForWidth());
-        pushButton_ZMachineControl->setSizePolicy(sizePolicy9);
+        sizePolicy11.setHeightForWidth(pushButton_ZMachineControl->sizePolicy().hasHeightForWidth());
+        pushButton_ZMachineControl->setSizePolicy(sizePolicy11);
         pushButton_ZMachineControl->setMinimumSize(QSize(0, 0));
         pushButton_ZMachineControl->setFont(font10);
         pushButton_ZMachineControl->setStyleSheet(QLatin1String("QPushButton{\n"
@@ -2457,8 +2466,8 @@ public:
 
         StartTime = new QLabel(scrollAreaWidgetContents);
         StartTime->setObjectName(QStringLiteral("StartTime"));
-        sizePolicy2.setHeightForWidth(StartTime->sizePolicy().hasHeightForWidth());
-        StartTime->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(StartTime->sizePolicy().hasHeightForWidth());
+        StartTime->setSizePolicy(sizePolicy1);
         StartTime->setMinimumSize(QSize(70, 0));
         StartTime->setFont(font5);
         StartTime->setStyleSheet(QLatin1String("QLabel{\n"
@@ -2483,8 +2492,8 @@ public:
 
         TotalTime = new QLabel(scrollAreaWidgetContents);
         TotalTime->setObjectName(QStringLiteral("TotalTime"));
-        sizePolicy2.setHeightForWidth(TotalTime->sizePolicy().hasHeightForWidth());
-        TotalTime->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(TotalTime->sizePolicy().hasHeightForWidth());
+        TotalTime->setSizePolicy(sizePolicy1);
         TotalTime->setMinimumSize(QSize(70, 0));
         TotalTime->setFont(font5);
         TotalTime->setStyleSheet(QLatin1String("QLabel{\n"
@@ -2508,8 +2517,8 @@ public:
 
         PatternIndex = new QLabel(scrollAreaWidgetContents);
         PatternIndex->setObjectName(QStringLiteral("PatternIndex"));
-        sizePolicy2.setHeightForWidth(PatternIndex->sizePolicy().hasHeightForWidth());
-        PatternIndex->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(PatternIndex->sizePolicy().hasHeightForWidth());
+        PatternIndex->setSizePolicy(sizePolicy1);
         PatternIndex->setMinimumSize(QSize(100, 0));
         PatternIndex->setFont(font10);
         PatternIndex->setStyleSheet(QLatin1String("QLabel{border:0px;\n"
@@ -2589,8 +2598,8 @@ public:
         label_ReadBuffer->setText(QApplication::translate("MainWindow", "Read Buffer", nullptr));
         USBDevicePath->setText(QApplication::translate("MainWindow", "USB Device path", nullptr));
         pushButton_RestartLEDDriver->setText(QApplication::translate("MainWindow", "Restart LED Driver", nullptr));
-        label_14->setText(QApplication::translate("MainWindow", "Status", nullptr));
         label_LEDDriverStatus->setText(QString());
+        label_14->setText(QApplication::translate("MainWindow", "Status", nullptr));
         checkBox_InternalInitialization->setText(QApplication::translate("MainWindow", "Internal Initialization", nullptr));
         checkBox_LEDTempOK->setText(QApplication::translate("MainWindow", "LED Temp OK", nullptr));
         checkBox_DMDTempOK->setText(QApplication::translate("MainWindow", "DMD Temp OK", nullptr));

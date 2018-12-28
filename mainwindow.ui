@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1394</width>
-    <height>794</height>
+    <width>1310</width>
+    <height>768</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -29,8 +29,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1381</width>
-      <height>761</height>
+      <width>1300</width>
+      <height>735</height>
      </rect>
     </property>
     <property name="autoFillBackground">
@@ -62,9 +62,21 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>1362</width>
-       <height>767</height>
+       <width>1298</width>
+       <height>730</height>
       </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>730</height>
+      </size>
      </property>
      <layout class="QGridLayout" name="gridLayout">
       <item row="1" column="0">
@@ -72,7 +84,7 @@
         <item>
          <widget class="QFrame" name="frame_common">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -961,7 +973,7 @@ color:rgb(0,120,120);
         <item>
          <widget class="QStackedWidget" name="stackedWidget">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -995,7 +1007,7 @@ color:rgb(0,120,120);
             <item row="0" column="0">
              <widget class="QFrame" name="frame_patternMode">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
@@ -1060,7 +1072,7 @@ color:rgb(0,120,120);
                     </property>
                     <property name="sizeHint" stdset="0">
                      <size>
-                      <width>80</width>
+                      <width>50</width>
                       <height>20</height>
                      </size>
                     </property>
@@ -1144,8 +1156,8 @@ color:rgb(0,120,120);
                             <rect>
                              <x>0</x>
                              <y>0</y>
-                             <width>837</width>
-                             <height>592</height>
+                             <width>833</width>
+                             <height>555</height>
                             </rect>
                            </property>
                           </widget>
@@ -1183,7 +1195,7 @@ color:rgb(0,120,120);
                     </property>
                     <property name="sizeHint" stdset="0">
                      <size>
-                      <width>80</width>
+                      <width>50</width>
                       <height>20</height>
                      </size>
                     </property>
@@ -1277,18 +1289,55 @@ color:rgb(0,120,120);
                     <property name="horizontalSpacing">
                      <number>6</number>
                     </property>
+                    <item row="0" column="1">
+                     <widget class="QTextEdit" name="USBDevicePath_TextEdit">
+                      <property name="enabled">
+                       <bool>true</bool>
+                      </property>
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>550</width>
+                        <height>0</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>550</width>
+                        <height>30</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>Arial</family>
+                        <pointsize>9</pointsize>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QTextEdit{ border: 1px solid ;
+background-color: transparent;
+border-color: rgb(0,150,150);
+;}</string>
+                      </property>
+                     </widget>
+                    </item>
                     <item row="2" column="0">
                      <widget class="QLabel" name="label_ReadBuffer">
                       <property name="maximumSize">
                        <size>
-                        <width>16777215</width>
+                        <width>85</width>
                         <height>35</height>
                        </size>
                       </property>
                       <property name="font">
                        <font>
                         <family>Arial</family>
-                        <pointsize>11</pointsize>
+                        <pointsize>10</pointsize>
                        </font>
                       </property>
                       <property name="styleSheet">
@@ -1322,7 +1371,7 @@ color:rgb(0,120,120);
                       <property name="font">
                        <font>
                         <family>Arial</family>
-                        <pointsize>11</pointsize>
+                        <pointsize>10</pointsize>
                        </font>
                       </property>
                       <property name="styleSheet">
@@ -1371,13 +1420,13 @@ color:rgb(0,120,120);
                       </property>
                       <property name="minimumSize">
                        <size>
-                        <width>755</width>
+                        <width>690</width>
                         <height>0</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
-                        <width>1060</width>
+                        <width>990</width>
                         <height>35</height>
                        </size>
                       </property>
@@ -1392,65 +1441,6 @@ color:rgb(0,120,120);
 background-color: transparent;
 border-color: rgb(0,150,150);
 ;}</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="0" column="1">
-                     <widget class="QTextEdit" name="USBDevicePath_TextEdit">
-                      <property name="enabled">
-                       <bool>true</bool>
-                      </property>
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="minimumSize">
-                       <size>
-                        <width>550</width>
-                        <height>0</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>550</width>
-                        <height>30</height>
-                       </size>
-                      </property>
-                      <property name="font">
-                       <font>
-                        <family>Arial</family>
-                        <pointsize>10</pointsize>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">QTextEdit{ border: 1px solid ;
-background-color: transparent;
-border-color: rgb(0,150,150);
-;}</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="0" column="2">
-                     <widget class="QLabel" name="label_14">
-                      <property name="maximumSize">
-                       <size>
-                        <width>150</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="font">
-                       <font>
-                        <family>Arial</family>
-                        <pointsize>11</pointsize>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">QLabel{Border:0px}</string>
-                      </property>
-                      <property name="text">
-                       <string>Status</string>
                       </property>
                      </widget>
                     </item>
@@ -1477,7 +1467,7 @@ border-color: rgb(0,150,150);
                       <property name="font">
                        <font>
                         <family>Arial</family>
-                        <pointsize>11</pointsize>
+                        <pointsize>10</pointsize>
                        </font>
                       </property>
                       <property name="styleSheet">
@@ -1485,6 +1475,28 @@ border-color: rgb(0,150,150);
                       </property>
                       <property name="text">
                        <string/>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="2">
+                     <widget class="QLabel" name="label_14">
+                      <property name="maximumSize">
+                       <size>
+                        <width>150</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>Arial</family>
+                        <pointsize>10</pointsize>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QLabel{Border:0px}</string>
+                      </property>
+                      <property name="text">
+                       <string>Status</string>
                       </property>
                      </widget>
                     </item>

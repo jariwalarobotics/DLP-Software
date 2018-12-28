@@ -592,6 +592,9 @@ void MainWindow::on_startPatSequence_Button_clicked()
         }
     }
 
+    SetLayerIntensity(0);
+    on_pushButton_EnableIntensityReg_clicked();
+
     ExposureTime = ui->exposure_lineEdit->text().toInt();
     BeforeZTime = ui->BeforeZTime_lineEdit->text().toInt();
 
@@ -649,6 +652,7 @@ void MainWindow::on_stopPatSequence_Button_clicked()
     ui->StartTime->setText("00:00:00");
     WaitforEndstopHit = false;
     mResumeSessionTime = 0;
+    on_pushButton_EnableIntensityReg_clicked();
 
     PatCount = 0;
 
@@ -858,14 +862,16 @@ void MainWindow::SendPatSequence()
         QString cmd = ui->StartLayerGcode->toPlainText();
         ZAxisMovement(cmd);
 
-        if (PatCount >= ui->BaseLayerCount->text()) {
+        //int basecount = ui->BaseLayerCount->text().toInt();
+        if (PatCount < ui->BaseLayerCount->text().toInt()) {
             Intensity = ui->BaseLayerIntensity->text().toInt();
-        } else if (PatCount >= ui->MidLayerCount->text()) {
+        } else if (PatCount < (ui->MidLayerCount->text().toInt() + ui->BaseLayerCount->text().toInt())) {
             Intensity = ui->MidLayerIntensity->text().toInt();
         } else {
             Intensity = ui->Intensity_lineEdit->text().toInt();
         }
         SetLayerIntensity(Intensity);
+        //on_pushButton_EnableIntensityReg_clicked();
 
         PatternElement AutoPatSeq;
         AutoPatSeq.bits = m_elements[PatCount].bits;
@@ -920,12 +926,13 @@ void MainWindow::SendPatSequence()
     QString cmd = ui->EndLayerGcode->toPlainText();
     ZAxisMovement(cmd);
     Auto_m_elements.clear();
-    while (!ZLiftComplete == true) {
-        int loop = 0;
-        loop++;
-    }
-    ZLiftComplete = false;
+    //while (!ZLiftComplete == true) {
+    //    int loop = 0;
+    //    loop++;
+    //}
+    //ZLiftComplete = false;
     //AutoSendPatSeq->setInterval(0);
+    //SetLayerIntensity(0);
     AutoSendPatSeq->setInterval(delay + ZLiftDelay);
     PatCount = PatCount + 1;
 }
