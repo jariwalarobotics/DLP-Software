@@ -112,7 +112,7 @@ MainWindow::MainWindow(QWidget *parent) :
     updateMinExposure();
     startTimer(0);
 
-    if (!m_ptnProfilePath.isEmpty()) {
+    if (folderExists(m_ptnProfilePath)) {
         on_LoadMacProfile_clicked();
     }
 }
@@ -386,7 +386,7 @@ void MainWindow::on_patternMode_radioButton_clicked()
     waveWindow->updatePatternList(m_elements);
     waveWindow->draw();
     waveWindow->updateVideoPatternMode(false);
-    ui->triggerIn_checkBox->setText("Trigger Input");
+    //ui->triggerIn_checkBox->setText("Trigger Input");
 }
 
 /**
@@ -414,7 +414,7 @@ void MainWindow::on_patternMemory_radioButton_clicked()
     waveWindow->updatePatternList(m_elements);
     waveWindow->draw();
     waveWindow->updateVideoPatternMode(false);
-    ui->triggerIn_checkBox->setText("Trigger Input");
+    //ui->triggerIn_checkBox->setText("Trigger Input");
 }
 
 /**

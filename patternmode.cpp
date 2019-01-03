@@ -603,6 +603,8 @@ void MainWindow::on_startPatSequence_Button_clicked()
     ui->pausePatSequence_Button->setEnabled(true);
     ui->startPatSequence_Button->setEnabled(false);
     ui->UpdateTotalTime->setEnabled(false);
+    ui->checkBox_IntensityRegEnable->setEnabled(false);
+    ui->pushButton_EnableIntensityReg->setEnabled(false);
 }
 
 /**
@@ -653,6 +655,8 @@ void MainWindow::on_stopPatSequence_Button_clicked()
     WaitforEndstopHit = false;
     mResumeSessionTime = 0;
     on_pushButton_EnableIntensityReg_clicked();
+    ui->checkBox_IntensityRegEnable->setEnabled(true);
+    ui->pushButton_EnableIntensityReg->setEnabled(true);
 
     PatCount = 0;
 
@@ -703,8 +707,8 @@ void MainWindow::on_patternSelect(int index, QList<PatternElement> patElem)
 
     QString lenght = QString::number(m_elements.size() - 1);
     ui->PatternIndex->setText(QString::number(index)+ " / " + lenght);
-    ui->triggerIn_checkBox->setChecked(m_elements[index].trigIn);
-    ui->triggerOut2_checkBox->setChecked(m_elements[index].trigOut2);
+    //ui->triggerIn_checkBox->setChecked(m_elements[index].trigIn);
+    //ui->triggerOut2_checkBox->setChecked(m_elements[index].trigOut2);
     ui->exposure_lineEdit->setText(QString::number(m_elements[index].exposure));
     ui->BeforeZTime_lineEdit->setText(QString::number(m_elements[index].beforeZTime));
     ui->removePatternsButton->setEnabled(true);
@@ -723,7 +727,7 @@ void MainWindow::on_triggerIn_checkBox_clicked()
     {
         if (m_elements[i].selected)
         {
-            m_elements[i].trigIn = ui->triggerIn_checkBox->isChecked();
+            //m_elements[i].trigIn = ui->triggerIn_checkBox->isChecked();
             changed = true;
         }
     }
@@ -746,7 +750,7 @@ void MainWindow::on_triggerOut2_checkBox_clicked()
     {
         if (m_elements[i].selected)
         {
-            m_elements[i].trigOut2 = ui->triggerOut2_checkBox->isChecked();
+            //m_elements[i].trigOut2 = ui->triggerOut2_checkBox->isChecked();
             changed = true;
         }
     }

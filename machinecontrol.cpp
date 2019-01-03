@@ -214,6 +214,11 @@ void MainWindow::on_SaveMacProfile_clicked()
 {
     QString filename;
 
+    if (ui->ProfileName->toPlainText().isEmpty()) {
+        showStatus("Warning:Please Load defualt Profile!!");
+        return;
+    }
+
     filename = QFileDialog::getSaveFileName(this, QString("Enter name of profile"),
                                             m_ptnProfilePath,
                                             tr("setting files(*.fff)"));
@@ -225,7 +230,7 @@ void MainWindow::on_SaveMacProfile_clicked()
 
     if(!settingsFile.open(QIODevice::WriteOnly | QIODevice::Text))
     {
-        showStatus("Error:Unable to open file for saving\n");
+        showStatus("Error:Unable to save file\n");
         return;
     }
 
@@ -318,7 +323,11 @@ void MainWindow::on_SaveMacProfile_clicked()
     {
         out << "Auto Homing:false" << "," << "\n";
         out << "Manual Homing:true" << "," << "\n";
-        out << "Homing Delay:" + ui->HomingDelay->text() << "," << "\n";
+        if (ui->HomingDelay->text().toInt() == 0) {
+            out << "Homing Delay:0" << "," << "\n";
+        } else {
+            out << "Homing Delay:" + ui->HomingDelay->text() << "," << "\n";
+        }
     }
 
     settingsFile.close();
@@ -330,7 +339,7 @@ void MainWindow::on_LoadMacProfile_clicked()
 
     //char dispStr[255];
 
-    if (ui->ProfileName->toPlainText().isEmpty()) {
+    if (!DefaultProfileloaded && folderExists(m_ptnProfilePath)) {
         fileName = m_ptnProfilePath + "/default.fff";
     } else {
         fileName = QFileDialog::getOpenFileName(this,
@@ -348,6 +357,7 @@ void MainWindow::on_LoadMacProfile_clicked()
         showStatus("Unable to open the Machine Profile file\n");
         return;
     }
+    DefaultProfileloaded = true;
 
     ui->ProfileName->setPlainText(NULL);
     ui->StartPrintGcode->setPlainText(NULL);
@@ -478,5 +488,13 @@ void MainWindow::on_LoadMacProfile_clicked()
            showError("No Matching found");
            return;
        }
+    }
+}
+
+bool MainWindow::folderExists(QString path) {
+    if (QDir(path).exists()) {
+        return true;
+    } else {
+        return false;
     }
 }

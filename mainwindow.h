@@ -97,6 +97,7 @@ public:
     int counter = 0;
     BOOL WaitforEndstopHit = false;
     BOOL ZLiftComplete = false;
+    BOOL DefaultProfileloaded = false;
 
     bool loadDll();
 
@@ -283,6 +284,8 @@ private slots:
     void on_PixelShifting_clicked();
 
     void on_LoadSlcFile_clicked();
+
+    bool folderExists(QString path);
 
 private:
 
