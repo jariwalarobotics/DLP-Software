@@ -216,71 +216,6 @@ color:rgb(0,120,120);
                   </property>
                  </spacer>
                 </item>
-                <item row="2" column="1">
-                 <widget class="QPushButton" name="saveButton_patternSettings">
-                  <property name="enabled">
-                   <bool>true</bool>
-                  </property>
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>90</width>
-                    <height>35</height>
-                   </size>
-                  </property>
-                  <property name="toolTip">
-                   <string>Save settings to a file</string>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton{
-	color:rgb(0,150,150);
-}</string>
-                  </property>
-                  <property name="text">
-                   <string>Save</string>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="hires.qrc">
-                    <normaloff>:/new/prefix1/Icons/save.png</normaloff>:/new/prefix1/Icons/save.png</iconset>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="0">
-                 <widget class="QPushButton" name="loadButton_patternSettings">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>90</width>
-                    <height>35</height>
-                   </size>
-                  </property>
-                  <property name="toolTip">
-                   <string>Load settings from a file</string>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton{
-	color:rgb(0,150,150);
-}</string>
-                  </property>
-                  <property name="text">
-                   <string>Load</string>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="hires.qrc">
-                    <normaloff>:/new/prefix1/Icons/load.png</normaloff>:/new/prefix1/Icons/load.png</iconset>
-                  </property>
-                 </widget>
-                </item>
                 <item row="1" column="0" colspan="2">
                  <layout class="QHBoxLayout" name="horizontalLayout_5">
                   <item>
@@ -482,6 +417,26 @@ color:rgb(0,120,120);
                 <property name="spacing">
                  <number>9</number>
                 </property>
+                <item row="4" column="0">
+                 <widget class="QLabel" name="label_11">
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel{ border: 0px ;
+background-color: transparent;
+border-color: rgb(0,150,150);
+color:rgb(0,120,120);
+;}</string>
+                  </property>
+                  <property name="text">
+                   <string>Z Lift Time Normal</string>
+                  </property>
+                 </widget>
+                </item>
                 <item row="1" column="0">
                  <widget class="QLabel" name="label_10">
                   <property name="font">
@@ -532,6 +487,9 @@ color:rgb(0,120,120);
                 </item>
                 <item row="2" column="0">
                  <widget class="QLabel" name="label_9">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
                   <property name="font">
                    <font>
                     <family>Arial</family>
@@ -546,12 +504,43 @@ color:rgb(0,120,120);
 ;}</string>
                   </property>
                   <property name="text">
-                   <string>Z Lift Time</string>
+                   <string>Z Lift Time Base</string>
                   </property>
                  </widget>
                 </item>
                 <item row="2" column="1">
-                 <widget class="QLineEdit" name="ZLiftdelay">
+                 <widget class="QLineEdit" name="ZLiftdelayBase">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>35</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>35</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="1">
+                 <widget class="QLineEdit" name="ZLiftdelayNormal">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                     <horstretch>0</horstretch>
@@ -612,7 +601,7 @@ color:rgb(0,120,120);
 ;}</string>
                   </property>
                   <property name="text">
-                   <string>Exposure Time</string>
+                   <string>Exposure Time </string>
                   </property>
                   <property name="wordWrap">
                    <bool>true</bool>
@@ -657,7 +646,7 @@ color:rgb(0,120,120);
                  <widget class="QLabel" name="label_Exposure_2">
                   <property name="minimumSize">
                    <size>
-                    <width>96</width>
+                    <width>105</width>
                     <height>0</height>
                    </size>
                   </property>
@@ -3155,60 +3144,6 @@ border-color: rgb(0,150,150);
                       </property>
                      </spacer>
                     </item>
-                    <item row="3" column="6">
-                     <widget class="QPushButton" name="pushButton_SwTrigger">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>35</height>
-                       </size>
-                      </property>
-                      <property name="font">
-                       <font>
-                        <family>Arial</family>
-                        <pointsize>10</pointsize>
-                        <weight>75</weight>
-                        <bold>true</bold>
-                       </font>
-                      </property>
-                      <property name="text">
-                       <string>SW Trigger</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="3" column="7">
-                     <widget class="QPushButton" name="pushButton_ExTrigger">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>35</height>
-                       </size>
-                      </property>
-                      <property name="font">
-                       <font>
-                        <family>Arial</family>
-                        <pointsize>10</pointsize>
-                        <weight>75</weight>
-                        <bold>true</bold>
-                       </font>
-                      </property>
-                      <property name="text">
-                       <string>EXT Trigger</string>
-                      </property>
-                     </widget>
-                    </item>
                     <item row="0" column="3">
                      <widget class="QCheckBox" name="checkBox_IntensityRegEnable">
                       <property name="sizePolicy">
@@ -4217,7 +4152,7 @@ color:rgb(0,120,120);
                                 </font>
                                </property>
                                <property name="text">
-                                <string>Start Layer</string>
+                                <string>End Base Layer</string>
                                </property>
                                <property name="wordWrap">
                                 <bool>true</bool>
@@ -4233,7 +4168,7 @@ color:rgb(0,120,120);
                                 </font>
                                </property>
                                <property name="text">
-                                <string>End Layer</string>
+                                <string>End Normal Layer</string>
                                </property>
                                <property name="wordWrap">
                                 <bool>true</bool>
@@ -4310,7 +4245,7 @@ color:rgb(0,120,120);
                               </widget>
                              </item>
                              <item>
-                              <widget class="QTextEdit" name="StartLayerGcode">
+                              <widget class="QTextEdit" name="EndBaseLayerGcode">
                                <property name="sizePolicy">
                                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                                  <horstretch>0</horstretch>
@@ -4448,7 +4383,7 @@ color:rgb(0,120,120);
                          </widget>
                         </item>
                         <item>
-                         <widget class="QGroupBox" name="AutoBed">
+                         <widget class="QGroupBox" name="LayerCount">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                             <horstretch>0</horstretch>
@@ -4483,35 +4418,173 @@ color:rgb(0,120,120);
 ;}</string>
                           </property>
                           <property name="title">
-                           <string>AutoBed Level</string>
+                           <string>Layer Count</string>
                           </property>
                           <layout class="QVBoxLayout" name="verticalLayout_9">
                            <item>
-                            <widget class="QPushButton" name="AutoBedLevel">
-                             <property name="sizePolicy">
-                              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                               <horstretch>0</horstretch>
-                               <verstretch>0</verstretch>
-                              </sizepolicy>
-                             </property>
-                             <property name="maximumSize">
-                              <size>
-                               <width>115</width>
-                               <height>35</height>
-                              </size>
-                             </property>
+                            <widget class="QCheckBox" name="EnableLayer">
                              <property name="font">
                               <font>
                                <family>Arial</family>
                                <pointsize>10</pointsize>
-                               <weight>75</weight>
-                               <bold>true</bold>
                               </font>
                              </property>
                              <property name="text">
-                              <string>AutoBed Level</string>
+                              <string>Enable Base Layer Count</string>
                              </property>
                             </widget>
+                           </item>
+                           <item>
+                            <layout class="QGridLayout" name="gridLayout_42">
+                             <property name="leftMargin">
+                              <number>0</number>
+                             </property>
+                             <property name="topMargin">
+                              <number>9</number>
+                             </property>
+                             <property name="bottomMargin">
+                              <number>9</number>
+                             </property>
+                             <property name="spacing">
+                              <number>9</number>
+                             </property>
+                             <item row="1" column="0">
+                              <widget class="QLabel" name="label_startlayer">
+                               <property name="enabled">
+                                <bool>false</bool>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <family>Arial</family>
+                                 <pointsize>10</pointsize>
+                                 <weight>50</weight>
+                                 <bold>false</bold>
+                                </font>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">QLabel{ border: 0px ;
+background-color: transparent;
+border-color: rgb(0,150,150);
+color:rgb(0,120,120);
+;}</string>
+                               </property>
+                               <property name="text">
+                                <string>Start Layer Count</string>
+                               </property>
+                               <property name="wordWrap">
+                                <bool>true</bool>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="2" column="1">
+                              <widget class="QLineEdit" name="EndLayerCount">
+                               <property name="enabled">
+                                <bool>false</bool>
+                               </property>
+                               <property name="sizePolicy">
+                                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                 <horstretch>0</horstretch>
+                                 <verstretch>0</verstretch>
+                                </sizepolicy>
+                               </property>
+                               <property name="minimumSize">
+                                <size>
+                                 <width>0</width>
+                                 <height>35</height>
+                                </size>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>16777215</width>
+                                 <height>35</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <family>Arial</family>
+                                 <pointsize>11</pointsize>
+                                </font>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="2" column="0">
+                              <widget class="QLabel" name="label_EndLayer">
+                               <property name="enabled">
+                                <bool>false</bool>
+                               </property>
+                               <property name="minimumSize">
+                                <size>
+                                 <width>80</width>
+                                 <height>0</height>
+                                </size>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>180</width>
+                                 <height>16777215</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <family>Arial</family>
+                                 <pointsize>10</pointsize>
+                                 <weight>50</weight>
+                                 <bold>false</bold>
+                                </font>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">QLabel{ border: 0px ;
+background-color: transparent;
+border-color: rgb(0,150,150);
+color:rgb(0,120,120);
+;}</string>
+                               </property>
+                               <property name="text">
+                                <string>End Layer Count</string>
+                               </property>
+                               <property name="wordWrap">
+                                <bool>true</bool>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="1" column="1">
+                              <widget class="QLineEdit" name="StartLayerCount">
+                               <property name="enabled">
+                                <bool>false</bool>
+                               </property>
+                               <property name="sizePolicy">
+                                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                 <horstretch>0</horstretch>
+                                 <verstretch>0</verstretch>
+                                </sizepolicy>
+                               </property>
+                               <property name="minimumSize">
+                                <size>
+                                 <width>0</width>
+                                 <height>35</height>
+                                </size>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>16777215</width>
+                                 <height>35</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <family>Arial</family>
+                                 <pointsize>11</pointsize>
+                                </font>
+                               </property>
+                               <property name="toolTip">
+                                <string/>
+                               </property>
+                               <property name="text">
+                                <string/>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
                            </item>
                           </layout>
                          </widget>

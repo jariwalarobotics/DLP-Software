@@ -89,7 +89,8 @@ public:
     int _write1;
     int PatCount = 0;
     int delay;
-    int ZLiftDelay = 0;
+    int ZLiftDelayNormal = 0;
+    int ZLiftDelayBase = 0;
     int ExposureTime = 0;
     int BeforeZTime = 0;
     int PrintingDelay = 0;
@@ -286,6 +287,8 @@ private slots:
     void on_LoadSlcFile_clicked();
 
     bool folderExists(QString path);
+
+    void on_EnableLayer_clicked();
 
 private:
 

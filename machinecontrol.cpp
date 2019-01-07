@@ -257,9 +257,9 @@ void MainWindow::on_SaveMacProfile_clicked()
         out << "End Print Gcode:" + ui->EndPrintGcode->toPlainText() << "," << "\n";
     }
 
-    if (!ui->StartLayerGcode->toPlainText().isEmpty())
+    if (!ui->EndBaseLayerGcode->toPlainText().isEmpty())
     {
-        out << "Start Layer Gcode:" + ui->StartLayerGcode->toPlainText() << "," << "\n";
+        out << "End Base Layer Gcode:" + ui->EndBaseLayerGcode->toPlainText() << "," << "\n";
     }
 
     if (!ui->EndLayerGcode->toPlainText().isEmpty())
@@ -267,9 +267,14 @@ void MainWindow::on_SaveMacProfile_clicked()
         out << "End Layer Gcode:" + ui->EndLayerGcode->toPlainText() << "," << "\n";
     }
 
-    if (!ui->ZLiftdelay->text().isEmpty())
+    if (!ui->ZLiftdelayNormal->text().isEmpty())
     {
-        out << "Z Lift Delay:" + ui->ZLiftdelay->text() << "," << "\n";
+        out << "Z Lift Delay Normal:" + ui->ZLiftdelayNormal->text() << "," << "\n";
+    }
+
+    if (!ui->ZLiftdelayBase->text().isEmpty())
+    {
+        out << "Z Lift Delay Base:" + ui->ZLiftdelayBase->text() << "," << "\n";
     }
 
     if (!ui->PrintingDelay->text().isEmpty())
@@ -362,9 +367,10 @@ void MainWindow::on_LoadMacProfile_clicked()
     ui->ProfileName->setPlainText(NULL);
     ui->StartPrintGcode->setPlainText(NULL);
     ui->EndPrintGcode->setPlainText(NULL);
-    ui->StartLayerGcode->setPlainText(NULL);
+    ui->EndBaseLayerGcode->setPlainText(NULL);
     ui->EndLayerGcode->setPlainText(NULL);
-    ui->ZLiftdelay->setText(NULL);
+    ui->ZLiftdelayNormal->setText(NULL);
+    ui->ZLiftdelayBase->setText(NULL);
     ui->PrintingDelay->setText(NULL);
     ui->Intensity_lineEdit->setText(NULL);
     ui->BaseLayerCount->setText(NULL);
@@ -412,17 +418,21 @@ void MainWindow::on_LoadMacProfile_clicked()
            {
                ui->EndPrintGcode->setPlainText(Strbuffer[1]);
            }
-           if (Strbuffer[0] == "Start Layer Gcode")
+           if (Strbuffer[0] == "End Base Layer Gcode")
            {
-               ui->StartLayerGcode->setPlainText(Strbuffer[1]);
+               ui->EndBaseLayerGcode->setPlainText(Strbuffer[1]);
            }
            if (Strbuffer[0] == "End Layer Gcode")
            {
                ui->EndLayerGcode->setPlainText(Strbuffer[1]);
            }
-           if (Strbuffer[0] == "Z Lift Delay")
+           if (Strbuffer[0] == "Z Lift Delay Normal")
            {
-               ui->ZLiftdelay->setText(Strbuffer[1]);
+               ui->ZLiftdelayNormal->setText(Strbuffer[1]);
+           }
+           if (Strbuffer[0] == "Z Lift Delay Base")
+           {
+               ui->ZLiftdelayBase->setText(Strbuffer[1]);
            }
            if (Strbuffer[0] == "Printing Delay")
            {

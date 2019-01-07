@@ -473,3 +473,22 @@ void MainWindow::on_pushButton_slc_clicked()
     ui->stackedWidget->setCurrentIndex(3);
     //ui->pushButton_slc->setChecked(true);
 }
+
+void MainWindow::on_EnableLayer_clicked()
+{
+    if (ui->EnableLayer->isChecked()) {
+        ui->label_startlayer->setEnabled(true);
+        ui->StartLayerCount->setEnabled(true);
+        ui->label_EndLayer->setEnabled(true);
+        ui->EndLayerCount->setEnabled(true);
+        ui->label_9->setEnabled(true);
+        ui->ZLiftdelayBase->setEnabled(true);
+    } else {
+        ui->label_startlayer->setEnabled(false);
+        ui->StartLayerCount->setEnabled(false);
+        ui->label_EndLayer->setEnabled(false);
+        ui->EndLayerCount->setEnabled(false);
+        ui->label_9->setEnabled(false);
+        ui->ZLiftdelayBase->setEnabled(false);
+    }
+}

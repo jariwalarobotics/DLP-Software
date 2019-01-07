@@ -570,7 +570,8 @@ void MainWindow::on_startPatSequence_Button_clicked()
         return;
     }
 
-    ZLiftDelay = ui->ZLiftdelay->text().toInt();
+    ZLiftDelayNormal = ui->ZLiftdelayNormal->text().toInt();
+    ZLiftDelayBase = ui->ZLiftdelayBase->text().toInt();
     PrintingDelay = ui->PrintingDelay->text().toInt();
 
     QString cmd = ui->StartPrintGcode->toPlainText();
@@ -593,7 +594,9 @@ void MainWindow::on_startPatSequence_Button_clicked()
     }
 
     SetLayerIntensity(0);
-    on_pushButton_EnableIntensityReg_clicked();
+    if (!ui->checkBox_IntensityRegEnable->isChecked()) {
+        on_pushButton_EnableIntensityReg_clicked();
+    }
 
     ExposureTime = ui->exposure_lineEdit->text().toInt();
     BeforeZTime = ui->BeforeZTime_lineEdit->text().toInt();
@@ -863,8 +866,8 @@ void MainWindow::SendPatSequence()
 {
     if (PatCount < m_elements.size())
     {
-        QString cmd = ui->StartLayerGcode->toPlainText();
-        ZAxisMovement(cmd);
+        //QString cmd = ui->StartLayerGcode->toPlainText();
+        //ZAxisMovement(cmd);
 
         //int basecount = ui->BaseLayerCount->text().toInt();
         if (PatCount < ui->BaseLayerCount->text().toInt()) {
@@ -915,10 +918,14 @@ void MainWindow::SendPatSequence()
         waveWindow->draw();
         AutoSendPatSeq->stop();
         WaitforEndstopHit = false;
+        ui->checkBox_IntensityRegEnable->setEnabled(true);
+        ui->pushButton_EnableIntensityReg->setEnabled(true);
+        on_pushButton_EnableIntensityReg_clicked();
         ZLiftComplete = false;
         mResumeSessionTime = 0;
-        showStatus("Pattern sequence completed!!");
-        ui->StartTime->setText("00:00:00");
+        //showStatus("Pattern sequence completed!!");
+        //ui->StartTime->setText("00:00:00");
+        ui->PatternIndex->setText("Completed!!");
         Auto_m_elements.clear();
         PatCount = 0;
         return;
@@ -927,9 +934,29 @@ void MainWindow::SendPatSequence()
     QString delaycmd = "G4 P" + QString::number(delay);
     writeToBoard(delaycmd);
 
-    QString cmd = ui->EndLayerGcode->toPlainText();
-    ZAxisMovement(cmd);
-    Auto_m_elements.clear();
+    if (ui->EnableLayer->isChecked()) {
+        if (PatCount >= ui->StartLayerCount->text().toInt() && PatCount <= ui->EndLayerCount->text().toInt()) {
+            QString cmd = ui->EndBaseLayerGcode->toPlainText();
+            ZAxisMovement(cmd);
+            Auto_m_elements.clear();
+
+            AutoSendPatSeq->setInterval(delay + ZLiftDelayBase);
+        } else {
+            QString cmd = ui->EndLayerGcode->toPlainText();
+            ZAxisMovement(cmd);
+            Auto_m_elements.clear();
+
+            AutoSendPatSeq->setInterval(delay + ZLiftDelayNormal);
+        }
+    } else {
+        QString cmd = ui->EndLayerGcode->toPlainText();
+        ZAxisMovement(cmd);
+
+        Auto_m_elements.clear();
+
+        AutoSendPatSeq->setInterval(delay + ZLiftDelayNormal);
+    }
+
     //while (!ZLiftComplete == true) {
     //    int loop = 0;
     //    loop++;
@@ -937,7 +964,7 @@ void MainWindow::SendPatSequence()
     //ZLiftComplete = false;
     //AutoSendPatSeq->setInterval(0);
     //SetLayerIntensity(0);
-    AutoSendPatSeq->setInterval(delay + ZLiftDelay);
+    //AutoSendPatSeq->setInterval(delay + ZLiftDelayNormal);
     PatCount = PatCount + 1;
 }
 
@@ -1045,7 +1072,8 @@ void MainWindow::on_UpdateTotalTime_clicked()
         waveWindow->draw();
     }
 
-    ZLiftDelay = ui->ZLiftdelay->text().toInt();
+    ZLiftDelayNormal = ui->ZLiftdelayNormal->text().toInt();
+    ZLiftDelayBase = ui->ZLiftdelayBase->text().toInt();
     PrintingDelay = ui->PrintingDelay->text().toInt();
 
     ExposureTime = ui->exposure_lineEdit->text().toInt();
@@ -1055,8 +1083,17 @@ void MainWindow::on_UpdateTotalTime_clicked()
 
     int TotalExposureTime = ExposureTime * m_elements.size();
     int TotalDarkTime = BeforeZTime * m_elements.size();
-
-    int TotalDelay = ZLiftDelay * (m_elements.size() + 1);
+    int TotalDelay = 0;
+    int TotalBaseDelay = 0;
+    int BaseLayerCount = (ui->EndLayerCount->text().toInt() - ui->StartLayerCount->text().toInt());
+    int TotalNormalDelay = 0;
+    if (ui->EnableLayer->isChecked()) {
+         TotalBaseDelay = (BeforeZTime + 500 + ZLiftDelayBase) * BaseLayerCount + 1;
+         TotalNormalDelay = (BeforeZTime + 500 + ZLiftDelayNormal) * ((m_elements.size() + 1) - BaseLayerCount);
+         TotalDelay = TotalBaseDelay + TotalNormalDelay;
+    } else {
+        TotalDelay = (BeforeZTime + 500 + ZLiftDelayNormal) * (m_elements.size() + 1);
+    }
 
     int Totaltime = (PrintingDelay + TotalExposureTime + TotalDarkTime + TotalDelay);
 
