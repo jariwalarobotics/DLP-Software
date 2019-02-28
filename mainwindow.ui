@@ -404,6 +404,16 @@ color:rgb(0,120,120);
                   </property>
                  </widget>
                 </item>
+                <item row="1" column="0">
+                 <widget class="QLineEdit" name="pwmClkPeriod_lineEdit">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                 </widget>
+                </item>
                </layout>
               </item>
               <item row="1" column="0">

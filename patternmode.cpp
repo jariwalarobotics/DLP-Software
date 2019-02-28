@@ -1081,21 +1081,21 @@ void MainWindow::on_UpdateTotalTime_clicked()
 
     delay = (ExposureTime + BeforeZTime) + 500;
 
-    int TotalExposureTime = ExposureTime * m_elements.size();
-    int TotalDarkTime = BeforeZTime * m_elements.size();
+    //int TotalExposureTime = ExposureTime * m_elements.size();
+    //int TotalDarkTime = BeforeZTime * m_elements.size();
     int TotalDelay = 0;
     int TotalBaseDelay = 0;
     int BaseLayerCount = (ui->EndLayerCount->text().toInt() - ui->StartLayerCount->text().toInt());
     int TotalNormalDelay = 0;
     if (ui->EnableLayer->isChecked()) {
-         TotalBaseDelay = (BeforeZTime + 500 + ZLiftDelayBase) * BaseLayerCount + 1;
-         TotalNormalDelay = (BeforeZTime + 500 + ZLiftDelayNormal) * ((m_elements.size() + 1) - BaseLayerCount);
+         TotalBaseDelay = ZLiftDelayBase * BaseLayerCount;
+         TotalNormalDelay = ZLiftDelayNormal * (m_elements.size() - BaseLayerCount);
          TotalDelay = TotalBaseDelay + TotalNormalDelay;
     } else {
-        TotalDelay = (BeforeZTime + 500 + ZLiftDelayNormal) * (m_elements.size() + 1);
+        TotalDelay = ZLiftDelayNormal * (m_elements.size() + 1);
     }
 
-    int Totaltime = (PrintingDelay + TotalExposureTime + TotalDarkTime + TotalDelay);
+    int Totaltime = ((PrintingDelay + ExposureTime + BeforeZTime + 850) * (m_elements.size())) + TotalDelay ;
 
     unsigned int h = Totaltime / 1000 / 60 / 60;
     unsigned int m = (Totaltime / 1000 / 60) - (h * 60);
@@ -1105,6 +1105,7 @@ void MainWindow::on_UpdateTotalTime_clicked()
                             .arg(m, 2, 10, QChar('0'))
                             .arg(s, 2, 10, QChar('0'));
     ui->TotalTime->setText(diff);
+    ui->StartTime->setText("00:00:00");
 }
 
 void MainWindow::on_PixelShifting_clicked()

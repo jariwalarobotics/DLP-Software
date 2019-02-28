@@ -58,6 +58,7 @@ public:
     QGridLayout *gridLayout_4;
     QGridLayout *gridLayout_7;
     QPushButton *UpdateTotalTime;
+    QLineEdit *pwmClkPeriod_lineEdit;
     QGridLayout *gridLayout_36;
     QLabel *label_11;
     QLabel *label_10;
@@ -480,6 +481,13 @@ public:
         UpdateTotalTime->setCheckable(false);
 
         gridLayout_7->addWidget(UpdateTotalTime, 0, 0, 1, 1);
+
+        pwmClkPeriod_lineEdit = new QLineEdit(LiftSeqTime);
+        pwmClkPeriod_lineEdit->setObjectName(QStringLiteral("pwmClkPeriod_lineEdit"));
+        sizePolicy4.setHeightForWidth(pwmClkPeriod_lineEdit->sizePolicy().hasHeightForWidth());
+        pwmClkPeriod_lineEdit->setSizePolicy(sizePolicy4);
+
+        gridLayout_7->addWidget(pwmClkPeriod_lineEdit, 1, 0, 1, 1);
 
 
         gridLayout_4->addLayout(gridLayout_7, 2, 0, 1, 1);

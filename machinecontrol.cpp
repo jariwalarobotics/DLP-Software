@@ -317,6 +317,16 @@ void MainWindow::on_SaveMacProfile_clicked()
         out << "Before Z Time:" + ui->BeforeZTime_lineEdit->text() << "," << "\n";
     }
 
+    if (!ui->StartLayerCount->text().isEmpty())
+    {
+        out << "Start Layer Count:" + ui->StartLayerCount->text() << "," << "\n";
+    }
+
+    if (!ui->EndLayerCount->text().isEmpty())
+    {
+        out << "End Layer Count:" + ui->EndLayerCount->text() << "," << "\n";
+    }
+
     if (ui->AutoHoming->isChecked())
     {
         out << "Auto Homing:true" << "," << "\n";
@@ -333,6 +343,13 @@ void MainWindow::on_SaveMacProfile_clicked()
         } else {
             out << "Homing Delay:" + ui->HomingDelay->text() << "," << "\n";
         }
+    }
+
+    if (ui->EnableLayer->isChecked())
+    {
+        out << "Enable Layer:true" << "," << "\n";
+    } else {
+        out << "Enable Layer:false" << "," << "\n";
     }
 
     settingsFile.close();
@@ -371,6 +388,7 @@ void MainWindow::on_LoadMacProfile_clicked()
     ui->EndLayerGcode->setPlainText(NULL);
     ui->ZLiftdelayNormal->setText(NULL);
     ui->ZLiftdelayBase->setText(NULL);
+    ui->ZLiftdelayBase->setEnabled(false);
     ui->PrintingDelay->setText(NULL);
     ui->Intensity_lineEdit->setText(NULL);
     ui->BaseLayerCount->setText(NULL);
@@ -383,6 +401,11 @@ void MainWindow::on_LoadMacProfile_clicked()
     ui->ManualHoming->setChecked(false);
     ui->HomingDelay->setEnabled(false);
     ui->HomingDelay->setText(NULL);
+    ui->StartLayerCount->setText(NULL);
+    ui->StartLayerCount->setEnabled(false);
+    ui->EndLayerCount->setText(NULL);
+    ui->EndLayerCount->setEnabled(false);
+    ui->EnableLayer->setChecked(false);
 
     QDir dir = QFileInfo(settingsFile).absoluteDir();
     m_ptnProfilePath = dir.absolutePath();
@@ -466,6 +489,14 @@ void MainWindow::on_LoadMacProfile_clicked()
            {
                ui->BeforeZTime_lineEdit->setText(Strbuffer[1]);
            }
+           if (Strbuffer[0] == "Start Layer Count")
+           {
+               ui->StartLayerCount->setText(Strbuffer[1]);
+           }
+           if (Strbuffer[0] == "End Layer Count")
+           {
+               ui->EndLayerCount->setText(Strbuffer[1]);
+           }
            if (Strbuffer[0] == "Auto Homing")
            {
                if (Strbuffer[1] == "true")
@@ -493,6 +524,22 @@ void MainWindow::on_LoadMacProfile_clicked()
                    ui->HomingDelay->setText(Strbuffer[1]);
                }
            }
+           if (Strbuffer[0] == "Enable Layer")
+           {
+               if (Strbuffer[1] == "true")
+               {
+                   ui->EnableLayer->setChecked(true);
+                   ui->StartLayerCount->setEnabled(true);
+                   ui->EndLayerCount->setEnabled(true);
+                   ui->ZLiftdelayBase->setEnabled(true);
+               } else {
+                   ui->EnableLayer->setChecked(false);
+                   ui->StartLayerCount->setEnabled(false);
+                   ui->EndLayerCount->setEnabled(false);
+                   ui->ZLiftdelayBase->setEnabled(false);
+               }
+           }
+
        }
        else {
            showError("No Matching found");
